@@ -3,7 +3,7 @@
 exports[`renders default with no props 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-23 MuiButton-root-1 MuiButton-flat-5 sc-bdVaJa kHMMof"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa kHMMof"
   type="button"
 >
   <span
@@ -12,7 +12,7 @@ exports[`renders default with no props 1`] = `
     default
   </span>
   <span
-    class="MuiTouchRipple-root-26"
+    class="MuiTouchRipple-root-28"
   />
 </button>
 `;
