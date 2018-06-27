@@ -3,8 +3,8 @@
 exports[`renders default with no props 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-23 MuiButton-root-1 MuiButton-flat-5 sc-bdVaJa kHMMof"
-  type="button"
+  class="MuiButtonBase-root-23 MuiButton-root-1 MuiButton-flat-5 sc-bdVaJa fmZshU"
+  type="primary"
 >
   <span
     class="MuiButton-label-2"
