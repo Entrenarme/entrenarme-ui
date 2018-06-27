@@ -63,6 +63,8 @@ const getColor = (
 };
 
 const SButton = styled(MButton)`
+  height: 40px;
+  box-sizing: border-box;
   background-color: ${(props: ButtonProps) =>
     getBgColor(
       props.options.type,
