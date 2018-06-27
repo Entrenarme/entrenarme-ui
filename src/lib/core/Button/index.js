@@ -11,6 +11,8 @@ type ButtonProps = {
   options: {
     type: ButtonType,
     state: ButtonState,
+    colorVariant: ButtonColorVariant,
+    disabled: ButtonDisabled,
   },
 };
 
@@ -18,25 +20,32 @@ const getBgColor = (
   buttonType: ButtonType,
   options: 'default' | 'active',
   state: ButtonState,
+  disabled: ButtonDisabled,
+  colorVariant: ButtonColorVariant,
 ) => {
-  if (state === 'outline' || buttonType === 'link') {
-    return colors.white;
+  if (buttonType === 'link' || buttonType === 'outline') {
+    return colors.white.default;
   }
-  if (state === 'disabled') {
+  if (buttonType === 'add' || disabled) {
     return colors.gray.default;
   }
-  if (colors[buttonType]) {
-    return colors[buttonType][options];
+  if (state === 'error' || state === 'success') {
+    return colors[state].default;
   }
-  if (buttonType === 'add') {
-    return colors.gray[options === 'default' ? 'default' : 'light'];
-  }
-  return colors.white;
+  return colors[colorVariant || state].default;
 };
 
-const getColor = (buttonType: ButtonType, state: string) => {
-  if (state === 'outline') {
-    return colors[buttonType].default;
+const getColor = (
+  buttonType: ButtonType,
+  state: ButtonState,
+  colorVariant: ButtonColorVariant,
+  disabled: ButtonDisabled,
+) => {
+  if (buttonType === 'outline') {
+    return colors[colorVariant].default;
+  }
+  if (disabled) {
+    return colors.gray.dark;
   }
   if (state === 'loading') {
     if (buttonType === 'link') {
@@ -45,33 +54,52 @@ const getColor = (buttonType: ButtonType, state: string) => {
     if (buttonType === 'add') {
       return colors.secondary.loading;
     }
-  }
-  if (state === 'disabled') {
-    return colors.gray.dark;
+    return colors.white.loading;
   }
   if (buttonType === 'link' || buttonType === 'add') {
     return colors.secondary.default;
   }
-  return colors.white;
+  return colors.white.default;
 };
 
 const SButton = styled(MButton)`
   background-color: ${(props: ButtonProps) =>
-    getBgColor(props.options.type, 'default', props.options.state)} !important;
+    getBgColor(
+      props.options.type,
+      'default',
+      props.options.state,
+      props.options.disabled,
+      props.options.colorVariant,
+    )} !important;
   ${(props: ButtonProps) =>
-    props.options.state === 'outline'
+    props.options.type === 'outline'
       ? `	border: 2px solid ${getColor(
           props.options.type,
           props.options.state,
+          props.options.colorVariant,
+          props.options.disabled,
         )} !important`
-      : ''};
+      : props.options.type === 'add'
+        ? `border: 2px dashed ${colors.gray.dark} !important;`
+        : ''};
   :hover {
     background-color: ${(props: ButtonProps) =>
-      getBgColor(props.options.type, 'active', props.options.state)} !important;
+      getBgColor(
+        props.options.type,
+        'active',
+        props.options.state,
+        props.options.disabled,
+        props.options.colorVariant,
+      )} !important;
   }
   span {
     color: ${(props: ButtonProps) =>
-      getColor(props.options.type, props.options.state)};
+      getColor(
+        props.options.type,
+        props.options.state,
+        props.options.colorVariant,
+        props.options.disabled,
+      )};
     font-family: ${fonts.mainFont};
   }
 `;
@@ -81,10 +109,22 @@ type Props = {
   children: React.Node,
   /** onClick handler passed down to the button */
   onClick?: Function,
-  /** type of the button, will change the color basically */
+  /** type of the button, 'default' | 'link' | 'add' | 'outline' */
   type?: ButtonType,
-  state?: string,
+  /** state of the button, 'outline' | 'disabled' | 'loading' | 'icon' */
+  state?: ButtonState,
+  /** the color of the button, | 'primary' | 'secondary' | 'warning' | 'error' | 'success' */
+  colorVariant?: ButtonColorVariant,
+  /** the element to be placed on the button */
   icon?: React.Node,
+  /** if the button is in disabled state */
+  disabled?: ButtonDisabled,
+  /** text to be rendered on the loading state */
+  loadingText?: React.Node,
+  /** text to be rendered on the error state */
+  errorText?: React.Node,
+  /** text to be rendered on the success state */
+  successText?: React.Node,
 };
 
 const Icon = styled.span`
@@ -92,22 +132,80 @@ const Icon = styled.span`
   height: 18px;
 `;
 
-const Button = ({ children, type, state, icon, ...rest }: Props) => (
+const textToRender = (
+  state?: ButtonState,
+  children: React.Node,
+  loadingText: React.Node,
+  errorText: React.Node,
+  successText: React.Node,
+) => {
+  switch (state) {
+    case 'loading':
+      return loadingText;
+    case 'error':
+      return errorText;
+    case 'success':
+      return successText;
+    default:
+      return children;
+  }
+};
+
+const Button = ({
+  children,
+  type,
+  state,
+  icon,
+  colorVariant,
+  disabled,
+  defaultText,
+  loadingText,
+  errorText,
+  successText,
+  ...rest
+}: Props) => (
   <SButton
-    options={{ type, state }}
-    disabled={state === 'loading' || state === 'disabled'}
+    options={{ type, state, colorVariant, disabled }}
+    disabled={
+      state === 'loading' ||
+      state === 'error' ||
+      state === 'success' ||
+      disabled
+    }
     {...rest}
   >
     {icon ? <Icon>{icon}</Icon> : null}{' '}
-    {state === 'loading' ? <CircularProgress /> : null} <span>{children}</span>
+    {state === 'loading' ? (
+      <CircularProgress
+        style={{
+          height: '18px',
+          width: '18px',
+          marginRight: '10px',
+          color:
+            type === 'add'
+              ? colors.secondary.loading
+              : type === 'outline'
+                ? colors[colorVariant].default
+                : colors.gray.loading,
+        }}
+      />
+    ) : null}{' '}
+    <span>
+      {textToRender(state, children, loadingText, errorText, successText)}
+    </span>
   </SButton>
 );
 
 Button.defaultProps = {
   onClick: () => {},
-  type: 'primary',
-  state: '',
+  type: 'default',
+  state: 'default',
   icon: null,
+  disabled: false,
+  colorVariant: 'primary',
+  loadingText: '',
+  errorText: '',
+  successText: '',
 };
 
 export default Button;

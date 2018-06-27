@@ -32,5 +32,8 @@ export default {
     loading: 'rgba(191,191,191,0.7)',
     light: 'rgba(240,240,240,1)',
   },
-  white: 'rgba(255,255,255,1)',
+  white: {
+    default: 'rgba(255,255,255,1)',
+    loading: 'rgba(255,255,255,0.70)',
+  },
 };
