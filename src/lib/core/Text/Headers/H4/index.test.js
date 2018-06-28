@@ -9,13 +9,13 @@ test('renders "Heading" with no props', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('renders "Heading" with l prop', () => {
-  const { container } = render(<H4 l>Heading</H4>);
+test('renders "Heading" with large size', () => {
+  const { container } = render(<H4 size="large">Heading</H4>);
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('renders "Heading" with s prop', () => {
-  const { container } = render(<H4 s>Heading</H4>);
+test('renders "Heading" with small size', () => {
+  const { container } = render(<H4 size="small">Heading</H4>);
   expect(container.firstChild).toMatchSnapshot();
 });
 
@@ -24,12 +24,7 @@ test('renders "Heading" with color prop', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('renders "Heading" with margin', () => {
-  const { container } = render(<H4 marginBottom="s">Heading</H4>);
-  expect(container.firstChild).toMatchSnapshot();
-});
-
-test('renders "Heading" with color prop', () => {
+test('renders "Heading" with text align', () => {
   const { container } = render(<H4 textAlign="center">Heading</H4>);
   expect(container.firstChild).toMatchSnapshot();
 });

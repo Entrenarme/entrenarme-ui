@@ -2,31 +2,15 @@
 
 exports[`renders "Heading" with color prop 1`] = `
 <h3
-  class="sc-bdVaJa fTItwS"
+  class="sc-bdVaJa eOKyYJ"
 >
   Heading
 </h3>
 `;
 
-exports[`renders "Heading" with color prop 2`] = `
+exports[`renders "Heading" with large size 1`] = `
 <h3
-  class="sc-bdVaJa SRafe"
->
-  Heading
-</h3>
-`;
-
-exports[`renders "Heading" with l prop 1`] = `
-<h3
-  class="sc-bdVaJa jxsFpG"
->
-  Heading
-</h3>
-`;
-
-exports[`renders "Heading" with margin 1`] = `
-<h3
-  class="sc-bdVaJa gXYKxp"
+  class="sc-bdVaJa eggxKP"
 >
   Heading
 </h3>
@@ -34,15 +18,23 @@ exports[`renders "Heading" with margin 1`] = `
 
 exports[`renders "Heading" with no props 1`] = `
 <h3
-  class="sc-bdVaJa kFFkMX"
+  class="sc-bdVaJa dVtirf"
 >
   Heading
 </h3>
 `;
 
-exports[`renders "Heading" with s prop 1`] = `
+exports[`renders "Heading" with small size 1`] = `
 <h3
-  class="sc-bdVaJa fSHXtJ"
+  class="sc-bdVaJa iXepwp"
+>
+  Heading
+</h3>
+`;
+
+exports[`renders "Heading" with text align 1`] = `
+<h3
+  class="sc-bdVaJa bRzVDT"
 >
   Heading
 </h3>

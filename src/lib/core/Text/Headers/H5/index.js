@@ -11,39 +11,34 @@ const normalMobile = 1;
 
 const sizeModifier = 0.25;
 
-const textSizeDesktopTransform = props => {
-  if (props.l) {
-    return normalDesktop + sizeModifier;
-  } else if (props.s) {
-    return normalDesktop - sizeModifier;
+const textSizeTransform = (size, device) => {
+  if (size === 'large') {
+    return device === 'desktop'
+      ? normalDesktop + sizeModifier
+      : normalMobile + sizeModifier;
+  } else if (size === 'small') {
+    return device === 'desktop'
+      ? normalDesktop - sizeModifier
+      : normalMobile - sizeModifier;
   } else {
-    return normalDesktop;
+    return device === 'desktop' ? normalDesktop : normalMobile;
   }
 };
 
-const textSizeMobileTransform = props => {
-  if (props.l) {
-    return normalMobile + sizeModifier;
-  } else if (props.s) {
-    return normalMobile - sizeModifier;
+const marginBottomSize = (size, device) => {
+  if (size === 'large') {
+    return device === 'desktop' ? 1.875 : 1.25;
+  } else if (size === 'small') {
+    return device === 'desktop' ? 0.625 : 0.3125;
   } else {
-    return normalMobile;
-  }
-};
-
-const marginBottomSize = props => {
-  if (props === 'l') {
-    return 1.875;
-  } else if (props === 's') {
-    return 0.625;
-  } else {
-    return 1.25;
+    return device === 'desktop' ? 1.25 : 0.625;
   }
 };
 
 const StyledH5 = styled.h5`
   text-transform: uppercase;
-  font-size: ${props => `${textSizeDesktopTransform(props.options)}rem`};
+  font-size: ${props =>
+    `${textSizeTransform(props.options.size, 'desktop')}rem`};
   font-weight: 400;
   font-family: ${fonts.mainFont};
   text-align: ${props => props.options.textAlign};
@@ -52,16 +47,22 @@ const StyledH5 = styled.h5`
   margin-left: 0rem;
   margin-right: 0rem;
   margin-bottom: ${props =>
-    `${marginBottomSize(props.options.marginBottom)}rem`};
+    `${marginBottomSize(props.options.size, 'desktop')}rem`};
 
   /* Smartphones (portrait) ----------- */
   @media only screen and (max-width: 320px) {
-    font-size: ${props => `${textSizeMobileTransform(props.options)}rem`};
+    font-size: ${props =>
+      `${textSizeTransform(props.options.size, 'mobile')}rem`};
+    margin-bottom: ${props =>
+      `${marginBottomSize(props.options.size, 'mobile')}rem`};
   }
 
   /* iPhone 5/6/6+ ----------- */
   @media only screen and (min-width: 320px) and (max-width: 767px) {
-    font-size: ${props => `${textSizeMobileTransform(props.options)}rem`};
+    font-size: ${props =>
+      `${textSizeTransform(props.options.size, 'mobile')}rem`};
+    margin-bottom: ${props =>
+      `${marginBottomSize(props.options.size, 'mobile')}rem`};
   }
 
   /* iPads (portrait and landscape) ----------- */
@@ -88,31 +89,19 @@ const StyledH5 = styled.h5`
 type Props = {
   children: React.Node,
   color?: color,
-  l?: boolean,
-  s?: boolean,
-  marginBottom?: 's' | 'm' | 'l',
+  size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
 };
 
-const H5 = ({
-  children,
-  color,
-  l,
-  s,
-  marginBottom,
-  textAlign,
-  ...rest
-}: Props) => (
-  <StyledH5 {...rest} options={{ color, l, s, marginBottom, textAlign }}>
+const H5 = ({ children, color, size, textAlign, ...rest }: Props) => (
+  <StyledH5 {...rest} options={{ color, size, textAlign }}>
     {children}
   </StyledH5>
 );
 
 H5.defaultProps = {
   color: 'primary',
-  l: false,
-  s: false,
-  marginBottom: 'm',
+  size: 'medium',
   textAlign: 'left',
 };
 
