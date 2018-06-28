@@ -1,8 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders "Paragraph" with l prop 1`] = `
+<p
+  class="sc-bdVaJa bryufW"
+>
+  Paragraph
+</p>
+`;
+
 exports[`renders "Paragraph" with no props 1`] = `
 <p
   class="sc-bdVaJa cqOMUX"
+>
+  Paragraph
+</p>
+`;
+
+exports[`renders "Paragraph" with s prop 1`] = `
+<p
+  class="sc-bdVaJa fZxmns"
 >
   Paragraph
 </p>

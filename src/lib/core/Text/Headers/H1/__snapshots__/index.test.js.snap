@@ -1,8 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders "Heading" with color prop 1`] = `
+<h1
+  class="sc-bdVaJa bYrQNM"
+>
+  Heading
+</h1>
+`;
+
+exports[`renders "Heading" with color prop 2`] = `
+<h1
+  class="sc-bdVaJa kcyeBm"
+>
+  Heading
+</h1>
+`;
+
+exports[`renders "Heading" with l prop 1`] = `
+<h1
+  class="sc-bdVaJa dFZJWs"
+>
+  Heading
+</h1>
+`;
+
+exports[`renders "Heading" with margin 1`] = `
+<h1
+  class="sc-bdVaJa eqaHAR"
+>
+  Heading
+</h1>
+`;
+
 exports[`renders "Heading" with no props 1`] = `
 <h1
-  class="sc-bdVaJa UiljI"
+  class="sc-bdVaJa jSVwCJ"
+>
+  Heading
+</h1>
+`;
+
+exports[`renders "Heading" with s prop 1`] = `
+<h1
+  class="sc-bdVaJa dUlWVz"
 >
   Heading
 </h1>

@@ -31,21 +31,37 @@ const textSizeMobileTransform = props => {
   }
 };
 
+const marginBottomSize = props => {
+  if (props === 'l') {
+    return 1.875;
+  } else if (props === 's') {
+    return 0.625;
+  } else {
+    return 1.25;
+  }
+};
+
 const StyledH6 = styled.h6`
   text-transform: uppercase;
-  font-size: ${props => `${textSizeDesktopTransform(props)}rem`};
+  font-size: ${props => `${textSizeDesktopTransform(props.options)}rem`};
   font-weight: 400;
   font-family: ${fonts.mainFont};
-  color: ${props => (props.color ? props.color : colors.primary.default)};
+  text-align: ${props => props.options.textAlign};
+  color: ${props => colors[props.options.color].default};
+  margin-top: 0rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  margin-bottom: ${props =>
+    `${marginBottomSize(props.options.marginBottom)}rem`};
 
   /* Smartphones (portrait) ----------- */
   @media only screen and (max-width: 320px) {
-    font-size: ${props => `${textSizeMobileTransform(props)}rem`};
+    font-size: ${props => `${textSizeMobileTransform(props.options)}rem`};
   }
 
   /* iPhone 5/6/6+ ----------- */
   @media only screen and (min-width: 320px) and (max-width: 767px) {
-    font-size: ${props => `${textSizeMobileTransform(props)}rem`};
+    font-size: ${props => `${textSizeMobileTransform(props.options)}rem`};
   }
 
   /* iPads (portrait and landscape) ----------- */
@@ -71,13 +87,33 @@ const StyledH6 = styled.h6`
 
 type Props = {
   children: React.Node,
-  color?: string,
+  color?: color,
+  l?: boolean,
+  s?: boolean,
+  marginBottom?: 's' | 'm' | 'l',
+  textAlign?: 'left' | 'center' | 'right',
 };
 
-const H6 = ({ children, ...rest }: Props) => (
-  <StyledH6 {...rest}>{children}</StyledH6>
+const H6 = ({
+  children,
+  color,
+  l,
+  s,
+  marginBottom,
+  textAlign,
+  ...rest
+}: Props) => (
+  <StyledH6 {...rest} options={{ color, l, s, marginBottom, textAlign }}>
+    {children}
+  </StyledH6>
 );
 
-H6.defaultProps = {};
+H6.defaultProps = {
+  color: 'primary',
+  l: false,
+  s: false,
+  marginBottom: 'm',
+  textAlign: 'left',
+};
 
 export default H6;

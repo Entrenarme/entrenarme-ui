@@ -5,10 +5,6 @@ import styled from 'styled-components';
 import * as fonts from '../../../helpers/fonts';
 import colors from '../../../helpers/colors';
 
-type Props = {
-  children: React.Node,
-};
-
 const normalDesktop = 1;
 
 const normalMobile = 0.875;
@@ -36,19 +32,19 @@ const textSizeMobileTransform = props => {
 };
 
 const StyledP = styled.p`
-  font-size: ${props => `${textSizeDesktopTransform(props)}rem`};
+  font-size: ${props => `${textSizeDesktopTransform(props.options)}rem`};
   font-weight: 400;
   font-family: ${fonts.regularFont};
-  color: ${colors.text};
+  color: ${props => colors.text};
 
   /* Smartphones (portrait) ----------- */
   @media only screen and (max-width: 320px) {
-    font-size: ${props => `${textSizeMobileTransform(props)}rem`};
+    font-size: ${props => `${textSizeMobileTransform(props.options)}rem`};
   }
 
   /* iPhone 5/6/6+ ----------- */
   @media only screen and (min-width: 320px) and (max-width: 767px) {
-    font-size: ${props => `${textSizeMobileTransform(props)}rem`};
+    font-size: ${props => `${textSizeMobileTransform(props.options)}rem`};
   }
 
   /* iPads (portrait and landscape) ----------- */
@@ -72,10 +68,21 @@ const StyledP = styled.p`
   }
 `;
 
-const P = ({ children, ...rest }: Props) => (
-  <StyledP {...rest}>{children}</StyledP>
+type Props = {
+  children: React.Node,
+  l?: boolean,
+  s?: boolean,
+};
+
+const P = ({ children, l, s, ...rest }: Props) => (
+  <StyledP {...rest} options={{ l, s }}>
+    {children}
+  </StyledP>
 );
 
-P.defaultProps = {};
+P.defaultProps = {
+  l: false,
+  s: false,
+};
 
 export default P;
