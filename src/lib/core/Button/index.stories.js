@@ -8,8 +8,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 import Button from './index';
 
-import type { ButtonType, ButtonState } from './types';
-
 const actions = {
   onClick: action('onClick'),
 };
@@ -18,222 +16,172 @@ const createButton = (
   {
     type = 'primary',
     state,
+    colorVariant,
+    disabled,
     icon,
   }: {
     type?: ButtonType,
     state?: ButtonState,
+    colorVariant?: ButtonColorVariant,
+    disabled?: ButtonDisabled,
     icon?: React.Node,
-  } = { type: 'primary' },
+  } = { colorVariant: 'primary' },
 ) => (
-  <Button type={type} state={state} icon={icon} {...actions}>
-    button {type}
+  <Button
+    type={type}
+    state={state}
+    colorVariant={colorVariant}
+    disabled={disabled}
+    icon={icon}
+    loadingText="loading"
+    errorText="error"
+    successText="success"
+    {...actions}
+  >
+    button {colorVariant}
   </Button>
 );
 
-storiesOf('Buttons/Primary', module)
-  .add('default', withInfo('Button info')(() => createButton()))
+storiesOf('Buttons/Default', module)
+  .addDecorator(story => <div style={{ padding: '3rem' }}>{story()}</div>)
+  .add('default (primary)', withInfo('Button info')(() => createButton()))
   .add(
-    'outline',
-    withInfo('Button outline')(() => createButton({ state: 'outline' })),
+    'secondary',
+    withInfo('Button secondary')(() =>
+      createButton({ colorVariant: 'secondary' }),
+    ),
   )
   .add(
-    'disabled',
-    withInfo('Button disabled')(() => createButton({ state: 'disabled' })),
+    'warning',
+    withInfo('Button warning')(() => createButton({ colorVariant: 'warning' })),
   )
   .add(
     'loading',
     withInfo('Button loading')(() => createButton({ state: 'loading' })),
   )
   .add(
+    'error color',
+    withInfo('Button error')(() => createButton({ colorVariant: 'error' })),
+  )
+  .add(
+    'error state',
+    withInfo('Button error')(() => createButton({ state: 'error' })),
+  )
+  .add(
+    'success color',
+    withInfo('Button success')(() => createButton({ colorVariant: 'success' })),
+  )
+  .add(
+    'success state',
+    withInfo('Button success')(() => createButton({ state: 'success' })),
+  )
+  .add(
     'icon',
     withInfo('Button icon')(() =>
       createButton({
-        state: 'icon',
         icon: <FontAwesomeIcon icon={faCoffee} />,
       }),
     ),
   );
 
-storiesOf('Buttons/Secondary', module)
+storiesOf('Buttons/Outline', module)
+  .addDecorator(story => <div style={{ padding: '3rem' }}>{story()}</div>)
   .add(
-    'default',
-    withInfo('Button info')(() => createButton({ type: 'secondary' })),
-  )
-  .add(
-    'outline',
-    withInfo('Button outline')(() =>
-      createButton({ type: 'secondary', state: 'outline' }),
+    'default (primary)',
+    withInfo('Button info')(() =>
+      createButton({ colorVariant: 'primary', type: 'outline' }),
     ),
   )
   .add(
-    'disabled',
-    withInfo('Button disabled')(() =>
-      createButton({ type: 'secondary', state: 'disabled' }),
+    'secondary',
+    withInfo('Button outline secondary')(() =>
+      createButton({ colorVariant: 'secondary', type: 'outline' }),
     ),
   )
   .add(
-    'loading',
-    withInfo('Button loading')(() =>
-      createButton({ state: 'loading', type: 'secondary' }),
-    ),
-  )
-  .add(
-    'icon',
-    withInfo('Button icon')(() =>
-      createButton({
-        state: 'icon',
-        type: 'secondary',
-        icon: <FontAwesomeIcon icon={faCoffee} />,
-      }),
-    ),
-  );
-
-storiesOf('Buttons/Warning', module)
-  .add(
-    'default',
-    withInfo('Button info')(() => createButton({ type: 'warning' })),
-  )
-  .add(
-    'outline',
-    withInfo('Button outline')(() =>
-      createButton({ type: 'warning', state: 'outline' }),
-    ),
-  )
-  .add(
-    'disabled',
-    withInfo('Button disabled')(() =>
-      createButton({ type: 'warning', state: 'disabled' }),
+    'warning',
+    withInfo('Button outline warning')(() =>
+      createButton({ colorVariant: 'warning', type: 'outline' }),
     ),
   )
   .add(
     'loading',
-    withInfo('Button loading')(() =>
-      createButton({ state: 'loading', type: 'warning' }),
+    withInfo('Button outline loading')(() =>
+      createButton({ type: 'outline', state: 'loading' }),
+    ),
+  )
+  .add(
+    'error',
+    withInfo('Button outline error')(() =>
+      createButton({ type: 'outline', colorVariant: 'error' }),
+    ),
+  )
+  .add(
+    'success',
+    withInfo('Button outline success')(() =>
+      createButton({ type: 'outline', colorVariant: 'success' }),
     ),
   )
   .add(
     'icon',
-    withInfo('Button icon')(() =>
+    withInfo('Button outline icon')(() =>
       createButton({
-        state: 'icon',
-        type: 'warning',
+        type: 'outline',
         icon: <FontAwesomeIcon icon={faCoffee} />,
       }),
     ),
   );
 
 storiesOf('Buttons/Link', module)
-  .add('default', withInfo('Button info')(() => createButton({ type: 'link' })))
+  .addDecorator(story => <div style={{ padding: '3rem' }}>{story()}</div>)
+  .add(
+    'default',
+    withInfo('Button link default')(() => createButton({ type: 'link' })),
+  )
   .add(
     'disabled',
-    withInfo('Button disabled')(() =>
-      createButton({ type: 'link', state: 'disabled' }),
+    withInfo('Button link disabled')(() =>
+      createButton({ type: 'link', disabled: true }),
     ),
   )
   .add(
     'loading',
-    withInfo('Button loading')(() =>
-      createButton({ state: 'loading', type: 'link' }),
+    withInfo('Button link loading')(() =>
+      createButton({ type: 'link', state: 'loading' }),
     ),
   )
   .add(
     'icon',
-    withInfo('Button icon')(() =>
+    withInfo('Button link icon')(() =>
       createButton({
-        state: 'icon',
         type: 'link',
         icon: <FontAwesomeIcon icon={faCoffee} />,
       }),
     ),
   );
 
-storiesOf('Buttons/Error', module)
-  .add(
-    'default',
-    withInfo('Button info')(() => createButton({ type: 'error' })),
-  )
-  .add(
-    'outline',
-    withInfo('Button outline')(() =>
-      createButton({ type: 'error', state: 'outline' }),
-    ),
-  )
-  .add(
-    'disabled',
-    withInfo('Button disabled')(() =>
-      createButton({ type: 'error', state: 'disabled' }),
-    ),
-  )
-  .add(
-    'loading',
-    withInfo('Button loading')(() =>
-      createButton({ state: 'loading', type: 'error' }),
-    ),
-  )
-  .add(
-    'icon',
-    withInfo('Button icon')(() =>
-      createButton({
-        state: 'icon',
-        type: 'error',
-        icon: <FontAwesomeIcon icon={faCoffee} />,
-      }),
-    ),
-  );
-
-storiesOf('Buttons/Success', module)
-  .add(
-    'default',
-    withInfo('Button info')(() => createButton({ type: 'success' })),
-  )
-  .add(
-    'outline',
-    withInfo('Button outline')(() =>
-      createButton({ type: 'success', state: 'outline' }),
-    ),
-  )
-  .add(
-    'disabled',
-    withInfo('Button disabled')(() =>
-      createButton({ type: 'success', state: 'disabled' }),
-    ),
-  )
-  .add(
-    'loading',
-    withInfo('Button loading')(() =>
-      createButton({ state: 'loading', type: 'success' }),
-    ),
-  )
-  .add(
-    'icon',
-    withInfo('Button icon')(() =>
-      createButton({
-        state: 'icon',
-        type: 'success',
-        icon: <FontAwesomeIcon icon={faCoffee} />,
-      }),
-    ),
-  );
-
 storiesOf('Buttons/Add', module)
-  .add('default', withInfo('Button info')(() => createButton({ type: 'add' })))
+  .addDecorator(story => <div style={{ padding: '3rem' }}>{story()}</div>)
+  .add(
+    'default',
+    withInfo('Button add default')(() => createButton({ type: 'add' })),
+  )
   .add(
     'disabled',
-    withInfo('Button disabled')(() =>
-      createButton({ type: 'add', state: 'disabled' }),
+    withInfo('Button add disabled')(() =>
+      createButton({ type: 'add', disabled: true }),
     ),
   )
   .add(
     'loading',
-    withInfo('Button loading')(() =>
+    withInfo('Button add loading')(() =>
       createButton({ state: 'loading', type: 'add' }),
     ),
   )
   .add(
     'icon',
-    withInfo('Button icon')(() =>
+    withInfo('Button add icon')(() =>
       createButton({
-        state: 'icon',
         type: 'add',
         icon: <FontAwesomeIcon icon={faCoffee} />,
       }),
