@@ -50,3 +50,31 @@ storiesOf('Text/Paragraph', module)
       </P>
     )),
   );
+
+storiesOf('Text/Paragraph', module)
+  .addDecorator(ElementDecoration)
+  .add(
+    'text-align-center',
+    withInfo('Paragraph')(() => (
+      <P textAlign="center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
+        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
+        eros sagittis eget.
+      </P>
+    )),
+  );
+
+storiesOf('Text/Paragraph', module)
+  .addDecorator(ElementDecoration)
+  .add(
+    'text-align-right',
+    withInfo('Paragraph')(() => (
+      <P textAlign="right">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
+        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
+        eros sagittis eget.
+      </P>
+    )),
+  );

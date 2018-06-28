@@ -35,6 +35,7 @@ const StyledP = styled.p`
   font-size: ${props => `${textSizeDesktopTransform(props.options)}rem`};
   font-weight: 400;
   font-family: ${fonts.regularFont};
+  text-align: ${props => props.options.textAlign};
   color: ${props => colors.text};
 
   /* Smartphones (portrait) ----------- */
@@ -72,10 +73,11 @@ type Props = {
   children: React.Node,
   l?: boolean,
   s?: boolean,
+  textAlign?: 'left' | 'center' | 'right',
 };
 
-const P = ({ children, l, s, ...rest }: Props) => (
-  <StyledP {...rest} options={{ l, s }}>
+const P = ({ children, l, s, textAlign, ...rest }: Props) => (
+  <StyledP {...rest} options={{ l, s, textAlign }}>
     {children}
   </StyledP>
 );
@@ -83,6 +85,7 @@ const P = ({ children, l, s, ...rest }: Props) => (
 P.defaultProps = {
   l: false,
   s: false,
+  textAlign: 'left',
 };
 
 export default P;

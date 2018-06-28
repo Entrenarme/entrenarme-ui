@@ -18,3 +18,8 @@ test('renders "Paragraph" with s prop', () => {
   const { container } = render(<P s>Paragraph</P>);
   expect(container.firstChild).toMatchSnapshot();
 });
+
+test('renders "Paragraph" with align center', () => {
+  const { container } = render(<P textAlign="center">Paragraph</P>);
+  expect(container.firstChild).toMatchSnapshot();
+});
