@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders "Heading" with no props 1`] = `
-<h1
-  class="sc-bdVaJa exjBOy"
+<h6
+  class="sc-bdVaJa jhyIuP"
 >
   Heading
-</h1>
+</h6>
 `;
