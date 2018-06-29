@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Paragraph" with align center 1`] = `
+<p
+  class="sc-bdVaJa fqEZlK"
+>
+  Paragraph
+</p>
+`;
+
+exports[`renders "Paragraph" with large size 1`] = `
+<p
+  class="sc-bdVaJa fXxErQ"
+>
+  Paragraph
+</p>
+`;
+
+exports[`renders "Paragraph" with no props 1`] = `
+<p
+  class="sc-bdVaJa qmmUa"
+>
+  Paragraph
+</p>
+`;
+
+exports[`renders "Paragraph" with small size 1`] = `
+<p
+  class="sc-bdVaJa eIdFUd"
+>
+  Paragraph
+</p>
+`;

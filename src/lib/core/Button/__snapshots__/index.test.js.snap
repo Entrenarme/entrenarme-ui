@@ -315,7 +315,7 @@ exports[`default warning button 1`] = `
     <span />
   </span>
   <span
-    class="MuiTouchRipple-root-26"
+    class="MuiTouchRipple-root-28"
   />
 </button>
 `;
