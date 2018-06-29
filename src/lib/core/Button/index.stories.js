@@ -19,12 +19,14 @@ const createButton = (
     colorVariant,
     disabled,
     icon,
+    size,
   }: {
     type?: ButtonType,
     state?: ButtonState,
     colorVariant?: ButtonColorVariant,
     disabled?: ButtonDisabled,
     icon?: React.Node,
+    size?: ButtonSize,
   } = { colorVariant: 'primary' },
 ) => (
   <Button
@@ -33,6 +35,7 @@ const createButton = (
     colorVariant={colorVariant}
     disabled={disabled}
     icon={icon}
+    size={size}
     loadingText="loading"
     errorText="error"
     successText="success"
@@ -44,6 +47,18 @@ const createButton = (
 
 storiesOf('Buttons/Default', module)
   .add('default (primary)', withInfo('Button info')(() => createButton()))
+  .add(
+    'default small (primary)',
+    withInfo('Button info')(() => createButton({ size: 'small' })),
+  )
+  .add(
+    'default large (primary)',
+    withInfo('Button info')(() => createButton({ size: 'large' })),
+  )
+  .add(
+    'default xlarge (primary)',
+    withInfo('Button info')(() => createButton({ size: 'xlarge' })),
+  )
   .add(
     'secondary',
     withInfo('Button secondary')(() =>
