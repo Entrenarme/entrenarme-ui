@@ -3,7 +3,6 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import centered from '@storybook/addon-centered';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
@@ -44,7 +43,6 @@ const createButton = (
 );
 
 storiesOf('Buttons/Default', module)
-  .addDecorator(centered)
   .add('default (primary)', withInfo('Button info')(() => createButton()))
   .add(
     'secondary',
@@ -86,7 +84,6 @@ storiesOf('Buttons/Default', module)
   );
 
 storiesOf('Buttons/Outline', module)
-  .addDecorator(centered)
   .add(
     'default (primary)',
     withInfo('Button info')(() =>
@@ -134,7 +131,6 @@ storiesOf('Buttons/Outline', module)
   );
 
 storiesOf('Buttons/Link', module)
-  .addDecorator(centered)
   .add(
     'default',
     withInfo('Button link default')(() => createButton({ type: 'link' })),
@@ -162,7 +158,6 @@ storiesOf('Buttons/Link', module)
   );
 
 storiesOf('Buttons/Add', module)
-  .addDecorator(centered)
   .add(
     'default',
     withInfo('Button add default')(() => createButton({ type: 'add' })),
