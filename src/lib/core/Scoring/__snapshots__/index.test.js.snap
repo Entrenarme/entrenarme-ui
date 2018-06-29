@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Scoring" with no props 1`] = `
+<div
+  class="sc-bdVaJa jnyass"
+>
+  <div
+    class="sc-htpNat fbLUHU"
+  >
+    Paragraph
+  </div>
+  <div
+    class="sc-bxivhb hsGGdc"
+  >
+    <div
+      class="sc-bwzfXH gPYwax"
+    />
+    <div
+      class="sc-bwzfXH gPYwax"
+    />
+    <div
+      class="sc-bwzfXH gPYwax"
+    />
+    <div
+      class="sc-bwzfXH gPYwax"
+    />
+    <div
+      class="sc-bwzfXH gPYwax"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders "Scoring" with score of 3 1`] = `
+<div
+  class="sc-bdVaJa jnyass"
+>
+  <div
+    class="sc-htpNat fbLUHU"
+  >
+    Paragraph
+  </div>
+  <div
+    class="sc-bxivhb hsGGdc"
+  >
+    <div
+      class="sc-bwzfXH iTzJCO"
+    />
+    <div
+      class="sc-bwzfXH iTzJCO"
+    />
+    <div
+      class="sc-bwzfXH iTzJCO"
+    />
+    <div
+      class="sc-bwzfXH gPYwax"
+    />
+    <div
+      class="sc-bwzfXH gPYwax"
+    />
+  </div>
+</div>
+`;
