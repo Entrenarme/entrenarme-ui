@@ -1,4 +1,4 @@
-export default {
+export default {  
   primary: {
     default: 'rgba(18, 85, 102, 1)',
     light: 'rgba(18, 85, 102, 0.15)',

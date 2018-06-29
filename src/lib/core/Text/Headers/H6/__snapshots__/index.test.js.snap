@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Heading" with color prop 1`] = `
+<h6
+  class="sc-bdVaJa fWEKdF"
+>
+  Heading
+</h6>
+`;
+
+exports[`renders "Heading" with large size 1`] = `
+<h6
+  class="sc-bdVaJa ddvHEy"
+>
+  Heading
+</h6>
+`;
+
+exports[`renders "Heading" with no props 1`] = `
+<h6
+  class="sc-bdVaJa gnIBdk"
+>
+  Heading
+</h6>
+`;
+
+exports[`renders "Heading" with small size 1`] = `
+<h6
+  class="sc-bdVaJa iOEiHO"
+>
+  Heading
+</h6>
+`;
+
+exports[`renders "Heading" with text align 1`] = `
+<h6
+  class="sc-bdVaJa lhnWVl"
+>
+  Heading
+</h6>
+`;
