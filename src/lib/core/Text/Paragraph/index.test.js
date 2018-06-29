@@ -9,13 +9,13 @@ test('renders "Paragraph" with no props', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('renders "Paragraph" with l prop', () => {
-  const { container } = render(<P l>Paragraph</P>);
+test('renders "Paragraph" with large size', () => {
+  const { container } = render(<P size="large">Paragraph</P>);
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('renders "Paragraph" with s prop', () => {
-  const { container } = render(<P s>Paragraph</P>);
+test('renders "Paragraph" with small size', () => {
+  const { container } = render(<P size="small">Paragraph</P>);
   expect(container.firstChild).toMatchSnapshot();
 });
 
