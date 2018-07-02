@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react';
 import styled from 'styled-components';
 import times from 'lodash/times';
@@ -9,8 +10,6 @@ type Props = {
   currency?: string,
   price?: number,
 };
-
-const MainContainer = styled.div``;
 
 const PriceItem = styled.span`
   color: ${props => (props.mark ? colors.text : colors.gray.default)};
