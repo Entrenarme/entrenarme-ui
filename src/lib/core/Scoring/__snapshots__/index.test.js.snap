@@ -2,10 +2,10 @@
 
 exports[`renders "Scoring" with no props 1`] = `
 <div
-  class="sc-bdVaJa jnyass"
+  class="sc-bdVaJa gIoVDz"
 >
   <div
-    class="sc-htpNat fbLUHU"
+    class="sc-htpNat cAaIYy"
   >
     Paragraph
   </div>
@@ -33,10 +33,10 @@ exports[`renders "Scoring" with no props 1`] = `
 
 exports[`renders "Scoring" with score of 3 1`] = `
 <div
-  class="sc-bdVaJa jnyass"
+  class="sc-bdVaJa gIoVDz"
 >
   <div
-    class="sc-htpNat fbLUHU"
+    class="sc-htpNat cAaIYy"
   >
     Paragraph
   </div>

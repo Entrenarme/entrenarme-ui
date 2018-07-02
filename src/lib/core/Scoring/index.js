@@ -14,6 +14,11 @@ type Props = {
 
 const MainContainer = styled.div`
   margin-bottom: 0.625rem;
+  max-width: 190px;
+
+  @media only screen and (max-width: 767px) {
+    max-width: 100px;
+  }
 `;
 
 const ScoreItem = styled.div`
@@ -37,8 +42,15 @@ const ScoreTitle = styled.div`
   margin-bottom: 0.3125rem;
   font-size: 0.75rem;
 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 190px;
+
   @media only screen and (max-width: 767px) {
     font-size: 0.625rem;
+
+    max-width: 100px;
   }
 `;
 
