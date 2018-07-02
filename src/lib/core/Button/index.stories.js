@@ -60,6 +60,10 @@ storiesOf('Buttons/Default', module)
     withInfo('Button info')(() => createButton({ size: 'xlarge' })),
   )
   .add(
+    'default fullwidth (primary)',
+    withInfo('Button info')(() => createButton({ size: 'fullwidth' })),
+  )
+  .add(
     'secondary',
     withInfo('Button secondary')(() =>
       createButton({ colorVariant: 'secondary' }),
