@@ -10,6 +10,7 @@ const Container = styled.div`
 
 type Props = {
   children: Function,
+  onChange?: Function,
 };
 
 type State = {
@@ -17,6 +18,10 @@ type State = {
 };
 
 class Switch extends React.Component<Props, State> {
+  static defaultProps = {
+    onChange: () => {},
+  };
+
   state = {
     names: {},
   };
