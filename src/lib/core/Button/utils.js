@@ -24,20 +24,20 @@ export const getButtonPadding = (size: ButtonSize, device: Device) => {
   switch (size) {
     case 'small':
       if (device === 'mobile' || device === 'iphone')
-        return '10px 12px !important';
-      return '12px 15px !important';
+        return '0 12px !important';
+      return '0 15px !important';
     case 'large':
       if (device === 'mobile' || device === 'iphone')
-        return '15px 20px !important';
-      return '16px 20px !important';
+        return '0 20px !important';
+      return '0 20px !important';
     case 'xlarge':
       if (device === 'mobile' || device === 'iphone')
-        return '16px 20px !important';
-      return '20px 24px !important';
+        return '0 20px !important';
+      return '0 24px !important';
     default:
       if (device === 'mobile' || device === 'iphone')
-        return '12px 16px !important';
-      return '15px 20px !important';
+        return '0 16px !important';
+      return '0 20px !important';
   }
 };
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import colors from '../../helpers/colors';
-import { textToRender } from './utils';
+import { textToRender, getButtonFontSize } from './utils';
 import { SButton, Icon } from './styles';
 
 import Responsive from '../../helpers/Responsive';
@@ -59,12 +59,12 @@ const Button = ({
         }
         {...rest}
       >
-        {icon ? <Icon>{icon}</Icon> : null}{' '}
+        {icon ? <Icon options={{ size, device }}>{icon}</Icon> : null}{' '}
         {state === 'loading' ? (
           <CircularProgress
             style={{
-              height: '18px',
-              width: '18px',
+              height: getButtonFontSize(size, device),
+              width: getButtonFontSize(size, device),
               marginRight: '10px',
               color:
                 type === 'add'

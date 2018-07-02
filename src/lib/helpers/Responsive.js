@@ -39,7 +39,6 @@ class Responsive extends React.Component<Props, State> {
   };
 
   queryChange = mql => {
-    console.log(mql);
     if (mql.matches) {
       this.setQueryState(
         mediaDictionary[queries.findIndex(query => query === mql.media)],

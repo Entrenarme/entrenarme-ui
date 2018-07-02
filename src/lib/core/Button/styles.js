@@ -79,5 +79,4 @@ export const SButton = styled(MButton)`
 
 export const Icon = styled.span`
   margin-right: 10px;
-  height: 18px;
 `;
