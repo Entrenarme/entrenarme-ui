@@ -3,7 +3,7 @@
 exports[`add disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa cInWmW"
+  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa ebeQHn"
   type="button"
   options="[object Object]"
   disabled=""
@@ -21,7 +21,7 @@ exports[`add disabled button 1`] = `
 exports[`add icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa lhdZBZ"
+  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa byywXt"
   type="button"
   options="[object Object]"
 >
@@ -29,7 +29,7 @@ exports[`add icon button 1`] = `
     class="MuiButton-label-180"
   >
     <span
-      class="sc-bwzfXH gHKeOR"
+      class="sc-bwzfXH czactv"
     >
       <svg
         aria-hidden="true"
@@ -59,7 +59,7 @@ exports[`add icon button 1`] = `
 exports[`add loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa eITBft"
+  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa kERBkA"
   type="button"
   options="[object Object]"
   disabled=""
@@ -69,7 +69,7 @@ exports[`add loading button 1`] = `
   >
     <div
       class="MuiCircularProgress-root-213 MuiCircularProgress-colorPrimary-216 MuiCircularProgress-indeterminate-215"
-      style="width: 18px; height: 18px; margin-right: 10px; color: rgba(0, 181, 226, 0.6);"
+      style="margin-right: 10px; color: rgba(0, 181, 226, 0.6);"
       role="progressbar"
     >
       <svg
@@ -96,7 +96,7 @@ exports[`add loading button 1`] = `
 exports[`default button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa kUrMah"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa dbHXef"
   type="button"
   options="[object Object]"
 >
@@ -116,7 +116,7 @@ exports[`default button 1`] = `
 exports[`default disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa cmBXvd"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa bjhxho"
   type="button"
   options="[object Object]"
   disabled=""
@@ -134,7 +134,7 @@ exports[`default disabled button 1`] = `
 exports[`default error button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa bvVUEZ"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa iGrZRu"
   type="button"
   options="[object Object]"
   disabled=""
@@ -152,7 +152,7 @@ exports[`default error button 1`] = `
 exports[`default error color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa bvVUEZ"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa iGrZRu"
   type="button"
   options="[object Object]"
 >
@@ -172,7 +172,7 @@ exports[`default error color button 1`] = `
 exports[`default icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa kUrMah"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa dbHXef"
   type="button"
   options="[object Object]"
 >
@@ -180,7 +180,7 @@ exports[`default icon button 1`] = `
     class="MuiButton-label-2"
   >
     <span
-      class="sc-bwzfXH gHKeOR"
+      class="sc-bwzfXH czactv"
     >
       <svg
         aria-hidden="true"
@@ -210,7 +210,7 @@ exports[`default icon button 1`] = `
 exports[`default loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa hhhdiN"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa NgoOx"
   type="button"
   options="[object Object]"
   disabled=""
@@ -220,7 +220,7 @@ exports[`default loading button 1`] = `
   >
     <div
       class="MuiCircularProgress-root-35 MuiCircularProgress-colorPrimary-38 MuiCircularProgress-indeterminate-37"
-      style="width: 18px; height: 18px; margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
+      style="margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
       role="progressbar"
     >
       <svg
@@ -247,7 +247,7 @@ exports[`default loading button 1`] = `
 exports[`default secondary button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa cABaAU"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa JcEcR"
   type="button"
   options="[object Object]"
 >
@@ -267,7 +267,7 @@ exports[`default secondary button 1`] = `
 exports[`default success button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa cltYbg"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa kRrpgR"
   type="button"
   options="[object Object]"
   disabled=""
@@ -285,7 +285,7 @@ exports[`default success button 1`] = `
 exports[`default success color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa cltYbg"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa kRrpgR"
   type="button"
   options="[object Object]"
 >
@@ -305,7 +305,7 @@ exports[`default success color button 1`] = `
 exports[`default warning button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa KkWzV"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa eHXTHa"
   type="button"
   options="[object Object]"
 >
@@ -323,7 +323,7 @@ exports[`default warning button 1`] = `
 exports[`link default 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa bZYcKb"
+  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa dhoDiS"
   type="button"
   options="[object Object]"
 >
@@ -343,7 +343,7 @@ exports[`link default 1`] = `
 exports[`link disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa cfrXyY"
+  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa iMDRdy"
   type="button"
   options="[object Object]"
   disabled=""
@@ -361,7 +361,7 @@ exports[`link disabled button 1`] = `
 exports[`link icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa bZYcKb"
+  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa dhoDiS"
   type="button"
   options="[object Object]"
 >
@@ -369,7 +369,7 @@ exports[`link icon button 1`] = `
     class="MuiButton-label-130"
   >
     <span
-      class="sc-bwzfXH gHKeOR"
+      class="sc-bwzfXH czactv"
     >
       <svg
         aria-hidden="true"
@@ -399,7 +399,7 @@ exports[`link icon button 1`] = `
 exports[`link loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa kpkVAC"
+  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa fmoLai"
   type="button"
   options="[object Object]"
   disabled=""
@@ -409,7 +409,7 @@ exports[`link loading button 1`] = `
   >
     <div
       class="MuiCircularProgress-root-163 MuiCircularProgress-colorPrimary-166 MuiCircularProgress-indeterminate-165"
-      style="width: 18px; height: 18px; margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
+      style="margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
       role="progressbar"
     >
       <svg
@@ -436,7 +436,7 @@ exports[`link loading button 1`] = `
 exports[`outline default 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa kOijOY"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa cxuAmR"
   type="button"
   options="[object Object]"
 >
@@ -456,7 +456,7 @@ exports[`outline default 1`] = `
 exports[`outline disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa kOijOY"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa cxuAmR"
   type="button"
   options="[object Object]"
   disabled=""
@@ -474,7 +474,7 @@ exports[`outline disabled button 1`] = `
 exports[`outline error button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa kOijOY"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa cxuAmR"
   type="button"
   options="[object Object]"
   disabled=""
@@ -492,7 +492,7 @@ exports[`outline error button 1`] = `
 exports[`outline error color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa gTIzOE"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa kiJXpp"
   type="button"
   options="[object Object]"
 >
@@ -512,7 +512,7 @@ exports[`outline error color button 1`] = `
 exports[`outline icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa kOijOY"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa cxuAmR"
   type="button"
   options="[object Object]"
 >
@@ -520,7 +520,7 @@ exports[`outline icon button 1`] = `
     class="MuiButton-label-66"
   >
     <span
-      class="sc-bwzfXH gHKeOR"
+      class="sc-bwzfXH czactv"
     >
       <svg
         aria-hidden="true"
@@ -550,7 +550,7 @@ exports[`outline icon button 1`] = `
 exports[`outline loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa kOijOY"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa cxuAmR"
   type="button"
   options="[object Object]"
   disabled=""
@@ -560,7 +560,7 @@ exports[`outline loading button 1`] = `
   >
     <div
       class="MuiCircularProgress-root-99 MuiCircularProgress-colorPrimary-102 MuiCircularProgress-indeterminate-101"
-      style="width: 18px; height: 18px; margin-right: 10px; color: rgb(18, 85, 102);"
+      style="margin-right: 10px; color: rgb(18, 85, 102);"
       role="progressbar"
     >
       <svg
@@ -587,7 +587,7 @@ exports[`outline loading button 1`] = `
 exports[`outline secondary button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa kOHnLn"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa cQDtlT"
   type="button"
   options="[object Object]"
 >
@@ -607,7 +607,7 @@ exports[`outline secondary button 1`] = `
 exports[`outline success button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa kOijOY"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa cxuAmR"
   type="button"
   options="[object Object]"
   disabled=""
@@ -625,7 +625,7 @@ exports[`outline success button 1`] = `
 exports[`outline success color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa kUwrtt"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa kAfUkc"
   type="button"
   options="[object Object]"
 >
@@ -645,7 +645,7 @@ exports[`outline success color button 1`] = `
 exports[`outline warning button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa fucbmP"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa evcxlo"
   type="button"
   options="[object Object]"
 >
@@ -663,7 +663,7 @@ exports[`outline warning button 1`] = `
 exports[`renders add 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa lhdZBZ"
+  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa byywXt"
   type="button"
   options="[object Object]"
 >
