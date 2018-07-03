@@ -3,8 +3,10 @@ import * as React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import colors from '../../helpers/colors';
-import { textToRender } from './utils';
+import { textToRender, getButtonFontSize } from './utils';
 import { SButton, Icon } from './styles';
+
+import Responsive from '../../helpers/Responsive';
 
 type Props = {
   /** This is what is gonig to be rendered inside the button */
@@ -27,6 +29,8 @@ type Props = {
   errorText?: React.Node,
   /** text to be rendered on the success state */
   successText?: React.Node,
+  /** the size of the button */
+  size?: ButtonSize,
 };
 
 const Button = ({
@@ -40,38 +44,43 @@ const Button = ({
   loadingText,
   errorText,
   successText,
+  size,
   ...rest
 }: Props) => (
-  <SButton
-    options={{ type, state, colorVariant, disabled }}
-    disabled={
-      state === 'loading' ||
-      state === 'error' ||
-      state === 'success' ||
-      disabled
-    }
-    {...rest}
-  >
-    {icon ? <Icon>{icon}</Icon> : null}{' '}
-    {state === 'loading' ? (
-      <CircularProgress
-        style={{
-          height: '18px',
-          width: '18px',
-          marginRight: '10px',
-          color:
-            type === 'add'
-              ? colors.secondary.loading
-              : type === 'outline'
-                ? colors[colorVariant].default
-                : colors.gray.loading,
-        }}
-      />
-    ) : null}{' '}
-    <span>
-      {textToRender(state, children, loadingText, errorText, successText)}
-    </span>
-  </SButton>
+  <Responsive>
+    {({ device }) => (
+      <SButton
+        options={{ type, state, colorVariant, disabled, size, device }}
+        disabled={
+          state === 'loading' ||
+          state === 'error' ||
+          state === 'success' ||
+          disabled
+        }
+        {...rest}
+      >
+        {icon ? <Icon options={{ size, device }}>{icon}</Icon> : null}{' '}
+        {state === 'loading' ? (
+          <CircularProgress
+            style={{
+              height: getButtonFontSize(size, device),
+              width: getButtonFontSize(size, device),
+              marginRight: '10px',
+              color:
+                type === 'add'
+                  ? colors.secondary.loading
+                  : type === 'outline'
+                    ? colors[colorVariant].default
+                    : colors.gray.loading,
+            }}
+          />
+        ) : null}{' '}
+        <span>
+          {textToRender(state, children, loadingText, errorText, successText)}
+        </span>
+      </SButton>
+    )}
+  </Responsive>
 );
 
 Button.defaultProps = {
@@ -84,6 +93,7 @@ Button.defaultProps = {
   loadingText: '',
   errorText: '',
   successText: '',
+  size: 'default',
 };
 
 export default Button;

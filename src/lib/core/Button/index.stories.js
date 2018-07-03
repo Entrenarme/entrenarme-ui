@@ -3,7 +3,6 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import centered from '@storybook/addon-centered';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,12 +19,14 @@ const createButton = (
     colorVariant,
     disabled,
     icon,
+    size,
   }: {
     type?: ButtonType,
     state?: ButtonState,
     colorVariant?: ButtonColorVariant,
     disabled?: ButtonDisabled,
     icon?: React.Node,
+    size?: ButtonSize,
   } = { colorVariant: 'primary' },
 ) => (
   <Button
@@ -34,6 +35,7 @@ const createButton = (
     colorVariant={colorVariant}
     disabled={disabled}
     icon={icon}
+    size={size}
     loadingText="loading"
     errorText="error"
     successText="success"
@@ -44,8 +46,23 @@ const createButton = (
 );
 
 storiesOf('Buttons/Default', module)
-  .addDecorator(centered)
   .add('default (primary)', withInfo('Button info')(() => createButton()))
+  .add(
+    'default small (primary)',
+    withInfo('Button info')(() => createButton({ size: 'small' })),
+  )
+  .add(
+    'default large (primary)',
+    withInfo('Button info')(() => createButton({ size: 'large' })),
+  )
+  .add(
+    'default xlarge (primary)',
+    withInfo('Button info')(() => createButton({ size: 'xlarge' })),
+  )
+  .add(
+    'default fullwidth (primary)',
+    withInfo('Button info')(() => createButton({ size: 'fullwidth' })),
+  )
   .add(
     'secondary',
     withInfo('Button secondary')(() =>
@@ -86,7 +103,6 @@ storiesOf('Buttons/Default', module)
   );
 
 storiesOf('Buttons/Outline', module)
-  .addDecorator(centered)
   .add(
     'default (primary)',
     withInfo('Button info')(() =>
@@ -134,7 +150,6 @@ storiesOf('Buttons/Outline', module)
   );
 
 storiesOf('Buttons/Link', module)
-  .addDecorator(centered)
   .add(
     'default',
     withInfo('Button link default')(() => createButton({ type: 'link' })),
@@ -162,7 +177,6 @@ storiesOf('Buttons/Link', module)
   );
 
 storiesOf('Buttons/Add', module)
-  .addDecorator(centered)
   .add(
     'default',
     withInfo('Button add default')(() => createButton({ type: 'add' })),
