@@ -7,9 +7,7 @@ import ShowCard from './index';
 import P from '../Text/Paragraph/index';
 
 const ElementDecoration = storyFn => (
-  <div style={{ padding: '3rem', backgroundColor: '#F1F1F1', height: '100vh' }}>
-    {storyFn()}
-  </div>
+  <div style={{ backgroundColor: '#F1F1F1', height: '100vh' }}>{storyFn()}</div>
 );
 
 storiesOf('ShowCard', module)
