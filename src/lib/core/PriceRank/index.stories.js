@@ -18,3 +18,14 @@ storiesOf('PriceRank', module).add(
     <PriceRank currency="$" callback={rank => console.log(rank)} />
   )),
 );
+
+storiesOf('PriceRank', module).add(
+  'with default price rank',
+  withInfo('Price rank')(() => (
+    <PriceRank
+      currency="€"
+      priceRank={[1, 2]}
+      callback={rank => console.log(rank)}
+    />
+  )),
+);

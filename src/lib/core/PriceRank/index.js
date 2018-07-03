@@ -36,6 +36,7 @@ const ExtendedRange = styled(Range)`
 
 type Props = {
   currency?: string,
+  priceRank?: Array<number>,
   callback: Function,
 };
 
@@ -68,8 +69,11 @@ class PriceRank extends React.Component<Props, State> {
   };
 
   render() {
+    const { priceRank } = this.props;
+
     return (
       <ExtendedRange
+        defaultValue={priceRank}
         min={0}
         max={3}
         onChange={rank => this.handleChange(rank)}
@@ -81,6 +85,7 @@ class PriceRank extends React.Component<Props, State> {
 
 PriceRank.defaultProps = {
   currency: '€',
+  priceRank: [0, 3],
 };
 
 export default PriceRank;

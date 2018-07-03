@@ -9,3 +9,11 @@ test('renders price rank', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 });
+
+test('renders price rank', () => {
+  const { container } = render(
+    <PriceRank currency="€" priceRank={[2, 3]} callback={() => {}} />,
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
