@@ -7,7 +7,6 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-import colors from '../../helpers/colors';
 import H4 from '../Text/Headers/H4/index';
 
 const ExtendedGlobalContainer = styled(ExpansionPanel)`
@@ -35,7 +34,7 @@ const ExtendedBody = styled(ExpansionPanelDetails)`
 `;
 
 const BodyContainer = styled.div`
-  padding: 25px 30px;
+  padding: 0px 30px 25px 30px;
 
   *:only-child {
     margin-bottom: 0px;
