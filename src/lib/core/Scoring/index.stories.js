@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 
 import Scoring from './index';
 
@@ -15,26 +14,15 @@ const ElementDecorationWidth = storyFn => (
 
 storiesOf('Scoring', module)
   .addDecorator(ElementDecoration)
-  .add(
-    'default',
-    withInfo('Scoring')(() => <Scoring>Entrenamiento personal</Scoring>),
-  );
+  .add('default', () => <Scoring>Entrenamiento personal</Scoring>);
 
 storiesOf('Scoring', module)
   .addDecorator(ElementDecoration)
-  .add(
-    'score = 3',
-    withInfo('Scoring')(() => (
-      <Scoring score={3}>Entrenamiento personal</Scoring>
-    )),
-  );
+  .add('score = 3', () => <Scoring score={3}>Entrenamiento personal</Scoring>);
 
 storiesOf('Scoring', module)
   .addDecorator(ElementDecoration)
   .addDecorator(ElementDecorationWidth)
-  .add(
-    'ellipsis 190px',
-    withInfo('Scoring')(() => (
-      <Scoring score={3}>Entrenamiento personal</Scoring>
-    )),
-  );
+  .add('ellipsis 190px', () => (
+    <Scoring score={3}>Entrenamiento personal</Scoring>
+  ));
