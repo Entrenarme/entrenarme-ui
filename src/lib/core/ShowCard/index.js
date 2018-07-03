@@ -34,13 +34,6 @@ const ExtendedBody = styled(ExpansionPanelDetails)`
   padding: 0px !important;
 `;
 
-const ExtendedHr = styled.hr`
-  margin: 0px;
-  height: 2px;
-  border-width: 0;
-  background-color: ${colors.gray.light};
-`;
-
 const BodyContainer = styled.div`
   padding: 25px 30px;
 
@@ -88,7 +81,6 @@ class ShowCard extends React.Component<Props, State> {
             {title}
           </H4>
         </ExtendedTitle>
-        <ExtendedHr />
         <ExtendedBody>
           <BodyContainer>{children}</BodyContainer>
         </ExtendedBody>
