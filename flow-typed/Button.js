@@ -11,3 +11,10 @@ declare type ButtonType = 'default' | 'link' | 'add' | 'outline' | 'icon';
 declare type ButtonState = 'default' | 'loading' | 'error' | 'success';
 
 declare type ButtonDisabled = boolean;
+
+declare type ButtonSize =
+  | 'small'
+  | 'default'
+  | 'large'
+  | 'xlarge'
+  | 'fullwidth';

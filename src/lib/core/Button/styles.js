@@ -5,7 +5,14 @@ import MButton from '@material-ui/core/Button';
 import * as fonts from '../../helpers/fonts';
 import colors from '../../helpers/colors';
 
-import { getBgColor, getColor } from './utils';
+import {
+  getBgColor,
+  getColor,
+  getButtonHeight,
+  getButtonPadding,
+  getButtonFontSize,
+  getButtonLineHeight,
+} from './utils';
 
 type ButtonProps = {
   options: {
@@ -13,11 +20,19 @@ type ButtonProps = {
     state: ButtonState,
     colorVariant: ButtonColorVariant,
     disabled: ButtonDisabled,
+    size: ButtonSize,
+    device: Device,
   },
 };
 
 export const SButton = styled(MButton)`
-  height: 40px;
+  min-height: 0px !important;
+  ${(props: ButtonProps) =>
+    props.options.size === 'fullwidth' ? 'width: 100%' : ''};
+  height: ${(props: ButtonProps) =>
+    getButtonHeight(props.options.size, props.options.device)};
+  padding: ${(props: ButtonProps) =>
+    getButtonPadding(props.options.size, props.options.device)};
   box-sizing: border-box;
   background-color: ${(props: ButtonProps) =>
     getBgColor(
@@ -57,10 +72,13 @@ export const SButton = styled(MButton)`
         props.options.disabled,
       )};
     font-family: ${fonts.mainFont};
+    font-size: ${(props: ButtonProps) =>
+      getButtonFontSize(props.options.size, props.options.device)};
+    line-height: ${(props: ButtonProps) =>
+      getButtonLineHeight(props.options.size, props.options.device)};
   }
 `;
 
 export const Icon = styled.span`
   margin-right: 10px;
-  height: 18px;
 `;

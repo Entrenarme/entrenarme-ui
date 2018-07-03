@@ -3,6 +3,78 @@ import * as React from 'react';
 
 import colors from '../../helpers/colors';
 
+export const getButtonHeight = (size: ButtonSize, device: Device) => {
+  switch (size) {
+    case 'small':
+      if (device === 'mobile' || device === 'iphone') return '30px';
+      return '34px';
+    case 'large':
+      if (device === 'mobile' || device === 'iphone') return '40px';
+      return '46px';
+    case 'xlarge':
+      if (device === 'mobile' || device === 'iphone') return '46px';
+      return '54px';
+    default:
+      if (device === 'mobile' || device === 'iphone') return '36px';
+      return '40px';
+  }
+};
+
+export const getButtonPadding = (size: ButtonSize, device: Device) => {
+  switch (size) {
+    case 'small':
+      if (device === 'mobile' || device === 'iphone')
+        return '0 12px !important';
+      return '0 15px !important';
+    case 'large':
+      if (device === 'mobile' || device === 'iphone')
+        return '0 20px !important';
+      return '0 20px !important';
+    case 'xlarge':
+      if (device === 'mobile' || device === 'iphone')
+        return '0 20px !important';
+      return '0 24px !important';
+    default:
+      if (device === 'mobile' || device === 'iphone')
+        return '0 16px !important';
+      return '0 20px !important';
+  }
+};
+
+export const getButtonFontSize = (size: ButtonSize, device: Device) => {
+  switch (size) {
+    case 'small':
+      if (device === 'mobile' || device === 'iphone') return '0.625rem';
+      return '0.75rem';
+    case 'large':
+      if (device === 'mobile' || device === 'iphone') return '0.875rem';
+      return '1rem';
+    case 'xlarge':
+      if (device === 'mobile' || device === 'iphone') return '1rem';
+      return '1.125rem';
+    default:
+      if (device === 'mobile' || device === 'iphone') return '0.75rem';
+      return '0.875rem';
+  }
+};
+
+export const getButtonLineHeight = (size: ButtonSize, device: Device) => {
+  switch (size) {
+    case 'small':
+      if (device === 'mobile' || device === 'iphone') return '10px';
+      return '10px';
+    case 'large':
+      if (device === 'mobile' || device === 'iphone') return '10px';
+      return '14px';
+    case 'xlarge':
+      if (device === 'mobile' || device === 'iphone') return '14px';
+      return '14px';
+    default:
+      if (device === 'mobile' || device === 'iphone') return '12px';
+      return '10px';
+  }
+};
+
 export const textToRender = (
   state?: ButtonState,
   children: React.Node,
