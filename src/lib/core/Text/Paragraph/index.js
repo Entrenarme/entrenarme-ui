@@ -36,6 +36,7 @@ const marginBottomSize = (size, device) => {
 };
 
 const StyledP = styled.p`
+  ${props => (props.options.noMargin ? 'margin: 0 !important;' : '')};
   font-size: ${props =>
     `${textSizeTransform(props.options.size, 'desktop')}rem`};
   font-weight: 400;
@@ -89,10 +90,11 @@ type Props = {
   children: React.Node,
   size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
+  noMargin?: boolean,
 };
 
-const P = ({ children, size, textAlign, ...rest }: Props) => (
-  <StyledP {...rest} options={{ size, textAlign }}>
+const P = ({ children, size, textAlign, noMargin, ...rest }: Props) => (
+  <StyledP {...rest} options={{ size, textAlign, noMargin }}>
     {children}
   </StyledP>
 );
@@ -100,6 +102,7 @@ const P = ({ children, size, textAlign, ...rest }: Props) => (
 P.defaultProps = {
   size: 'medium',
   textAlign: 'left',
+  noMargin: false,
 };
 
 export default P;

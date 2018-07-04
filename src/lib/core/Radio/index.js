@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import MCheckbox from '@material-ui/core/Checkbox';
+import MRadio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import styled from 'styled-components';
@@ -19,24 +19,24 @@ type Props = {
   label?: string,
 };
 
-const SCheckbox = styled(MCheckbox)`
+const SRadio = styled(MRadio)`
   height: 16px !important;
   svg {
     height: 16px;
   }
 `;
 
-const Checkbox = ({ label, ...rest }: Props) => (
+const Radio = ({ label, ...rest }: Props) => (
   <MuiThemeProvider theme={theme}>
     <FormControlLabel
-      control={<SCheckbox {...rest} />}
+      control={<SRadio {...rest} />}
       label={label ? <P noMargin>{label}</P> : null}
     />
   </MuiThemeProvider>
 );
 
-Checkbox.defaultProps = {
+Radio.defaultProps = {
   label: null,
 };
 
-export default Checkbox;
+export default Radio;
