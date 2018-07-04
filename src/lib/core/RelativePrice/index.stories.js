@@ -6,8 +6,6 @@ import RelativePrice from './index';
 
 storiesOf('RelativePrice', module).add('default', () => <RelativePrice />);
 
-storiesOf('RelativePrice', module).add('default', () => <RelativePrice />);
-
 storiesOf('RelativePrice', module).add('price prop', () => (
   <RelativePrice price={2} />
 ));
