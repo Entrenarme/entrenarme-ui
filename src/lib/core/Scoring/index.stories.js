@@ -4,24 +4,19 @@ import { storiesOf } from '@storybook/react';
 
 import Scoring from './index';
 
-const ElementDecoration = storyFn => (
-  <div style={{ padding: '3rem' }}>{storyFn()}</div>
-);
-
 const ElementDecorationWidth = storyFn => (
   <div style={{ width: '190px', borderRight: '1px solid' }}>{storyFn()}</div>
 );
 
-storiesOf('Scoring', module)
-  .addDecorator(ElementDecoration)
-  .add('default', () => <Scoring>Entrenamiento personal</Scoring>);
+storiesOf('Scoring', module).add('default', () => (
+  <Scoring>Entrenamiento personal</Scoring>
+));
+
+storiesOf('Scoring', module).add('score = 3', () => (
+  <Scoring score={3}>Entrenamiento personal</Scoring>
+));
 
 storiesOf('Scoring', module)
-  .addDecorator(ElementDecoration)
-  .add('score = 3', () => <Scoring score={3}>Entrenamiento personal</Scoring>);
-
-storiesOf('Scoring', module)
-  .addDecorator(ElementDecoration)
   .addDecorator(ElementDecorationWidth)
   .add('ellipsis 190px', () => (
     <Scoring score={3}>Entrenamiento personal</Scoring>

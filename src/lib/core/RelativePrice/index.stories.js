@@ -4,20 +4,14 @@ import { storiesOf } from '@storybook/react';
 
 import RelativePrice from './index';
 
-const ElementDecoration = storyFn => (
-  <div style={{ padding: '3rem' }}>{storyFn()}</div>
-);
+storiesOf('RelativePrice', module).add('default', () => <RelativePrice />);
 
-storiesOf('RelativePrice', module)
-  .addDecorator(ElementDecoration)
-  .add('default', () => <RelativePrice />);
+storiesOf('RelativePrice', module).add('default', () => <RelativePrice />);
 
-storiesOf('RelativePrice', module)
-  .addDecorator(ElementDecoration)
-  .add('price prop', () => <RelativePrice price={2} />);
+storiesOf('RelativePrice', module).add('price prop', () => (
+  <RelativePrice price={2} />
+));
 
-storiesOf('RelativePrice', module)
-  .addDecorator(ElementDecoration)
-  .add('price and currency prop', () => (
-    <RelativePrice price={3} currency="$" />
-  ));
+storiesOf('RelativePrice', module).add('price and currency prop', () => (
+  <RelativePrice price={3} currency="$" />
+));

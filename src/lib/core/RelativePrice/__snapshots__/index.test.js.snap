@@ -3,22 +3,22 @@
 exports[`renders "RelativePrice" with no props 1`] = `
 <div>
   <span
-    class="sc-bwzfXH cEQODJ"
+    class="sc-bdVaJa RIHUz"
   >
     €
   </span>
   <span
-    class="sc-bwzfXH cEQODJ"
+    class="sc-bdVaJa RIHUz"
   >
     €
   </span>
   <span
-    class="sc-bwzfXH cEQODJ"
+    class="sc-bdVaJa RIHUz"
   >
     €
   </span>
   <span
-    class="sc-bwzfXH cEQODJ"
+    class="sc-bdVaJa RIHUz"
   >
     €
   </span>
@@ -28,22 +28,22 @@ exports[`renders "RelativePrice" with no props 1`] = `
 exports[`renders "RelativePrice" with price of 2 1`] = `
 <div>
   <span
-    class="sc-bwzfXH iNqkAx"
+    class="sc-bdVaJa cNARee"
   >
     €
   </span>
   <span
-    class="sc-bwzfXH iNqkAx"
+    class="sc-bdVaJa cNARee"
   >
     €
   </span>
   <span
-    class="sc-bwzfXH cEQODJ"
+    class="sc-bdVaJa RIHUz"
   >
     €
   </span>
   <span
-    class="sc-bwzfXH cEQODJ"
+    class="sc-bdVaJa RIHUz"
   >
     €
   </span>
@@ -53,22 +53,22 @@ exports[`renders "RelativePrice" with price of 2 1`] = `
 exports[`renders "RelativePrice" with price of 2 and using dollar currency 1`] = `
 <div>
   <span
-    class="sc-bwzfXH iNqkAx"
+    class="sc-bdVaJa cNARee"
   >
     $
   </span>
   <span
-    class="sc-bwzfXH iNqkAx"
+    class="sc-bdVaJa cNARee"
   >
     $
   </span>
   <span
-    class="sc-bwzfXH iNqkAx"
+    class="sc-bdVaJa cNARee"
   >
     $
   </span>
   <span
-    class="sc-bwzfXH cEQODJ"
+    class="sc-bdVaJa RIHUz"
   >
     $
   </span>
