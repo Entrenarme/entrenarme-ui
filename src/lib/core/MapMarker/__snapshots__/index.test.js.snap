@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Map Marker" with type center 1`] = `
+<div
+  class="sc-bdVaJa gdRYsL"
+/>
+`;
+
+exports[`renders "Map Marker" with type center and visited 1`] = `
+<div
+  class="sc-bdVaJa bCUWMx"
+/>
+`;
+
+exports[`renders "MapMarker" with no props 1`] = `
+<div
+  class="sc-bdVaJa efdQpK"
+/>
+`;
