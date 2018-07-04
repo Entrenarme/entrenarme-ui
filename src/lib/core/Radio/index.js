@@ -16,11 +16,13 @@ const theme = createMuiTheme({
 });
 
 type Props = {
-  label?: string,
+  label?: ?string,
 };
 
 const SRadio = styled(MRadio)`
   height: 16px !important;
+  width: 16px !important;
+  margin-right: 10px !important;
   svg {
     height: 16px;
   }

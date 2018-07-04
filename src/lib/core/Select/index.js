@@ -51,7 +51,7 @@ class Switch extends React.Component<Props, State> {
   onClick = (e: SyntheticEvent<*>) => {
     const { names } = this.state;
     const { multiple } = this.props;
-    const nameClicked = e.target.name;
+    const nameClicked = e.target.name || e.currentTarget.name;
     if (names && Object.keys(names).length > 0) {
       const indexFound = Object.keys(names).find(
         nameKey => nameKey === nameClicked,

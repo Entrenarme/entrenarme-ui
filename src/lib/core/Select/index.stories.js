@@ -8,12 +8,10 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import Select from './index';
 import Button from '../Button';
 import example from './example';
-import Checkbox from '../Checkbox';
-import Radio from '../Radio';
 
 storiesOf('Select', module)
   .add(
-    'default Switch',
+    'default',
     () => (
       <Select onChange={action('onSwitchChange')}>
         {({ itemProps, activeItem }) => (
@@ -45,7 +43,7 @@ storiesOf('Select', module)
     },
   )
   .add(
-    'multiple Switch',
+    'multiple',
     () => (
       <Select onChange={action('onSwitchChange')} multiple>
         {({ itemProps, activeItem }) => (
@@ -71,58 +69,6 @@ storiesOf('Select', module)
             >
               with icon
             </Button>
-          </React.Fragment>
-        )}
-      </Select>
-    ),
-    {
-      info: example,
-    },
-  )
-  .add(
-    'multiple with checkbox Switch',
-    () => (
-      <Select onChange={action('onSwitchChange')} multiple>
-        {({ itemProps, activeItem }) => (
-          <React.Fragment>
-            <Checkbox
-              name="male"
-              value="male"
-              checked={activeItem.includes('male')}
-              {...itemProps()}
-            />
-            <Checkbox
-              name="female"
-              value="female"
-              checked={activeItem.includes('female')}
-              {...itemProps()}
-            />
-          </React.Fragment>
-        )}
-      </Select>
-    ),
-    {
-      info: example,
-    },
-  )
-  .add(
-    'with radio buttons Switch',
-    () => (
-      <Select onChange={action('onSwitchChange')}>
-        {({ itemProps, activeItem }) => (
-          <React.Fragment>
-            <Radio
-              name="male"
-              value="male"
-              checked={activeItem === 'male'}
-              {...itemProps()}
-            />
-            <Radio
-              name="female"
-              value="female"
-              checked={activeItem === 'female'}
-              {...itemProps()}
-            />
           </React.Fragment>
         )}
       </Select>
