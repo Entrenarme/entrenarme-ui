@@ -10,13 +10,13 @@ const MapMarkerContainer = styled.div`
   cursor: pointer;
   background-image: ${props =>
     `url(${`${RESOURCES_URL}static/images/list/marker-${props.options.type}-${
-      props.options.visited ? 'visited' : 'default'
+      props.options.localVisited ? 'visited' : 'default'
     }.svg`})`};
 
   &:hover {
     background-image: ${props =>
       `url(${`${RESOURCES_URL}static/images/list/marker-${props.options.type}${
-        props.options.visited ? '-visited' : ''
+        props.options.localVisited ? '-visited' : ''
       }-hover.svg`})`};
   }
 
@@ -27,13 +27,47 @@ const MapMarkerContainer = styled.div`
 `;
 
 type Props = {
-  type: 'trainer' | 'center',
+  type?: 'trainer' | 'center',
   visited?: boolean,
+  callback: Function,
 };
 
-const MapMarker = ({ type, visited }: Props) => (
-  <MapMarkerContainer options={{ type, visited }} />
-);
+type State = {
+  localVisited: boolean,
+};
+
+class MapMarker extends React.Component<Props, State> {
+  state = {
+    localVisited: false,
+  };
+
+  componentDidMount() {
+    if (this.props.visited) {
+      this.setState({ localVisited: this.props.visited });
+    }
+  }
+
+  handleClick = () => {
+    this.props
+      .callback()
+      .then(response => {
+        this.setState({ localVisited: true });
+      })
+      .catch(error => console.log(error));
+  };
+
+  render() {
+    const { type } = this.props;
+    const { localVisited } = this.state;
+
+    return (
+      <MapMarkerContainer
+        options={{ type, localVisited }}
+        onClick={() => this.handleClick()}
+      />
+    );
+  }
+}
 
 MapMarker.defaultProps = {
   type: 'trainer',
