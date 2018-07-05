@@ -29,16 +29,19 @@ const ExtendedButton = styled(Button)`
 
 type Props = {
   buttonTitle: string,
+  onClick: Function,
 };
 
-const MapLink = ({ buttonTitle }: Props) => {
+const MapLink = ({ buttonTitle, onClick }: Props) => {
   return (
     <MainContainer>
       <ExtendedImage
         alt="map"
         src={`${`${RESOURCES_URL}static/images/list/map.svg`}`}
       />
-      <ExtendedButton type="outline">{buttonTitle}</ExtendedButton>
+      <ExtendedButton type="outline" onClick={() => onClick()}>
+        {buttonTitle}
+      </ExtendedButton>
     </MainContainer>
   );
 };
