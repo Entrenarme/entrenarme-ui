@@ -62,7 +62,7 @@ exports[`renders "Heading" with no props 1`] = `
           class="MuiExpansionPanelDetails-root-114 sc-bxivhb Ukcuw"
         >
           <div
-            class="sc-ifAKCX lkXbSa"
+            class="sc-ifAKCX eSrJSp"
           >
             Heading
           </div>
@@ -137,7 +137,7 @@ exports[`renders "Heading" with title 1`] = `
           class="MuiExpansionPanelDetails-root-57 sc-bxivhb Ukcuw"
         >
           <div
-            class="sc-ifAKCX lkXbSa"
+            class="sc-ifAKCX eSrJSp"
           >
             Heading
           </div>
