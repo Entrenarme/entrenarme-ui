@@ -10,6 +10,7 @@ const ExtendedTag = styled(Chip)`
   height: 24px !important;
   font-family: ${regularFont} !important;
   font-size: 0.875rem !important;
+  background-color: ${colors.gray.light} !important;
 
   span {
     color: ${colors.text};
