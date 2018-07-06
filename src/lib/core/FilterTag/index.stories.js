@@ -3,6 +3,10 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
+
+import colors from '../../helpers/colors';
 
 import FilterTag from './index';
 
@@ -20,7 +24,13 @@ storiesOf('FilterTag', module)
   .addDecorator(ElementDecoration)
   .add(
     'default',
-    withInfo('Filter tag')(() => <FilterTag {...actions} title="Test" />),
+    withInfo('Filter tag')(() => (
+      <FilterTag
+        {...actions}
+        title="Test"
+        callback={() => console.log('hola')}
+      />
+    )),
   );
 
 storiesOf('FilterTag', module)
@@ -30,8 +40,9 @@ storiesOf('FilterTag', module)
     withInfo('Filter tag')(() => (
       <FilterTag
         title="Test"
+        callback={() => console.log('hola')}
         {...actions}
-        addCallback={() => console.log('add element...')}
+        leftIcon={<FontAwesomeIcon icon={faPlus} color={colors.text} />}
       />
     )),
   );
@@ -43,22 +54,9 @@ storiesOf('FilterTag', module)
     withInfo('Filter tag')(() => (
       <FilterTag
         title="Test"
+        callback={() => console.log('hola')}
         {...actions}
-        removeCallback={() => console.log('remove element...')}
-      />
-    )),
-  );
-
-storiesOf('FilterTag', module)
-  .addDecorator(ElementDecoration)
-  .add(
-    'with all posible actions',
-    withInfo('Filter tag')(() => (
-      <FilterTag
-        title="Test"
-        {...actions}
-        addCallback={() => console.log('add element...')}
-        removeCallback={() => console.log('remove element...')}
+        rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
       />
     )),
   );

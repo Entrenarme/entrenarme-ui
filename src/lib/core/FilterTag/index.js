@@ -1,8 +1,6 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 
 import { regularFont } from '../../helpers/fonts';
 import colors from '../../helpers/colors';
@@ -25,7 +23,7 @@ const AddActionContainer = styled.div`
   line-height: 30px;
 
   &:hover {
-    background-color: ${colors.gray.default};
+    background-color: ${colors.primary.light};
   }
 `;
 
@@ -42,7 +40,8 @@ const BodyContainer = styled.div`
   cursor: default;
 
   &:hover {
-    background-color: ${colors.gray.default};
+    background-color: ${props =>
+      props.options.hover ? '' : colors.primary.light};
   }
 `;
 
@@ -54,29 +53,32 @@ const RemoveActionContainer = styled.div`
   line-height: 30px;
 
   &:hover {
-    background-color: ${colors.gray.default};
+    background-color: ${colors.primary.light};
   }
 `;
 
 type Props = {
-  title: string,
-  addCallback?: Function,
-  removeCallback?: Function,
+  title: React.Node,
+  leftIcon?: React.Node,
+  rightIcon?: React.Node,
+  callback: Function,
 };
 
-const FilterTag = ({ title, addCallback, removeCallback, ...rest }: Props) => {
+const FilterTag = ({
+  title,
+  callback,
+  leftIcon,
+  rightIcon,
+  ...rest
+}: Props) => {
   return (
-    <MainChipContainer {...rest}>
-      {addCallback ? (
-        <AddActionContainer onClick={() => addCallback()}>
-          <FontAwesomeIcon icon={faPlus} color={colors.text} />
-        </AddActionContainer>
-      ) : null}
-      <BodyContainer>{title}</BodyContainer>
-      {removeCallback ? (
-        <RemoveActionContainer onClick={() => removeCallback()}>
-          <FontAwesomeIcon icon={faTimes} color={colors.text} />
-        </RemoveActionContainer>
+    <MainChipContainer onClick={() => callback()} {...rest}>
+      {leftIcon ? <AddActionContainer>{leftIcon}</AddActionContainer> : null}
+      <BodyContainer options={{ hover: leftIcon || rightIcon }}>
+        {title}
+      </BodyContainer>
+      {rightIcon ? (
+        <RemoveActionContainer>{rightIcon}</RemoveActionContainer>
       ) : null}
     </MainChipContainer>
   );
