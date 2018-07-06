@@ -62,9 +62,9 @@ class MapMarker extends React.Component<Props, State> {
 
     return (
       <MapMarkerContainer
+        {...rest}
         options={{ type, localVisited }}
         onClick={() => this.handleClick()}
-        {...rest}
       />
     );
   }
