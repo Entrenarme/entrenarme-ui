@@ -10,8 +10,8 @@ import P from '../Text/Paragraph';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: colors.primary.default }, // Purple and green play nicely together.
-    secondary: { main: colors.secondary.default }, // This is just green.A700 as hex.
+    primary: { main: colors.primary.default },
+    secondary: { main: colors.secondary.default },
   },
 });
 
@@ -23,6 +23,7 @@ const SRadio = styled(MRadio)`
   height: 16px !important;
   width: 16px !important;
   margin-right: 10px !important;
+  margin-left: 14px !important;
   svg {
     height: 16px;
   }

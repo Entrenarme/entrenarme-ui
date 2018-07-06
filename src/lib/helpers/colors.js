@@ -1,4 +1,4 @@
-export default {  
+export default {
   primary: {
     default: 'rgba(18, 85, 102, 1)',
     light: 'rgba(18, 85, 102, 0.15)',
@@ -31,6 +31,7 @@ export default {
     dark: 'rgba(191,191,191,1)',
     loading: 'rgba(191,191,191,0.7)',
     light: 'rgba(240,240,240,1)',
+    placeholder: 'rgba(174,174,174,1)',
   },
   white: {
     default: 'rgba(255,255,255,1)',
