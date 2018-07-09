@@ -31,6 +31,8 @@ type Props = {
   successText?: React.Node,
   /** the size of the button */
   size?: ButtonSize,
+  /** to render the active variant of the current colorVariant */
+  active?: boolean,
 };
 
 const Button = ({
@@ -45,12 +47,13 @@ const Button = ({
   errorText,
   successText,
   size,
+  active,
   ...rest
 }: Props) => (
   <Responsive>
     {({ device }) => (
       <SButton
-        options={{ type, state, colorVariant, disabled, size, device }}
+        options={{ type, state, colorVariant, disabled, size, device, active }}
         disabled={
           state === 'loading' ||
           state === 'error' ||

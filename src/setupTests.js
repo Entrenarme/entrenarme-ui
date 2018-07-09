@@ -1,4 +1,5 @@
 import 'react-testing-library/cleanup-after-each';
+import 'jest-styled-components';
 
 window.matchMedia = jest.fn().mockImplementation(query => {
   return {
