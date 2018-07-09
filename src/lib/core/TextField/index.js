@@ -10,7 +10,7 @@ import colors from '../../helpers/colors';
 
 type Props = {
   label?: string,
-  placeholder?: string,
+  placeholder?: React.Node,
   adornment?: React.Node,
   type?: 'text' | 'number' | 'password' | 'email',
   onChange?: Function,

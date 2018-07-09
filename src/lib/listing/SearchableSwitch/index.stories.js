@@ -15,7 +15,12 @@ const options = ['wifi', 'piscina', 'masajista'];
 
 storiesOf('SearchableSwitch', module)
   .add('renders checkbox multiple', () => (
-    <SearchableSwitch column multiple {...actions}>
+    <SearchableSwitch
+      column
+      multiple
+      {...actions}
+      placeholder="wifi, piscina, duchas"
+    >
       {({ filterValue }) =>
         options
           .filter(option => option.includes(filterValue))

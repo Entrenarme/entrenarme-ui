@@ -16,6 +16,7 @@ type Props = {
   children: Function,
   multiple?: boolean,
   onChange?: Function,
+  placeholder?: React.Node,
 };
 
 type State = {
@@ -35,6 +36,7 @@ class SearchableSwitch extends React.Component<Props, State> {
     column: false,
     multiple: false,
     onChange: () => {},
+    placeholder: '',
   };
 
   static Item = ({ children, activeKey }) => (
@@ -51,7 +53,7 @@ class SearchableSwitch extends React.Component<Props, State> {
 
   render() {
     const { filterValue } = this.state;
-    const { children, column, multiple, onChange } = this.props;
+    const { children, column, multiple, onChange, placeholder } = this.props;
     return (
       <Container>
         <TextField
@@ -59,7 +61,7 @@ class SearchableSwitch extends React.Component<Props, State> {
           adornment={
             <FontAwesomeIcon icon={faSearch} color={colors.gray.placeholder} />
           }
-          placeholder="wifi, piscina"
+          placeholder={placeholder}
           onChange={this.filterValueChange}
         />
         <Switch column={column} multiple={multiple} onChange={onChange}>
