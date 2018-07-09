@@ -10,6 +10,7 @@ const MainChipContainer = styled.div`
   align-items: center;
   height: 30px;
   overflow: hidden;
+  cursor: pointer;
 
   background-color: ${colors.white.default};
   border-radius: 50px;
@@ -25,6 +26,10 @@ const AddActionContainer = styled.div`
   &:hover {
     background-color: ${colors.primary.light};
   }
+
+  ${MainChipContainer}:hover & {
+    background-color: ${colors.primary.light};
+  }
 `;
 
 const BodyContainer = styled.div`
@@ -37,7 +42,6 @@ const BodyContainer = styled.div`
   line-height: 30px;
   border-left: 1px solid ${colors.gray.light};
   border-right: 1px solid ${colors.gray.light};
-  cursor: default;
 
   &:hover {
     background-color: ${props =>
@@ -53,6 +57,10 @@ const RemoveActionContainer = styled.div`
   line-height: 30px;
 
   &:hover {
+    background-color: ${colors.primary.light};
+  }
+
+  ${MainChipContainer}:hover & {
     background-color: ${colors.primary.light};
   }
 `;
