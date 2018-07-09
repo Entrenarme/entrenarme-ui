@@ -38,14 +38,8 @@ type State = {
 
 class MapMarker extends React.Component<Props, State> {
   state = {
-    localVisited: false,
+    localVisited: this.props.visited,
   };
-
-  componentDidMount() {
-    if (this.props.visited) {
-      this.setState({ localVisited: this.props.visited });
-    }
-  }
 
   handleClick = () => {
     this.props
