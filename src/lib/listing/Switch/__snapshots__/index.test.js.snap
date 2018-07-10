@@ -1,0 +1,541 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`both active 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`first active 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH jBBLTz"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`first active 2`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH jBBLTz"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`first active 3`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`first active 4`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`first active 5`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`none active 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`none active 2`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`none active 3`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`none active 4`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`none active 5`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-59 MuiButton-root-35 MuiButton-text-37 MuiButton-flat-40 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-36"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-62"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`second active 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa GnUcV"
+  >
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH gjHic"
+      type="button"
+      options="[object Object]"
+      name="male"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          no icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+    <button
+      tabindex="0"
+      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bwzfXH jBBLTz"
+      type="button"
+      options="[object Object]"
+      name="female"
+    >
+      <span
+        class="MuiButton-label-2"
+      >
+        <span>
+          with icon
+        </span>
+      </span>
+      <span
+        class="MuiTouchRipple-root-28"
+      />
+    </button>
+  </div>
+</div>
+`;
