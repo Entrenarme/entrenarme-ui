@@ -2,38 +2,20 @@
 import * as React from 'react';
 import ReactSlider from 'react-slick';
 
+import 'react-slick/lib/css/slick-theme.css';
+import 'react-slick/lib/css/slick.css';
+
 type Props = {};
 
-const Slider = (props: Props) => {
+const Slider = ({ children, ...rest }: Props) => {
   var settings = {
     dots: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
   };
 
-  return (
-    <ReactSlider {...settings}>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
-    </ReactSlider>
-  );
+  return <ReactSlider {...settings}>{children}</ReactSlider>;
 };
 
 Slider.defaultProps = {};
