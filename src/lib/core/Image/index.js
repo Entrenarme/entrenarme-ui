@@ -19,7 +19,7 @@ const Img = styled.img`
   ${(props: ImgProps) =>
     props.options.imageWidth &&
     `width: ${props.options.imageWidth}; flex: 1 0 ${
-      props.options.placeholderWidth
+      props.options.imageWidth
     }`};
   ${(props: ImgProps) =>
     props.options.imageHeight && `height: ${props.options.imageHeight}`};

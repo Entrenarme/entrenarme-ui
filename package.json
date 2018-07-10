@@ -16,7 +16,7 @@
     "babel-core": "^6.26.3",
     "babel-plugin-flow-react-proptypes": "^24.0.1",
     "babel-runtime": "^6.26.0",
-    "flow-bin": "^0.75.0",
+    "flow-bin": "^0.76.0",
     "jest-styled-components": "^5.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",

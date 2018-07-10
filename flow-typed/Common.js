@@ -10,7 +10,7 @@ declare type Device =
 declare type CustomImage = {
   src: string,
   alt: string,
-  key?: string | number,
+  key: string,
   lazyload?: boolean,
   lazySrc?: string,
 };
