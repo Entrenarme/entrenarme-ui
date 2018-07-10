@@ -12,7 +12,9 @@ const MainCard = styled.div`
   margin: 10px;
 `;
 
-const repetitions = [1, 2, 3, 4, 5];
+const moreThan3 = [1, 2, 3, 4, 5];
+
+const lessThan3 = [1, 2];
 
 const ElementDecoration = storyFn => (
   <div style={{ backgroundColor: '#F1F1F1', height: '100vh' }}>{storyFn()}</div>
@@ -20,9 +22,26 @@ const ElementDecoration = storyFn => (
 
 storiesOf('Slider', module)
   .addDecorator(ElementDecoration)
-  .add('default', () => (
+  .add('with more than 3 elements', () => (
     <Slider>
-      {repetitions.map(element => (
+      {moreThan3.map(element => (
+        <div>
+          <MainCard>
+            Number: {element}
+            <br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            fermentum magna eu velit semper hendrerit.
+          </MainCard>
+        </div>
+      ))}
+    </Slider>
+  ));
+
+storiesOf('Slider', module)
+  .addDecorator(ElementDecoration)
+  .add('with less than 3 elements', () => (
+    <Slider>
+      {lessThan3.map(element => (
         <div>
           <MainCard>
             Number: {element}
