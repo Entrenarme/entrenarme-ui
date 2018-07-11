@@ -25,7 +25,7 @@ storiesOf('Slider', module)
   .add('with more than 3 elements', () => (
     <Slider>
       {moreThan3.map(element => (
-        <div>
+        <div key={element}>
           <MainCard>
             Number: {element}
             <br />
@@ -42,7 +42,7 @@ storiesOf('Slider', module)
   .add('with less than 3 elements', () => (
     <Slider>
       {lessThan3.map(element => (
-        <div>
+        <div key={element}>
           <MainCard>
             Number: {element}
             <br />

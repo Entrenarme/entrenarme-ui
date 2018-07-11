@@ -11,7 +11,14 @@ type Props = {
   children: React.Node,
 };
 
-const Arrow = ({ className, style, onClick, icon }) => (
+type ArrowProps = {
+  className?: string,
+  style?: Object,
+  onClick?: Function,
+  icon: React.Node,
+};
+
+const Arrow = ({ className, style, onClick, icon }: ArrowProps) => (
   <div
     className={className}
     style={{
