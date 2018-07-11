@@ -1,6 +1,8 @@
 /* Slider */
 .slick-slider {
   position: relative;
+  width: 83%;
+  margin: 0 auto;
 
   display: block;
   box-sizing: border-box;
