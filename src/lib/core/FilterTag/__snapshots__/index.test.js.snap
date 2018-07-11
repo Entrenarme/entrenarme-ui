@@ -2,60 +2,22 @@
 
 exports[`renders "FilterTag" with all options 1`] = `
 <div
-  class="sc-bdVaJa dGGAji"
+  class="sc-bdVaJa hvSgUa"
 >
   <div
-    class="sc-bwzfXH hkUsUs"
-  >
-    <svg
-      aria-hidden="true"
-      data-prefix="fal"
-      data-icon="plus"
-      class="svg-inline--fa fa-plus fa-w-12 "
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 384 512"
-      color="rgba(81,103,113,1)"
-    >
-      <path
-        fill="currentColor"
-        d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"
-      />
-    </svg>
-  </div>
-  <div
-    class="sc-htpNat gSIDYx"
+    class="sc-htpNat jveROB"
   >
     test
-  </div>
-  <div
-    class="sc-bxivhb jqeANN"
-  >
-    <svg
-      aria-hidden="true"
-      data-prefix="fal"
-      data-icon="times"
-      class="svg-inline--fa fa-times fa-w-10 "
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 320 512"
-      color="rgba(81,103,113,1)"
-    >
-      <path
-        fill="currentColor"
-        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
-      />
-    </svg>
   </div>
 </div>
 `;
 
 exports[`renders "FilterTag" with title 1`] = `
 <div
-  class="sc-bdVaJa dGGAji"
+  class="sc-bdVaJa hvSgUa"
 >
   <div
-    class="sc-htpNat gSIDYx"
+    class="sc-htpNat jveROB"
   >
     test
   </div>
@@ -64,29 +26,10 @@ exports[`renders "FilterTag" with title 1`] = `
 
 exports[`renders "FilterTag" with title and addCallback 1`] = `
 <div
-  class="sc-bdVaJa dGGAji"
+  class="sc-bdVaJa hvSgUa"
 >
   <div
-    class="sc-bwzfXH hkUsUs"
-  >
-    <svg
-      aria-hidden="true"
-      data-prefix="fal"
-      data-icon="plus"
-      class="svg-inline--fa fa-plus fa-w-12 "
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 384 512"
-      color="rgba(81,103,113,1)"
-    >
-      <path
-        fill="currentColor"
-        d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"
-      />
-    </svg>
-  </div>
-  <div
-    class="sc-htpNat gSIDYx"
+    class="sc-htpNat jveROB"
   >
     test
   </div>
@@ -95,31 +38,12 @@ exports[`renders "FilterTag" with title and addCallback 1`] = `
 
 exports[`renders "FilterTag" with title and removeCallback 1`] = `
 <div
-  class="sc-bdVaJa dGGAji"
+  class="sc-bdVaJa hvSgUa"
 >
   <div
-    class="sc-htpNat gSIDYx"
+    class="sc-htpNat jveROB"
   >
     test
-  </div>
-  <div
-    class="sc-bxivhb jqeANN"
-  >
-    <svg
-      aria-hidden="true"
-      data-prefix="fal"
-      data-icon="times"
-      class="svg-inline--fa fa-times fa-w-10 "
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 320 512"
-      color="rgba(81,103,113,1)"
-    >
-      <path
-        fill="currentColor"
-        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
-      />
-    </svg>
   </div>
 </div>
 `;

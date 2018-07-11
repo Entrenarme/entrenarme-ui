@@ -4,8 +4,8 @@ import ReactSlider from 'react-slick';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
-import 'react-slick/lib/css/slick-theme.css';
-import 'react-slick/lib/css/slick.css';
+import './styles/slick-theme.css';
+import './styles/slick.css';
 
 type Props = {
   children: React.Node,
