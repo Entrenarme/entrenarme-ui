@@ -8,6 +8,7 @@ import colors from '../../helpers/colors';
 const MainChipContainer = styled.div`
   display: inline-flex;
   align-items: center;
+  vertical-align: top;
   height: 30px;
   overflow: hidden;
   cursor: pointer;
@@ -21,7 +22,12 @@ const AddActionContainer = styled.div`
   padding-left: 12px;
   padding-right: 10px;
   height: 100%;
-  line-height: 33px;
+  display: flex;
+  align-items: center;
+
+  & svg {
+    width: 0.65em !important;
+  }
 
   &:hover {
     background-color: ${colors.primary.light};
@@ -43,9 +49,10 @@ const BodyContainer = styled.div`
         : '10px 10px 10px 12px'
       : '10px 12px'}
   height: 100%;
-  line-height: 30px;
   border-left: 1px solid ${colors.gray.light};
   border-right: 1px solid ${colors.gray.light};
+  display: flex;
+  align-items: center;
 
   &:hover {
     background-color: ${props =>
@@ -58,7 +65,12 @@ const RemoveActionContainer = styled.div`
   padding-left: 10px;
   padding-right: 12px;
   height: 100%;
-  line-height: 33px;
+  display: flex;
+  align-items: center;
+
+  & svg {
+    width: 0.5em !important;
+  }
 
   &:hover {
     background-color: ${colors.primary.light};
