@@ -30,10 +30,11 @@ type Props = {
   type?: 'trainer' | 'center',
   visited?: boolean,
   callback: Function,
+  onClick: Function,
 };
 
 type State = {
-  localVisited: boolean,
+  localVisited?: boolean,
 };
 
 class MapMarker extends React.Component<Props, State> {
@@ -46,6 +47,8 @@ class MapMarker extends React.Component<Props, State> {
       .callback()
       .then(response => {
         this.setState({ localVisited: true });
+
+        this.props.onClick('Visited!');
       })
       .catch(error => console.log(error));
   };
