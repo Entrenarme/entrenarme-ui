@@ -65,7 +65,7 @@
     esutils "^2.0.2"
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
-
+    
 "@emotion/babel-utils@^0.6.4":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.5.tgz#34d7844eb532d1175c8fc70175beb74d071bfbeb"
@@ -116,6 +116,10 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.0.tgz#6bcf6481030f59e7ffd1a40a67cd464d47780f6a"
 
+"@fortawesome/fontawesome-pro@^5.1.0":
+  version "5.1.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/fontawesome-pro-5.1.0.tgz#387febc0953ace72e81b0ebd312dd44e2ebc1c2c"
+
 "@fortawesome/fontawesome-svg-core@^1.2.0-14":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.0.tgz#b0ec14af25cdc11d38ede7d8c94b89b478ab67ab"
@@ -125,6 +129,12 @@
 "@fortawesome/free-solid-svg-icons@^5.1.0-11":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.1.0.tgz#1a4b43027104d63c7862fd39333f6ed6d8bb2c9a"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.0"
+
+"@fortawesome/pro-light-svg-icons@^5.1.0":
+  version "5.1.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/pro-light-svg-icons/-/pro-light-svg-icons-5.1.0.tgz#af2bd0b5dddad2c4ef5557d42005514130c9e952"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.0"
 
