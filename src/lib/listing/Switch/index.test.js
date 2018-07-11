@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, fireEvent } from 'react-testing-library';
 
 import Switch from './index';
-import Button from '../Button';
+import Button from '../../core/Button';
 
 test('render props are correct with switch', () => {
   let activeItems = null;

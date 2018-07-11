@@ -9,7 +9,7 @@ import Select from './index';
 import Button from '../Button';
 import example from './example';
 
-storiesOf('Select', module)
+storiesOf('Utils/Select', module)
   .add(
     'default',
     () => (

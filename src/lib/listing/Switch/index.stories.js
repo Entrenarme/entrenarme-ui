@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 import Switch from './index';
-import Button from '../Button';
-import Checkbox from '../Checkbox';
-import Radio from '../Radio';
+import Button from '../../core/Button';
+import Checkbox from '../../core/Checkbox';
+import Radio from '../../core/Radio';
 
 storiesOf('Switch', module)
   .add('default', () => (
