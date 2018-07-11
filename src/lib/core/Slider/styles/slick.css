@@ -45,6 +45,12 @@
   transform: translate3d(0, 0, 0);
 }
 
+.less-distribution {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
 .slick-track {
   position: relative;
   top: 0;
