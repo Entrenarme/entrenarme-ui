@@ -8,9 +8,12 @@ import colors from '../../helpers/colors';
 const MainChipContainer = styled.div`
   display: inline-flex;
   align-items: center;
+  vertical-align: top;
   height: 30px;
   overflow: hidden;
   cursor: pointer;
+
+  margin-right: 20px;
 
   background-color: ${colors.white.default};
   border-radius: 50px;
@@ -18,10 +21,15 @@ const MainChipContainer = styled.div`
 
 const AddActionContainer = styled.div`
   cursor: pointer;
-  padding-left: 10px;
-  padding-right: 8px;
+  padding-left: 12px;
+  padding-right: 10px;
   height: 100%;
-  line-height: 30px;
+  display: flex;
+  align-items: center;
+
+  & svg {
+    width: 0.65em !important;
+  }
 
   &:hover {
     background-color: ${colors.primary.light};
@@ -36,12 +44,17 @@ const BodyContainer = styled.div`
   font-family: ${regularFont};
   font-size: 0.875rem;
   color: ${colors.text};
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: ${props =>
+    props.options.hover
+      ? props.options.leftIcon
+        ? '10px 12px 10px 10px'
+        : '10px 10px 10px 12px'
+      : '10px 12px'}
   height: 100%;
-  line-height: 30px;
   border-left: 1px solid ${colors.gray.light};
   border-right: 1px solid ${colors.gray.light};
+  display: flex;
+  align-items: center;
 
   &:hover {
     background-color: ${props =>
@@ -51,10 +64,15 @@ const BodyContainer = styled.div`
 
 const RemoveActionContainer = styled.div`
   cursor: pointer;
-  padding-left: 8px;
-  padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 12px;
   height: 100%;
-  line-height: 30px;
+  display: flex;
+  align-items: center;
+
+  & svg {
+    width: 0.5em !important;
+  }
 
   &:hover {
     background-color: ${colors.primary.light};
@@ -82,7 +100,9 @@ const FilterTag = ({
   return (
     <MainChipContainer onClick={() => callback()} {...rest}>
       {leftIcon ? <AddActionContainer>{leftIcon}</AddActionContainer> : null}
-      <BodyContainer options={{ hover: leftIcon || rightIcon }}>
+      <BodyContainer
+        options={{ hover: leftIcon || rightIcon, leftIcon, rightIcon }}
+      >
         {title}
       </BodyContainer>
       {rightIcon ? (

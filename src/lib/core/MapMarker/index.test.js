@@ -10,7 +10,12 @@ test('renders "MapMarker" with no props', () => {
 });
 
 test('renders "Map Marker" with type center', () => {
-  const { container } = render(<MapMarker type="center" />);
+  const { container } = render(
+    <MapMarker
+      type="center"
+      callback={() => fetch('https://jsonplaceholder.typicode.com/users')}
+    />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
