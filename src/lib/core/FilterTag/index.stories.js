@@ -60,3 +60,30 @@ storiesOf('FilterTag', module)
       />
     )),
   );
+
+storiesOf('FilterTag', module)
+  .addDecorator(ElementDecoration)
+  .add(
+    'all types',
+    withInfo('Filter tag')(() => (
+      <React.Fragment>
+        <FilterTag
+          {...actions}
+          title="Test"
+          callback={() => console.log('hola')}
+        />
+        <FilterTag
+          title="Test"
+          callback={() => console.log('hola')}
+          {...actions}
+          rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
+        />
+        <FilterTag
+          title="Test"
+          callback={() => console.log('hola')}
+          {...actions}
+          leftIcon={<FontAwesomeIcon icon={faPlus} color={colors.text} />}
+        />
+      </React.Fragment>
+    )),
+  );
