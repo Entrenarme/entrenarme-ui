@@ -43,23 +43,60 @@ const images = [
   {
     src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample7',
     key: '7',
-    alt: 'image6',
+    alt: 'image7',
   },
   {
     src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample8',
     key: '8',
-    alt: 'image6',
+    alt: 'image8',
   },
   {
     src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample9',
     key: '9',
-    alt: 'image6',
+    alt: 'image9',
+  },
+  {
+    src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample10',
+    key: '10',
+    alt: 'image10',
+  },
+  {
+    src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample11',
+    key: '11',
+    alt: 'image10',
+  },
+  {
+    src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample12',
+    key: '12',
+    alt: 'image10',
+  },
+  {
+    src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample13',
+    key: '13',
+    alt: 'image10',
+  },
+  {
+    src: 'https://dummyimage.com/250x320/ff7f1f/333333.png&text=Sample14',
+    key: '14',
+    alt: 'image10',
   },
 ];
 
 storiesOf('MediaGallery', module)
   .add('Default', () => (
-    <MediaGallery lazyload infinite visibleImages={10} images={images}>
+    <MediaGallery lazyload infinite offsetVisibleImages={1} images={images}>
+      <MediaGallery.LeftArrow />
+      <MediaGallery.RightArrow />
+      <MediaGallery.Gallery placeholderWidth="300px" imageHeight="200px" />
+    </MediaGallery>
+  ))
+  .add('Default with few images', () => (
+    <MediaGallery
+      lazyload
+      infinite
+      offsetVisibleImages={1}
+      images={images.slice(0, 4)}
+    >
       <MediaGallery.LeftArrow />
       <MediaGallery.RightArrow />
       <MediaGallery.Gallery placeholderWidth="300px" imageHeight="200px" />
@@ -71,7 +108,7 @@ storiesOf('MediaGallery', module)
         lazyload
         infinite
         reverseDirection
-        visibleImages={2}
+        offsetVisibleImages={1}
         images={images}
       >
         <MediaGallery.Gallery

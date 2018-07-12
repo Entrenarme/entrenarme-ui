@@ -11,6 +11,7 @@ type GalleryProps = {
 
 const SGallery = styled.div`
   display: flex;
+  position: relative;
   ${(props: GalleryProps) =>
     props.options.transition ? 'transition: transform 0.3s ease-in-out' : ''};
   transform: translate3d(
@@ -29,6 +30,7 @@ type Props = {
   placeholderWidth: string,
   imageWidth: string,
   imageHeight: string,
+  loadMoreImages: Function,
 };
 
 class Gallery extends React.Component<Props> {
@@ -42,12 +44,16 @@ class Gallery extends React.Component<Props> {
       placeholderWidth,
       imageWidth,
       imageHeight,
+      loadMoreImages,
     } = this.props;
     return (
-      <SGallery options={{ offsetWidth, transition }}>
+      <SGallery options={{ offsetWidth, transition }} id="gallery_container">
         {_images.map(
           (image, index: number) =>
-            lazyload && visibleImages !== null && index >= visibleImages ? (
+            lazyload &&
+            visibleImages !== null &&
+            index >= visibleImages &&
+            index < _images.length - 1 ? (
               <Placeholder placeholderWidth={placeholderWidth} key={image.key}>
                 placeholder
               </Placeholder>
@@ -57,6 +63,7 @@ class Gallery extends React.Component<Props> {
                 image={image}
                 imageWidth={imageWidth}
                 imageHeight={imageHeight}
+                onLoad={loadMoreImages}
               />
             ),
         )}

@@ -9,6 +9,12 @@ const getAllChildMedia = (
   return allImages;
 };
 
+const getAllChild = (containerRef: ?HTMLElement): ?NodeList<HTMLElement> => {
+  const allImages =
+    (containerRef && containerRef.querySelectorAll('img, div')) || null;
+  return allImages;
+};
+
 const checkPropErrors = ({ lazyload, visibleImages }) => {
   const isError = lazyload && visibleImages === null;
   invariant(
@@ -17,4 +23,4 @@ const checkPropErrors = ({ lazyload, visibleImages }) => {
   );
 };
 
-export { getAllChildMedia, checkPropErrors };
+export { getAllChildMedia, checkPropErrors, getAllChild };
