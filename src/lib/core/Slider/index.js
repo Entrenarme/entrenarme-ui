@@ -10,6 +10,7 @@ import './styles/slick.css';
 
 type Props = {
   children: React.Node,
+  itemsToShow: number,
 };
 
 type ArrowProps = {
@@ -17,6 +18,7 @@ type ArrowProps = {
   style?: Object,
   onClick?: Function,
   icon: React.Node,
+  disabled: boolean,
 };
 
 const StyledSlider = styled(ReactSlider)`
@@ -28,32 +30,48 @@ const StyledSlider = styled(ReactSlider)`
   }
 `;
 
-const Arrow = ({ className, style, onClick, icon }: ArrowProps) => (
-  <div
-    className={className}
-    style={{
-      ...style,
-    }}
-    onClick={onClick}
-  >
-    <FontAwesomeIcon icon={icon} />
-  </div>
-);
+const Arrow = ({ className, style, onClick, icon, disabled }: ArrowProps) => {
+  if (disabled) {
+    return null;
+  }
 
-const Slider = ({ children, ...rest }: Props) => {
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+      }}
+      onClick={onClick}
+    >
+      <FontAwesomeIcon icon={icon} />
+    </div>
+  );
+};
+
+const Slider = ({ children, itemsToShow, ...rest }: Props) => {
   const settings = {
     dots: true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    infinite: React.Children.count(children) >= 3,
-    nextArrow: <Arrow icon={faAngleRight} />,
-    prevArrow: <Arrow icon={faAngleLeft} />,
+    slidesToShow: itemsToShow,
+    slidesToScroll: itemsToShow,
+    infinite: React.Children.count(children) >= itemsToShow,
+    nextArrow: (
+      <Arrow
+        icon={faAngleRight}
+        disabled={React.Children.count(children) <= itemsToShow}
+      />
+    ),
+    prevArrow: (
+      <Arrow
+        icon={faAngleLeft}
+        disabled={React.Children.count(children) <= itemsToShow}
+      />
+    ),
   };
 
   return (
     <StyledSlider
       {...settings}
-      options={{ less: React.Children.count(children) >= 3 }}
+      options={{ less: React.Children.count(children) >= itemsToShow }}
     >
       {children}
     </StyledSlider>

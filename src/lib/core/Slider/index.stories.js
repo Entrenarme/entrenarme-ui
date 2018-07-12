@@ -23,7 +23,7 @@ const ElementDecoration = storyFn => (
 storiesOf('Slider', module)
   .addDecorator(ElementDecoration)
   .add('with more than 3 elements', () => (
-    <Slider>
+    <Slider itemsToShow={3}>
       {moreThan3.map(element => (
         <div key={element}>
           <MainCard>
@@ -40,7 +40,7 @@ storiesOf('Slider', module)
 storiesOf('Slider', module)
   .addDecorator(ElementDecoration)
   .add('with less than 3 elements', () => (
-    <Slider>
+    <Slider itemsToShow={2}>
       {lessThan3.map(element => (
         <div key={element}>
           <MainCard>
