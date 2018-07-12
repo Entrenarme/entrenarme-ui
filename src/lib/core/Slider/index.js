@@ -2,7 +2,7 @@
 import * as React from 'react';
 import ReactSlider from 'react-slick';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faAngleLeft } from '@fortawesome/pro-light-svg-icons';
 import styled from 'styled-components';
 
 import './styles/slick-theme.css';
