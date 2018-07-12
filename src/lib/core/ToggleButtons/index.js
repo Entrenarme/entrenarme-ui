@@ -15,13 +15,17 @@ const LeftButtonContainer = styled.div`
 const LeftButton = styled(Button)`
   border-radius: 50px 0px 0px 50px !important;
 
-  &:hover: {
-    background-color: ${colors.primary.light} !important;
+  &:hover {
+    background-color: ${colors.primary.active} !important;
   }
 `;
 
 const RightButton = styled(Button)`
   border-radius: 0px 50px 50px 0px !important;
+
+  &:hover {
+    background-color: ${colors.primary.active} !important;
+  }
 `;
 
 const SeparationBar = styled.div`
