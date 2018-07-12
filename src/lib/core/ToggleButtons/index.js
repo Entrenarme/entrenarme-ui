@@ -5,14 +5,18 @@ import styled from 'styled-components';
 import Button from '../Button/index';
 import colors from '../../helpers/colors';
 
-const MainContainer = styled.div``;
+const MainContainer = styled.div`
+  width: 100%;
+`;
 
 const LeftButtonContainer = styled.div`
+  width: 50%;
   position: relative;
   display: inline-block;
 `;
 
 const LeftButton = styled(Button)`
+  width: 100%;
   border-radius: 50px 0px 0px 50px !important;
 
   &:hover {
@@ -21,6 +25,7 @@ const LeftButton = styled(Button)`
 `;
 
 const RightButton = styled(Button)`
+  width: 50%;
   border-radius: 0px 50px 50px 0px !important;
 
   &:hover {
@@ -56,8 +61,9 @@ const ToggleButton = ({
   rightText,
   rightIcon,
   rightOnclick,
+  ...rest
 }: Props) => (
-  <MainContainer>
+  <MainContainer {...rest}>
     <LeftButtonContainer>
       <LeftButton icon={leftIcon} onClick={leftOnclick}>
         {leftText}
