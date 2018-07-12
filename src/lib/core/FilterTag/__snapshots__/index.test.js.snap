@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "FilterTag" with title and callback 1`] = `
+<div
+  class="sc-bdVaJa hvSgUa"
+>
+  <div
+    class="sc-htpNat linTiG"
+  >
+    test
+  </div>
+</div>
+`;

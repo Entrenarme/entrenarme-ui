@@ -100,17 +100,18 @@ export const getBgColor = (
   state: ButtonState,
   disabled: ButtonDisabled,
   colorVariant: ButtonColorVariant,
+  active: boolean,
 ) => {
   if (buttonType === 'link' || buttonType === 'outline') {
-    return colors.white.default;
+    return colors.white[active ? 'active' : 'default'];
   }
   if (buttonType === 'add' || disabled) {
-    return colors.gray.default;
+    return colors.gray[active ? 'active' : 'default'];
   }
   if (state === 'error' || state === 'success') {
-    return colors[state].default;
+    return colors[state][active ? 'active' : 'default'];
   }
-  return colors[colorVariant || state].default;
+  return colors[colorVariant || state][active ? 'active' : 'default'];
 };
 
 export const getColor = (

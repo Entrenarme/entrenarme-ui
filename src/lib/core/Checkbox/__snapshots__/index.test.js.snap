@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders default 1`] = `
+<label
+  class="MuiFormControlLabel-root-1"
+>
+  <span
+    class="MuiButtonBase-root-19 MuiIconButton-root-13 MuiSwitchBase-root-9 MuiCheckbox-root-4 MuiCheckbox-colorSecondary-8 sc-bwzfXH jjwSZa"
+  >
+    <span
+      class="MuiIconButton-label-18"
+    >
+      <svg
+        class="MuiSvgIcon-root-22"
+        focusable="false"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+        />
+      </svg>
+      <input
+        type="checkbox"
+        class="MuiSwitchBase-input-12"
+        value=""
+      />
+    </span>
+    <span
+      class="MuiTouchRipple-root-29"
+    />
+  </span>
+  <span
+    class="MuiTypography-root-36 MuiTypography-body1-45 MuiFormControlLabel-label-3"
+  />
+</label>
+`;
+
+exports[`renders with label 1`] = `
+<label
+  class="MuiFormControlLabel-root-60"
+>
+  <span
+    class="MuiButtonBase-root-78 MuiIconButton-root-72 MuiSwitchBase-root-68 MuiCheckbox-root-63 MuiCheckbox-colorSecondary-67 sc-bwzfXH jjwSZa"
+  >
+    <span
+      class="MuiIconButton-label-77"
+    >
+      <svg
+        class="MuiSvgIcon-root-81"
+        focusable="false"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+        />
+      </svg>
+      <input
+        type="checkbox"
+        class="MuiSwitchBase-input-71"
+        value=""
+      />
+    </span>
+    <span
+      class="MuiTouchRipple-root-88"
+    />
+  </span>
+  <span
+    class="MuiTypography-root-95 MuiTypography-body1-104 MuiFormControlLabel-label-62"
+  >
+    <p
+      class="sc-bdVaJa dnyxcA"
+    >
+      Label
+    </p>
+  </span>
+</label>
+`;

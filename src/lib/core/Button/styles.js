@@ -22,6 +22,7 @@ type ButtonProps = {
     disabled: ButtonDisabled,
     size: ButtonSize,
     device: Device,
+    active: boolean,
   },
 };
 
@@ -41,6 +42,7 @@ export const SButton = styled(MButton)`
       props.options.state,
       props.options.disabled,
       props.options.colorVariant,
+      props.options.active,
     )} !important;
   ${(props: ButtonProps) =>
     props.options.type === 'outline'
@@ -57,10 +59,11 @@ export const SButton = styled(MButton)`
     background-color: ${(props: ButtonProps) =>
       getBgColor(
         props.options.type,
-        'active',
+        'default',
         props.options.state,
         props.options.disabled,
         props.options.colorVariant,
+        !props.options.active,
       )} !important;
   }
   span {
