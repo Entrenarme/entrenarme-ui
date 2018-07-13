@@ -6,7 +6,19 @@ import Swipeable from 'react-swipeable';
 import Arrow from './Arrow';
 import Gallery from './Gallery';
 
-import { getAllChildMedia, checkPropErrors, getAllChild } from './helpers';
+import {
+  getLastChildMedia,
+  getFirstChildMedia,
+  getAllChildMedia,
+} from './helpers';
+
+import {
+  moveLeftFn,
+  moveRightFn,
+  moveToLeft,
+  moveToRight,
+  swipingRightInit,
+} from './moveUtils';
 
 const Container = styled.div`
   width: 100%;
@@ -14,7 +26,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-type Props = {
+export type Props = {
   images: Array<CustomImage>,
   lazyload: boolean,
   infinite: boolean,
@@ -22,11 +34,10 @@ type Props = {
   placeholderWidth: string,
   imageWidth: string,
   imageHeight: string,
-  reverseDirection: boolean,
   children: React.Node,
 };
 
-type State = {
+export type State = {
   visibleImages: number,
   currentImage: number,
   offsetWidth: number,
@@ -43,27 +54,10 @@ type State = {
   swiped: boolean,
   swipLeft: boolean,
   swipRight: boolean,
+  swipedRightAbs: number,
 };
 
 const MediaGalleryContext = React.createContext();
-
-const getNewKey = (key: string) => {
-  return `0${key}`;
-};
-
-const copyLastImageToStart = (_images: Array<CustomImage>) => {
-  return [
-    {
-      ..._images[_images.length - 1],
-      key: getNewKey(_images[_images.length - 1].key),
-    },
-    ..._images,
-  ];
-};
-
-const copyStartImageToLast = (_images: Array<CustomImage>) => {
-  return [..._images, { ..._images[0], key: getNewKey(_images[0].key) }];
-};
 
 class MediaGallery extends React.Component<Props, State> {
   static LeftArrow = () => (
@@ -102,35 +96,22 @@ class MediaGallery extends React.Component<Props, State> {
   };
 
   handleLeftClick = () => {
-    // this method will be called from <Gallery /> whenever we want to move it
-    // it will setState with new _images array and trigger a
-    // 1) re-render of the Gallery
-    // 2) call to componentDidUpdate (next comment there)
-    if (this.state.moveLeft) {
-      // will be false when the transition is done, meanwhile
-      // we not allow to do another transition
+    const { infinite } = this.props;
+    if (this.state.moveLeft || (!infinite && this.state.currentImage === 0)) {
       return null;
     }
-    this.setState(prevState => ({
-      _images: copyLastImageToStart(prevState._images),
-      moveLeft: true,
-    }));
+    this.setState(moveToLeft({ containerRef: this.containerRef }));
   };
 
   handleRightClick = () => {
-    // (same as handleLeftClick)
-    if (this.state.moveRight) {
-      // will be false when the transition is done, meanwhile
-      // we not allow to do another transition
+    const { infinite } = this.props;
+    if (
+      this.state.moveRight ||
+      (!infinite && this.state.currentImage + 1 === this.state._images.length)
+    ) {
       return null;
     }
-    // we copy the 1st image to the end of the original _images array
-    // and the component re-renders so we have one more image
-    // but we as users did not perceive that
-    this.setState(prevState => ({
-      _images: copyStartImageToLast(prevState._images),
-      moveRight: true,
-    }));
+    this.setState(moveToRight({ containerRef: this.containerRef }));
   };
 
   loadMoreImages = () => {
@@ -141,19 +122,21 @@ class MediaGallery extends React.Component<Props, State> {
         (acc, image) => acc + image.clientWidth,
         0,
       );
-      if (totalWidth < this.containerRef.clientWidth) {
-        this.setState(prevState => ({
-          visibleImages:
-            prevState.visibleImages < _images.length
-              ? prevState.visibleImages + 1
-              : prevState.visibleImages,
-        }));
-      } else if (offsetVisibleImages > 0) {
-        this.setState(prevState => ({
-          visibleImages: prevState.visibleImages + offsetVisibleImages,
-          offsetVisibleImages: 0,
-          showArrows: true,
-        }));
+      if (this.containerRef) {
+        if (totalWidth < this.containerRef.clientWidth) {
+          this.setState(prevState => ({
+            visibleImages:
+              prevState.visibleImages < _images.length
+                ? prevState.visibleImages + 1
+                : prevState.visibleImages,
+          }));
+        } else if (offsetVisibleImages > 0) {
+          this.setState(prevState => ({
+            visibleImages: prevState.visibleImages + offsetVisibleImages,
+            offsetVisibleImages: 0,
+            showArrows: true,
+          }));
+        }
       }
     }
   };
@@ -176,103 +159,39 @@ class MediaGallery extends React.Component<Props, State> {
     swiped: false,
     swipLeft: false,
     swipRight: false,
+    swipedRightAbs: 0,
   };
 
   containerRef: ?HTMLDivElement;
 
   componentDidMount() {
-    // const { lazyload, visibleImages } = this.props;
-    // checkPropErrors({ lazyload, visibleImages });
     this.setState({ visibleImages: 1 });
   }
 
-  moveLeft = () => {
-    // 6) the first setState here, happens synchronous on the componentDidUpdate and the previous re-render
-    //    so the user sees on the screen what the setState returns, meaning the offset
-    //    we are setting here (so the re-render with the different _images array + the offset set here)
-    const { _images } = this.state;
-    // we compensate the width of the image added at the beggining by setting the negative offset
-    // of its witdh with no transition, so we cannot notice it is added.
-    this.setState(prevState => ({
-      offsetWidth:
-        prevState.offsetWidth !== 0
-          ? prevState.offsetWidth +
-            getAllChildMedia(this.containerRef)[0].clientWidth
-          : 0 - getAllChildMedia(this.containerRef)[0].clientWidth,
-      transition: prevState.offsetWidth !== 0,
-      visibleImages: prevState.visibleImages + 1,
-      swiped: false,
-      swipRight: false,
-    }));
-    // 7) this operations down here are to prepare the shape the _images array
-    //    should have when the offset scroll ends (so basically remove the added image on the previous steps)
-    const allImagesArray = [..._images];
-    let newArray = [];
-    allImagesArray.splice(_images.length - 1, 1);
-    newArray = [...allImagesArray];
-    // we go from the previous negative offset to 0 offset with a transition, to show the first image it was added
-    setTimeout(
-      () =>
-        this.setState({
-          _images: newArray,
-          offsetWidth: 0,
-          currentImage: 0,
-          transition: true,
-          moveLeft: false,
-        }),
-      0,
-    );
-  };
-
-  moveRight = () => {
-    const { _images } = this.state;
-    this.setState(prevState => ({
-      offsetWidth: 0 - getAllChildMedia(this.containerRef)[0].clientWidth,
-      transition: true,
-      visibleImages: prevState.visibleImages + 1,
-      swiped: false,
-      swipLeft: false,
-    }));
-    const allImagesArray = [..._images];
-    let newArray = [];
-    allImagesArray.splice(0, 1);
-    newArray = [...allImagesArray];
-    setTimeout(
-      () =>
-        this.setState({
-          _images: newArray,
-          offsetWidth: 0,
-          currentImage: 0,
-          transition: false,
-          moveRight: false,
-        }),
-      300,
-    );
-  };
-
   handleMove = (prevState: State) => {
-    // 4) it was componentDidUpdate because of the right/left movement?
-    // 5) if it was, call the corresponding method
     const { moveLeft, moveRight } = this.state;
     if (!prevState.moveLeft && moveLeft) {
-      this.moveLeft();
+      setTimeout(() => this.setState(moveLeftFn), 0);
     }
 
     if (!prevState.moveRight && moveRight) {
-      this.moveRight();
+      setTimeout(() => this.setState(moveRightFn), 300);
     }
   };
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    // 3) we are going to check if we are here because of a move happened
     this.handleMove(prevState);
-
-    if (this.state.swiped && this.state.swipRight && !this.state.moveLeft) {
+    if (
+      this.state.swipedRightAbs < 10 &&
+      this.state.swipedRightAbs > 0 &&
+      this.state.swiped
+    ) {
       this.setState(prevState => ({
         _images: prevState._images.slice(1),
         offsetWidth: 0,
         swiped: false,
         swipRight: false,
+        swipedRightAbs: 0,
       }));
     }
   }
@@ -295,32 +214,27 @@ class MediaGallery extends React.Component<Props, State> {
   };
 
   swipedRight = (e, deltaY, isFlick) => {
-    if (this.state.swipLeft) {
+    const { infinite } = this.props;
+    if (this.state.swipLeft || (!infinite && this.state.currentImage === 0)) {
       return null;
     }
     this.setState({ moveLeft: true });
   };
 
   swipingRight = (e, absX) => {
-    if (this.state.swipLeft) {
+    const { infinite } = this.props;
+    if (this.state.swipLeft || (!infinite && this.state.currentImage === 0)) {
       return null;
     }
     if (this.state.offsetWidth === 0) {
-      this.setState(prevState => ({
-        _images: copyLastImageToStart(this.state._images),
-        offsetWidth:
-          prevState.offsetWidth -
-          getAllChildMedia(this.containerRef)[
-            getAllChildMedia(this.containerRef).length - 1
-          ].clientWidth,
-        transition: false,
-        swipRight: true,
-      }));
+      this.setState(swipingRightInit({ containerRef: this.containerRef }));
     } else {
+      const firstChildMedia = getFirstChildMedia(this.containerRef);
       this.setState({
         offsetWidth:
-          -getAllChildMedia(this.containerRef)[0].clientWidth +
+          -(firstChildMedia ? firstChildMedia.clientWidth : 0) +
           (absX < 100 ? absX : 100),
+        swipedRightAbs: absX < 100 ? absX : 100,
       });
     }
   };

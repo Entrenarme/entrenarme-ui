@@ -83,8 +83,15 @@ const images = [
 ];
 
 storiesOf('MediaGallery', module)
-  .add('Default', () => (
+  .add('Infinite', () => (
     <MediaGallery lazyload infinite offsetVisibleImages={1} images={images}>
+      <MediaGallery.LeftArrow />
+      <MediaGallery.RightArrow />
+      <MediaGallery.Gallery placeholderWidth="300px" imageHeight="200px" />
+    </MediaGallery>
+  ))
+  .add('Not infinite', () => (
+    <MediaGallery lazyload offsetVisibleImages={1} images={images}>
       <MediaGallery.LeftArrow />
       <MediaGallery.RightArrow />
       <MediaGallery.Gallery placeholderWidth="300px" imageHeight="200px" />
