@@ -44,6 +44,7 @@ const MainContainer = styled.div`
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
+  align-self: self-start;
   justify-content: center;
   font-size: 22px;
   width: 50px;
@@ -98,6 +99,8 @@ const TagsContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
+  align-self: self-start;
+
   button {
     background-color: ${props =>
       setColor(props.options.type, 'icon')} !important;
