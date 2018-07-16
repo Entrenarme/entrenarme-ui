@@ -5,7 +5,7 @@ exports[`renders default 1`] = `
   class="MuiFormControlLabel-root-1"
 >
   <span
-    class="MuiButtonBase-root-19 MuiIconButton-root-13 MuiSwitchBase-root-9 MuiCheckbox-root-4 MuiCheckbox-colorSecondary-8 sc-bwzfXH dZMNYA"
+    class="MuiButtonBase-root-19 MuiIconButton-root-13 MuiSwitchBase-root-9 MuiCheckbox-root-4 MuiCheckbox-colorSecondary-8 sc-bwzfXH jjwSZa"
   >
     <span
       class="MuiIconButton-label-18"
@@ -41,7 +41,7 @@ exports[`renders with label 1`] = `
   class="MuiFormControlLabel-root-60"
 >
   <span
-    class="MuiButtonBase-root-78 MuiIconButton-root-72 MuiSwitchBase-root-68 MuiCheckbox-root-63 MuiCheckbox-colorSecondary-67 sc-bwzfXH dZMNYA"
+    class="MuiButtonBase-root-78 MuiIconButton-root-72 MuiSwitchBase-root-68 MuiCheckbox-root-63 MuiCheckbox-colorSecondary-67 sc-bwzfXH jjwSZa"
   >
     <span
       class="MuiIconButton-label-77"

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import Select from '../Select';
+import Select from '../../core/Select';
 
 type ContainerProps = {
   options: {
@@ -11,6 +11,9 @@ type ContainerProps = {
 };
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: ${(props: ContainerProps) =>
+    props.options.column ? 'column' : 'row'};
   display: grid;
   grid-template-columns: ${(props: ContainerProps) =>
     props.options.column ? '1fr' : '1fr 1fr'};
@@ -20,6 +23,7 @@ const Container = styled.div`
 type Props = {
   children: Function,
   column?: boolean,
+  multiple?: boolean,
 };
 
 const Switch = ({ children, column, ...rest }: Props) => (
@@ -30,6 +34,7 @@ const Switch = ({ children, column, ...rest }: Props) => (
 
 Switch.defaultProps = {
   column: false,
+  multiple: false,
 };
 
 export default Switch;

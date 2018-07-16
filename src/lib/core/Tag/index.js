@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import Chip from '@material-ui/core/Chip';
 
@@ -22,7 +22,7 @@ const ExtendedTag = styled(Chip)`
 `;
 
 type Props = {
-  title: string,
+  title: React.Node,
 };
 
 const Tag = ({ title }: Props) => {

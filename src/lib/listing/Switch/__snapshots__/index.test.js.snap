@@ -3,7 +3,7 @@
 exports[`both active 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -48,7 +48,7 @@ exports[`both active 1`] = `
 exports[`first active 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -93,7 +93,7 @@ exports[`first active 1`] = `
 exports[`first active 2`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -138,7 +138,7 @@ exports[`first active 2`] = `
 exports[`first active 3`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -183,7 +183,7 @@ exports[`first active 3`] = `
 exports[`first active 4`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -228,7 +228,7 @@ exports[`first active 4`] = `
 exports[`first active 5`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -273,7 +273,7 @@ exports[`first active 5`] = `
 exports[`none active 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -318,7 +318,7 @@ exports[`none active 1`] = `
 exports[`none active 2`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -363,7 +363,7 @@ exports[`none active 2`] = `
 exports[`none active 3`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -408,7 +408,7 @@ exports[`none active 3`] = `
 exports[`none active 4`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -453,7 +453,7 @@ exports[`none active 4`] = `
 exports[`none active 5`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
@@ -498,7 +498,7 @@ exports[`none active 5`] = `
 exports[`second active 1`] = `
 <div>
   <div
-    class="sc-bdVaJa bBzjfv"
+    class="sc-bdVaJa GnUcV"
   >
     <button
       tabindex="0"
