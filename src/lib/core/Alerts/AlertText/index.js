@@ -99,6 +99,7 @@ type Props = {
   link?: React.Node,
   type?: 'primary' | 'secondary' | 'success' | 'warning' | 'error',
   canClose?: boolean,
+  onClose?: Function,
 };
 
 type State = {
@@ -111,7 +112,7 @@ class AlertText extends React.Component<Props, State> {
   };
 
   render() {
-    const { icon, text, link, type, canClose } = this.props;
+    const { icon, text, link, type, canClose, ...rest } = this.props;
     const { hideState } = this.state;
 
     if (hideState) {
@@ -119,7 +120,7 @@ class AlertText extends React.Component<Props, State> {
     }
 
     return (
-      <MainContainer options={{ type }}>
+      <MainContainer options={{ type }} {...rest}>
         <RequiredContent>
           <IconContainer>{icon}</IconContainer>
           <TextContainer>
@@ -128,7 +129,9 @@ class AlertText extends React.Component<Props, State> {
         </RequiredContent>
         {canClose ? (
           <CloseIconContainer
-            onClick={() => this.setState({ hideState: true })}
+            onClick={() => {
+              this.setState({ hideState: true });
+            }}
           >
             <FontAwesomeIcon icon={faTimes} />
           </CloseIconContainer>
@@ -141,6 +144,7 @@ class AlertText extends React.Component<Props, State> {
 AlertText.defaultProps = {
   type: 'primary',
   canClose: false,
+  onClose: () => {},
 };
 
 export default AlertText;
