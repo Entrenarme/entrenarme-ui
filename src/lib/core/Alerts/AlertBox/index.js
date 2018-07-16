@@ -85,10 +85,15 @@ const BodyContainer = styled.div`
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 7px;
+  margin-top: 10px;
 
   > div {
     margin-top: 10px;
+  }
+
+  /* iPhone 5/6/6+ ----------- */
+  @media only screen and (max-width: 767px) {
+    justify-content: center;
   }
 `;
 
@@ -114,7 +119,15 @@ type Props = {
   type?: 'info' | 'warning',
 };
 
-const AlertBox = ({ icon, title, text, tags, button, type, ...rest }: Props) => {
+const AlertBox = ({
+  icon,
+  title,
+  text,
+  tags,
+  button,
+  type,
+  ...rest
+}: Props) => {
   return (
     <MainContainer options={{ type, button }} {...rest}>
       <IconContainer options={{ type }}>{icon}</IconContainer>

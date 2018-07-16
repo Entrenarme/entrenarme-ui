@@ -39,6 +39,36 @@ const Tags = [
     callback={() => console.log('hola')}
     rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
   />,
+  <FilterTag
+    title="Test"
+    callback={() => console.log('hola')}
+    rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
+  />,
+  <FilterTag
+    title="Test"
+    callback={() => console.log('hola')}
+    rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
+  />,
+  <FilterTag
+    title="Test"
+    callback={() => console.log('hola')}
+    rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
+  />,
+  <FilterTag
+    title="Test"
+    callback={() => console.log('hola')}
+    rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
+  />,
+  <FilterTag
+    title="Test"
+    callback={() => console.log('hola')}
+    rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
+  />,
+  <FilterTag
+    title="Test"
+    callback={() => console.log('hola')}
+    rightIcon={<FontAwesomeIcon icon={faTimes} color={colors.text} />}
+  />,
 ];
 
 storiesOf('Alerts/Alert box', module).add(
