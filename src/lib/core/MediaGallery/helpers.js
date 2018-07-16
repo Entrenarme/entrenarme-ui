@@ -5,7 +5,7 @@ const getAllChildMedia = (
   containerRef: ?HTMLElement,
 ): ?NodeList<HTMLElement> => {
   const allImages =
-    (containerRef && containerRef.querySelectorAll('img')) || null;
+    (containerRef && containerRef.querySelectorAll('.media')) || null;
   return allImages;
 };
 

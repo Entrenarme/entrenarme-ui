@@ -7,9 +7,9 @@ import Arrow from './Arrow';
 import Gallery from './Gallery';
 
 import {
-  getLastChildMedia,
   getFirstChildMedia,
   getAllChildMedia,
+  getNChildMedia,
 } from './helpers';
 
 import {
@@ -41,12 +41,12 @@ export type State = {
   visibleImages: number,
   currentImage: number,
   offsetWidth: number,
+  totalOffsetWidth: number,
   _images: Array<CustomImage>,
   transition: boolean,
   lazyload: boolean,
   handleLeftClick: Function,
   handleRightClick: Function,
-  dontUpdate: boolean,
   offsetVisibleImages: number,
   moveLeft: boolean,
   moveRight: boolean,
@@ -55,23 +55,42 @@ export type State = {
   swipLeft: boolean,
   swipRight: boolean,
   swipedRightAbs: number,
+  swipedLeftAbs: number,
+};
+
+type ArrowProps = {
+  rounded?: boolean,
+  component?: React.Node,
 };
 
 const MediaGalleryContext = React.createContext();
 
 class MediaGallery extends React.Component<Props, State> {
-  static LeftArrow = () => (
+  static LeftArrow = ({ rounded, component }: ArrowProps) => (
     <MediaGalleryContext.Consumer>
       {({ handleLeftClick, showArrows }: State) =>
-        showArrows && <Arrow onClick={handleLeftClick} />
+        showArrows && (
+          <Arrow
+            rounded={rounded}
+            component={component}
+            onClick={handleLeftClick}
+          />
+        )
       }
     </MediaGalleryContext.Consumer>
   );
 
-  static RightArrow = () => (
+  static RightArrow = ({ rounded, component }: ArrowProps) => (
     <MediaGalleryContext.Consumer>
       {({ handleRightClick, showArrows }: State) =>
-        showArrows && <Arrow right onClick={handleRightClick} />
+        showArrows && (
+          <Arrow
+            right
+            rounded={rounded}
+            component={component}
+            onClick={handleRightClick}
+          />
+        )
       }
     </MediaGalleryContext.Consumer>
   );
@@ -145,12 +164,12 @@ class MediaGallery extends React.Component<Props, State> {
     visibleImages: 0,
     currentImage: 0,
     offsetWidth: 0,
+    totalOffsetWidth: 0,
     _images: this.props.images,
     transition: false,
     lazyload: this.props.lazyload,
     handleLeftClick: this.handleLeftClick,
     handleRightClick: this.handleRightClick,
-    dontUpdate: false,
     loadMoreImages: this.loadMoreImages,
     offsetVisibleImages: this.props.offsetVisibleImages,
     moveLeft: false,
@@ -160,6 +179,7 @@ class MediaGallery extends React.Component<Props, State> {
     swipLeft: false,
     swipRight: false,
     swipedRightAbs: 0,
+    swipedLeftAbs: 0,
   };
 
   containerRef: ?HTMLDivElement;
@@ -171,7 +191,10 @@ class MediaGallery extends React.Component<Props, State> {
   handleMove = (prevState: State) => {
     const { moveLeft, moveRight } = this.state;
     if (!prevState.moveLeft && moveLeft) {
-      setTimeout(() => this.setState(moveLeftFn), 0);
+      setTimeout(
+        () => this.setState(moveLeftFn({ containerRef: this.containerRef })),
+        0,
+      );
     }
 
     if (!prevState.moveRight && moveRight) {
@@ -196,26 +219,37 @@ class MediaGallery extends React.Component<Props, State> {
     }
   }
 
-  swipedLeft = (e, deltaY, isFlick) => {
-    if (this.state.swipRight) {
+  swipedLeft = (e, deltaY) => {
+    if (this.state.swipRight || this.state.moveLeft || this.state.moveRight) {
       return null;
     }
     this.handleRightClick();
   };
 
   swipingLeft = (e, absX) => {
-    if (this.state.swipRight) {
+    if (
+      this.state.swipRight ||
+      this.state.currentImage + 1 === this.state._images.length ||
+      this.state.moveLeft ||
+      this.state.moveRight
+    ) {
       return null;
     }
-    this.setState({
-      offsetWidth: 0 - (absX < 100 ? absX : 100),
+    this.setState(prevState => ({
+      offsetWidth: prevState.totalOffsetWidth - (absX < 100 ? absX : 100),
       swipLeft: true,
-    });
+      swipedLeftAbs: absX < 100 ? absX : 100,
+    }));
   };
 
-  swipedRight = (e, deltaY, isFlick) => {
+  swipedRight = (e, deltaY) => {
     const { infinite } = this.props;
-    if (this.state.swipLeft || (!infinite && this.state.currentImage === 0)) {
+    if (
+      this.state.swipLeft ||
+      (!infinite && this.state.currentImage === 0) ||
+      this.state.moveLeft ||
+      this.state.moveRight
+    ) {
       return null;
     }
     this.setState({ moveLeft: true });
@@ -223,19 +257,38 @@ class MediaGallery extends React.Component<Props, State> {
 
   swipingRight = (e, absX) => {
     const { infinite } = this.props;
-    if (this.state.swipLeft || (!infinite && this.state.currentImage === 0)) {
+    if (
+      this.state.swipLeft ||
+      (!infinite && this.state.currentImage === 0) ||
+      this.state.moveLeft ||
+      this.state.moveRight
+    ) {
       return null;
     }
-    if (this.state.offsetWidth === 0) {
+    if (!this.state.swipRight) {
       this.setState(swipingRightInit({ containerRef: this.containerRef }));
     } else {
-      const firstChildMedia = getFirstChildMedia(this.containerRef);
-      this.setState({
-        offsetWidth:
-          -(firstChildMedia ? firstChildMedia.clientWidth : 0) +
-          (absX < 100 ? absX : 100),
-        swipedRightAbs: absX < 100 ? absX : 100,
-      });
+      if (infinite) {
+        const nChildMedia = getNChildMedia(
+          this.containerRef,
+          this.state.currentImage,
+        );
+        this.setState(prevState => ({
+          offsetWidth:
+            prevState.totalOffsetWidth -
+            ((nChildMedia ? nChildMedia.clientWidth : 0) -
+              (absX < nChildMedia.clientWidth
+                ? absX
+                : nChildMedia.clientWidth)),
+          swipedRightAbs:
+            absX < nChildMedia.clientWidth ? absX : nChildMedia.clientWidth,
+        }));
+      } else {
+        this.setState(prevState => ({
+          offsetWidth: prevState.totalOffsetWidth + (absX < 100 ? absX : 100),
+          swipedRightAbs: absX < 100 ? absX : 100,
+        }));
+      }
     }
   };
 

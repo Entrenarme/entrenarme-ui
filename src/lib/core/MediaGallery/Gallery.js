@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
+import Player from 'react-player';
 
 import Image from '../Image';
 import Placeholder from './Placeholder';
@@ -57,9 +58,20 @@ class Gallery extends React.Component<Props> {
               <Placeholder placeholderWidth={placeholderWidth} key={image.key}>
                 placeholder
               </Placeholder>
+            ) : image.value ? (
+              <Player
+                className="media"
+                key={image.key}
+                url={image.value}
+                height={200}
+                width={300}
+                style={{ width: '300px', height: '200px' }}
+                controls
+              />
             ) : (
               <Image
                 key={image.key || image.src}
+                className="media"
                 image={image}
                 imageWidth={imageWidth}
                 imageHeight={imageHeight}

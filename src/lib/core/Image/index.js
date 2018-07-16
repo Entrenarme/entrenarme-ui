@@ -7,6 +7,7 @@ type Props = {
   imageWidth: string,
   imageHeight: string,
   onLoad: Function,
+  className: string,
 };
 
 type ImgProps = {
@@ -29,12 +30,14 @@ const Img = styled.img`
 class Image extends React.Component<Props> {
   static defaultProps = {
     onLoad: () => {},
+    className: '',
   };
 
   render() {
-    const { image, imageWidth, imageHeight, onLoad } = this.props;
+    const { image, imageWidth, imageHeight, onLoad, className } = this.props;
     return (
       <Img
+        className={className}
         onLoad={onLoad}
         src={image.src}
         alt={image.alt}

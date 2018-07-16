@@ -6,6 +6,11 @@ import MediaGallery from './index';
 
 const images = [
   {
+    value: 'http://www.youtube.com/watch?v=9cJf1FKNTMI',
+    key: '-1',
+    alt: 'image0',
+  },
+  {
     src: 'https://dummyimage.com/110x320/ff7f7f/333333.png&text=Sample0',
     key: '0',
     alt: 'image0',
@@ -85,8 +90,8 @@ const images = [
 storiesOf('MediaGallery', module)
   .add('Infinite', () => (
     <MediaGallery lazyload infinite offsetVisibleImages={1} images={images}>
-      <MediaGallery.LeftArrow />
-      <MediaGallery.RightArrow />
+      <MediaGallery.LeftArrow rounded />
+      <MediaGallery.RightArrow component="Arrow" />
       <MediaGallery.Gallery placeholderWidth="300px" imageHeight="200px" />
     </MediaGallery>
   ))
