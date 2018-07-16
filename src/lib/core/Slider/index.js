@@ -1,38 +1,80 @@
 // @flow
 import * as React from 'react';
 import ReactSlider from 'react-slick';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft } from '@fortawesome/pro-light-svg-icons';
+import styled from 'styled-components';
 
-type Props = {};
+import './styles/slick-theme.css';
+import './styles/slick.css';
 
-const Slider = (props: Props) => {
-  var settings = {
+type Props = {
+  children: React.Node,
+  itemsToShow: number,
+};
+
+type ArrowProps = {
+  className?: string,
+  style?: Object,
+  onClick?: Function,
+  icon: React.Node,
+  disabled: boolean,
+};
+
+const StyledSlider = styled(ReactSlider)`
+  .slick-track {
+    width: ${props => (props.options.less ? null : '100% !important')};
+    display: ${props => (props.options.less ? null : 'flex !important')};
+    justify-content: ${props =>
+      props.options.less ? null : 'space-between !important'};
+  }
+`;
+
+const Arrow = ({ className, style, onClick, icon, disabled }: ArrowProps) => {
+  if (disabled) {
+    return null;
+  }
+
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+      }}
+      onClick={onClick}
+    >
+      <FontAwesomeIcon icon={icon} />
+    </div>
+  );
+};
+
+const Slider = ({ children, itemsToShow, ...rest }: Props) => {
+  const settings = {
     dots: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: itemsToShow,
+    slidesToScroll: itemsToShow,
+    infinite: React.Children.count(children) >= itemsToShow,
+    nextArrow: (
+      <Arrow
+        icon={faAngleRight}
+        disabled={React.Children.count(children) <= itemsToShow}
+      />
+    ),
+    prevArrow: (
+      <Arrow
+        icon={faAngleLeft}
+        disabled={React.Children.count(children) <= itemsToShow}
+      />
+    ),
   };
 
   return (
-    <ReactSlider {...settings}>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
-    </ReactSlider>
+    <StyledSlider
+      {...settings}
+      options={{ less: React.Children.count(children) >= itemsToShow }}
+    >
+      {children}
+    </StyledSlider>
   );
 };
 
