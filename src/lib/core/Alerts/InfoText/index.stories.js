@@ -11,7 +11,7 @@ import {
 
 import InfoText from './index';
 
-storiesOf('Info text', module).add(
+storiesOf('Alerts/Info text', module).add(
   'success type',
   withInfo('success type')(() => (
     <InfoText
@@ -22,9 +22,9 @@ storiesOf('Info text', module).add(
   )),
 );
 
-storiesOf('Info text', module).add(
-  'warning type',
-  withInfo('warning type')(() => (
+storiesOf('Alerts/Info text', module).add(
+  'error type',
+  withInfo('error type')(() => (
     <InfoText
       text="error text"
       icon={<FontAwesomeIcon icon={faAmbulance} />}
@@ -33,9 +33,9 @@ storiesOf('Info text', module).add(
   )),
 );
 
-storiesOf('Info text', module).add(
-  'error type',
-  withInfo('error type')(() => (
+storiesOf('Alerts/Info text', module).add(
+  'warning type',
+  withInfo('warning type')(() => (
     <InfoText
       text="warning text"
       icon={<FontAwesomeIcon icon={faAddressBook} />}
