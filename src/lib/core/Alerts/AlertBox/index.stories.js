@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import { action } from '@storybook/addon-actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressBook, faTimes } from '@fortawesome/pro-light-svg-icons';
 
@@ -12,6 +13,10 @@ import AlertBox from './index';
 import Button from '../../Button/index';
 
 import FilterTag from '../../FilterTag/index';
+
+const actions = {
+  onClick: action('onClick'),
+};
 
 const title = 'title test example';
 
@@ -51,6 +56,7 @@ storiesOf('Alerts/Alert box', module).add(
   'with button',
   withInfo('with button')(() => (
     <AlertBox
+      {...actions}
       icon={<FontAwesomeIcon icon={faAddressBook} />}
       title={title}
       text={content}
@@ -63,6 +69,7 @@ storiesOf('Alerts/Alert box', module).add(
   'with button and warning',
   withInfo('with button and warning')(() => (
     <AlertBox
+      {...actions}
       icon={<FontAwesomeIcon icon={faAddressBook} />}
       title={title}
       text={content}
@@ -76,6 +83,7 @@ storiesOf('Alerts/Alert box', module).add(
   'with tags',
   withInfo('with tags')(() => (
     <AlertBox
+      {...actions}
       icon={<FontAwesomeIcon icon={faAddressBook} />}
       title={title}
       text={content}
@@ -88,6 +96,7 @@ storiesOf('Alerts/Alert box', module).add(
   'with tags and button',
   withInfo('with tags and button')(() => (
     <AlertBox
+      {...actions}
       icon={<FontAwesomeIcon icon={faAddressBook} />}
       title={title}
       text={content}

@@ -58,6 +58,7 @@ const BodyContainer = styled.div`
     margin-bottom: 8px !important;
     color: ${props => setColor(props.options.type, 'icon')};
     font-weight: 600 !important;
+    font-size: 1.125rem !important;
   }
 
   p {
@@ -72,6 +73,7 @@ const BodyContainer = styled.div`
   @media only screen and (max-width: 767px) {
     h5 {
       text-align: center;
+      font-size: 1rem !important;
     }
 
     p {
@@ -112,9 +114,9 @@ type Props = {
   type?: 'info' | 'warning',
 };
 
-const AlertBox = ({ icon, title, text, tags, button, type }: Props) => {
+const AlertBox = ({ icon, title, text, tags, button, type, ...rest }: Props) => {
   return (
-    <MainContainer options={{ type, button }}>
+    <MainContainer options={{ type, button }} {...rest}>
       <IconContainer options={{ type }}>{icon}</IconContainer>
       <BodyContainer options={{ type }}>
         <H5>{title}</H5>
