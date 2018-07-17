@@ -79,11 +79,6 @@ storiesOf('Alerts/Alert text', module).add(
         type="error"
         canClose
       />
-      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
-      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
-      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
-      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
-      ahdsfkjashdf
     </div>
   )),
 );

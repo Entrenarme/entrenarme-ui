@@ -50,6 +50,7 @@ const MainContainer = styled.div`
 
     100% {
       height: 0px;
+      padding: 0px;
       opacity: 0;
     }
   }
