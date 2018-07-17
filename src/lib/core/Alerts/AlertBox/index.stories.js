@@ -121,17 +121,3 @@ storiesOf('Alerts/Alert box', module).add(
     />
   )),
 );
-
-storiesOf('Alerts/Alert box', module).add(
-  'with tags and button',
-  withInfo('with tags and button')(() => (
-    <AlertBox
-      {...actions}
-      icon={<FontAwesomeIcon icon={faAddressBook} />}
-      title={title}
-      text={content}
-      tags={Tags}
-      button={<Button>Test</Button>}
-    />
-  )),
-);

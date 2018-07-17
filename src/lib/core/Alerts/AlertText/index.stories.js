@@ -71,12 +71,19 @@ storiesOf('Alerts/Alert text', module).add(
 storiesOf('Alerts/Alert text', module).add(
   'danger type',
   withInfo('danger type')(() => (
-    <AlertText
-      {...actions}
-      text={content}
-      icon={<FontAwesomeIcon icon={faAddressBook} />}
-      type="error"
-      canClose
-    />
+    <div>
+      <AlertText
+        {...actions}
+        text={content}
+        icon={<FontAwesomeIcon icon={faAddressBook} />}
+        type="error"
+        canClose
+      />
+      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
+      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
+      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
+      ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf ahdsfkjashdf
+      ahdsfkjashdf
+    </div>
   )),
 );

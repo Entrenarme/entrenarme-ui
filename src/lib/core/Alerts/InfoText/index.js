@@ -24,6 +24,7 @@ const MainContainer = styled.div`
 `;
 
 const IconContainer = styled.div`
+  display: inherit;
   margin-right: 10px;
 
   /* Smartphones (portrait) ----------- */

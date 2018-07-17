@@ -27,9 +27,9 @@ const setColor = (status, elementType) => {
 const MainContainer = styled.div`
   font-family: ${regularFont};
   display: flex;
+  animation: ${props => props.options.hideState && `fadeOut 1s forwards`};
   align-items: center;
   justify-content: space-between;
-  background-color: red;
   border-radius: 4px;
   padding: 15px 20px;
 
@@ -37,6 +37,21 @@ const MainContainer = styled.div`
 
   > div > div {
     color: ${props => setColor(props.options.type, 'icon')};
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    30% {
+      opacity: 0;
+    }
+
+    100% {
+      height: 0px;
+      opacity: 0;
+    }
   }
 
   /* iPhone 5/6/6+ ----------- */
@@ -58,6 +73,7 @@ const RequiredContent = styled.div`
 const IconContainer = styled.div`
   font-size: 1.375rem;
   margin-right: 20px;
+  align-self: flex-start;
 
   /* iPhone 5/6/6+ ----------- */
   @media only screen and (max-width: 767px) {
@@ -86,6 +102,7 @@ const CloseIconContainer = styled.div`
   cursor: pointer;
   margin-left: 20px;
   color: ${colors.text};
+  align-self: flex-start;
 
   /* iPhone 5/6/6+ ----------- */
   @media only screen and (max-width: 767px) {
@@ -115,12 +132,8 @@ class AlertText extends React.Component<Props, State> {
     const { icon, text, link, type, canClose, ...rest } = this.props;
     const { hideState } = this.state;
 
-    if (hideState) {
-      return null;
-    }
-
     return (
-      <MainContainer options={{ type }} {...rest}>
+      <MainContainer options={{ type, hideState }} {...rest}>
         <RequiredContent>
           <IconContainer>{icon}</IconContainer>
           <TextContainer>
