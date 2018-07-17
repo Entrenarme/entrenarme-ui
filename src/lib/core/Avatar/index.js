@@ -49,29 +49,19 @@ type State = {
 
 class Avatar extends React.Component<Props, State> {
   state = {
-    url: setAvatarURL(this.props.type),
-    type: 'default',
+    url: setAvatarURL(this.props.type, this.props.url),
+    type: this.props.type,
   };
-
-  componentDidMount() {
-    const { url, type } = this.props;
-
-    if (url) {
-      this.setState({
-        url: setAvatarURL(type, url),
-        type,
-      });
-    }
-
-    this.setState({
-      type,
-    });
-  }
 
   render() {
     const { url, type } = this.state;
+
     return <AvatarContainer options={{ url, type }} />;
   }
 }
+
+Avatar.defaultProps = {
+  type: 'default',
+};
 
 export default Avatar;

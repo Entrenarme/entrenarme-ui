@@ -1,47 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders "FilterTag" with title 1`] = `
-<div
-  class="sc-bdVaJa hvSgUa"
->
-  <div
-    class="sc-htpNat jveROB"
-  >
-    test
-  </div>
-</div>
-`;
-
-exports[`renders "FilterTag" with title and addCallback 1`] = `
-<div
-  class="sc-bdVaJa hvSgUa"
->
-  <div
-    class="sc-htpNat jveROB"
-  >
-    test
-  </div>
-</div>
-`;
-
 exports[`renders "FilterTag" with title and callback 1`] = `
 <div
-  class="sc-bdVaJa hvSgUa"
+  class="sc-bdVaJa ekyklS"
 >
   <div
-    class="sc-htpNat jveROB"
-  >
-    test
-  </div>
-</div>
-`;
-
-exports[`renders "FilterTag" with title and removeCallback 1`] = `
-<div
-  class="sc-bdVaJa hvSgUa"
->
-  <div
-    class="sc-htpNat jveROB"
+    class="sc-htpNat jjwzWA"
   >
     test
   </div>
