@@ -4,8 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import Avatar from './index';
 
-const imageURLTest =
-  'https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/main_element/public/media/image/2017/08/coche-mas-pequeno-mundo.jpg?itok=l_wCfddv';
+const imageURLTest = 'profile_good_url.jpg';
 
 storiesOf('Avatar', module).add('default', () => <Avatar url={imageURLTest} />);
 

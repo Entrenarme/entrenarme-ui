@@ -15,14 +15,14 @@ const setAvatarSize = type => {
   }
 };
 
-const setAvatarURL = type => {
+const setAvatarURL = (type, url) => {
   switch (type) {
     case 'header':
-      return `${RESOURCES_URL}profile/36/default.jpg`;
+      return `${RESOURCES_URL}profile/36/${url ? url : 'default.jpg'}`;
     case 'profile':
-      return `${RESOURCES_URL}profile/150/default.jpg`;
+      return `${RESOURCES_URL}profile/150/${url ? url : 'default.jpg'}`;
     default:
-      return `${RESOURCES_URL}profile/40/default.jpg`;
+      return `${RESOURCES_URL}profile/40/${url ? url : 'default.jpg'}`;
   }
 };
 
@@ -42,7 +42,10 @@ type Props = {
   type?: 'header' | 'default' | 'profile',
 };
 
-type State = {};
+type State = {
+  url: string,
+  type: 'header' | 'default' | 'profile',
+};
 
 class Avatar extends React.Component<Props, State> {
   state = {
@@ -55,7 +58,7 @@ class Avatar extends React.Component<Props, State> {
 
     if (url) {
       this.setState({
-        url,
+        url: setAvatarURL(type, url),
         type,
       });
     }
