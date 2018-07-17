@@ -21,8 +21,7 @@ const SeeMoreForcedStyles = styled.div`
 
 type Props = {
   maxChars: number,
-  text: React.Node,
-  actionText: Function,
+  actionText: React.Node,
   children: React.Node,
 };
 
@@ -36,7 +35,7 @@ class SeeMore extends React.Component<Props, State> {
   };
 
   render() {
-    const { maxChars, text, actionText, children } = this.props;
+    const { maxChars, actionText, children } = this.props;
     const { seeMore } = this.state;
 
     return (
@@ -44,9 +43,9 @@ class SeeMore extends React.Component<Props, State> {
         {React.Children.map(children, (child, i) => {
           return child.substring(0, seeMore ? children.length : maxChars);
         })}{' '}
-        {text && !seeMore && children.length > maxChars ? (
+        {actionText && !seeMore && children.length > maxChars ? (
           <SeeMoreForcedStyles onClick={() => this.setState({ seeMore: true })}>
-            ...{text}
+            ...{actionText}
           </SeeMoreForcedStyles>
         ) : null}
       </MainContainer>
