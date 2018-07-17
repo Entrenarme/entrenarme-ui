@@ -15,6 +15,17 @@ const setAvatarSize = type => {
   }
 };
 
+const setAvatarURL = type => {
+  switch (type) {
+    case 'header':
+      return `${RESOURCES_URL}profile/36/default.jpg`;
+    case 'profile':
+      return `${RESOURCES_URL}profile/150/default.jpg`;
+    default:
+      return `${RESOURCES_URL}profile/40/default.jpg`;
+  }
+};
+
 const AvatarContainer = styled.div`
   width: ${props => setAvatarSize(props.options.type)};
   height: ${props => setAvatarSize(props.options.type)};
@@ -31,13 +42,33 @@ type Props = {
   type?: 'header' | 'default' | 'profile',
 };
 
-const Avatar = ({ url, type }: Props) => {
-  return <AvatarContainer options={{ url, type }} />;
-};
+type State = {};
 
-Avatar.defaultProps = {
-  url: `${RESOURCES_URL}profile/150/default.jpg`,
-  type: 'default',
-};
+class Avatar extends React.Component<Props, State> {
+  state = {
+    url: setAvatarURL(this.props.type),
+    type: 'default',
+  };
+
+  componentDidMount() {
+    const { url, type } = this.props;
+
+    if (url) {
+      this.setState({
+        url,
+        type,
+      });
+    }
+
+    this.setState({
+      type,
+    });
+  }
+
+  render() {
+    const { url, type } = this.state;
+    return <AvatarContainer options={{ url, type }} />;
+  }
+}
 
 export default Avatar;

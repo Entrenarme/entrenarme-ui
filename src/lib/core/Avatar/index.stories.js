@@ -20,5 +20,9 @@ storiesOf('Avatar', module).add('profile', () => (
 storiesOf('Avatar', module).add('without url', () => <Avatar />);
 
 storiesOf('Avatar', module).add('header without url', () => (
+  <Avatar type="header" />
+));
+
+storiesOf('Avatar', module).add('profile without url', () => (
   <Avatar type="profile" />
 ));
