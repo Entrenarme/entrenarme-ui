@@ -17,6 +17,14 @@ const getLastChildMedia = containerRef => {
   return null;
 };
 
+const getSecondLastChildMedia = containerRef => {
+  const allChildMedia = getAllChildMedia(containerRef);
+  if (allChildMedia && allChildMedia.length > 0) {
+    return allChildMedia[allChildMedia.length - 2];
+  }
+  return null;
+};
+
 const getFirstChildMedia = containerRef => {
   const allChildMedia = getAllChildMedia(containerRef);
   if (allChildMedia && allChildMedia.length > 0) {
@@ -55,4 +63,5 @@ export {
   getLastChildMedia,
   getFirstChildMedia,
   getNChildMedia,
+  getSecondLastChildMedia,
 };

@@ -1,66 +1,167 @@
 // @flow
 import {
-  getFirstChildMedia,
+  getSecondLastChildMedia,
   getLastChildMedia,
   getNChildMedia,
 } from './helpers';
 
 import type { State, Props } from './index';
 
-const moveToLeft = instanceProps => (prevState: State, props: Props) => {
-  const lastChildMedia = getLastChildMedia(instanceProps.containerRef);
-  const nChildMedia = getNChildMedia(
-    instanceProps.containerRef,
-    prevState.currentImage - 1,
-  );
+const preareToMovePrev = (
+  prevState: State,
+  props: Props,
+  direction: 'prev' | 'next',
+  containerRef: Object,
+) => {
+  const { infinite } = props;
+  /** The current lastChild is the same as the first item, always in infinite
+   * so this is the one will become visible
+   */
+  let childWillBecomeVisible = infinite
+    ? getLastChildMedia(containerRef)
+    : getNChildMedia(containerRef, prevState.currentImage - 1);
+  const childWillBecomeVisibleWidth = childWillBecomeVisible
+    ? childWillBecomeVisible.clientWidth
+    : 0;
 
-  const newState = {
-    _images: props.infinite
-      ? copyLastImageToStart(prevState._images)
-      : prevState._images,
-    offsetWidth: props.infinite
-      ? prevState.offsetWidth -
-        (lastChildMedia ? lastChildMedia.clientWidth : 0)
-      : prevState.offsetWidth + (nChildMedia ? nChildMedia.clientWidth : 0),
-    moveLeft: true,
-    visibleImages: prevState.visibleImages + 1,
-    transition: !props.infinite,
+  /** The second last (length - 2) is the one will be copied to be
+   * the first one, but it will be hidden (by the offset)
+   */
+  const newChildWillBeOffsetHidden = getSecondLastChildMedia(containerRef);
+  const newChildWillBeOffsetHiddenWidth = newChildWillBeOffsetHidden
+    ? newChildWillBeOffsetHidden.clientWidth
+    : 0;
+
+  /** First remove the current last image (because is the one it will become visible)
+   * and then copy the last one to the first one
+   */
+
+  const _images = infinite
+    ? copyLastImageToStart(prevState._images.slice(0, -1))
+    : prevState._images;
+  return {
+    _images,
+    direction,
+    visibleImages:
+      prevState.visibleImages < prevState._images.length
+        ? prevState.visibleImages + 1
+        : prevState.visibleImages,
+    totalOffsetWidth: infinite
+      ? prevState.totalOffsetWidth - newChildWillBeOffsetHiddenWidth
+      : prevState.totalOffsetWidth,
+    offsetWidth: infinite
+      ? prevState.totalOffsetWidth -
+        newChildWillBeOffsetHiddenWidth +
+        (Math.abs(prevState.totalOffsetWidth) - Math.abs(prevState.offsetWidth))
+      : prevState.totalOffsetWidth +
+        Math.abs(prevState.totalOffsetWidth) -
+        Math.abs(prevState.offsetWidth),
+    offsetToRevealNextChild: childWillBecomeVisibleWidth,
+    transition: false,
+    currentImage: infinite ? 0 : prevState.currentImage - 1,
   };
-  return newState;
 };
 
-const moveToRight = instanceProps => (prevState: State, props: Props) => {
+const prepareToMoveNext = (
+  prevState: State,
+  props: Props,
+  direction: 'next' | 'prev',
+  containerRef: Object,
+) => {
   const { infinite } = props;
-  const firstChildMedia = getFirstChildMedia(instanceProps.containerRef);
-  const nChildMedia = getNChildMedia(
-    instanceProps.containerRef,
-    prevState.currentImage,
-  );
+  let firstVisibleChildWidth;
+  if (infinite) {
+    const secondChild = getNChildMedia(containerRef, 1);
+    firstVisibleChildWidth = secondChild ? secondChild.clientWidth : 0;
+  } else {
+    const currentChild = getNChildMedia(containerRef, prevState.currentImage);
+    firstVisibleChildWidth = currentChild ? currentChild.clientWidth : 0;
+  }
 
-  const newState = {
-    _images: props.infinite
-      ? copyStartImageToLast(prevState._images)
-      : prevState._images,
-    moveRight: true,
+  const _images = infinite
+    ? copyStartImageToLast(prevState._images.slice(1))
+    : prevState._images;
+  return {
+    _images,
+    direction,
+    visibleImages:
+      prevState.visibleImages < prevState._images.length
+        ? prevState.visibleImages + 1
+        : prevState.visibleImages,
+    totalOffsetWidth: infinite ? 0 : prevState.totalOffsetWidth,
+    currentImage: infinite ? 0 : prevState.currentImage + 1,
     offsetWidth: infinite
-      ? firstChildMedia
-        ? -firstChildMedia.clientWidth
-        : 0
-      : prevState.offsetWidth +
-        Math.abs(prevState.swipedLeftAbs) -
-        (nChildMedia ? nChildMedia.clientWidth : 0),
-    transition: true,
-    visibleImages: prevState.visibleImages + 1,
-    swiped: false,
-    swipLeft: false,
-    swipedLeftAbs: 0,
+      ? 0 -
+        (Math.abs(prevState.offsetWidth) - Math.abs(prevState.totalOffsetWidth))
+      : prevState.totalOffsetWidth +
+        Math.abs(prevState.totalOffsetWidth) -
+        Math.abs(prevState.offsetWidth),
+    offsetToRevealNextChild: firstVisibleChildWidth,
+    transition: false,
   };
+};
 
-  return newState;
+const prepareImagesOnDOMForMoving = (
+  direction: 'prev' | 'next',
+  containerRef: Object,
+) => (prevState: State, props: Props) => {
+  if (direction === 'prev') {
+    if (!props.infinite && prevState.currentImage === 0) return null;
+    return preareToMovePrev(prevState, props, direction, containerRef);
+  }
+
+  if (direction === 'next') {
+    if (
+      !props.infinite &&
+      prevState.currentImage === prevState._images.length - 1
+    )
+      return null;
+    return prepareToMoveNext(prevState, props, direction, containerRef);
+  }
+};
+
+const moveToPrev = (prevState: State) => {
+  /**
+   * [06, 07, 0, 1, 2, 3, 4, 5, 6]
+   * lastChild = 6 // same as 1st offset child
+   */
+  return {
+    totalOffsetWidth:
+      prevState.totalOffsetWidth + prevState.offsetToRevealNextChild,
+    offsetWidth: prevState.totalOffsetWidth + prevState.offsetToRevealNextChild,
+    offsetToRevealNextChild: 0,
+    transition: true,
+    direction: null,
+  };
+};
+
+const moveToNext = (prevState: State) => {
+  /**
+   * [06, 07, 0, 1, 2, 3, 4, 5, 6]
+   * lastChild = 6 // same as 1st offset child
+   */
+  return {
+    totalOffsetWidth:
+      prevState.totalOffsetWidth - prevState.offsetToRevealNextChild,
+    offsetWidth: prevState.totalOffsetWidth - prevState.offsetToRevealNextChild,
+    offsetToRevealNextChild: 0,
+    transition: true,
+    direction: null,
+  };
 };
 
 const getNewKey = (key: string) => {
   return `0${key}`;
+};
+
+const replaceLastImageToStart = (_images: Array<CustomImage>) => {
+  return [
+    {
+      ..._images[_images.length - 1],
+      key: getNewKey(_images[_images.length - 1].key),
+    },
+    ..._images.slice(0, -1),
+  ];
 };
 
 const copyLastImageToStart = (_images: Array<CustomImage>) => {
@@ -73,79 +174,15 @@ const copyLastImageToStart = (_images: Array<CustomImage>) => {
   ];
 };
 
-const moveLeftFn = instanceProps => (prevState: State, props: Props) => {
-  const { _images } = prevState;
-  const { infinite } = props;
-
-  const allImagesArray = [..._images];
-  let newArray = [];
-  allImagesArray.splice(_images.length - 1, 1);
-  newArray = [...allImagesArray];
-
-  const nChildMedia = getNChildMedia(
-    instanceProps.containerRef,
-    prevState.currentImage - 1,
-  );
-
-  const newState = {
-    _images: infinite ? newArray : prevState._images,
-    offsetWidth: infinite
-      ? 0
-      : prevState.swipRight
-        ? prevState.totalOffsetWidth +
-          (nChildMedia ? nChildMedia.clientWidth : 0)
-        : prevState.offsetWidth,
-    totalOffsetWidth: infinite
-      ? 0
-      : prevState.swipRight
-        ? prevState.totalOffsetWidth +
-          (nChildMedia ? nChildMedia.clientWidth : 0)
-        : prevState.offsetWidth,
-    currentImage:
-      !infinite && prevState.currentImage > 0 ? prevState.currentImage - 1 : 0,
-    transition: true,
-    moveLeft: false,
-    swipRight: false,
-    swipedRightAbs: 0,
-  };
-
-  return newState;
-};
-
-const moveRightFn = (prevState: State, props: Props) => {
-  const { _images } = prevState;
-  const { infinite } = props;
-
-  const allImagesArray = [..._images];
-  let newArray = [];
-  allImagesArray.splice(0, 1);
-  newArray = [...allImagesArray];
-
-  const newState = {
-    _images: infinite ? newArray : prevState._images,
-    offsetWidth: infinite ? 0 : prevState.offsetWidth,
-    totalOffsetWidth: infinite ? 0 : prevState.offsetWidth,
-    currentImage: !infinite ? prevState.currentImage + 1 : 0,
-    transition: false,
-    moveRight: false,
-    swipLeft: false,
-  };
-
-  return newState;
-};
-
 const copyStartImageToLast = (_images: Array<CustomImage>) => {
   return [..._images, { ..._images[0], key: getNewKey(_images[0].key) }];
 };
 
-const swipingRightInit = instanceProps => (prevState: State, props: Props) => {
-  const newState = {
-    ...moveToLeft(instanceProps)(prevState, props),
-    moveLeft: false,
-    swipRight: true,
-  };
-
-  return newState;
+export {
+  copyLastImageToStart,
+  copyStartImageToLast,
+  replaceLastImageToStart,
+  prepareImagesOnDOMForMoving,
+  moveToNext,
+  moveToPrev,
 };
-
-export { moveToLeft, moveToRight, moveLeftFn, moveRightFn, swipingRightInit };

@@ -1,8 +1,13 @@
 // @flow
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import MediaGallery from './index';
+
+const actions = {
+  onMediaClick: action('onMediaClick'),
+};
 
 const images = [
   {
@@ -89,14 +94,14 @@ const images = [
 
 storiesOf('MediaGallery', module)
   .add('Infinite', () => (
-    <MediaGallery lazyload infinite offsetVisibleImages={1} images={images}>
+    <MediaGallery lazyload infinite offsetVisibleImages={3} images={images}>
       <MediaGallery.LeftArrow rounded />
       <MediaGallery.RightArrow component="Arrow" />
       <MediaGallery.Gallery placeholderWidth="300px" imageHeight="200px" />
     </MediaGallery>
   ))
   .add('Not infinite', () => (
-    <MediaGallery lazyload offsetVisibleImages={1} images={images}>
+    <MediaGallery lazyload offsetVisibleImages={3} images={images}>
       <MediaGallery.LeftArrow />
       <MediaGallery.RightArrow />
       <MediaGallery.Gallery placeholderWidth="300px" imageHeight="200px" />
@@ -127,8 +132,10 @@ storiesOf('MediaGallery', module)
           placeholderWidth="300px"
           imageWidth="300px"
           imageHeight="200px"
+          onMediaClick={actions.onMediaClick}
         />
         <MediaGallery.RightArrow />
+        <MediaGallery.LeftArrow />
       </MediaGallery>
     </div>
   ));

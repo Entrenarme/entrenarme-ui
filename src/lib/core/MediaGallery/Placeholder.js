@@ -17,8 +17,11 @@ type Props = {
   placeholderWidth: string,
 };
 
-const Placeholder = ({ placeholderWidth }: Props) => (
-  <Container options={{ placeholderWidth }}>placeholder</Container>
-);
+class Placeholder extends React.Component<Props> {
+  render() {
+    const { placeholderWidth } = this.props;
+    return <Container options={{ placeholderWidth }}>placeholder</Container>;
+  }
+}
 
 export default Placeholder;

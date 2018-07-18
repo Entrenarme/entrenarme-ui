@@ -6,18 +6,13 @@ import Swipeable from 'react-swipeable';
 import Arrow from './Arrow';
 import Gallery from './Gallery';
 
-import {
-  getFirstChildMedia,
-  getAllChildMedia,
-  getNChildMedia,
-} from './helpers';
+import { getAllChildMedia, getNChildMedia, getLastChildMedia } from './helpers';
 
 import {
-  moveLeftFn,
-  moveRightFn,
-  moveToLeft,
-  moveToRight,
-  swipingRightInit,
+  copyLastImageToStart,
+  prepareImagesOnDOMForMoving,
+  moveToNext,
+  moveToPrev,
 } from './moveUtils';
 
 const Container = styled.div`
@@ -41,21 +36,16 @@ export type State = {
   visibleImages: number,
   currentImage: number,
   offsetWidth: number,
-  totalOffsetWidth: number,
   _images: Array<CustomImage>,
   transition: boolean,
   lazyload: boolean,
-  handleLeftClick: Function,
-  handleRightClick: Function,
+  copyImagesAndNoDOMVisibleChanges: Function,
   offsetVisibleImages: number,
-  moveLeft: boolean,
-  moveRight: boolean,
   showArrows: boolean,
-  swiped: boolean,
-  swipLeft: boolean,
-  swipRight: boolean,
-  swipedRightAbs: number,
-  swipedLeftAbs: number,
+  totalOffsetWidth: number,
+  offsetToRevealNextChild: number,
+  direction: 'next' | 'prev' | null,
+  infinite: boolean,
 };
 
 type ArrowProps = {
@@ -68,12 +58,17 @@ const MediaGalleryContext = React.createContext();
 class MediaGallery extends React.Component<Props, State> {
   static LeftArrow = ({ rounded, component }: ArrowProps) => (
     <MediaGalleryContext.Consumer>
-      {({ handleLeftClick, showArrows }: State) =>
-        showArrows && (
+      {({
+        copyImagesAndNoDOMVisibleChanges,
+        showArrows,
+        infinite,
+        currentImage,
+      }: State) =>
+        !showArrows || (!infinite && currentImage === 0) ? null : (
           <Arrow
             rounded={rounded}
             component={component}
-            onClick={handleLeftClick}
+            onClick={() => copyImagesAndNoDOMVisibleChanges('prev')}
           />
         )
       }
@@ -82,13 +77,20 @@ class MediaGallery extends React.Component<Props, State> {
 
   static RightArrow = ({ rounded, component }: ArrowProps) => (
     <MediaGalleryContext.Consumer>
-      {({ handleRightClick, showArrows }: State) =>
-        showArrows && (
+      {({
+        copyImagesAndNoDOMVisibleChanges,
+        showArrows,
+        infinite,
+        currentImage,
+        _images,
+      }: State) =>
+        !showArrows ||
+        (!infinite && currentImage === _images.length - 1) ? null : (
           <Arrow
             right
             rounded={rounded}
             component={component}
-            onClick={handleRightClick}
+            onClick={() => copyImagesAndNoDOMVisibleChanges('next')}
           />
         )
       }
@@ -101,9 +103,11 @@ class MediaGallery extends React.Component<Props, State> {
     placeholderWidth: string,
   }) => (
     <MediaGalleryContext.Consumer>
-      {({ handleLeftClick, handleRightClick, ...rest }: State) => (
-        <Gallery {...rest} {...props} />
-      )}
+      {({
+        handleLeftClick,
+        copyImagesAndNoDOMVisibleChanges,
+        ...rest
+      }: State) => <Gallery {...rest} {...props} />}
     </MediaGalleryContext.Consumer>
   );
 
@@ -111,26 +115,11 @@ class MediaGallery extends React.Component<Props, State> {
     lazyload: false,
     infinite: false,
     visibleImages: null,
-    offsetVisibleImages: 0,
+    offsetVisibleImages: 3,
   };
 
-  handleLeftClick = () => {
-    const { infinite } = this.props;
-    if (this.state.moveLeft || (!infinite && this.state.currentImage === 0)) {
-      return null;
-    }
-    this.setState(moveToLeft({ containerRef: this.containerRef }));
-  };
-
-  handleRightClick = () => {
-    const { infinite } = this.props;
-    if (
-      this.state.moveRight ||
-      (!infinite && this.state.currentImage + 1 === this.state._images.length)
-    ) {
-      return null;
-    }
-    this.setState(moveToRight({ containerRef: this.containerRef }));
+  copyImagesAndNoDOMVisibleChanges = (direction: 'next' | 'prev') => {
+    this.setState(prepareImagesOnDOMForMoving(direction, this.containerRef));
   };
 
   loadMoreImages = () => {
@@ -155,6 +144,29 @@ class MediaGallery extends React.Component<Props, State> {
             offsetVisibleImages: 0,
             showArrows: true,
           }));
+          if (this.props.infinite) {
+            this.setState(prevState => {
+              const lastMedia = getLastChildMedia(this.containerRef);
+              let newState = {
+                _images: copyLastImageToStart(prevState._images),
+                offsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
+                totalOffsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
+              };
+              if (
+                totalWidth - lastMedia.clientWidth <
+                this.containerRef.clientWidth
+              ) {
+                newState = {
+                  ...newState,
+                  visibleImages:
+                    prevState.visibleImages < _images.length
+                      ? prevState.visibleImages + 1
+                      : prevState.visibleImages,
+                };
+              }
+              return newState;
+            });
+          }
         }
       }
     }
@@ -164,143 +176,99 @@ class MediaGallery extends React.Component<Props, State> {
     visibleImages: 0,
     currentImage: 0,
     offsetWidth: 0,
-    totalOffsetWidth: 0,
     _images: this.props.images,
     transition: false,
     lazyload: this.props.lazyload,
-    handleLeftClick: this.handleLeftClick,
-    handleRightClick: this.handleRightClick,
+    copyImagesAndNoDOMVisibleChanges: this.copyImagesAndNoDOMVisibleChanges,
     loadMoreImages: this.loadMoreImages,
     offsetVisibleImages: this.props.offsetVisibleImages,
-    moveLeft: false,
-    moveRight: false,
     showArrows: false,
-    swiped: false,
-    swipLeft: false,
-    swipRight: false,
-    swipedRightAbs: 0,
-    swipedLeftAbs: 0,
+    totalOffsetWidth: 0,
+    offsetToRevealNextChild: 0,
+    direction: null,
+    infinite: this.props.infinite,
   };
 
   containerRef: ?HTMLDivElement;
+
+  checkIfNeedToMoveGallery = (prevState: State) => {
+    if (
+      !prevState.offsetToRevealNextChild &&
+      this.state.offsetToRevealNextChild
+    ) {
+      if (this.state.direction === 'prev') {
+        setTimeout(() => this.setState(moveToPrev), 100);
+      }
+      if (this.state.direction === 'next') {
+        setTimeout(() => this.setState(moveToNext), 100);
+      }
+    }
+  };
 
   componentDidMount() {
     this.setState({ visibleImages: 1 });
   }
 
-  handleMove = (prevState: State) => {
-    const { moveLeft, moveRight } = this.state;
-    if (!prevState.moveLeft && moveLeft) {
-      setTimeout(
-        () => this.setState(moveLeftFn({ containerRef: this.containerRef })),
-        0,
-      );
-    }
-
-    if (!prevState.moveRight && moveRight) {
-      setTimeout(() => this.setState(moveRightFn), 300);
-    }
-  };
-
   componentDidUpdate(prevProps: Props, prevState: State) {
-    this.handleMove(prevState);
-    if (
-      this.state.swipedRightAbs < 10 &&
-      this.state.swipedRightAbs > 0 &&
-      this.state.swiped
-    ) {
-      this.setState(prevState => ({
-        _images: prevState._images.slice(1),
-        offsetWidth: 0,
-        swiped: false,
-        swipRight: false,
-        swipedRightAbs: 0,
-      }));
-    }
+    this.checkIfNeedToMoveGallery(prevState);
   }
 
-  swipedLeft = (e, deltaY) => {
-    if (this.state.swipRight || this.state.moveLeft || this.state.moveRight) {
-      return null;
-    }
-    this.handleRightClick();
+  swipedNext = (e, deltaY) => {
+    this.copyImagesAndNoDOMVisibleChanges('next');
   };
 
-  swipingLeft = (e, absX) => {
+  swipingNext = (e, absX) => {
     if (
-      this.state.swipRight ||
-      this.state.currentImage + 1 === this.state._images.length ||
-      this.state.moveLeft ||
-      this.state.moveRight
+      !this.props.infinite &&
+      this.state.currentImage + 1 === this.state._images.length
     ) {
       return null;
     }
+
     this.setState(prevState => ({
       offsetWidth: prevState.totalOffsetWidth - (absX < 100 ? absX : 100),
-      swipLeft: true,
-      swipedLeftAbs: absX < 100 ? absX : 100,
     }));
   };
 
-  swipedRight = (e, deltaY) => {
-    const { infinite } = this.props;
-    if (
-      this.state.swipLeft ||
-      (!infinite && this.state.currentImage === 0) ||
-      this.state.moveLeft ||
-      this.state.moveRight
-    ) {
-      return null;
-    }
-    this.setState({ moveLeft: true });
+  swipedPrev = (e, deltaY) => {
+    this.copyImagesAndNoDOMVisibleChanges('prev');
   };
 
-  swipingRight = (e, absX) => {
+  swipingPrev = (e, absX) => {
     const { infinite } = this.props;
-    if (
-      this.state.swipLeft ||
-      (!infinite && this.state.currentImage === 0) ||
-      this.state.moveLeft ||
-      this.state.moveRight
-    ) {
+    if (!infinite && this.state.currentImage === 0) {
       return null;
     }
-    if (!this.state.swipRight) {
-      this.setState(swipingRightInit({ containerRef: this.containerRef }));
+    let firstVisibleChildWidth;
+    if (infinite) {
+      const secondChild = getNChildMedia(this.containerRef, 0);
+      firstVisibleChildWidth = secondChild ? secondChild.clientWidth : 0;
     } else {
-      if (infinite) {
-        const nChildMedia = getNChildMedia(
-          this.containerRef,
-          this.state.currentImage,
-        );
-        this.setState(prevState => ({
-          offsetWidth:
-            prevState.totalOffsetWidth -
-            ((nChildMedia ? nChildMedia.clientWidth : 0) -
-              (absX < nChildMedia.clientWidth
-                ? absX
-                : nChildMedia.clientWidth)),
-          swipedRightAbs:
-            absX < nChildMedia.clientWidth ? absX : nChildMedia.clientWidth,
-        }));
-      } else {
-        this.setState(prevState => ({
-          offsetWidth: prevState.totalOffsetWidth + (absX < 100 ? absX : 100),
-          swipedRightAbs: absX < 100 ? absX : 100,
-        }));
-      }
+      const currentChild = getNChildMedia(
+        this.containerRef,
+        this.state.currentImage - 1,
+      );
+      firstVisibleChildWidth = currentChild ? currentChild.clientWidth : 0;
     }
+    this.setState(prevState => {
+      return {
+        offsetWidth:
+          prevState.totalOffsetWidth +
+          (absX < firstVisibleChildWidth ? absX : firstVisibleChildWidth),
+      };
+    });
   };
 
   render() {
     return (
       <MediaGalleryContext.Provider value={this.state}>
         <Swipeable
-          onSwipedLeft={this.swipedLeft}
-          onSwipingLeft={this.swipingLeft}
-          onSwipedRight={this.swipedRight}
-          onSwipingRight={this.swipingRight}
-          onSwiped={e => this.setState({ swiped: true })}
+          trackMouse
+          stopPropagation
+          onSwipedLeft={this.swipedNext}
+          onSwipingLeft={this.swipingNext}
+          onSwipedRight={this.swipedPrev}
+          onSwipingRight={this.swipingPrev}
         >
           <Container innerRef={ref => (this.containerRef = ref)}>
             {this.props.children}

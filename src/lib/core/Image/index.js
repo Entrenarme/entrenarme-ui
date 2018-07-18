@@ -8,6 +8,8 @@ type Props = {
   imageHeight: string,
   onLoad: Function,
   className: string,
+  style: Object,
+  onClick: Function,
 };
 
 type ImgProps = {
@@ -31,12 +33,24 @@ class Image extends React.Component<Props> {
   static defaultProps = {
     onLoad: () => {},
     className: '',
+    style: {},
   };
 
   render() {
-    const { image, imageWidth, imageHeight, onLoad, className } = this.props;
+    const {
+      image,
+      imageWidth,
+      imageHeight,
+      onLoad,
+      className,
+      style,
+      onClick,
+    } = this.props;
     return (
       <Img
+        draggable="false"
+        onClick={onClick}
+        style={style}
         className={className}
         onLoad={onLoad}
         src={image.src}

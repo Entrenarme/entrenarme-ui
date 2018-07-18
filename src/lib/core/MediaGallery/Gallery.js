@@ -32,9 +32,21 @@ type Props = {
   imageWidth: string,
   imageHeight: string,
   loadMoreImages: Function,
+  initialLoad: boolean,
+  onMediaClick: Function,
 };
 
 class Gallery extends React.Component<Props> {
+  static defaultProps = {
+    onMediaClick: null,
+  };
+
+  onMediaClick = (src: string) => () => {
+    if (this.props.onMediaClick) {
+      this.props.onMediaClick(src);
+    }
+  };
+
   render() {
     const {
       offsetWidth,
@@ -46,6 +58,7 @@ class Gallery extends React.Component<Props> {
       imageWidth,
       imageHeight,
       loadMoreImages,
+      onMediaClick,
     } = this.props;
     return (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
@@ -54,7 +67,7 @@ class Gallery extends React.Component<Props> {
             lazyload &&
             visibleImages !== null &&
             index >= visibleImages &&
-            index < _images.length - 1 ? (
+            index < _images.length - 2 ? (
               <Placeholder placeholderWidth={placeholderWidth} key={image.key}>
                 placeholder
               </Placeholder>
@@ -70,6 +83,7 @@ class Gallery extends React.Component<Props> {
               />
             ) : (
               <Image
+                onClick={this.onMediaClick(image.src)}
                 key={image.key || image.src}
                 className="media"
                 image={image}
