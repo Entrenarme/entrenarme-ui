@@ -58,7 +58,7 @@ const BodyContainer = styled.div`
   h5 {
     margin-bottom: 8px !important;
     color: ${props => setColor(props.options.type, 'icon')};
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     font-size: 1.125rem !important;
   }
 
