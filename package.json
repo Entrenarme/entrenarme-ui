@@ -45,6 +45,7 @@
     "lodash": "^4.17.10",
     "rc-slider": "^8.6.1",
     "react-player": "^1.6.4",
+    "react-responsive": "^5.0.0",
     "react-slick": "0.16",
     "react-spring": "^5.4.0",
     "react-swipeable": "^4.3.0",

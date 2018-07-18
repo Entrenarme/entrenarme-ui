@@ -158,7 +158,10 @@ const replaceLastImageToStart = (_images: Array<CustomImage>) => {
   return [
     {
       ..._images[_images.length - 1],
-      key: getNewKey(_images[_images.length - 1].key),
+      keyId: getNewKey(
+        _images[_images.length - 1].keyId ||
+          _images[_images.length - 1].id.toString(),
+      ),
     },
     ..._images.slice(0, -1),
   ];
@@ -168,14 +171,23 @@ const copyLastImageToStart = (_images: Array<CustomImage>) => {
   return [
     {
       ..._images[_images.length - 1],
-      key: getNewKey(_images[_images.length - 1].key),
+      keyId: getNewKey(
+        _images[_images.length - 1].keyId ||
+          _images[_images.length - 1].id.toString(),
+      ),
     },
     ..._images,
   ];
 };
 
 const copyStartImageToLast = (_images: Array<CustomImage>) => {
-  return [..._images, { ..._images[0], key: getNewKey(_images[0].key) }];
+  return [
+    ..._images,
+    {
+      ..._images[0],
+      keyId: getNewKey(_images[0].keyId || _images[0].id.toString()),
+    },
+  ];
 };
 
 export {

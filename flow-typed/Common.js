@@ -8,9 +8,11 @@ declare type Device =
   | 'retina_desktop';
 
 declare type CustomImage = {
-  src: string,
-  alt: string,
-  key: string,
-  lazyload?: boolean,
-  lazySrc?: string,
+  id: number,
+  keyId?: string,
+  order: number,
+  sport_id: number,
+  sport_name: string,
+  type: 'video' | 'image',
+  value: string,
 };

@@ -2,6 +2,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { RESOURCES_URL } from '../../helpers/config';
+
+import FullImage from '../MediaGallery/FullImage';
+
 type Props = {
   image: CustomImage,
   imageWidth: string,
@@ -10,6 +14,8 @@ type Props = {
   className: string,
   style: Object,
   onClick: Function,
+  alt: string,
+  type: 'gallery' | 'original',
 };
 
 type ImgProps = {
@@ -29,12 +35,36 @@ const Img = styled.img`
     props.options.imageHeight && `height: ${props.options.imageHeight}`};
 `;
 
-class Image extends React.Component<Props> {
+const getSrc = (type: 'gallery' | 'original', src) => {
+  if (type === 'gallery') {
+    return `${RESOURCES_URL}gallery/260/${src}`;
+  }
+};
+
+type State = {
+  openDialog: boolean,
+};
+
+class Image extends React.Component<Props, State> {
   static defaultProps = {
     onLoad: () => {},
     className: '',
     style: {},
   };
+
+  state = {
+    openDialog: false,
+  };
+
+  onClick = () => {
+    const { onClick } = this.props;
+    if (onClick) {
+      return onClick();
+    }
+    this.setState({ openDialog: true });
+  };
+
+  onCloseDialog = () => this.setState({ openDialog: false });
 
   render() {
     const {
@@ -44,19 +74,28 @@ class Image extends React.Component<Props> {
       onLoad,
       className,
       style,
-      onClick,
+      alt,
+      type,
     } = this.props;
+    const { openDialog } = this.state;
     return (
-      <Img
-        draggable="false"
-        onClick={onClick}
-        style={style}
-        className={className}
-        onLoad={onLoad}
-        src={image.src}
-        alt={image.alt}
-        options={{ imageWidth, imageHeight }}
-      />
+      <React.Fragment>
+        <Img
+          draggable="false"
+          onClick={this.onClick}
+          style={style}
+          className={className}
+          onLoad={onLoad}
+          src={getSrc(type, image.value)}
+          alt={alt}
+          options={{ imageWidth, imageHeight }}
+        />
+        <FullImage
+          open={openDialog}
+          image={image}
+          onClose={this.onCloseDialog}
+        />
+      </React.Fragment>
     );
   }
 }

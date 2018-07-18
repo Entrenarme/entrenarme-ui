@@ -34,16 +34,20 @@ type Props = {
   loadMoreImages: Function,
   initialLoad: boolean,
   onMediaClick: Function,
+  trainerName: string,
 };
 
 class Gallery extends React.Component<Props> {
   static defaultProps = {
     onMediaClick: null,
+    trainerName: '',
   };
 
   onMediaClick = (src: string) => () => {
     if (this.props.onMediaClick) {
       this.props.onMediaClick(src);
+    } else {
+      return null;
     }
   };
 
@@ -58,7 +62,7 @@ class Gallery extends React.Component<Props> {
       imageWidth,
       imageHeight,
       loadMoreImages,
-      onMediaClick,
+      trainerName,
     } = this.props;
     return (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
@@ -68,25 +72,41 @@ class Gallery extends React.Component<Props> {
             visibleImages !== null &&
             index >= visibleImages &&
             index < _images.length - 2 ? (
-              <Placeholder placeholderWidth={placeholderWidth} key={image.key}>
+              <Placeholder
+                placeholderWidth={placeholderWidth}
+                key={image.keyId || image.id}
+              >
                 placeholder
               </Placeholder>
-            ) : image.value ? (
-              <Player
+            ) : image.type === 'video' ? (
+              <div
                 className="media"
-                key={image.key}
-                url={image.value}
-                height={200}
-                width={300}
-                style={{ width: '300px', height: '200px' }}
-                controls
-              />
+                key={image.keyId || image.id}
+                style={{
+                  width: `${placeholderWidth}px`,
+                  height: `${imageHeight}px`,
+                }}
+              >
+                <Player
+                  url={image.value}
+                  onReady={loadMoreImages}
+                  height={imageHeight}
+                  width={placeholderWidth}
+                  controls
+                />
+              </div>
             ) : (
               <Image
-                onClick={this.onMediaClick(image.src)}
-                key={image.key || image.src}
+                type="gallery"
+                onClick={
+                  this.props.onMediaClick
+                    ? this.onMediaClick(image.value)
+                    : null
+                }
+                key={image.keyId || image.id}
                 className="media"
                 image={image}
+                alt={`${trainerName} ${image.sport_name}`}
                 imageWidth={imageWidth}
                 imageHeight={imageHeight}
                 onLoad={loadMoreImages}
