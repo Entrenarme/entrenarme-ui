@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import Avatar from './index';
 
-const imageURLTest = 'profile_good_url.jpg';
+const imageURLTest = 'xB1sQl1TuP0yFj7qn8gb_sebas-b.jpg';
 
 storiesOf('Avatar', module).add('default', () => <Avatar url={imageURLTest} />);
 
