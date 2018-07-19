@@ -13,7 +13,7 @@ const MainChipContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
 
-  margin-right: 20px;
+  margin-right: 10px;
 
   background-color: ${colors.white.default};
   border-radius: 50px;
