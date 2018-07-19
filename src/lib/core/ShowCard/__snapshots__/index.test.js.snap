@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Heading" with no props 1`] = `
+<div
+  class="MuiPaper-root-61 MuiPaper-elevation1-64 MuiExpansionPanel-root-58 sc-bwzfXH loEQcT"
+>
+  <div
+    tabindex="0"
+    class="MuiButtonBase-root-94 MuiExpansionPanelSummary-root-88 sc-htpNat iUdPZr"
+    role="button"
+    aria-expanded="false"
+  >
+    <div
+      class="MuiExpansionPanelSummary-content-92"
+    >
+      <h4
+        class="sc-bdVaJa iRxabv"
+        style="font-weight: 600; margin: 0px;"
+      />
+    </div>
+    <div
+      tabindex="-1"
+      class="MuiButtonBase-root-94 MuiIconButton-root-97 MuiExpansionPanelSummary-expandIcon-93"
+      role="button"
+      aria-hidden="true"
+    >
+      <span
+        class="MuiIconButton-label-102"
+      >
+        <svg
+          aria-hidden="true"
+          data-prefix="fal"
+          data-icon="angle-down"
+          class="svg-inline--fa fa-angle-down fa-w-8 "
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 512"
+        >
+          <path
+            fill="currentColor"
+            d="M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z"
+          />
+        </svg>
+      </span>
+      <span
+        class="MuiTouchRipple-root-103"
+      />
+    </div>
+  </div>
+  <div
+    class="MuiCollapse-container-110"
+    style="min-height: 0px;"
+    aria-hidden="true"
+  >
+    <div
+      class="MuiCollapse-wrapper-112"
+    >
+      <div
+        class="MuiCollapse-wrapperInner-113"
+      >
+        <div
+          class="MuiExpansionPanelDetails-root-114 sc-bxivhb Ukcuw"
+        >
+          <div
+            class="sc-ifAKCX eSrJSp"
+          >
+            Heading
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders "Heading" with title 1`] = `
+<div
+  class="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1 sc-bwzfXH loEQcT"
+>
+  <div
+    tabindex="0"
+    class="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31 sc-htpNat iUdPZr"
+    role="button"
+    aria-expanded="false"
+  >
+    <div
+      class="MuiExpansionPanelSummary-content-35"
+    >
+      <h4
+        class="sc-bdVaJa iRxabv"
+        style="font-weight: 600; margin: 0px;"
+      >
+        Mis cosas
+      </h4>
+    </div>
+    <div
+      tabindex="-1"
+      class="MuiButtonBase-root-37 MuiIconButton-root-40 MuiExpansionPanelSummary-expandIcon-36"
+      role="button"
+      aria-hidden="true"
+    >
+      <span
+        class="MuiIconButton-label-45"
+      >
+        <svg
+          aria-hidden="true"
+          data-prefix="fal"
+          data-icon="angle-down"
+          class="svg-inline--fa fa-angle-down fa-w-8 "
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 512"
+        >
+          <path
+            fill="currentColor"
+            d="M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z"
+          />
+        </svg>
+      </span>
+      <span
+        class="MuiTouchRipple-root-46"
+      />
+    </div>
+  </div>
+  <div
+    class="MuiCollapse-container-53"
+    style="min-height: 0px;"
+    aria-hidden="true"
+  >
+    <div
+      class="MuiCollapse-wrapper-55"
+    >
+      <div
+        class="MuiCollapse-wrapperInner-56"
+      >
+        <div
+          class="MuiExpansionPanelDetails-root-57 sc-bxivhb Ukcuw"
+        >
+          <div
+            class="sc-ifAKCX eSrJSp"
+          >
+            Heading
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

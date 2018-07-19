@@ -1,18 +1,681 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders default with no props 1`] = `
+exports[`add disabled button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa cNrUNG"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-180"
+  >
+    <span>
+      default disabled
+    </span>
+  </span>
+</button>
+`;
+
+exports[`add icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-23 MuiButton-root-1 MuiButton-flat-5 sc-bdVaJa fmZshU"
-  type="primary"
+  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa cbcxry"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-180"
+  >
+    <span
+      class="sc-bwzfXH czactv"
+    >
+      <svg
+        aria-hidden="true"
+        data-prefix="fas"
+        data-icon="coffee"
+        class="svg-inline--fa fa-coffee fa-w-20 "
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 512"
+      >
+        <path
+          fill="currentColor"
+          d="M192 384h192c53 0 96-43 96-96h32c70.6 0 128-57.4 128-128S582.6 32 512 32H120c-13.3 0-24 10.7-24 24v232c0 53 43 96 96 96zM512 96c35.3 0 64 28.7 64 64s-28.7 64-64 64h-32V96h32zm47.7 384H48.3c-47.6 0-61-64-36-64h583.3c25 0 11.8 64-35.9 64z"
+        />
+      </svg>
+    </span>
+    <span>
+      default with icon
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-222"
+  />
+</button>
+`;
+
+exports[`add loading button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa kxuXFA"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-180"
+  >
+    <div
+      class="MuiCircularProgress-root-213 MuiCircularProgress-colorPrimary-216 MuiCircularProgress-indeterminate-215"
+      style="margin-right: 10px; color: rgba(0, 181, 226, 0.6);"
+      role="progressbar"
+    >
+      <svg
+        class="MuiCircularProgress-svg-218"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle-219 MuiCircularProgress-circleIndeterminate-221"
+          cx="44"
+          cy="44"
+          r="20.2"
+          fill="none"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+    <span>
+      loading
+    </span>
+  </span>
+</button>
+`;
+
+exports[`default button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa gjZMZu"
+  type="button"
+  options="[object Object]"
 >
   <span
     class="MuiButton-label-2"
   >
-    default
+    <span>
+      default
+    </span>
   </span>
   <span
-    class="MuiTouchRipple-root-26"
+    class="MuiTouchRipple-root-28"
+  />
+</button>
+`;
+
+exports[`default disabled button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa fRvfUR"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span>
+      default disabled
+    </span>
+  </span>
+</button>
+`;
+
+exports[`default error button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa hTCEyd"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span>
+      error
+    </span>
+  </span>
+</button>
+`;
+
+exports[`default error color button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa hTCEyd"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span>
+      error color
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-44"
+  />
+</button>
+`;
+
+exports[`default icon button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa gjZMZu"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span
+      class="sc-bwzfXH czactv"
+    >
+      <svg
+        aria-hidden="true"
+        data-prefix="fas"
+        data-icon="coffee"
+        class="svg-inline--fa fa-coffee fa-w-20 "
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 512"
+      >
+        <path
+          fill="currentColor"
+          d="M192 384h192c53 0 96-43 96-96h32c70.6 0 128-57.4 128-128S582.6 32 512 32H120c-13.3 0-24 10.7-24 24v232c0 53 43 96 96 96zM512 96c35.3 0 64 28.7 64 64s-28.7 64-64 64h-32V96h32zm47.7 384H48.3c-47.6 0-61-64-36-64h583.3c25 0 11.8 64-35.9 64z"
+        />
+      </svg>
+    </span>
+    <span>
+      default with icon
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-58"
+  />
+</button>
+`;
+
+exports[`default loading button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa lkMVbx"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <div
+      class="MuiCircularProgress-root-35 MuiCircularProgress-colorPrimary-38 MuiCircularProgress-indeterminate-37"
+      style="margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
+      role="progressbar"
+    >
+      <svg
+        class="MuiCircularProgress-svg-40"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle-41 MuiCircularProgress-circleIndeterminate-43"
+          cx="44"
+          cy="44"
+          r="20.2"
+          fill="none"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+    <span>
+      loading
+    </span>
+  </span>
+</button>
+`;
+
+exports[`default secondary button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa ffUUeT"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span>
+      secondary
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-28"
+  />
+</button>
+`;
+
+exports[`default success button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa ffLXpW"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span>
+      success
+    </span>
+  </span>
+</button>
+`;
+
+exports[`default success color button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa ffLXpW"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span>
+      success color
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-51"
+  />
+</button>
+`;
+
+exports[`default warning button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa jXMqsE"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-2"
+  >
+    <span />
+  </span>
+  <span
+    class="MuiTouchRipple-root-28"
+  />
+</button>
+`;
+
+exports[`link default 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa jMXsoX"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-130"
+  >
+    <span>
+      link
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-156"
+  />
+</button>
+`;
+
+exports[`link disabled button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa KIcjQ"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-130"
+  >
+    <span>
+      default disabled
+    </span>
+  </span>
+</button>
+`;
+
+exports[`link icon button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa jMXsoX"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-130"
+  >
+    <span
+      class="sc-bwzfXH czactv"
+    >
+      <svg
+        aria-hidden="true"
+        data-prefix="fas"
+        data-icon="coffee"
+        class="svg-inline--fa fa-coffee fa-w-20 "
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 512"
+      >
+        <path
+          fill="currentColor"
+          d="M192 384h192c53 0 96-43 96-96h32c70.6 0 128-57.4 128-128S582.6 32 512 32H120c-13.3 0-24 10.7-24 24v232c0 53 43 96 96 96zM512 96c35.3 0 64 28.7 64 64s-28.7 64-64 64h-32V96h32zm47.7 384H48.3c-47.6 0-61-64-36-64h583.3c25 0 11.8 64-35.9 64z"
+        />
+      </svg>
+    </span>
+    <span>
+      default with icon
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-172"
+  />
+</button>
+`;
+
+exports[`link loading button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa jFnHCu"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-130"
+  >
+    <div
+      class="MuiCircularProgress-root-163 MuiCircularProgress-colorPrimary-166 MuiCircularProgress-indeterminate-165"
+      style="margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
+      role="progressbar"
+    >
+      <svg
+        class="MuiCircularProgress-svg-168"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle-169 MuiCircularProgress-circleIndeterminate-171"
+          cx="44"
+          cy="44"
+          r="20.2"
+          fill="none"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+    <span>
+      loading
+    </span>
+  </span>
+</button>
+`;
+
+exports[`outline default 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa gyItIq"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span>
+      outline
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-92"
+  />
+</button>
+`;
+
+exports[`outline disabled button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span>
+      default disabled
+    </span>
+  </span>
+</button>
+`;
+
+exports[`outline error button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span>
+      error
+    </span>
+  </span>
+</button>
+`;
+
+exports[`outline error color button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa igAhgd"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span>
+      error color
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-108"
+  />
+</button>
+`;
+
+exports[`outline icon button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa gyItIq"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span
+      class="sc-bwzfXH czactv"
+    >
+      <svg
+        aria-hidden="true"
+        data-prefix="fas"
+        data-icon="coffee"
+        class="svg-inline--fa fa-coffee fa-w-20 "
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 512"
+      >
+        <path
+          fill="currentColor"
+          d="M192 384h192c53 0 96-43 96-96h32c70.6 0 128-57.4 128-128S582.6 32 512 32H120c-13.3 0-24 10.7-24 24v232c0 53 43 96 96 96zM512 96c35.3 0 64 28.7 64 64s-28.7 64-64 64h-32V96h32zm47.7 384H48.3c-47.6 0-61-64-36-64h583.3c25 0 11.8 64-35.9 64z"
+        />
+      </svg>
+    </span>
+    <span>
+      default with icon
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-122"
+  />
+</button>
+`;
+
+exports[`outline loading button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <div
+      class="MuiCircularProgress-root-99 MuiCircularProgress-colorPrimary-102 MuiCircularProgress-indeterminate-101"
+      style="margin-right: 10px; color: rgb(18, 85, 102);"
+      role="progressbar"
+    >
+      <svg
+        class="MuiCircularProgress-svg-104"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle-105 MuiCircularProgress-circleIndeterminate-107"
+          cx="44"
+          cy="44"
+          r="20.2"
+          fill="none"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+    <span>
+      loading
+    </span>
+  </span>
+</button>
+`;
+
+exports[`outline secondary button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa gMHwuN"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span>
+      secondary
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-92"
+  />
+</button>
+`;
+
+exports[`outline success button 1`] = `
+<button
+  tabindex="-1"
+  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  type="button"
+  options="[object Object]"
+  disabled=""
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span>
+      success
+    </span>
+  </span>
+</button>
+`;
+
+exports[`outline success color button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa fSsuLI"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span>
+      success color
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-115"
+  />
+</button>
+`;
+
+exports[`outline warning button 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa cIBlmP"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-66"
+  >
+    <span />
+  </span>
+  <span
+    class="MuiTouchRipple-root-92"
+  />
+</button>
+`;
+
+exports[`renders add 1`] = `
+<button
+  tabindex="0"
+  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa cbcxry"
+  type="button"
+  options="[object Object]"
+>
+  <span
+    class="MuiButton-label-180"
+  >
+    <span>
+      add
+    </span>
+  </span>
+  <span
+    class="MuiTouchRipple-root-206"
   />
 </button>
 `;

@@ -1,11 +1,20 @@
 // @flow
-declare type ButtonType =
+declare type ButtonColorVariant =
   | 'primary'
   | 'secondary'
   | 'warning'
-  | 'link'
   | 'error'
-  | 'success'
-  | 'add';
+  | 'success';
 
-declare type ButtonState = 'outline' | 'disabled' | 'loading' | 'icon';
+declare type ButtonType = 'default' | 'link' | 'add' | 'outline' | 'icon';
+
+declare type ButtonState = 'default' | 'loading' | 'error' | 'success';
+
+declare type ButtonDisabled = boolean;
+
+declare type ButtonSize =
+  | 'small'
+  | 'default'
+  | 'large'
+  | 'xlarge'
+  | 'fullwidth';

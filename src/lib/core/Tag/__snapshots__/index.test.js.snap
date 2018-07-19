@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Tag" with title 1`] = `
+<div
+  role="button"
+  class="MuiChip-root-1 sc-bdVaJa eHiRQO"
+  tabindex="-1"
+>
+  <span
+    class="MuiChip-label-6"
+  >
+    Test
+  </span>
+</div>
+`;

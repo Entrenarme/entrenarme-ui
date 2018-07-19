@@ -1,113 +1,102 @@
 // @flow
 import * as React from 'react';
-import MButton from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import styled from 'styled-components';
 
-import * as fonts from '../../helpers/fonts';
 import colors from '../../helpers/colors';
+import { textToRender, getButtonFontSize } from './utils';
+import { SButton, Icon } from './styles';
 
-type ButtonProps = {
-  options: {
-    type: ButtonType,
-    state: ButtonState,
-  },
-};
-
-const getBgColor = (
-  buttonType: ButtonType,
-  options: 'default' | 'active',
-  state: ButtonState,
-) => {
-  if (state === 'outline' || buttonType === 'link') {
-    return colors.white;
-  }
-  if (state === 'disabled') {
-    return colors.gray.default;
-  }
-  if (colors[buttonType]) {
-    return colors[buttonType][options];
-  }
-  if (buttonType === 'add') {
-    return colors.gray[options === 'default' ? 'default' : 'light'];
-  }
-  return colors.white;
-};
-
-const getColor = (buttonType: ButtonType, state: string) => {
-  if (state === 'outline') {
-    return colors[buttonType].default;
-  }
-  if (state === 'loading') {
-    if (buttonType === 'link') {
-      return colors.gray.loading;
-    }
-    if (buttonType === 'add') {
-      return colors.secondary.loading;
-    }
-  }
-  if (state === 'disabled') {
-    return colors.gray.dark;
-  }
-  if (buttonType === 'link' || buttonType === 'add') {
-    return colors.secondary.default;
-  }
-  return colors.white;
-};
-
-const SButton = styled(MButton)`
-  background-color: ${(props: ButtonProps) =>
-    getBgColor(props.options.type, 'default', props.options.state)} !important;
-  ${(props: ButtonProps) =>
-    props.options.state === 'outline'
-      ? `	border: 2px solid ${getColor(
-          props.options.type,
-          props.options.state,
-        )} !important`
-      : ''};
-  :hover {
-    background-color: ${(props: ButtonProps) =>
-      getBgColor(props.options.type, 'active', props.options.state)} !important;
-  }
-  span {
-    color: ${(props: ButtonProps) =>
-      getColor(props.options.type, props.options.state)};
-    font-family: ${fonts.mainFont};
-  }
-`;
+import Responsive from '../../helpers/Responsive';
 
 type Props = {
   /** This is what is gonig to be rendered inside the button */
   children: React.Node,
   /** onClick handler passed down to the button */
   onClick?: Function,
-  /** type of the button, will change the color basically */
+  /** type of the button, 'default' | 'link' | 'add' | 'outline' */
   type?: ButtonType,
-  state?: string,
+  /** state of the button, 'outline' | 'disabled' | 'loading' | 'icon' */
+  state?: ButtonState,
+  /** the color of the button, | 'primary' | 'secondary' | 'warning' | 'error' | 'success' */
+  colorVariant?: ButtonColorVariant,
+  /** the element to be placed on the button */
   icon?: React.Node,
+  /** if the button is in disabled state */
+  disabled?: ButtonDisabled,
+  /** text to be rendered on the loading state */
+  loadingText?: React.Node,
+  /** text to be rendered on the error state */
+  errorText?: React.Node,
+  /** text to be rendered on the success state */
+  successText?: React.Node,
+  /** the size of the button */
+  size?: ButtonSize,
+  /** to render the active variant of the current colorVariant */
+  active?: boolean,
 };
 
-const Icon = styled.span`
-  margin-right: 10px;
-  height: 18px;
-`;
-
-const Button = ({ children, type, state, icon, ...rest }: Props) => (
-  <SButton
-    options={{ type, state }}
-    disabled={state === 'loading' || state === 'disabled'}
-    {...rest}
-  >
-    {icon ? <Icon>{icon}</Icon> : null}{' '}
-    {state === 'loading' ? <CircularProgress /> : null} <span>{children}</span>
-  </SButton>
+const Button = ({
+  children,
+  type,
+  state,
+  icon,
+  colorVariant,
+  disabled,
+  defaultText,
+  loadingText,
+  errorText,
+  successText,
+  size,
+  active,
+  ...rest
+}: Props) => (
+  <Responsive>
+    {({ device }) => (
+      <SButton
+        options={{ type, state, colorVariant, disabled, size, device, active }}
+        disabled={
+          state === 'loading' ||
+          state === 'error' ||
+          state === 'success' ||
+          disabled
+        }
+        {...rest}
+      >
+        {icon ? <Icon options={{ size, device }}>{icon}</Icon> : null}{' '}
+        {state === 'loading' ? (
+          <CircularProgress
+            style={{
+              height: getButtonFontSize(size, device),
+              width: getButtonFontSize(size, device),
+              marginRight: '10px',
+              color:
+                type === 'add'
+                  ? colors.secondary.loading
+                  : type === 'outline'
+                    ? colors[colorVariant].default
+                    : colors.gray.loading,
+            }}
+          />
+        ) : null}{' '}
+        <span>
+          {textToRender(state, children, loadingText, errorText, successText)}
+        </span>
+      </SButton>
+    )}
+  </Responsive>
 );
 
 Button.defaultProps = {
   onClick: () => {},
-  type: 'primary',
-  state: '',
+  type: 'default',
+  state: 'default',
   icon: null,
+  disabled: false,
+  colorVariant: 'primary',
+  loadingText: '',
+  errorText: '',
+  successText: '',
+  size: 'default',
 };
 
 export default Button;
