@@ -41,7 +41,7 @@ const HeaderContainer = styled.div`
   margin-bottom: 30px;
 
   * {
-    margin-bottom: 0px;
+    margin-bottom: 0px !important;
   }
 
   svg {
@@ -61,7 +61,15 @@ const MiddleContainer = styled.div`
     props.options.align === 'center' ? 'center' : 'initial'};
 `;
 
-const BodyContainer = styled.div``;
+const BodyContainer = styled.div`
+  *:only-child {
+    margin-bottom: 0px;
+  }
+
+  *:last-child {
+    margin-bottom: 0px;
+  }
+`;
 
 const FooterContainer = styled.div`
   display: flex;
@@ -70,6 +78,11 @@ const FooterContainer = styled.div`
   margin-top: 30px;
 
   @media only screen and (max-width: 767px) {
+    * {
+      display: flex;
+      flex-direction: column;
+    }
+
     flex-direction: column;
   }
 `;

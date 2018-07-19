@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 import Dialog from './index';
 import H4 from '../Text/Headers/H4/index';
+import P from '../Text/Paragraph/index';
 import Button from '../Button/index';
 
 let openDialog = false;
@@ -19,15 +20,13 @@ storiesOf('Dialog', module).add('default', () => (
     open={true}
     onClose={() => (openDialog = false)}
     header={<H4>TEST</H4>}
-    body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-      magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut rhoncus
-      magna euismod et. Donec condimentum congue sapien, nec auctor eros
-      sagittis eget."
-    footer={
-      <div>
-        <Button>Test</Button>
-        <Button>Test</Button>
-      </div>
+    body={
+      <P>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
+        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
+        eros sagittis eget.
+      </P>
     }
   />
 ));
@@ -38,10 +37,14 @@ storiesOf('Dialog', module).add('large', () => (
     open={true}
     onClose={() => (openDialog = false)}
     header={<H4>TEST</H4>}
-    body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-      magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut rhoncus
-      magna euismod et. Donec condimentum congue sapien, nec auctor eros
-      sagittis eget."
+    body={
+      <P>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
+        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
+        eros sagittis eget.
+      </P>
+    }
     footer={<Button>Test</Button>}
     type="large"
   />
@@ -53,10 +56,14 @@ storiesOf('Dialog', module).add('small', () => (
     open={true}
     onClose={() => (openDialog = false)}
     header={<H4>TEST</H4>}
-    body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-      magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut rhoncus
-      magna euismod et. Donec condimentum congue sapien, nec auctor eros
-      sagittis eget."
+    body={
+      <P>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
+        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
+        eros sagittis eget.
+      </P>
+    }
     footer={<Button>Test</Button>}
     type="small"
   />
@@ -68,10 +75,14 @@ storiesOf('Dialog', module).add('with centered content', () => (
     open={true}
     onClose={() => (openDialog = false)}
     header={<H4>TEST</H4>}
-    body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-      magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut rhoncus
-      magna euismod et. Donec condimentum congue sapien, nec auctor eros
-      sagittis eget."
+    body={
+      <P>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
+        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
+        eros sagittis eget.
+      </P>
+    }
     footer={<Button>Test</Button>}
     align="center"
   />
@@ -82,10 +93,14 @@ storiesOf('Dialog', module).add('without header', () => (
     {...actions}
     open={true}
     onClose={() => (openDialog = false)}
-    body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-      magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut rhoncus
-      magna euismod et. Donec condimentum congue sapien, nec auctor eros
-      sagittis eget."
+    body={
+      <P>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
+        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
+        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
+        eros sagittis eget.
+      </P>
+    }
     footer={<Button>Test</Button>}
   />
 ));
