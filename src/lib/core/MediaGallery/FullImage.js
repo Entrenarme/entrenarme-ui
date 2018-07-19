@@ -23,7 +23,6 @@ class FullImage extends React.Component<Props> {
 
   render() {
     const { image, open } = this.props;
-    console.log(image);
     return (
       <Dialog open={open} onClose={this.onCloseDialog}>
         <img

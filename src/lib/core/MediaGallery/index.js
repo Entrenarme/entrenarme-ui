@@ -46,6 +46,7 @@ export type State = {
   offsetToRevealNextChild: number,
   direction: 'next' | 'prev' | null,
   infinite: boolean,
+  allowNextMove: boolean,
 };
 
 type ArrowProps = {
@@ -83,9 +84,11 @@ class MediaGallery extends React.Component<Props, State> {
         infinite,
         currentImage,
         _images,
+        allowNextMove,
       }: State) =>
         !showArrows ||
-        (!infinite && currentImage === _images.length - 1) ? null : (
+        (!infinite && currentImage === _images.length - 1) ||
+        !allowNextMove ? null : (
           <Arrow
             right
             rounded={rounded}
@@ -116,6 +119,27 @@ class MediaGallery extends React.Component<Props, State> {
     infinite: false,
     visibleImages: null,
     offsetVisibleImages: 3,
+  };
+
+  checkIfNeedToHideRightArrow = () => {
+    const { _images, currentImage, allowNextMove } = this.state;
+    const allChildMedia = getAllChildMedia(this.containerRef);
+    if (allChildMedia && this.containerRef) {
+      if (_images.length === allChildMedia.length) {
+        const imagesLeftFromFirstVisible = [...allChildMedia].slice(
+          currentImage,
+        );
+        const totalWidth = imagesLeftFromFirstVisible.reduce(
+          (acc, image) => acc + image.clientWidth,
+          0,
+        );
+        if (totalWidth < this.containerRef.clientWidth) {
+          this.setState({ allowNextMove: false });
+        } else if (!allowNextMove) {
+          this.setState({ allowNextMove: true });
+        }
+      }
+    }
   };
 
   copyImagesAndNoDOMVisibleChanges = (direction: 'next' | 'prev') => {
@@ -187,15 +211,20 @@ class MediaGallery extends React.Component<Props, State> {
     offsetToRevealNextChild: 0,
     direction: null,
     infinite: this.props.infinite,
+    allowNextMove: true,
   };
 
   containerRef: ?HTMLDivElement;
 
   checkIfNeedToMoveGallery = (prevState: State) => {
+    const { infinite } = this.props;
     if (
       !prevState.offsetToRevealNextChild &&
       this.state.offsetToRevealNextChild
     ) {
+      if (!infinite) {
+        this.checkIfNeedToHideRightArrow();
+      }
       if (this.state.direction === 'prev') {
         setTimeout(() => this.setState(moveToPrev), 100);
       }
@@ -214,13 +243,21 @@ class MediaGallery extends React.Component<Props, State> {
   }
 
   swipedNext = (e, deltaY) => {
+    if (
+      !this.props.infinite &&
+      (this.state.currentImage + 1 === this.state._images.length ||
+        !this.state.allowNextMove)
+    ) {
+      return null;
+    }
     this.copyImagesAndNoDOMVisibleChanges('next');
   };
 
   swipingNext = (e, absX) => {
     if (
       !this.props.infinite &&
-      this.state.currentImage + 1 === this.state._images.length
+      (this.state.currentImage + 1 === this.state._images.length ||
+        !this.state.allowNextMove)
     ) {
       return null;
     }
