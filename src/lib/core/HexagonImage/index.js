@@ -6,6 +6,7 @@ import { faChevronRight } from '@fortawesome/pro-light-svg-icons';
 
 import { RESOURCES_URL } from '../../helpers/config';
 import colors from '../../helpers/colors';
+import { mainFont } from '../../helpers/fonts';
 
 const arrowAnimation = keyframes`
   0% {
@@ -28,9 +29,34 @@ const arrowAnimation = keyframes`
 `;
 
 const MainContainer = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+`;
+
+const TitleContainer = styled.div`
+  font-family: ${mainFont};
+  font-size: 0.875rem;
+  margin-top: 30px;
+  text-transform: uppercase;
+  max-width: 215px;
+
+  color: ${colors.primary.default};
+
+  ${MainContainer}:hover & {
+    color: ${colors.secondary.default};
+  }
+`;
+
+const MainHexagonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
 
   position: relative;
   max-width: 215px;
@@ -84,7 +110,6 @@ const ColorMaskContainer = styled.div`
     max-height: 215px;
     width: 100%;
     height: 100%;
-    cursor: pointer;
 
     -webkit-mask: url(${`${RESOURCES_URL}static/images/general/hex_icon_v2.svg`});
   }
@@ -92,18 +117,22 @@ const ColorMaskContainer = styled.div`
 
 type Props = {
   url: string,
+  title: React.Node,
 };
 
-const HexagonImage = ({ url }: Props) => {
+const HexagonImage = ({ url, title }: Props) => {
   return (
     <MainContainer>
-      <StyledImage
-        src={`${RESOURCES_URL}profile/150/${url}`}
-        options={{ url }}
-      />
-      <ColorMaskContainer>
-        <ExtendedIcon icon={faChevronRight} />
-      </ColorMaskContainer>
+      <MainHexagonContainer>
+        <StyledImage
+          src={`${RESOURCES_URL}profile/150/${url}`}
+          options={{ url }}
+        />
+        <ColorMaskContainer>
+          <ExtendedIcon icon={faChevronRight} />
+        </ColorMaskContainer>
+      </MainHexagonContainer>
+      <TitleContainer>{title}</TitleContainer>
     </MainContainer>
   );
 };
