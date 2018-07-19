@@ -16,6 +16,7 @@ type Props = {
   onClick: Function,
   alt: string,
   type: 'gallery' | 'original',
+  allowOpen: boolean,
 };
 
 type ImgProps = {
@@ -50,6 +51,7 @@ class Image extends React.Component<Props, State> {
     onLoad: () => {},
     className: '',
     style: {},
+    allowOpen: true,
   };
 
   state = {
@@ -58,10 +60,12 @@ class Image extends React.Component<Props, State> {
 
   onClick = () => {
     const { onClick } = this.props;
-    if (onClick) {
-      return onClick();
+    if (this.props.allowOpen) {
+      if (onClick) {
+        return onClick();
+      }
+      this.setState({ openDialog: true });
     }
-    this.setState({ openDialog: true });
   };
 
   onCloseDialog = () => this.setState({ openDialog: false });

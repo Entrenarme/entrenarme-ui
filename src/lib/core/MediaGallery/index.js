@@ -47,6 +47,7 @@ export type State = {
   direction: 'next' | 'prev' | null,
   infinite: boolean,
   allowNextMove: boolean,
+  swiping: boolean,
 };
 
 type ArrowProps = {
@@ -212,6 +213,7 @@ class MediaGallery extends React.Component<Props, State> {
     direction: null,
     infinite: this.props.infinite,
     allowNextMove: true,
+    swiping: false,
   };
 
   containerRef: ?HTMLDivElement;
@@ -263,6 +265,7 @@ class MediaGallery extends React.Component<Props, State> {
     }
 
     this.setState(prevState => ({
+      swiping: true,
       offsetWidth: prevState.totalOffsetWidth - (absX < 100 ? absX : 100),
     }));
   };
@@ -289,6 +292,7 @@ class MediaGallery extends React.Component<Props, State> {
     }
     this.setState(prevState => {
       return {
+        swiping: true,
         offsetWidth:
           prevState.totalOffsetWidth +
           (absX < firstVisibleChildWidth ? absX : firstVisibleChildWidth),

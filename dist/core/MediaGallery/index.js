@@ -1,6 +1,40 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  width: 100%;\n  overflow: hidden;\n  position: relative;\n'], ['\n  width: 100%;\n  overflow: hidden;\n  position: relative;\n']);
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactSwipeable = require('react-swipeable');
+
+var _reactSwipeable2 = _interopRequireDefault(_reactSwipeable);
+
+var _Arrow = require('./Arrow');
+
+var _Arrow2 = _interopRequireDefault(_Arrow);
+
+var _Gallery = require('./Gallery');
+
+var _Gallery2 = _interopRequireDefault(_Gallery);
+
+var _helpers = require('./helpers');
+
+var _moveUtils = require('./moveUtils');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -14,18 +48,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-import * as React from 'react';
-import styled from 'styled-components';
-import Swipeable from 'react-swipeable';
-
-import Arrow from './Arrow';
-import Gallery from './Gallery';
-
-import { getAllChildMedia, getNChildMedia, getLastChildMedia } from './helpers';
-
-import { copyLastImageToStart, prepareImagesOnDOMForMoving, moveToNext, moveToPrev } from './moveUtils';
-
-var Container = styled.div(_templateObject);
+var Container = _styledComponents2.default.div(_templateObject);
 
 var MediaGalleryContext = React.createContext();
 
@@ -49,7 +72,7 @@ var MediaGallery = function (_React$Component) {
           currentImage = _this$state.currentImage,
           allowNextMove = _this$state.allowNextMove;
 
-      var allChildMedia = getAllChildMedia(_this.containerRef);
+      var allChildMedia = (0, _helpers.getAllChildMedia)(_this.containerRef);
       if (allChildMedia && _this.containerRef) {
         if (_images.length === allChildMedia.length) {
           var imagesLeftFromFirstVisible = [].concat(_toConsumableArray(allChildMedia)).slice(currentImage);
@@ -64,13 +87,13 @@ var MediaGallery = function (_React$Component) {
         }
       }
     }, _this.copyImagesAndNoDOMVisibleChanges = function (direction) {
-      _this.setState(prepareImagesOnDOMForMoving(direction, _this.containerRef));
+      _this.setState((0, _moveUtils.prepareImagesOnDOMForMoving)(direction, _this.containerRef));
     }, _this.loadMoreImages = function () {
       var _this$state2 = _this.state,
           _images = _this$state2._images,
           offsetVisibleImages = _this$state2.offsetVisibleImages;
 
-      var allImages = getAllChildMedia(_this.containerRef);
+      var allImages = (0, _helpers.getAllChildMedia)(_this.containerRef);
       if (allImages) {
         var totalWidth = [].concat(_toConsumableArray(allImages)).reduce(function (acc, image) {
           return acc + image.clientWidth;
@@ -92,9 +115,9 @@ var MediaGallery = function (_React$Component) {
             });
             if (_this.props.infinite) {
               _this.setState(function (prevState) {
-                var lastMedia = getLastChildMedia(_this.containerRef);
+                var lastMedia = (0, _helpers.getLastChildMedia)(_this.containerRef);
                 var newState = {
-                  _images: copyLastImageToStart(prevState._images),
+                  _images: (0, _moveUtils.copyLastImageToStart)(prevState._images),
                   offsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
                   totalOffsetWidth: lastMedia ? -lastMedia.clientWidth : 0
                 };
@@ -134,12 +157,12 @@ var MediaGallery = function (_React$Component) {
         }
         if (_this.state.direction === 'prev') {
           setTimeout(function () {
-            return _this.setState(moveToPrev);
+            return _this.setState(_moveUtils.moveToPrev);
           }, 100);
         }
         if (_this.state.direction === 'next') {
           setTimeout(function () {
-            return _this.setState(moveToNext);
+            return _this.setState(_moveUtils.moveToNext);
           }, 100);
         }
       }
@@ -168,10 +191,10 @@ var MediaGallery = function (_React$Component) {
       }
       var firstVisibleChildWidth = void 0;
       if (infinite) {
-        var secondChild = getNChildMedia(_this.containerRef, 0);
+        var secondChild = (0, _helpers.getNChildMedia)(_this.containerRef, 0);
         firstVisibleChildWidth = secondChild ? secondChild.clientWidth : 0;
       } else {
-        var currentChild = getNChildMedia(_this.containerRef, _this.state.currentImage - 1);
+        var currentChild = (0, _helpers.getNChildMedia)(_this.containerRef, _this.state.currentImage - 1);
         firstVisibleChildWidth = currentChild ? currentChild.clientWidth : 0;
       }
       _this.setState(function (prevState) {
@@ -201,7 +224,7 @@ var MediaGallery = function (_React$Component) {
         MediaGalleryContext.Provider,
         { value: this.state },
         React.createElement(
-          Swipeable,
+          _reactSwipeable2.default,
           {
             trackMouse: true,
             stopPropagation: true,
@@ -236,7 +259,7 @@ MediaGallery.LeftArrow = function (_ref2) {
           showArrows = _ref3.showArrows,
           infinite = _ref3.infinite,
           currentImage = _ref3.currentImage;
-      return !showArrows || !infinite && currentImage === 0 ? null : React.createElement(Arrow, {
+      return !showArrows || !infinite && currentImage === 0 ? null : React.createElement(_Arrow2.default, {
         rounded: rounded,
         component: component,
         onClick: function onClick() {
@@ -260,7 +283,7 @@ MediaGallery.RightArrow = function (_ref4) {
           currentImage = _ref5.currentImage,
           _images = _ref5._images,
           allowNextMove = _ref5.allowNextMove;
-      return !showArrows || !infinite && currentImage === _images.length - 1 || !allowNextMove ? null : React.createElement(Arrow, {
+      return !showArrows || !infinite && currentImage === _images.length - 1 || !allowNextMove ? null : React.createElement(_Arrow2.default, {
         right: true,
         rounded: rounded,
         component: component,
@@ -281,7 +304,7 @@ MediaGallery.Gallery = function (props) {
           copyImagesAndNoDOMVisibleChanges = _ref6.copyImagesAndNoDOMVisibleChanges,
           rest = _objectWithoutProperties(_ref6, ['handleLeftClick', 'copyImagesAndNoDOMVisibleChanges']);
 
-      return React.createElement(Gallery, Object.assign({}, rest, props));
+      return React.createElement(_Gallery2.default, Object.assign({}, rest, props));
     }
   );
 };
@@ -292,6 +315,4 @@ MediaGallery.defaultProps = {
   visibleImages: null,
   offsetVisibleImages: 3
 };
-
-
-export default MediaGallery;
+exports.default = MediaGallery;

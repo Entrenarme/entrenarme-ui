@@ -1,6 +1,13 @@
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+'use strict';
 
-import { getSecondLastChildMedia, getLastChildMedia, getNChildMedia } from './helpers';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.moveToPrev = exports.moveToNext = exports.prepareImagesOnDOMForMoving = exports.replaceLastImageToStart = exports.copyStartImageToLast = exports.copyLastImageToStart = undefined;
+
+var _helpers = require('./helpers');
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var preareToMovePrev = function preareToMovePrev(prevState, props, direction, containerRef) {
   var infinite = props.infinite;
@@ -8,13 +15,13 @@ var preareToMovePrev = function preareToMovePrev(prevState, props, direction, co
    * so this is the one will become visible
    */
 
-  var childWillBecomeVisible = infinite ? getLastChildMedia(containerRef) : getNChildMedia(containerRef, prevState.currentImage - 1);
+  var childWillBecomeVisible = infinite ? (0, _helpers.getLastChildMedia)(containerRef) : (0, _helpers.getNChildMedia)(containerRef, prevState.currentImage - 1);
   var childWillBecomeVisibleWidth = childWillBecomeVisible ? childWillBecomeVisible.clientWidth : 0;
 
   /** The second last (length - 2) is the one will be copied to be
    * the first one, but it will be hidden (by the offset)
    */
-  var newChildWillBeOffsetHidden = getSecondLastChildMedia(containerRef);
+  var newChildWillBeOffsetHidden = (0, _helpers.getSecondLastChildMedia)(containerRef);
   var newChildWillBeOffsetHiddenWidth = newChildWillBeOffsetHidden ? newChildWillBeOffsetHidden.clientWidth : 0;
 
   /** First remove the current last image (because is the one it will become visible)
@@ -39,10 +46,10 @@ var prepareToMoveNext = function prepareToMoveNext(prevState, props, direction, 
 
   var firstVisibleChildWidth = void 0;
   if (infinite) {
-    var secondChild = getNChildMedia(containerRef, 1);
+    var secondChild = (0, _helpers.getNChildMedia)(containerRef, 1);
     firstVisibleChildWidth = secondChild ? secondChild.clientWidth : 0;
   } else {
-    var currentChild = getNChildMedia(containerRef, prevState.currentImage);
+    var currentChild = (0, _helpers.getNChildMedia)(containerRef, prevState.currentImage);
     firstVisibleChildWidth = currentChild ? currentChild.clientWidth : 0;
   }
 
@@ -123,4 +130,9 @@ var copyStartImageToLast = function copyStartImageToLast(_images) {
   })]);
 };
 
-export { copyLastImageToStart, copyStartImageToLast, replaceLastImageToStart, prepareImagesOnDOMForMoving, moveToNext, moveToPrev };
+exports.copyLastImageToStart = copyLastImageToStart;
+exports.copyStartImageToLast = copyStartImageToLast;
+exports.replaceLastImageToStart = replaceLastImageToStart;
+exports.prepareImagesOnDOMForMoving = prepareImagesOnDOMForMoving;
+exports.moveToNext = moveToNext;
+exports.moveToPrev = moveToPrev;

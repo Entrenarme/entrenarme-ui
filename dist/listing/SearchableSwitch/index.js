@@ -1,6 +1,40 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  flex-direction: column;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-gap: 25px;\n'], ['\n  display: flex;\n  flex-direction: column;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-gap: 25px;\n']);
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactFontawesome = require('@fortawesome/react-fontawesome');
+
+var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
+
+var _TextField = require('../../core/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Switch = require('../Switch');
+
+var _Switch2 = _interopRequireDefault(_Switch);
+
+var _colors = require('../../helpers/colors');
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10,19 +44,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-import * as React from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/pro-light-svg-icons';
-
-import TextField from '../../core/TextField';
-import Switch from '../Switch';
-
-import colors from '../../helpers/colors';
-
 var SearchableSwitchContext = React.createContext();
 
-var Container = styled.div(_templateObject);
+var Container = _styledComponents2.default.div(_templateObject);
 
 var SearchableSwitch = function (_React$Component) {
   _inherits(SearchableSwitch, _React$Component);
@@ -59,14 +83,14 @@ var SearchableSwitch = function (_React$Component) {
       return React.createElement(
         Container,
         null,
-        React.createElement(TextField, {
+        React.createElement(_TextField2.default, {
           fullWidth: true,
-          adornment: React.createElement(FontAwesomeIcon, { icon: faSearch, color: colors.gray.placeholder }),
+          adornment: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _proLightSvgIcons.faSearch, color: _colors2.default.gray.placeholder }),
           placeholder: placeholder,
           onChange: this.filterValueChange
         }),
         React.createElement(
-          Switch,
+          _Switch2.default,
           { column: column, multiple: multiple, onChange: onChange },
           function (_ref2) {
             var itemProps = _ref2.itemProps,
@@ -108,4 +132,4 @@ SearchableSwitch.Item = function (_ref3) {
   );
 };
 
-export default SearchableSwitch;
+exports.default = SearchableSwitch;

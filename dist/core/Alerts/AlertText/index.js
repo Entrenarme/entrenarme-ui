@@ -1,3 +1,9 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  display: flex;\n  animation: ', ';\n  align-items: center;\n  justify-content: space-between;\n  border-radius: 4px;\n  padding: 15px 20px;\n\n  background-color: ', ';\n\n  > div > div {\n    color: ', ';\n  }\n\n  @keyframes fadeOut {\n    0% {\n      opacity: 1;\n    }\n\n    30% {\n      opacity: 0;\n    }\n\n    100% {\n      height: 0px;\n      padding: 0px;\n      opacity: 0;\n    }\n  }\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    > div > div {\n      align-self: flex-start;\n    }\n\n    padding: 15px 20px;\n    align-items: flex-start;\n  }\n'], ['\n  font-family: ', ';\n  display: flex;\n  animation: ', ';\n  align-items: center;\n  justify-content: space-between;\n  border-radius: 4px;\n  padding: 15px 20px;\n\n  background-color: ', ';\n\n  > div > div {\n    color: ', ';\n  }\n\n  @keyframes fadeOut {\n    0% {\n      opacity: 1;\n    }\n\n    30% {\n      opacity: 0;\n    }\n\n    100% {\n      height: 0px;\n      padding: 0px;\n      opacity: 0;\n    }\n  }\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    > div > div {\n      align-self: flex-start;\n    }\n\n    padding: 15px 20px;\n    align-items: flex-start;\n  }\n']),
@@ -5,6 +11,28 @@ var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  display
     _templateObject3 = _taggedTemplateLiteral(['\n  font-size: 1.375rem;\n  margin-right: 20px;\n  align-self: flex-start;\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    font-size: 1.125rem;\n    margin-right: 14px;\n  }\n'], ['\n  font-size: 1.375rem;\n  margin-right: 20px;\n  align-self: flex-start;\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    font-size: 1.125rem;\n    margin-right: 14px;\n  }\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n  font-size: 1rem;\n  color: ', ';\n\n  a {\n    color: ', ' !important;\n    text-decoration: none !important;\n  }\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    font-size: 0.875rem;\n  }\n'], ['\n  font-size: 1rem;\n  color: ', ';\n\n  a {\n    color: ', ' !important;\n    text-decoration: none !important;\n  }\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    font-size: 0.875rem;\n  }\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n  font-size: 1.375rem;\n  cursor: pointer;\n  margin-left: 20px;\n  color: ', ';\n  align-self: flex-start;\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    font-size: 1.125rem;\n  }\n'], ['\n  font-size: 1.375rem;\n  cursor: pointer;\n  margin-left: 20px;\n  color: ', ';\n  align-self: flex-start;\n\n  /* iPhone 5/6/6+ ----------- */\n  @media only screen and (max-width: 767px) {\n    font-size: 1.125rem;\n  }\n']);
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactFontawesome = require('@fortawesome/react-fontawesome');
+
+var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
+
+var _fonts = require('../../../helpers/fonts');
+
+var _colors = require('../../../helpers/colors');
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -16,32 +44,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-import * as React from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/pro-light-svg-icons';
-
-import { regularFont } from '../../../helpers/fonts';
-import colors from '../../../helpers/colors';
-
 var setColor = function setColor(status, elementType) {
   var colorType = elementType === 'icon' ? 'default' : 'light';
 
   switch (status) {
     case 'primary':
-      return colors.primary[colorType];
+      return _colors2.default.primary[colorType];
     case 'secondary':
-      return colors.secondary[colorType];
+      return _colors2.default.secondary[colorType];
     case 'success':
-      return colors.success[colorType];
+      return _colors2.default.success[colorType];
     case 'warning':
-      return colors.warning[colorType];
+      return _colors2.default.warning[colorType];
     default:
-      return colors.error[colorType];
+      return _colors2.default.error[colorType];
   }
 };
 
-var MainContainer = styled.div(_templateObject, regularFont, function (props) {
+var MainContainer = _styledComponents2.default.div(_templateObject, _fonts.regularFont, function (props) {
   return props.options.hideState && 'fadeOut 1s forwards';
 }, function (props) {
   return setColor(props.options.type);
@@ -49,13 +69,13 @@ var MainContainer = styled.div(_templateObject, regularFont, function (props) {
   return setColor(props.options.type, 'icon');
 });
 
-var RequiredContent = styled.div(_templateObject2);
+var RequiredContent = _styledComponents2.default.div(_templateObject2);
 
-var IconContainer = styled.div(_templateObject3);
+var IconContainer = _styledComponents2.default.div(_templateObject3);
 
-var TextContainer = styled.div(_templateObject4, colors.text, colors.secondary.default);
+var TextContainer = _styledComponents2.default.div(_templateObject4, _colors2.default.text, _colors2.default.secondary.default);
 
-var CloseIconContainer = styled.div(_templateObject5, colors.text);
+var CloseIconContainer = _styledComponents2.default.div(_templateObject5, _colors2.default.text);
 
 var AlertText = function (_React$Component) {
   _inherits(AlertText, _React$Component);
@@ -118,7 +138,7 @@ var AlertText = function (_React$Component) {
               _this2.setState({ hideState: true });
             }
           },
-          React.createElement(FontAwesomeIcon, { icon: faTimes })
+          React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _proLightSvgIcons.faTimes })
         ) : null
       );
     }
@@ -133,4 +153,4 @@ AlertText.defaultProps = {
   onClose: function onClose() {}
 };
 
-export default AlertText;
+exports.default = AlertText;

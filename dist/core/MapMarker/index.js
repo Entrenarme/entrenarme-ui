@@ -1,6 +1,26 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  width: 40px;\n  height: 50px;\n  cursor: pointer;\n  background-image: ', ';\n\n  &:hover {\n    background-image: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    width: 32px;\n    height: 40px;\n  }\n'], ['\n  width: 40px;\n  height: 50px;\n  cursor: pointer;\n  background-image: ', ';\n\n  &:hover {\n    background-image: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    width: 32px;\n    height: 40px;\n  }\n']);
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _config = require('../../helpers/config');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -12,15 +32,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-import * as React from 'react';
-import styled from 'styled-components';
-
-import { RESOURCES_URL } from '../../helpers/config';
-
-var MapMarkerContainer = styled.div(_templateObject, function (props) {
-  return 'url(' + (RESOURCES_URL + 'static/images/list/marker-' + props.options.type + '-' + (props.options.localVisited ? 'visited' : 'default') + '.svg') + ')';
+var MapMarkerContainer = _styledComponents2.default.div(_templateObject, function (props) {
+  return 'url(' + (_config.RESOURCES_URL + 'static/images/list/marker-' + props.options.type + '-' + (props.options.localVisited ? 'visited' : 'default') + '.svg') + ')';
 }, function (props) {
-  return 'url(' + (RESOURCES_URL + 'static/images/list/marker-' + props.options.type + (props.options.localVisited ? '-visited' : '') + '-hover.svg') + ')';
+  return 'url(' + (_config.RESOURCES_URL + 'static/images/list/marker-' + props.options.type + (props.options.localVisited ? '-visited' : '') + '-hover.svg') + ')';
 });
 
 var MapMarker = function (_React$Component) {
@@ -79,4 +94,4 @@ MapMarker.defaultProps = {
   visited: false
 };
 
-export default MapMarker;
+exports.default = MapMarker;

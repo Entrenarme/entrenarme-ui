@@ -126,6 +126,7 @@ const moveToPrev = (prevState: State) => {
    * lastChild = 6 // same as 1st offset child
    */
   return {
+    swiping: false,
     totalOffsetWidth:
       prevState.totalOffsetWidth + prevState.offsetToRevealNextChild,
     offsetWidth: prevState.totalOffsetWidth + prevState.offsetToRevealNextChild,
@@ -141,6 +142,7 @@ const moveToNext = (prevState: State) => {
    * lastChild = 6 // same as 1st offset child
    */
   return {
+    swiping: false,
     totalOffsetWidth:
       prevState.totalOffsetWidth - prevState.offsetToRevealNextChild,
     offsetWidth: prevState.totalOffsetWidth - prevState.offsetToRevealNextChild,

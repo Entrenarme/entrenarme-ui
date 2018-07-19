@@ -127,10 +127,6 @@
   version "0.2.1"
   resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.1.tgz#b919b31ab1b42cd2aadab5fa45934347c30ee316"
 
-"@fortawesome/fontawesome-pro@^5.1.0":
-  version "5.1.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/fontawesome-pro-5.1.1.tgz#01a6e65e2c92db4ad0157ae5e57605d63aaff604"
-
 "@fortawesome/fontawesome-svg-core@^1.2.0-14":
   version "1.2.1"
   resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.1.tgz#ae203b7563a8b6d7ebf8fe66253b92bd7a7a8a08"
@@ -140,12 +136,6 @@
 "@fortawesome/free-solid-svg-icons@^5.1.0-11":
   version "5.1.1"
   resolved "https://npm.fontawesome.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.1.1.tgz#35ebdb374c48fbad4b1812fe20314422d729fc9d"
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.1"
-
-"@fortawesome/pro-light-svg-icons@^5.1.0":
-  version "5.1.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/pro-light-svg-icons/-/pro-light-svg-icons-5.1.1.tgz#95d67509f1948a9c8d4cb3515a48e8ba05fd844f"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.1"
 
@@ -1678,7 +1668,7 @@ babel-plugin-transform-es2015-modules-amd@^6.22.0, babel-plugin-transform-es2015
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1:
+babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1, babel-plugin-transform-es2015-modules-commonjs@^6.26.2:
   version "6.26.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.26.2.tgz#58a793863a9e7ca870bdc5a881117ffac27db6f3"
   dependencies:

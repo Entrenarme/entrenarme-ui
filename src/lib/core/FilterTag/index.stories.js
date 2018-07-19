@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import colors from '../../helpers/colors';
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, getByText } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlarmClock } from '@fortawesome/pro-light-svg-icons';
+import { faAlarmClock } from '@fortawesome/free-solid-svg-icons';
 
 import AlertBox from './index';
 

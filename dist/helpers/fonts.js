@@ -1,5 +1,10 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 require('typeface-montserrat');
 require('typeface-pt-sans');
 
-export var regularFont = 'PT Sans, sans-serif';
-export var mainFont = 'Montserrat, sans-serif';
+var regularFont = exports.regularFont = 'PT Sans, sans-serif';
+var mainFont = exports.mainFont = 'Montserrat, sans-serif';

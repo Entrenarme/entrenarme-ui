@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/pro-light-svg-icons';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 import ToggleButtons from './index';
 

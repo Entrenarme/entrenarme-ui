@@ -35,6 +35,7 @@ type Props = {
   initialLoad: boolean,
   onMediaClick: Function,
   trainerName: string,
+  swiping: boolean,
 };
 
 class Gallery extends React.Component<Props> {
@@ -44,7 +45,7 @@ class Gallery extends React.Component<Props> {
   };
 
   onMediaClick = (src: string) => () => {
-    if (this.props.onMediaClick) {
+    if (this.props.onMediaClick && !this.props.swiping) {
       this.props.onMediaClick(src);
     } else {
       return null;
@@ -63,6 +64,7 @@ class Gallery extends React.Component<Props> {
       imageHeight,
       loadMoreImages,
       trainerName,
+      swiping,
     } = this.props;
     return (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
@@ -103,6 +105,7 @@ class Gallery extends React.Component<Props> {
                     ? this.onMediaClick(image.value)
                     : null
                 }
+                allowOpen={!swiping}
                 key={image.keyId || image.id}
                 className="media"
                 image={image}

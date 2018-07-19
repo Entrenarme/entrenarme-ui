@@ -1,6 +1,36 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  position: relative;\n  ', ';\n  transform: translate3d(\n    ', 'px,\n    0,\n    0\n  );\n'], ['\n  display: flex;\n  position: relative;\n  ', ';\n  transform: translate3d(\n    ', 'px,\n    0,\n    0\n  );\n']);
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactPlayer = require('react-player');
+
+var _reactPlayer2 = _interopRequireDefault(_reactPlayer);
+
+var _Image = require('../Image');
+
+var _Image2 = _interopRequireDefault(_Image);
+
+var _Placeholder = require('./Placeholder');
+
+var _Placeholder2 = _interopRequireDefault(_Placeholder);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10,14 +40,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-import * as React from 'react';
-import styled from 'styled-components';
-import Player from 'react-player';
-
-import Image from '../Image';
-import Placeholder from './Placeholder';
-
-var SGallery = styled.div(_templateObject, function (props) {
+var SGallery = _styledComponents2.default.div(_templateObject, function (props) {
   return props.options.transition ? 'transition: transform 0.3s ease-in-out' : '';
 }, function (props) {
   return props.options.offsetWidth;
@@ -70,7 +93,7 @@ var Gallery = function (_React$Component) {
         { options: { offsetWidth: offsetWidth, transition: transition }, id: 'gallery_container' },
         _images.map(function (image, index) {
           return lazyload && visibleImages !== null && index >= visibleImages && index < _images.length - 2 ? React.createElement(
-            Placeholder,
+            _Placeholder2.default,
             {
               placeholderWidth: placeholderWidth,
               key: image.keyId || image.id
@@ -86,14 +109,14 @@ var Gallery = function (_React$Component) {
                 height: imageHeight + 'px'
               }
             },
-            React.createElement(Player, {
+            React.createElement(_reactPlayer2.default, {
               url: image.value,
               onReady: loadMoreImages,
               height: imageHeight,
               width: placeholderWidth,
               controls: true
             })
-          ) : React.createElement(Image, {
+          ) : React.createElement(_Image2.default, {
             type: 'gallery',
             onClick: _this2.props.onMediaClick ? _this2.onMediaClick(image.value) : null,
             key: image.keyId || image.id,
@@ -116,6 +139,4 @@ Gallery.defaultProps = {
   onMediaClick: null,
   trainerName: ''
 };
-
-
-export default Gallery;
+exports.default = Gallery;

@@ -3,11 +3,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 import times from 'lodash/times';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/pro-light-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {
   faStar as faFilledStar,
   faStarHalfAlt,
-} from '@fortawesome/pro-light-svg-icons';
+} from '@fortawesome/free-solid-svg-icons';
 
 import colors from '../../helpers/colors';
 

@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var textSizeTransform = function textSizeTransform(size, device, modifiers) {
   if (size === 'large') {
     return device === 'mobile' || device === 'iphone' ? modifiers.normalMobile + modifiers.sizeModifier : modifiers.normalDesktop + modifiers.sizeModifier;
@@ -18,4 +23,5 @@ var marginBottomSize = function marginBottomSize(size, device) {
   }
 };
 
-export { textSizeTransform, marginBottomSize };
+exports.textSizeTransform = textSizeTransform;
+exports.marginBottomSize = marginBottomSize;

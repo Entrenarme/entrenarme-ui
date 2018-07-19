@@ -1,6 +1,36 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  .rc-slider-rail {\n    height: 3px;\n  }\n\n  .rc-slider-track {\n    background-color: ', ';\n  }\n\n  .rc-slider-handle {\n    width: 15px;\n    height: 15px;\n    border: 0;\n    box-shadow: 2px 2px 6px 0px ', ';\n  }\n\n  .rc-slider-dot {\n    display: none;\n  }\n\n  .rc-slider-mark-text {\n    font-size: 1rem;\n    margin-top: 5px;\n  }\n'], ['\n  .rc-slider-rail {\n    height: 3px;\n  }\n\n  .rc-slider-track {\n    background-color: ', ';\n  }\n\n  .rc-slider-handle {\n    width: 15px;\n    height: 15px;\n    border: 0;\n    box-shadow: 2px 2px 6px 0px ', ';\n  }\n\n  .rc-slider-dot {\n    display: none;\n  }\n\n  .rc-slider-mark-text {\n    font-size: 1rem;\n    margin-top: 5px;\n  }\n']);
+
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _rcSlider = require('rc-slider');
+
+var _times = require('lodash/times');
+
+var _times2 = _interopRequireDefault(_times);
+
+var _colors = require('../../helpers/colors');
+
+var _colors2 = _interopRequireDefault(_colors);
+
+require('rc-slider/assets/index.css');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10,16 +40,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-import * as React from 'react';
-import styled from 'styled-components';
-import { Range } from 'rc-slider';
-import times from 'lodash/times';
-
-import colors from '../../helpers/colors';
-
-import 'rc-slider/assets/index.css';
-
-var ExtendedRange = styled(Range)(_templateObject, colors.secondary.default, colors.gray.dark);
+var ExtendedRange = (0, _styledComponents2.default)(_rcSlider.Range)(_templateObject, _colors2.default.secondary.default, _colors2.default.gray.dark);
 
 var PriceRank = function (_React$Component) {
   _inherits(PriceRank, _React$Component);
@@ -39,7 +60,7 @@ var PriceRank = function (_React$Component) {
       var currency = _this.props.currency;
 
 
-      var iterableArray = times(repetitions, String);
+      var iterableArray = (0, _times2.default)(repetitions, String);
 
       return iterableArray.map(function (element) {
         return currency;
@@ -49,7 +70,7 @@ var PriceRank = function (_React$Component) {
     }, _this.renderMarks = function () {
       var marks = {};
 
-      var iterableArray = times(4, String);
+      var iterableArray = (0, _times2.default)(4, String);
 
       iterableArray.forEach(function (element) {
         return marks[element] = _this.renderCurrencyMark(parseInt(element, 10) + 1);
@@ -87,4 +108,4 @@ PriceRank.defaultProps = {
   priceRank: [0, 3]
 };
 
-export default PriceRank;
+exports.default = PriceRank;

@@ -1,8 +1,23 @@
-import * as React from 'react';
+'use strict';
 
-import colors from '../../helpers/colors';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getColor = exports.getBgColor = exports.textToRender = exports.getButtonLineHeight = exports.getButtonFontSize = exports.getButtonPadding = exports.getButtonHeight = undefined;
 
-export var getButtonHeight = function getButtonHeight(size, device) {
+var _react = require('react');
+
+var React = _interopRequireWildcard(_react);
+
+var _colors = require('../../helpers/colors');
+
+var _colors2 = _interopRequireDefault(_colors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var getButtonHeight = exports.getButtonHeight = function getButtonHeight(size, device) {
   switch (size) {
     case 'small':
       if (device === 'mobile' || device === 'iphone') return '30px';
@@ -19,7 +34,7 @@ export var getButtonHeight = function getButtonHeight(size, device) {
   }
 };
 
-export var getButtonPadding = function getButtonPadding(size, device) {
+var getButtonPadding = exports.getButtonPadding = function getButtonPadding(size, device) {
   switch (size) {
     case 'small':
       if (device === 'mobile' || device === 'iphone') return '0 12px !important';
@@ -36,7 +51,7 @@ export var getButtonPadding = function getButtonPadding(size, device) {
   }
 };
 
-export var getButtonFontSize = function getButtonFontSize(size, device) {
+var getButtonFontSize = exports.getButtonFontSize = function getButtonFontSize(size, device) {
   switch (size) {
     case 'small':
       if (device === 'mobile' || device === 'iphone') return '0.625rem';
@@ -53,7 +68,7 @@ export var getButtonFontSize = function getButtonFontSize(size, device) {
   }
 };
 
-export var getButtonLineHeight = function getButtonLineHeight(size, device) {
+var getButtonLineHeight = exports.getButtonLineHeight = function getButtonLineHeight(size, device) {
   switch (size) {
     case 'small':
       if (device === 'mobile' || device === 'iphone') return '10px';
@@ -70,7 +85,7 @@ export var getButtonLineHeight = function getButtonLineHeight(size, device) {
   }
 };
 
-export var textToRender = function textToRender(state, children, loadingText, errorText, successText) {
+var textToRender = exports.textToRender = function textToRender(state, children, loadingText, errorText, successText) {
   switch (state) {
     case 'loading':
       return loadingText;
@@ -83,37 +98,37 @@ export var textToRender = function textToRender(state, children, loadingText, er
   }
 };
 
-export var getBgColor = function getBgColor(buttonType, options, state, disabled, colorVariant, active) {
+var getBgColor = exports.getBgColor = function getBgColor(buttonType, options, state, disabled, colorVariant, active) {
   if (buttonType === 'link' || buttonType === 'outline') {
-    return colors.white[active ? 'active' : 'default'];
+    return _colors2.default.white[active ? 'active' : 'default'];
   }
   if (buttonType === 'add' || disabled) {
-    return colors.gray[active ? 'active' : 'default'];
+    return _colors2.default.gray[active ? 'active' : 'default'];
   }
   if (state === 'error' || state === 'success') {
-    return colors[state][active ? 'active' : 'default'];
+    return _colors2.default[state][active ? 'active' : 'default'];
   }
-  return colors[colorVariant || state][active ? 'active' : 'default'];
+  return _colors2.default[colorVariant || state][active ? 'active' : 'default'];
 };
 
-export var getColor = function getColor(buttonType, state, colorVariant, disabled) {
+var getColor = exports.getColor = function getColor(buttonType, state, colorVariant, disabled) {
   if (buttonType === 'outline') {
-    return colors[colorVariant].default;
+    return _colors2.default[colorVariant].default;
   }
   if (disabled) {
-    return colors.gray.dark;
+    return _colors2.default.gray.dark;
   }
   if (state === 'loading') {
     if (buttonType === 'link') {
-      return colors.gray.loading;
+      return _colors2.default.gray.loading;
     }
     if (buttonType === 'add') {
-      return colors.secondary.loading;
+      return _colors2.default.secondary.loading;
     }
-    return colors.white.loading;
+    return _colors2.default.white.loading;
   }
   if (buttonType === 'link' || buttonType === 'add') {
-    return colors.secondary.default;
+    return _colors2.default.secondary.default;
   }
-  return colors.white.default;
+  return _colors2.default.white.default;
 };
