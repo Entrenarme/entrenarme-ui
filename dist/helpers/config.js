@@ -1,0 +1,1 @@
+export var RESOURCES_URL = 'https://resources.entrenar.me/';

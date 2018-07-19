@@ -18,6 +18,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     - Inside `dist`, tests, snapshots and stories are ignored by default (and should be).
   - `yarn publish` will build && publish the `dist` folder to npm.
     - NOTE: Make sure you are logged in with the entrenarme account before publishing it.
+    - NOTE2: If this is not working, do it separately, do a `yarn build` and then run `npm publish ./dist` manually from the CLI.
 
 ## Component structure
 
