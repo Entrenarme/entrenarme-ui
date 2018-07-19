@@ -11,6 +11,7 @@ import './styles/slick.css';
 type Props = {
   children: React.Node,
   itemsToShow: number,
+  disableDots?: boolean,
 };
 
 type ArrowProps = {
@@ -48,9 +49,9 @@ const Arrow = ({ className, style, onClick, icon, disabled }: ArrowProps) => {
   );
 };
 
-const Slider = ({ children, itemsToShow, ...rest }: Props) => {
+const Slider = ({ children, itemsToShow, disableDots, ...rest }: Props) => {
   const settings = {
-    dots: true,
+    dots: disableDots ? false : true,
     slidesToShow: itemsToShow,
     slidesToScroll: itemsToShow,
     infinite: React.Children.count(children) >= itemsToShow,
@@ -78,6 +79,8 @@ const Slider = ({ children, itemsToShow, ...rest }: Props) => {
   );
 };
 
-Slider.defaultProps = {};
+Slider.defaultProps = {
+  disableDots: false,
+};
 
 export default Slider;
