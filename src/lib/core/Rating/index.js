@@ -7,7 +7,7 @@ import { faStar } from '@fortawesome/pro-light-svg-icons';
 import {
   faStar as faFilledStar,
   faStarHalfAlt,
-} from '@fortawesome/free-solid-svg-icons';
+} from '@fortawesome/pro-light-svg-icons';
 
 import colors from '../../helpers/colors';
 

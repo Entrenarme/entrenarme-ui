@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
 import colors from '../../helpers/colors';
+import { regularFont } from '../../helpers/fonts';
 
 type Props = {
   label?: string,
@@ -32,6 +33,7 @@ const STextField = styled(MTextField)`
 
   input {
     color: ${colors.text} !important;
+    font-family: ${regularFont} !important;
   }
 `;
 
