@@ -38,12 +38,20 @@ storiesOf('Dialog', module).add('large', () => (
     onClose={() => (openDialog = false)}
     header={<H4>TEST</H4>}
     body={
-      <P>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
-        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
-        eros sagittis eget.
-      </P>
+      <div>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+      </div>
     }
     footer={<Button>Test</Button>}
     type="large"
@@ -102,5 +110,50 @@ storiesOf('Dialog', module).add('without header', () => (
       </P>
     }
     footer={<Button>Test</Button>}
+  />
+));
+
+storiesOf('Dialog', module).add('overflow content', () => (
+  <Dialog
+    {...actions}
+    open={true}
+    onClose={() => (openDialog = false)}
+    header={<H4>TEST</H4>}
+    body={
+      <div>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+      </div>
+    }
+    footer={<Button>Test</Button>}
+    type="large"
   />
 ));

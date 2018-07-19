@@ -55,13 +55,20 @@ const MiddleContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  text-align: ${props =>
-    props.options.align === 'center' ? 'center' : 'initial'};
+  * {
+    text-align: ${props =>
+      props.options.align === 'center' ? 'center' : 'initial'};
+  }
+
   align-items: ${props =>
     props.options.align === 'center' ? 'center' : 'initial'};
 `;
 
 const BodyContainer = styled.div`
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+
   *:only-child {
     margin-bottom: 0px;
   }
