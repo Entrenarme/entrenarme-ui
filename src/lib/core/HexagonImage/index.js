@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/pro-light-svg-icons';
+import { faAngleRight } from '@fortawesome/pro-light-svg-icons';
 
 import { RESOURCES_URL } from '../../helpers/config';
 import colors from '../../helpers/colors';
@@ -137,7 +137,7 @@ const HexagonImage = ({ url, title }: Props) => {
           options={{ url }}
         />
         <ColorMaskContainer>
-          <ExtendedIcon icon={faChevronRight} />
+          <ExtendedIcon icon={faAngleRight} />
         </ColorMaskContainer>
       </MainHexagonContainer>
       <TitleContainer>{title}</TitleContainer>
