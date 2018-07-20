@@ -101,7 +101,11 @@ const FooterContainer = styled.div`
 
   button {
     width: ${props =>
-      props.options.type !== 'small' ? 'initial' : '48% !important'};
+      props.options.type !== 'small'
+        ? 'initial'
+        : props.options.smallModalButtons
+          ? '48% !important'
+          : 'initial'};
   }
 
   @media only screen and (max-width: 767px) {

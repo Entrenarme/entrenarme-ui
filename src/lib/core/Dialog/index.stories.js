@@ -7,6 +7,7 @@ import Dialog from './index';
 import H4 from '../Text/Headers/H4/index';
 import P from '../Text/Paragraph/index';
 import Button from '../Button/index';
+import TextField from '../TextField/index';
 
 let openDialog = false;
 
@@ -44,6 +45,34 @@ storiesOf('Dialog', module).add('default with buttons', () => (
         rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
         eros sagittis eget.
       </P>
+    }
+    footer={
+      <div>
+        <Button>Test 1</Button>
+        <Button>Test 2</Button>
+      </div>
+    }
+  />
+));
+
+storiesOf('Dialog', module).add('default with buttons and inputs', () => (
+  <Dialog
+    {...actions}
+    open={true}
+    onClose={() => (openDialog = false)}
+    header={<H4>TEST</H4>}
+    body={
+      <div>
+        <div>
+          <TextField placeholder="nombre" fullWidth />
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <TextField placeholder="apellidos" fullWidth />
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <TextField placeholder="ciudad" fullWidth />
+        </div>
+      </div>
     }
     footer={
       <div>
