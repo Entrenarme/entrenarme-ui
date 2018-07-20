@@ -42,6 +42,7 @@ const TitleContainer = styled.div`
   font-size: 0.875rem;
   margin-top: 30px;
   text-transform: uppercase;
+  text-align: center;
   max-width: 215px;
 
   color: ${colors.primary.default};
