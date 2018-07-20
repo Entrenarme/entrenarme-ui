@@ -62,7 +62,7 @@ var Gallery = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call.apply(_ref, [this].concat(args))), _this), _this.onMediaClick = function (src) {
       return function () {
-        if (_this.props.onMediaClick) {
+        if (_this.props.onMediaClick && !_this.props.swiping) {
           _this.props.onMediaClick(src);
         } else {
           return null;
@@ -86,20 +86,21 @@ var Gallery = function (_React$Component) {
           imageWidth = _props.imageWidth,
           imageHeight = _props.imageHeight,
           loadMoreImages = _props.loadMoreImages,
-          trainerName = _props.trainerName;
+          trainerName = _props.trainerName,
+          swiping = _props.swiping,
+          placeholderBackground = _props.placeholderBackground,
+          placeholderChildren = _props.placeholderChildren;
 
       return React.createElement(
         SGallery,
         { options: { offsetWidth: offsetWidth, transition: transition }, id: 'gallery_container' },
         _images.map(function (image, index) {
-          return lazyload && visibleImages !== null && index >= visibleImages && index < _images.length - 2 ? React.createElement(
-            _Placeholder2.default,
-            {
-              placeholderWidth: placeholderWidth,
-              key: image.keyId || image.id
-            },
-            'placeholder'
-          ) : image.type === 'video' ? React.createElement(
+          return lazyload && visibleImages !== null && index >= visibleImages && index < _images.length - 2 ? React.createElement(_Placeholder2.default, {
+            placeholderWidth: placeholderWidth,
+            key: image.keyId || image.id,
+            placeholderBackground: placeholderBackground,
+            placeholderChildren: placeholderChildren
+          }) : image.type === 'video' ? React.createElement(
             'div',
             {
               className: 'media',
@@ -119,6 +120,7 @@ var Gallery = function (_React$Component) {
           ) : React.createElement(_Image2.default, {
             type: 'gallery',
             onClick: _this2.props.onMediaClick ? _this2.onMediaClick(image.value) : null,
+            allowOpen: !swiping,
             key: image.keyId || image.id,
             className: 'media',
             image: image,
@@ -137,6 +139,8 @@ var Gallery = function (_React$Component) {
 
 Gallery.defaultProps = {
   onMediaClick: null,
-  trainerName: ''
+  trainerName: '',
+  placeholderBackground: '',
+  placeholderChildren: null
 };
 exports.default = Gallery;

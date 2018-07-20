@@ -22,7 +22,7 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _reactFontawesome = require('@fortawesome/react-fontawesome');
 
-var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
+var _freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 
 var _fonts = require('../../../helpers/fonts');
 
@@ -138,7 +138,7 @@ var AlertText = function (_React$Component) {
               _this2.setState({ hideState: true });
             }
           },
-          React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _proLightSvgIcons.faTimes })
+          React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _freeSolidSvgIcons.faTimes })
         ) : null
       );
     }

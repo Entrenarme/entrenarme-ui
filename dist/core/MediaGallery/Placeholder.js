@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  ', ';\n'], ['\n  ', ';\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  ', ';\n  background-image: ', ';\n'], ['\n  ', ';\n  background-image: ', ';\n']);
 
 var _react = require('react');
 
@@ -30,6 +30,8 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Container = _styledComponents2.default.div(_templateObject, function (props) {
   return 'width: ' + props.options.placeholderWidth + '; flex: 1 0 ' + props.options.placeholderWidth + ' ';
+}, function (props) {
+  return 'url(' + props.options.placeholderBackground + ')';
 });
 
 var Placeholder = function (_React$Component) {
@@ -44,12 +46,15 @@ var Placeholder = function (_React$Component) {
   _createClass(Placeholder, [{
     key: 'render',
     value: function render() {
-      var placeholderWidth = this.props.placeholderWidth;
+      var _props = this.props,
+          placeholderWidth = _props.placeholderWidth,
+          placeholderBackground = _props.placeholderBackground,
+          placeholderChildren = _props.placeholderChildren;
 
       return React.createElement(
         Container,
-        { options: { placeholderWidth: placeholderWidth } },
-        'placeholder'
+        { options: { placeholderWidth: placeholderWidth, placeholderBackground: placeholderBackground } },
+        placeholderChildren
       );
     }
   }]);
@@ -57,4 +62,7 @@ var Placeholder = function (_React$Component) {
   return Placeholder;
 }(React.Component);
 
+Placeholder.defaultProps = {
+  placeholderChildren: null
+};
 exports.default = Placeholder;

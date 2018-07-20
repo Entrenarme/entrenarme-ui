@@ -36,12 +36,16 @@ type Props = {
   onMediaClick: Function,
   trainerName: string,
   swiping: boolean,
+  placeholderBackground: string,
+  placeholderChildren: React.Node,
 };
 
 class Gallery extends React.Component<Props> {
   static defaultProps = {
     onMediaClick: null,
     trainerName: '',
+    placeholderBackground: '',
+    placeholderChildren: null,
   };
 
   onMediaClick = (src: string) => () => {
@@ -65,6 +69,8 @@ class Gallery extends React.Component<Props> {
       loadMoreImages,
       trainerName,
       swiping,
+      placeholderBackground,
+      placeholderChildren,
     } = this.props;
     return (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
@@ -77,9 +83,9 @@ class Gallery extends React.Component<Props> {
               <Placeholder
                 placeholderWidth={placeholderWidth}
                 key={image.keyId || image.id}
-              >
-                placeholder
-              </Placeholder>
+                placeholderBackground={placeholderBackground}
+                placeholderChildren={placeholderChildren}
+              />
             ) : image.type === 'video' ? (
               <div
                 className="media"

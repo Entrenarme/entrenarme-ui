@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { RESOURCES_URL } from '../../helpers/config';
 
 import MediaGallery from './index';
 
@@ -47,13 +48,14 @@ const images = [
 
 storiesOf('MediaGallery', module)
   .add('Infinite', () => (
-    <MediaGallery lazyload infinite offsetVisibleImages={3} images={images}>
+    <MediaGallery lazyload infinite offsetVisibleImages={1} images={images}>
       <MediaGallery.LeftArrow rounded />
       <MediaGallery.RightArrow component="Arrow" />
       <MediaGallery.Gallery
         trainerName="sebas-b"
         placeholderWidth="300px"
         imageHeight="260px"
+        placeholderBackground={`${RESOURCES_URL}static/images/profile/image_placeholder_b.svg`}
       />
     </MediaGallery>
   ))

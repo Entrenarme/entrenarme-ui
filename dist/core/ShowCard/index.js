@@ -33,7 +33,7 @@ var _ExpansionPanelSummary2 = _interopRequireDefault(_ExpansionPanelSummary);
 
 var _reactFontawesome = require('@fortawesome/react-fontawesome');
 
-var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
+var _freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 
 var _index = require('../Text/Headers/H4/index');
 
@@ -105,7 +105,7 @@ var ShowCard = function (_React$Component) {
         }),
         React.createElement(
           ExtendedTitle,
-          { expandIcon: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _proLightSvgIcons.faAngleDown }) },
+          { expandIcon: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _freeSolidSvgIcons.faAngleDown }) },
           React.createElement(
             _index2.default,
             { size: 'small', style: { fontWeight: 600, margin: '0px' } },

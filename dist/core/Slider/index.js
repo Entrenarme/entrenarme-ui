@@ -16,7 +16,7 @@ var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
 var _reactFontawesome = require('@fortawesome/react-fontawesome');
 
-var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
+var _freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 
 var _styledComponents = require('styled-components');
 
@@ -75,11 +75,11 @@ var Slider = function Slider(_ref2) {
     slidesToScroll: itemsToShow,
     infinite: React.Children.count(children) >= itemsToShow,
     nextArrow: React.createElement(Arrow, {
-      icon: _proLightSvgIcons.faAngleRight,
+      icon: _freeSolidSvgIcons.faAngleRight,
       disabled: React.Children.count(children) <= itemsToShow
     }),
     prevArrow: React.createElement(Arrow, {
-      icon: _proLightSvgIcons.faAngleLeft,
+      icon: _freeSolidSvgIcons.faAngleLeft,
       disabled: React.Children.count(children) <= itemsToShow
     })
   };

@@ -65,10 +65,12 @@ var Image = function (_React$Component) {
     }, _this.onClick = function () {
       var onClick = _this.props.onClick;
 
-      if (onClick) {
-        return onClick();
+      if (_this.props.allowOpen) {
+        if (onClick) {
+          return onClick();
+        }
+        _this.setState({ openDialog: true });
       }
-      _this.setState({ openDialog: true });
     }, _this.onCloseDialog = function () {
       return _this.setState({ openDialog: false });
     }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -116,6 +118,7 @@ var Image = function (_React$Component) {
 Image.defaultProps = {
   onLoad: function onLoad() {},
   className: '',
-  style: {}
+  style: {},
+  allowOpen: true
 };
 exports.default = Image;

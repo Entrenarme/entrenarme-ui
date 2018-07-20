@@ -147,7 +147,8 @@ var MediaGallery = function (_React$Component) {
       offsetToRevealNextChild: 0,
       direction: null,
       infinite: _this.props.infinite,
-      allowNextMove: true
+      allowNextMove: true,
+      swiping: false
     }, _this.checkIfNeedToMoveGallery = function (prevState) {
       var infinite = _this.props.infinite;
 
@@ -178,6 +179,7 @@ var MediaGallery = function (_React$Component) {
 
       _this.setState(function (prevState) {
         return {
+          swiping: true,
           offsetWidth: prevState.totalOffsetWidth - (absX < 100 ? absX : 100)
         };
       });
@@ -199,6 +201,7 @@ var MediaGallery = function (_React$Component) {
       }
       _this.setState(function (prevState) {
         return {
+          swiping: true,
           offsetWidth: prevState.totalOffsetWidth + (absX < firstVisibleChildWidth ? absX : firstVisibleChildWidth)
         };
       });

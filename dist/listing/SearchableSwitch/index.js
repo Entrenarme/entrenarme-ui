@@ -18,7 +18,7 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _reactFontawesome = require('@fortawesome/react-fontawesome');
 
-var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
+var _freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 
 var _TextField = require('../../core/TextField');
 
@@ -85,7 +85,7 @@ var SearchableSwitch = function (_React$Component) {
         null,
         React.createElement(_TextField2.default, {
           fullWidth: true,
-          adornment: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _proLightSvgIcons.faSearch, color: _colors2.default.gray.placeholder }),
+          adornment: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _freeSolidSvgIcons.faSearch, color: _colors2.default.gray.placeholder }),
           placeholder: placeholder,
           onChange: this.filterValueChange
         }),
