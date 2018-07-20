@@ -40,6 +40,7 @@ type Props = {
   loadLastTwoImages: boolean,
   prepareForInfinite: Function,
   initialLoading: boolean,
+  infinite: boolean,
 };
 
 const showPlaceholder = (
@@ -49,12 +50,13 @@ const showPlaceholder = (
   loadLastTwoImages,
   _images,
   initialLoading,
+  infinite,
 ) => {
   if (lazyload) {
     // if (loadLastTwoImages && index >= _images.length - 2) {
     //   return false;
     // }
-    if (!initialLoading && index >= _images.length - 2) {
+    if (infinite && !initialLoading && index >= _images.length - 2) {
       return false;
     }
     if (visibleImages <= index) {
@@ -98,6 +100,7 @@ class Gallery extends React.Component<Props> {
       loadLastTwoImages,
       prepareForInfinite,
       initialLoading,
+      infinite,
     } = this.props;
     return visibleImages ? (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
@@ -110,6 +113,7 @@ class Gallery extends React.Component<Props> {
               loadLastTwoImages,
               _images,
               initialLoading,
+              infinite,
             ) ? (
               <Placeholder
                 placeholderWidth={placeholderWidth}

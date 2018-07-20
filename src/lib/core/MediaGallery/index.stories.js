@@ -85,7 +85,7 @@ storiesOf('MediaGallery', module)
     </MediaGallery>
   ))
   .add('Not infinite', () => (
-    <MediaGallery lazyload offsetVisibleImages={3} images={images}>
+    <MediaGallery lazyload offsetVisibleImages={0} images={images}>
       <MediaGallery.LeftArrow />
       <MediaGallery.RightArrow />
       <MediaGallery.Gallery
