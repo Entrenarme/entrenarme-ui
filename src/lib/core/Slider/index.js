@@ -12,6 +12,7 @@ type Props = {
   children: React.Node,
   itemsToShow: number,
   disableDots?: boolean,
+  invertedArrows?: boolean,
 };
 
 type ArrowProps = {
@@ -20,6 +21,7 @@ type ArrowProps = {
   onClick?: Function,
   icon: React.Node,
   disabled: boolean,
+  invertedArrows?: boolean,
 };
 
 const StyledSlider = styled(ReactSlider)`
@@ -31,14 +33,21 @@ const StyledSlider = styled(ReactSlider)`
   }
 `;
 
-const Arrow = ({ className, style, onClick, icon, disabled }: ArrowProps) => {
+const Arrow = ({
+  className,
+  style,
+  onClick,
+  icon,
+  disabled,
+  invertedArrows,
+}: ArrowProps) => {
   if (disabled) {
     return null;
   }
 
   return (
     <div
-      className={className}
+      className={invertedArrows ? `${className} slick-secondary` : className}
       style={{
         ...style,
       }}
@@ -49,7 +58,13 @@ const Arrow = ({ className, style, onClick, icon, disabled }: ArrowProps) => {
   );
 };
 
-const Slider = ({ children, itemsToShow, disableDots, ...rest }: Props) => {
+const Slider = ({
+  children,
+  itemsToShow,
+  disableDots,
+  invertedArrows,
+  ...rest
+}: Props) => {
   const settings = {
     dots: disableDots ? false : true,
     slidesToShow: itemsToShow,
@@ -57,12 +72,14 @@ const Slider = ({ children, itemsToShow, disableDots, ...rest }: Props) => {
     infinite: React.Children.count(children) >= itemsToShow,
     nextArrow: (
       <Arrow
+        invertedArrows={invertedArrows}
         icon={faAngleRight}
         disabled={React.Children.count(children) <= itemsToShow}
       />
     ),
     prevArrow: (
       <Arrow
+        invertedArrows={invertedArrows}
         icon={faAngleLeft}
         disabled={React.Children.count(children) <= itemsToShow}
       />
@@ -81,6 +98,7 @@ const Slider = ({ children, itemsToShow, disableDots, ...rest }: Props) => {
 
 Slider.defaultProps = {
   disableDots: false,
+  invertedArrows: false,
 };
 
 export default Slider;

@@ -46,8 +46,10 @@ const TitleContainer = styled.div`
 
   color: ${colors.primary.default};
 
-  ${MainContainer}:hover & {
-    color: ${colors.secondary.default};
+  @media only screen and (min-width: 768px) {
+    ${MainContainer}:hover & {
+      color: ${colors.secondary.default};
+    }
   }
 `;
 
@@ -90,8 +92,10 @@ const ExtendedIcon = styled(FontAwesomeIcon)`
   bottom: 0;
   margin: auto;
 
-  ${MainContainer}:hover & {
-    animation: ${arrowAnimation} 0.15s linear forwards;
+  @media only screen and (min-width: 768px) {
+    ${MainContainer}:hover & {
+      animation: ${arrowAnimation} 0.15s linear forwards;
+    }
   }
 
   /* Smartphones (portrait) ----------- */
@@ -101,17 +105,19 @@ const ExtendedIcon = styled(FontAwesomeIcon)`
 `;
 
 const ColorMaskContainer = styled.div`
-  ${MainContainer}:hover & {
-    background-color: ${colors.secondary.loading};
-    position: absolute;
-    top: 0;
-    left: 0;
-    max-width: 215px;
-    max-height: 215px;
-    width: 100%;
-    height: 100%;
+  @media only screen and (min-width: 768px) {
+    ${MainContainer}:hover & {
+      background-color: ${colors.secondary.loading};
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 215px;
+      max-height: 215px;
+      width: 100%;
+      height: 100%;
 
-    -webkit-mask: url(${`${RESOURCES_URL}static/images/general/hex_icon_v2.svg`});
+      -webkit-mask: url(${`${RESOURCES_URL}static/images/general/hex_icon_v2.svg`});
+    }
   }
 `;
 
