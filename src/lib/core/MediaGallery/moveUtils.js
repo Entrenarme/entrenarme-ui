@@ -106,14 +106,19 @@ const prepareImagesOnDOMForMoving = (
   containerRef: Object,
 ) => (prevState: State, props: Props) => {
   if (direction === 'prev') {
-    if (!props.infinite && prevState.currentImage === 0) return null;
+    if (
+      (!props.infinite && prevState.currentImage === 0) ||
+      !prevState.showArrows
+    )
+      return null;
     return preareToMovePrev(prevState, props, direction, containerRef);
   }
 
   if (direction === 'next') {
     if (
-      !props.infinite &&
-      prevState.currentImage === prevState._images.length - 1
+      (!props.infinite &&
+        prevState.currentImage === prevState._images.length - 1) ||
+      !prevState.showArrows
     )
       return null;
     return prepareToMoveNext(prevState, props, direction, containerRef);

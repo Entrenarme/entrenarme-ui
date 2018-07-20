@@ -32,12 +32,36 @@ type Props = {
   imageWidth: string,
   imageHeight: string,
   loadMoreImages: Function,
-  initialLoad: boolean,
   onMediaClick: Function,
   trainerName: string,
   swiping: boolean,
   placeholderBackground: string,
   placeholderChildren: React.Node,
+  loadLastTwoImages: boolean,
+  prepareForInfinite: Function,
+  initialLoading: boolean,
+};
+
+const showPlaceholder = (
+  index,
+  visibleImages,
+  lazyload,
+  loadLastTwoImages,
+  _images,
+  initialLoading,
+) => {
+  if (lazyload) {
+    // if (loadLastTwoImages && index >= _images.length - 2) {
+    //   return false;
+    // }
+    if (!initialLoading && index >= _images.length - 2) {
+      return false;
+    }
+    if (visibleImages <= index) {
+      return true;
+    }
+  }
+  return false;
 };
 
 class Gallery extends React.Component<Props> {
@@ -71,15 +95,22 @@ class Gallery extends React.Component<Props> {
       swiping,
       placeholderBackground,
       placeholderChildren,
+      loadLastTwoImages,
+      prepareForInfinite,
+      initialLoading,
     } = this.props;
-    return (
+    return visibleImages ? (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
         {_images.map(
           (image, index: number) =>
-            lazyload &&
-            visibleImages !== null &&
-            index >= visibleImages &&
-            index < _images.length - 2 ? (
+            showPlaceholder(
+              index,
+              visibleImages,
+              lazyload,
+              loadLastTwoImages,
+              _images,
+              initialLoading,
+            ) ? (
               <Placeholder
                 placeholderWidth={placeholderWidth}
                 key={image.keyId || image.id}
@@ -97,7 +128,11 @@ class Gallery extends React.Component<Props> {
               >
                 <Player
                   url={image.value}
-                  onReady={loadMoreImages}
+                  onReady={
+                    loadLastTwoImages && index === _images.length - 1
+                      ? prepareForInfinite
+                      : loadMoreImages
+                  }
                   height={imageHeight}
                   width={placeholderWidth}
                   controls
@@ -118,12 +153,16 @@ class Gallery extends React.Component<Props> {
                 alt={`${trainerName} ${image.sport_name}`}
                 imageWidth={imageWidth}
                 imageHeight={imageHeight}
-                onLoad={loadMoreImages}
+                onLoad={
+                  loadLastTwoImages && index === _images.length - 1
+                    ? prepareForInfinite
+                    : loadMoreImages
+                }
               />
             ),
         )}
       </SGallery>
-    );
+    ) : null;
   }
 }
 
