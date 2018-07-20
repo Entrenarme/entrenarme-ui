@@ -49,6 +49,10 @@ const HeaderContainer = styled.div`
     color: ${colors.primary.default};
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const MiddleContainer = styled.div`
@@ -84,10 +88,37 @@ const FooterContainer = styled.div`
 
   margin-top: 30px;
 
+  *:nth-child(2) {
+    margin-left: ${props => (props.options.type !== 'small' ? '20px' : '0px')};
+  }
+
+  > div {
+    display: flex;
+    justify-content: ${props =>
+      props.options.type !== 'small' ? 'flex-end' : 'space-between'};
+    width: ${props => (props.options.type !== 'small' ? 'initial' : '100%')};
+  }
+
+  button {
+    width: ${props =>
+      props.options.type !== 'small' ? 'initial' : '48% !important'};
+  }
+
   @media only screen and (max-width: 767px) {
+    margin-top: 20px;
+
+    button {
+      width: 100% !important;
+    }
+
     * {
       display: flex;
       flex-direction: column;
+    }
+
+    *:nth-child(2) {
+      margin-top: 10px;
+      margin-left: 0px;
     }
 
     flex-direction: column;
@@ -130,7 +161,16 @@ class Dialog extends React.Component<Props, State> {
         </HeaderContainer>
         <MiddleContainer options={{ align }}>
           <BodyContainer>{body}</BodyContainer>
-          {footer ? <FooterContainer>{footer}</FooterContainer> : null}
+          {footer ? (
+            <FooterContainer
+              options={{
+                type,
+                smallModalButtons: Array.isArray(footer.props.children),
+              }}
+            >
+              {footer}
+            </FooterContainer>
+          ) : null}
         </MiddleContainer>
       </ExtendedDialog>
     );
