@@ -67,6 +67,7 @@
 }
 
 .slick-secondary {
+  top: 40%;
   background-color: #125566 !important;
   color: #fff !important;
 }

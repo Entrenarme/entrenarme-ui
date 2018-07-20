@@ -7,6 +7,14 @@ import Slider from '../../Slider/index';
 
 const MainContainer = styled.div`
   display: flex;
+
+  > div {
+    margin-right: 30px;
+  }
+
+  div:last-child {
+    margin-right: 0px;
+  }
 `;
 
 type Props = {
