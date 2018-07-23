@@ -23,18 +23,18 @@ const SGallery = styled.div`
 `;
 
 type Props = {
+  placeholderWidth: string,
+  imageWidth: string,
+  imageHeight: string,
+  trainerName: string,
   offsetWidth: number,
   transition: boolean,
   lazyload: boolean,
   _images: Array<CustomImage>,
   visibleImages: ?number,
-  placeholderWidth: string,
-  imageWidth: string,
-  imageHeight: string,
   loadMoreImages: Function,
   initialLoad: boolean,
   onMediaClick: Function,
-  trainerName: string,
 };
 
 class Gallery extends React.Component<Props> {

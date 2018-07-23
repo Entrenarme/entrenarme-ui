@@ -26,9 +26,6 @@ export type Props = {
   lazyload: boolean,
   infinite: boolean,
   offsetVisibleImages: number,
-  placeholderWidth: string,
-  imageWidth: string,
-  imageHeight: string,
   children: React.Node,
 };
 
@@ -106,11 +103,9 @@ class MediaGallery extends React.Component<Props, State> {
     placeholderWidth: string,
   }) => (
     <MediaGalleryContext.Consumer>
-      {({
-        handleLeftClick,
-        copyImagesAndNoDOMVisibleChanges,
-        ...rest
-      }: State) => <Gallery {...rest} {...props} />}
+      {({ copyImagesAndNoDOMVisibleChanges, ...rest }: State) => (
+        <Gallery {...props} {...rest} />
+      )}
     </MediaGalleryContext.Consumer>
   );
 

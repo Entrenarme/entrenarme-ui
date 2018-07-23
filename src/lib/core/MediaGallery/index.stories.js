@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import MediaGallery from './index';
+import annotations from './annotations';
 
 const actions = {
   onMediaClick: action('onMediaClick'),
@@ -46,17 +47,21 @@ const images = [
 ];
 
 storiesOf('MediaGallery', module)
-  .add('Infinite', () => (
-    <MediaGallery lazyload infinite offsetVisibleImages={3} images={images}>
-      <MediaGallery.LeftArrow rounded />
-      <MediaGallery.RightArrow component="Arrow" />
-      <MediaGallery.Gallery
-        trainerName="sebas-b"
-        placeholderWidth="300px"
-        imageHeight="260px"
-      />
-    </MediaGallery>
-  ))
+  .add(
+    'Infinite',
+    () => (
+      <MediaGallery lazyload infinite offsetVisibleImages={3} images={images}>
+        <MediaGallery.LeftArrow rounded />
+        <MediaGallery.RightArrow component="Arrow" />
+        <MediaGallery.Gallery
+          trainerName="sebas-b"
+          placeholderWidth="300px"
+          imageHeight="260px"
+        />
+      </MediaGallery>
+    ),
+    { info: annotations },
+  )
   .add('Not infinite', () => (
     <MediaGallery lazyload offsetVisibleImages={3} images={images}>
       <MediaGallery.LeftArrow />
