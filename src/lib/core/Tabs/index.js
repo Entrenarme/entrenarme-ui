@@ -1,15 +1,22 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { mainFont } from '../../helpers/fonts';
 import colors from '../../helpers/colors';
 
+const calcMarginLeft = (numElements: number, activeElement: number) => {
+  return (100 / numElements) * activeElement;
+};
+
 const MainTabContainer = styled.div`
   display: flex;
+  justify-content: space-around;
 `;
 
 const TabContainer = styled.div`
+  flex: 1;
+  text-align: center;
   font-family: ${mainFont};
   font-size: 0.875rem;
   padding: 20px 30px;
@@ -17,14 +24,21 @@ const TabContainer = styled.div`
   height: 48px;
   color: ${props =>
     props.options.isActive ? colors.secondary.default : colors.primary.default};
-  border-bottom: ${props =>
-    props.options.isActive
-      ? `2px solid ${colors.secondary.default}`
-      : colors.primary.default};
 
   &:hover {
     color: ${colors.secondary.default};
   }
+`;
+
+const Slider = styled.div`
+  height: 0.3rem;
+  width: ${props => 100 / props.options.numElements}%;
+  margin: 0;
+  background: ${colors.secondary.default};
+  border: none;
+  transition: 0.3s ease-in-out;
+  margin-left: ${props =>
+    calcMarginLeft(props.options.numElements, props.options.activeElement)}%;
 `;
 
 const HorizontalSeparator = styled.hr`
@@ -69,7 +83,7 @@ const Tab = ({
 
 class SwitchTab extends React.Component<Props, State> {
   state = {
-    selectedTab: null,
+    selectedTab: 0,
   };
 
   setSelectedContent = element =>
@@ -94,6 +108,12 @@ class SwitchTab extends React.Component<Props, State> {
             </Tab>
           ))}
         </MainTabContainer>
+        <Slider
+          options={{
+            numElements: React.Children.count(children[0].props.children),
+            activeElement: selectedTab,
+          }}
+        />
         <HorizontalSeparator />
         {React.Children.map(children[1].props.children, (child, index) => (
           <div

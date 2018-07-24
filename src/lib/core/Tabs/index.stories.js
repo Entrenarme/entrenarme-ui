@@ -25,6 +25,27 @@ storiesOf('Tabs', module).add('text tabs', () => (
   </SwitchTab>
 ));
 
+storiesOf('Tabs', module).add('text tabs with 5 tabs', () => (
+  <SwitchTab>
+    <div>
+      <p>Tab 1</p>
+      <p>Tab 2</p>
+      <p>Tab 3</p>
+      <p>Tab 4</p>
+      <p>Tab 5</p>
+    </div>
+    <div>
+      <p>bla1</p>
+      <div>
+        <p>bla2</p>
+      </div>
+      <p>bla3</p>
+      <p>bla4</p>
+      <p>bla5</p>
+    </div>
+  </SwitchTab>
+));
+
 storiesOf('Tabs', module).add('image tabs', () => (
   <SwitchTab>
     <div>
