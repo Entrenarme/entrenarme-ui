@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressBook } from '@fortawesome/pro-light-svg-icons';
+import { faAddressBook } from '@fortawesome/free-solid-svg-icons';
 
 import AlertText from './index';
 

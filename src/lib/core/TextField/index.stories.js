@@ -3,7 +3,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/pro-light-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import TextField from './index';
 import colors from '../../helpers/colors';
