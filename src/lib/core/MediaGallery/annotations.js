@@ -1,4 +1,4 @@
-export default `# Update Flow
+export default `# Usage
 
 - lazyload
 
@@ -25,5 +25,8 @@ export default `# Update Flow
       - placeholderWidth: string -> The width of the placeholder div when no image loaded
       - imageWidth: string -> The width of the image when (optional)
       - imageHeight: string -> The height of the loaded image (optional)
+      - trainerName: string -> A string to concatenate on the creation of the 'alt' property of an image (optional)
+      - placeholderBackground: string -> A url to be loaded as the background of the placeholder
+      - onMediaClick: function -> If provided, it will be called each time an image is clicked with the image src as a parameter (optional)
 
   `;

@@ -33,18 +33,50 @@ type Props = {
   _images: Array<CustomImage>,
   visibleImages: ?number,
   loadMoreImages: Function,
-  initialLoad: boolean,
   onMediaClick: Function,
+  trainerName: string,
+  swiping: boolean,
+  placeholderBackground: string,
+  placeholderChildren: React.Node,
+  loadLastTwoImages: boolean,
+  prepareForInfinite: Function,
+  initialLoading: boolean,
+  infinite: boolean,
+};
+
+const showPlaceholder = (
+  index,
+  visibleImages,
+  lazyload,
+  loadLastTwoImages,
+  _images,
+  initialLoading,
+  infinite,
+) => {
+  if (lazyload) {
+    // if (loadLastTwoImages && index >= _images.length - 2) {
+    //   return false;
+    // }
+    if (infinite && !initialLoading && index >= _images.length - 2) {
+      return false;
+    }
+    if (visibleImages <= index) {
+      return true;
+    }
+  }
+  return false;
 };
 
 class Gallery extends React.Component<Props> {
   static defaultProps = {
     onMediaClick: null,
     trainerName: '',
+    placeholderBackground: '',
+    placeholderChildren: null,
   };
 
   onMediaClick = (src: string) => () => {
-    if (this.props.onMediaClick) {
+    if (this.props.onMediaClick && !this.props.swiping) {
       this.props.onMediaClick(src);
     } else {
       return null;
@@ -63,21 +95,34 @@ class Gallery extends React.Component<Props> {
       imageHeight,
       loadMoreImages,
       trainerName,
+      swiping,
+      placeholderBackground,
+      placeholderChildren,
+      loadLastTwoImages,
+      prepareForInfinite,
+      initialLoading,
+      infinite,
     } = this.props;
-    return (
+    return visibleImages ? (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
         {_images.map(
           (image, index: number) =>
-            lazyload &&
-            visibleImages !== null &&
-            index >= visibleImages &&
-            index < _images.length - 2 ? (
+            showPlaceholder(
+              index,
+              visibleImages,
+              lazyload,
+              loadLastTwoImages,
+              _images,
+              initialLoading,
+              infinite,
+            ) ? (
               <Placeholder
                 placeholderWidth={placeholderWidth}
                 key={image.keyId || image.id}
-              >
-                placeholder
-              </Placeholder>
+                placeholderBackground={placeholderBackground}
+                placeholderChildren={placeholderChildren}
+                data-testid={initialLoading ? 'initialLoading' : null}
+              />
             ) : image.type === 'video' ? (
               <div
                 className="media"
@@ -89,7 +134,11 @@ class Gallery extends React.Component<Props> {
               >
                 <Player
                   url={image.value}
-                  onReady={loadMoreImages}
+                  onReady={
+                    loadLastTwoImages && index === _images.length - 1
+                      ? prepareForInfinite
+                      : loadMoreImages
+                  }
                   height={imageHeight}
                   width={placeholderWidth}
                   controls
@@ -103,18 +152,23 @@ class Gallery extends React.Component<Props> {
                     ? this.onMediaClick(image.value)
                     : null
                 }
+                allowOpen={!swiping}
                 key={image.keyId || image.id}
                 className="media"
                 image={image}
                 alt={`${trainerName} ${image.sport_name}`}
                 imageWidth={imageWidth}
                 imageHeight={imageHeight}
-                onLoad={loadMoreImages}
+                onLoad={
+                  loadLastTwoImages && index === _images.length - 1
+                    ? prepareForInfinite
+                    : loadMoreImages
+                }
               />
             ),
         )}
       </SGallery>
-    );
+    ) : null;
   }
 }
 

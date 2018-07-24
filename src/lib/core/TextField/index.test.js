@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, fireEvent, wait } from 'react-testing-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/pro-light-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import TextField from './index';
 import { debounce } from '../../../../node_modules/rxjs/operator/debounce';
