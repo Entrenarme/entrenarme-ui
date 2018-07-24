@@ -6,15 +6,10 @@ import Responsive from '../../../helpers/Responsive';
 import Slider from '../../Slider/index';
 
 const MainContainer = styled.div`
-  display: flex;
-
-  > div {
-    margin-right: 30px;
-  }
-
-  div:last-child {
-    margin-right: 0px;
-  }
+  display: grid;
+  grid-template: ${props =>
+    `auto / repeat(${props.options.numChildren}, 215px)`};
+  justify-content: space-around;
 `;
 
 type Props = {
@@ -33,7 +28,13 @@ const HexagonContainer = ({ children }: Props) => {
           );
         }
 
-        return <MainContainer>{children}</MainContainer>;
+        return (
+          <MainContainer
+            options={{ numChildren: React.Children.count(children) }}
+          >
+            {children}
+          </MainContainer>
+        );
       }}
     </Responsive>
   );
