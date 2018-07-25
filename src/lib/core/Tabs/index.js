@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import { mainFont } from '../../helpers/fonts';
 import colors from '../../helpers/colors';
@@ -27,6 +27,13 @@ const TabContainer = styled.div`
 
   &:hover {
     color: ${colors.secondary.default};
+  }
+
+  /* iPhone 5/6/6+ ----------- */
+  @media only screen and (max-width: 767px) {
+    font-size: 0.75rem;
+    padding: 15px 20px;
+    height: 44px;
   }
 `;
 
@@ -94,6 +101,8 @@ class SwitchTab extends React.Component<Props, State> {
   render() {
     const { children } = this.props;
     const { selectedTab } = this.state;
+
+    console.log('children tabs__ ', children[0].props.children[0].type);
 
     return (
       <div>
