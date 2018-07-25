@@ -102,8 +102,6 @@ class SwitchTab extends React.Component<Props, State> {
     const { children } = this.props;
     const { selectedTab } = this.state;
 
-    console.log('children tabs__ ', children[0].props.children[0].type);
-
     return (
       <div>
         <MainTabContainer>
