@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Breadcrumb" with no props 1`] = `
+<div
+  class="sc-bdVaJa kZAgjJ"
+>
+  <div
+    class="sc-bwzfXH beiQCV"
+  >
+    <a>
+      Link 1
+    </a>
+  </div>
+  <div
+    class="sc-bwzfXH beiQCV"
+  >
+    <a>
+      Link 2
+    </a>
+  </div>
+  <div
+    class="sc-bwzfXH beiQCV"
+  >
+    <a>
+      Link 3
+    </a>
+  </div>
+</div>
+`;
