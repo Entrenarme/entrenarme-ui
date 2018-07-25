@@ -25,7 +25,7 @@ storiesOf('Breadcrumb', module).add('with 5 links', () => (
 storiesOf('Breadcrumb', module).add('with disabled links', () => (
   <Breadcrumb>
     <a>Link 1</a>
-    <a disabled>Link 2</a>
+    <a disabled href="http://www.google.es">Link 2</a>
     <a>Link 3</a>
     <a>Link 4</a>
   </Breadcrumb>

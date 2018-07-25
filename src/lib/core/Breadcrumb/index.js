@@ -10,20 +10,25 @@ const MainContainer = styled.div`
 `;
 
 const LinkContainer = styled.div`
-  cursor: ${props => (props.options.disabled ? 'default' : 'pointer')};
-  color: ${props =>
-    props.options.disabled ? colors.gray.default : colors.gray.placeholder};
   font-family: ${regularFont};
   font-size: 1rem;
   margin-right: 10px;
 
   * {
     margin-right: 10px;
+    text-decoration: none;
+    cursor: ${props => (props.options.disabled ? 'default' : 'pointer')};
+    color: ${props =>
+      props.options.disabled ? colors.gray.default : colors.gray.placeholder};
   }
 
   &:hover {
-    color: ${props =>
-      props.options.disabled ? colors.gray.default : colors.secondary.default};
+    * {
+      color: ${props =>
+        props.options.disabled
+          ? colors.gray.default
+          : colors.secondary.default};
+    }
   }
 
   &::after {
@@ -32,11 +37,9 @@ const LinkContainer = styled.div`
   }
 
   &:last-child {
-    cursor: default;
-    color: ${colors.text};
-    margin-right: 0px;
-
     * {
+      cursor: default;
+      color: ${colors.text};
       margin-right: 0px;
     }
   }
@@ -63,13 +66,11 @@ type Props = {
 const Breadcrumb = ({ children }: Props) => {
   return (
     <MainContainer>
-      {React.Children.map(children, child => {
-        return (
-          <LinkContainer options={{ disabled: child.props.disabled }}>
-            {child}
-          </LinkContainer>
-        );
-      })}
+      {React.Children.map(children, child => (
+        <LinkContainer options={{ disabled: child.props.disabled }}>
+          {child}
+        </LinkContainer>
+      ))}
     </MainContainer>
   );
 };
