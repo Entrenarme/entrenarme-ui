@@ -20,6 +20,7 @@ const LinkContainer = styled.div`
     cursor: ${props => (props.options.disabled ? 'default' : 'pointer')};
     color: ${props =>
       props.options.disabled ? colors.gray.default : colors.gray.placeholder};
+    pointer-events: ${props => (props.options.disabled ? 'none' : 'initial')};
   }
 
   &:hover {
