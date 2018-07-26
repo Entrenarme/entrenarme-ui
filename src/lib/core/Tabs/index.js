@@ -45,8 +45,8 @@ const SeparatorsContainer = styled.div`
 
 const Slider = styled.div`
   position: absolute;
-  top: -1px;
-  height: 0.3rem;
+  top: 0px;
+  height: 0.1rem;
   width: ${props => 100 / props.options.numElements}%;
   margin: 0;
   background: ${colors.secondary.default};
