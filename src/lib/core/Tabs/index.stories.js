@@ -12,6 +12,7 @@ storiesOf('Tabs', module).add('text tabs', () => (
   <SwitchTab>
     <SwitchTab.TabList>
       <SwitchTab.Tab>Tab 1</SwitchTab.Tab>
+      <hr />
       <SwitchTab.Tab>Tab 2</SwitchTab.Tab>
     </SwitchTab.TabList>
     <SwitchTab.TabPanels>

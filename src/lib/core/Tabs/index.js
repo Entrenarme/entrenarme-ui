@@ -80,6 +80,8 @@ type TabProps = {
   selectedTab: ?number,
 };
 
+const TabsContext = React.createContext();
+
 const Tab = ({
   children,
   setSelectedContent,
@@ -97,20 +99,76 @@ const Tab = ({
 };
 
 class SwitchTab extends React.Component<Props, State> {
-  state = {
-    selectedTab: 0,
-  };
+  static TabList = ({ children }) => (
+    <TabsContext.Consumer>
+      {context => {
+        let toalTabElements = React.Children.map(
+          children,
+          (child, index) => child.type === SwitchTab.Tab,
+        );
+        toalTabElements = toalTabElements.length;
+        let currentIndex = 0;
+        console.log(toalTabElements);
+        console.log(context.selectedTab);
+        return (
+          <React.Fragment>
+            <MainTabContainer>
+              {React.Children.map(
+                children,
+                child =>
+                  child.type === SwitchTab.Tab
+                    ? React.cloneElement(child, {
+                        indexElement: currentIndex++,
+                      })
+                    : child,
+              )}
+            </MainTabContainer>
+            <SeparatorsContainer>
+              <Slider
+                options={{
+                  numElements: toalTabElements,
+                  activeElement: context.selectedTab,
+                }}
+              />
+              <HorizontalSeparator />
+            </SeparatorsContainer>
+          </React.Fragment>
+        );
+      }}
+    </TabsContext.Consumer>
+  );
+  static Tab = ({ children, indexElement }) => (
+    <TabsContext.Consumer>
+      {context => (
+        <Tab
+          setSelectedContent={context.setSelectedContent}
+          selectedTab={context.selectedTab}
+          indexElement={indexElement}
+        >
+          {children}
+        </Tab>
+      )}
+    </TabsContext.Consumer>
+  );
+  static TabPanels = ({ children }) => children;
+  static TabPanel = ({ children }) => children;
 
   setSelectedContent = element =>
     this.setState({
       selectedTab: element,
     });
 
+  state = {
+    selectedTab: 0,
+    setSelectedContent: this.setSelectedContent,
+  };
+
   render() {
     const { children } = this.props;
-    const { selectedTab } = this.state;
 
-    return children;
+    return (
+      <TabsContext.Provider value={this.state}>{children}</TabsContext.Provider>
+    );
     // return (
     //   <div>
     //     <MainTabContainer>
