@@ -41,6 +41,8 @@ type Props = {
   size?: ButtonSize,
   /** to render the active variant of the current colorVariant */
   active?: boolean,
+  /** Full width of the parent */
+  fullWidth: boolean,
 };
 
 const Button = ({
@@ -56,6 +58,7 @@ const Button = ({
   successText,
   size,
   active,
+  fullWidth,
   ...rest
 }: Props) => (
   <JssProvider jss={jss} generateClassName={generateClassName}>
@@ -70,6 +73,7 @@ const Button = ({
             size,
             device,
             active,
+            fullWidth,
           }}
           disabled={
             state === 'loading' ||
@@ -115,6 +119,7 @@ Button.defaultProps = {
   errorText: '',
   successText: '',
   size: 'default',
+  fullWidth: false,
 };
 
 export default Button;

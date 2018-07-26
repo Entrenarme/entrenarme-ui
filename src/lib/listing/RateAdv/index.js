@@ -14,10 +14,22 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
+type ContainerProps = {
+  options: { appendButtonText: ?string },
+};
+
 const Container = styled.div`
   background-color: ${colors.gray.light};
   width: 130px;
   height: 70px;
+  border-radius: 4px;
+  ${(props: ContainerProps) =>
+    props.options && props.options.appendButtonText
+      ? `
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    `
+      : ''};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +42,7 @@ type Props = {
   bottomText: React.Node,
   amount: number,
   currency: string,
+  appendButtonText: ?string,
 };
 
 const Price = styled.div`
@@ -38,9 +51,15 @@ const Price = styled.div`
   align-items: baseline;
 `;
 
-const RatesAdv = ({ topText, bottomText, amount, currency }: Props) => (
+const RatesAdv = ({
+  topText,
+  bottomText,
+  amount,
+  currency,
+  appendButtonText,
+}: Props) => (
   <Wrapper>
-    <Container>
+    <Container options={{ appendButtonText }}>
       <P size="xs" color={colors.primary.default} textAlign="center" noMargin>
         {topText}
       </P>
@@ -68,8 +87,16 @@ const RatesAdv = ({ topText, bottomText, amount, currency }: Props) => (
         {bottomText}
       </P>
     </Container>
-    <Button style={{ marginTop: '-2px' }}>1a sesión gratis</Button>
+    {appendButtonText && (
+      <Button fullWidth size="xs" style={{ marginTop: '-2px' }}>
+        {appendButtonText}
+      </Button>
+    )}
   </Wrapper>
 );
+
+RatesAdv.defaultProps = {
+  appendButtonText: null,
+};
 
 export default RatesAdv;

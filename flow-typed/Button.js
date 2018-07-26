@@ -13,6 +13,7 @@ declare type ButtonState = 'default' | 'loading' | 'error' | 'success';
 declare type ButtonDisabled = boolean;
 
 declare type ButtonSize =
+  | 'xs'
   | 'small'
   | 'default'
   | 'large'
