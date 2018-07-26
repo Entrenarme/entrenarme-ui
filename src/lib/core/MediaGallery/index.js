@@ -26,9 +26,6 @@ export type Props = {
   lazyload: boolean,
   infinite: boolean,
   offsetVisibleImages: number,
-  placeholderWidth: string,
-  imageWidth: string,
-  imageHeight: string,
   children: React.Node,
 };
 
@@ -47,6 +44,9 @@ export type State = {
   direction: 'next' | 'prev' | null,
   infinite: boolean,
   allowNextMove: boolean,
+  swiping: boolean,
+  initialLoading: boolean,
+  loadLastTwoImages: boolean,
 };
 
 type ArrowProps = {
@@ -106,11 +106,9 @@ class MediaGallery extends React.Component<Props, State> {
     placeholderWidth: string,
   }) => (
     <MediaGalleryContext.Consumer>
-      {({
-        handleLeftClick,
-        copyImagesAndNoDOMVisibleChanges,
-        ...rest
-      }: State) => <Gallery {...rest} {...props} />}
+      {({ copyImagesAndNoDOMVisibleChanges, ...rest }: State) => (
+        <Gallery {...props} {...rest} />
+      )}
     </MediaGalleryContext.Consumer>
   );
 
@@ -147,53 +145,49 @@ class MediaGallery extends React.Component<Props, State> {
   };
 
   loadMoreImages = () => {
-    const { _images, offsetVisibleImages } = this.state;
-    const allImages = getAllChildMedia(this.containerRef);
-    if (allImages) {
-      const totalWidth = [...allImages].reduce(
-        (acc, image) => acc + image.clientWidth,
-        0,
-      );
-      if (this.containerRef) {
-        if (totalWidth < this.containerRef.clientWidth) {
-          this.setState(prevState => ({
-            visibleImages:
-              prevState.visibleImages < _images.length
-                ? prevState.visibleImages + 1
-                : prevState.visibleImages,
-          }));
-        } else if (offsetVisibleImages > 0) {
-          this.setState(prevState => ({
-            visibleImages: prevState.visibleImages + offsetVisibleImages,
-            offsetVisibleImages: 0,
-            showArrows: true,
-          }));
-          if (this.props.infinite) {
-            this.setState(prevState => {
-              const lastMedia = getLastChildMedia(this.containerRef);
-              let newState = {
-                _images: copyLastImageToStart(prevState._images),
-                offsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
-                totalOffsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
-              };
-              if (
-                totalWidth - lastMedia.clientWidth <
-                this.containerRef.clientWidth
-              ) {
-                newState = {
-                  ...newState,
-                  visibleImages:
-                    prevState.visibleImages < _images.length
-                      ? prevState.visibleImages + 1
-                      : prevState.visibleImages,
-                };
-              }
-              return newState;
-            });
+    const { _images } = this.state;
+    if (this.containerRef) {
+      const allImages = getAllChildMedia(this.containerRef);
+      if (allImages) {
+        const totalWidth = [...allImages].reduce(
+          (acc, image) => acc + image.clientWidth,
+          0,
+        );
+        console.log(totalWidth);
+        if (allImages.length < _images.length) {
+          if (totalWidth < this.containerRef.clientWidth) {
+            // images left to load
+            // images loaded does not fill container width
+            // so load one more image
+            this.setState(prevState => ({
+              visibleImages:
+                prevState.visibleImages < _images.length
+                  ? prevState.visibleImages + 1
+                  : prevState.visibleImages,
+            }));
+          } else {
+            this.setState({ initialLoading: false, showArrows: true });
           }
+        } else {
+          this.setState({ initialLoading: false });
         }
       }
     }
+  };
+
+  prepareForInfinite = () => {
+    this.setState(prevState => {
+      const lastMedia = getLastChildMedia(this.containerRef);
+      console.log(lastMedia);
+      console.log(lastMedia ? -lastMedia.clientWidth : 0);
+      let newState = {
+        _images: copyLastImageToStart(prevState._images),
+        offsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
+        totalOffsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
+        loadLastTwoImages: false,
+      };
+      return newState;
+    });
   };
 
   state = {
@@ -204,6 +198,7 @@ class MediaGallery extends React.Component<Props, State> {
     transition: false,
     lazyload: this.props.lazyload,
     copyImagesAndNoDOMVisibleChanges: this.copyImagesAndNoDOMVisibleChanges,
+    prepareForInfinite: this.prepareForInfinite,
     loadMoreImages: this.loadMoreImages,
     offsetVisibleImages: this.props.offsetVisibleImages,
     showArrows: false,
@@ -212,6 +207,9 @@ class MediaGallery extends React.Component<Props, State> {
     direction: null,
     infinite: this.props.infinite,
     allowNextMove: true,
+    swiping: false,
+    initialLoading: true,
+    loadLastTwoImages: false,
   };
 
   containerRef: ?HTMLDivElement;
@@ -234,11 +232,30 @@ class MediaGallery extends React.Component<Props, State> {
     }
   };
 
+  actionWhenImagesFirstLoaded = (prevState: State) => {
+    if (prevState.initialLoading && !this.state.initialLoading) {
+      const { offsetVisibleImages } = this.props;
+      if (offsetVisibleImages > 0) {
+        // images already fill the container width
+        // load the offset images
+        this.setState(prevState => ({
+          visibleImages: prevState.visibleImages + offsetVisibleImages,
+          offsetVisibleImages: 0,
+        }));
+      }
+      if (this.props.infinite) {
+        this.setState({ loadLastTwoImages: true });
+      }
+    }
+  };
+
   componentDidMount() {
     this.setState({ visibleImages: 1 });
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
+    this.actionWhenImagesFirstLoaded(prevState);
+    // this.prepareForInfinite(prevState);
     this.checkIfNeedToMoveGallery(prevState);
   }
 
@@ -255,14 +272,16 @@ class MediaGallery extends React.Component<Props, State> {
 
   swipingNext = (e, absX) => {
     if (
-      !this.props.infinite &&
-      (this.state.currentImage + 1 === this.state._images.length ||
-        !this.state.allowNextMove)
+      (!this.props.infinite &&
+        (this.state.currentImage + 1 === this.state._images.length ||
+          !this.state.allowNextMove)) ||
+      !this.state.showArrows
     ) {
       return null;
     }
 
     this.setState(prevState => ({
+      swiping: true,
       offsetWidth: prevState.totalOffsetWidth - (absX < 100 ? absX : 100),
     }));
   };
@@ -273,7 +292,10 @@ class MediaGallery extends React.Component<Props, State> {
 
   swipingPrev = (e, absX) => {
     const { infinite } = this.props;
-    if (!infinite && this.state.currentImage === 0) {
+    if (
+      (!infinite && this.state.currentImage === 0) ||
+      !this.state.showArrows
+    ) {
       return null;
     }
     let firstVisibleChildWidth;
@@ -289,6 +311,7 @@ class MediaGallery extends React.Component<Props, State> {
     }
     this.setState(prevState => {
       return {
+        swiping: true,
         offsetWidth:
           prevState.totalOffsetWidth +
           (absX < firstVisibleChildWidth ? absX : firstVisibleChildWidth),

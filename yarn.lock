@@ -132,10 +132,10 @@
   resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/fontawesome-pro-5.2.0.tgz#e202f9ac8ee8543670233c218dfc6e058a7a89c5"
 
 "@fortawesome/fontawesome-svg-core@^1.2.0-14":
-  version "1.2.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.2.tgz#b431e7efb3e3a1887e596daa6ed0d241d2d1aea5"
+  version "1.2.1"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.1.tgz#ae203b7563a8b6d7ebf8fe66253b92bd7a7a8a08"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.2"
+    "@fortawesome/fontawesome-common-types" "^0.2.1"
 
 "@fortawesome/free-solid-svg-icons@^5.1.0-11":
   version "5.2.0"
@@ -157,8 +157,8 @@
     prop-types "^15.5.10"
 
 "@material-ui/core@^1.3.0":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-1.4.1.tgz#fb041b95a99a8da0fee87e2953b4107df0120e92"
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-1.4.0.tgz#e535fef84576b096c46e1fb7d6c4c61895155fd3"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.42"
     "@types/jss" "^9.5.3"
@@ -1679,7 +1679,7 @@ babel-plugin-transform-es2015-modules-amd@^6.22.0, babel-plugin-transform-es2015
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1:
+babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1, babel-plugin-transform-es2015-modules-commonjs@^6.26.2:
   version "6.26.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.26.2.tgz#58a793863a9e7ca870bdc5a881117ffac27db6f3"
   dependencies:
@@ -2508,8 +2508,8 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000871"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000871.tgz#f1995c1fe31892649a7605957a80c92518423d4d"
+  version "1.0.30000869"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000869.tgz#c3da59fa8d9456df88a24bb292ede0e3798798cb"
 
 caniuse-lite@^1.0.30000748, caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000815, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000864:
   version "1.0.30000865"
@@ -3463,8 +3463,8 @@ dom-testing-library@^2.7.0:
     wait-for-expect "^0.4.0"
 
 dom-testing-library@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.0.2.tgz#fe1a857205a02132b978d0e15f208ea40cadc07f"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.0.1.tgz#01302e3c27664627610f6e8b65af585edc4d2bd3"
   dependencies:
     mutationobserver-shim "^0.3.2"
     pretty-format "^22.4.3"
@@ -5544,8 +5544,8 @@ jest-docblock@^20.0.3:
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-20.0.3.tgz#17bea984342cc33d83c50fbe1545ea0efaa44712"
 
 jest-dom@^1.0.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-1.10.0.tgz#656b609ad8ee5106459fccb425f8081b13a3a49e"
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-1.8.1.tgz#0838d36ff5b695ec23c853a68b9940abafb15095"
   dependencies:
     chalk "^2.4.1"
     css "^2.2.3"
@@ -8037,8 +8037,8 @@ react-split-pane@^0.1.77:
     react-style-proptype "^3.0.0"
 
 react-spring@^5.4.0:
-  version "5.4.4"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.4.4.tgz#d4f7c9626c9fb83b7e85769538cd80bcc7ba6f61"
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.4.3.tgz#446102bfd9ccc17390554ae69a7d28159b9d0bc0"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
 
@@ -8056,8 +8056,8 @@ react-swipeable@^4.3.0:
     prop-types "^15.5.8"
 
 react-testing-library@^4.1.2:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-4.1.4.tgz#914b2c817a0587ac2555f009427fd8449f037440"
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-4.1.3.tgz#f90e2b91f1c3567e96d8286a10d7257822269536"
   dependencies:
     dom-testing-library "^3.0.1"
     wait-for-expect "^1.0.0"
@@ -8168,8 +8168,8 @@ realpath-native@^1.0.0:
     util.promisify "^1.0.0"
 
 recast@^0.15.0:
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/recast/-/recast-0.15.3.tgz#5fc1fd1c8e2d4d027ee3977a176bbb8d1c83305e"
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/recast/-/recast-0.15.2.tgz#bcaebf7cdb0728e38ec6d1438e7fb3594505cee3"
   dependencies:
     ast-types "0.11.5"
     esprima "~4.0.0"
@@ -9873,8 +9873,8 @@ webpack@3.8.1:
     yargs "^8.0.2"
 
 webpack@^4.10.2:
-  version "4.16.2"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.16.2.tgz#c3e0e771adc94582e0543dd18d7436066051e885"
+  version "4.16.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.16.1.tgz#2c4b89ea648125c3e67bcca6adf49ce2c14b2d31"
   dependencies:
     "@webassemblyjs/ast" "1.5.13"
     "@webassemblyjs/helper-module-context" "1.5.13"

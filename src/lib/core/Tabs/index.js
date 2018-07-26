@@ -109,42 +109,41 @@ class SwitchTab extends React.Component<Props, State> {
   render() {
     const { children } = this.props;
     const { selectedTab } = this.state;
-    console.log('children', children);
-    console.log('0', children[0]);
-    console.log('1', children[1]);
-    return (
-      <div>
-        <MainTabContainer>
-          {React.Children.map(children[0].props.children, (child, index) => (
-            <Tab
-              setSelectedContent={this.setSelectedContent}
-              selectedTab={selectedTab}
-              indexElement={index}
-            >
-              {child}
-            </Tab>
-          ))}
-        </MainTabContainer>
-        <SeparatorsContainer>
-          <Slider
-            options={{
-              numElements: React.Children.count(children[0].props.children),
-              activeElement: selectedTab,
-            }}
-          />
-          <HorizontalSeparator />
-        </SeparatorsContainer>
-        {React.Children.map(children[1].props.children, (child, index) => (
-          <div
-            style={{
-              display: selectedTab === index ? 'block' : 'none',
-            }}
-          >
-            {child}
-          </div>
-        ))}
-      </div>
-    );
+
+    return children;
+    // return (
+    //   <div>
+    //     <MainTabContainer>
+    //       {React.Children.map(children[0].props.children, (child, index) => (
+    //         <Tab
+    //           setSelectedContent={this.setSelectedContent}
+    //           selectedTab={selectedTab}
+    //           indexElement={index}
+    //         >
+    //           {child}
+    //         </Tab>
+    //       ))}
+    //     </MainTabContainer>
+    //     <SeparatorsContainer>
+    //       <Slider
+    //         options={{
+    //           numElements: React.Children.count(children[0].props.children),
+    //           activeElement: selectedTab,
+    //         }}
+    //       />
+    //       <HorizontalSeparator />
+    //     </SeparatorsContainer>
+    //     {React.Children.map(children[1].props.children, (child, index) => (
+    //       <div
+    //         style={{
+    //           display: selectedTab === index ? 'block' : 'none',
+    //         }}
+    //       >
+    //         {child}
+    //       </div>
+    //     ))}
+    //   </div>
+    // );
   }
 }
 

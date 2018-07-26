@@ -2,7 +2,7 @@
 import * as React from 'react';
 import ReactSlider from 'react-slick';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faAngleLeft } from '@fortawesome/pro-light-svg-icons';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 import './styles/slick-theme.css';
@@ -11,6 +11,8 @@ import './styles/slick.css';
 type Props = {
   children: React.Node,
   itemsToShow: number,
+  disableDots?: boolean,
+  invertedArrows?: boolean,
 };
 
 type ArrowProps = {
@@ -19,6 +21,7 @@ type ArrowProps = {
   onClick?: Function,
   icon: React.Node,
   disabled: boolean,
+  invertedArrows?: boolean,
 };
 
 const StyledSlider = styled(ReactSlider)`
@@ -30,14 +33,21 @@ const StyledSlider = styled(ReactSlider)`
   }
 `;
 
-const Arrow = ({ className, style, onClick, icon, disabled }: ArrowProps) => {
+const Arrow = ({
+  className,
+  style,
+  onClick,
+  icon,
+  disabled,
+  invertedArrows,
+}: ArrowProps) => {
   if (disabled) {
     return null;
   }
 
   return (
     <div
-      className={className}
+      className={invertedArrows ? `${className} slick-secondary` : className}
       style={{
         ...style,
       }}
@@ -48,20 +58,28 @@ const Arrow = ({ className, style, onClick, icon, disabled }: ArrowProps) => {
   );
 };
 
-const Slider = ({ children, itemsToShow, ...rest }: Props) => {
+const Slider = ({
+  children,
+  itemsToShow,
+  disableDots,
+  invertedArrows,
+  ...rest
+}: Props) => {
   const settings = {
-    dots: true,
+    dots: disableDots ? false : true,
     slidesToShow: itemsToShow,
     slidesToScroll: itemsToShow,
     infinite: React.Children.count(children) >= itemsToShow,
     nextArrow: (
       <Arrow
+        invertedArrows={invertedArrows}
         icon={faAngleRight}
         disabled={React.Children.count(children) <= itemsToShow}
       />
     ),
     prevArrow: (
       <Arrow
+        invertedArrows={invertedArrows}
         icon={faAngleLeft}
         disabled={React.Children.count(children) <= itemsToShow}
       />
@@ -78,6 +96,9 @@ const Slider = ({ children, itemsToShow, ...rest }: Props) => {
   );
 };
 
-Slider.defaultProps = {};
+Slider.defaultProps = {
+  disableDots: false,
+  invertedArrows: false,
+};
 
 export default Slider;
