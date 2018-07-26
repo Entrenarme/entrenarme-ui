@@ -44,7 +44,7 @@ var Responsive = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       device: 'mobile'
-    }, _this.setQueryState = function (currentQueryName) {
+    }, _this.mqlQueries = {}, _this.setQueryState = function (currentQueryName) {
       return _this.setState({ device: currentQueryName });
     }, _this.queryChange = function (mql) {
       if (mql.matches) {
@@ -65,10 +65,19 @@ var Responsive = function (_React$Component) {
     value: function initQueries() {
       var _this2 = this;
 
-      queries.forEach(function (query) {
-        var mql = window.matchMedia(query);
-        mql.addListener(_this2.queryChange);
-        _this2.queryChange(mql);
+      queries.forEach(function (query, index) {
+        _this2.mqlQueries['mql' + index] = window.matchMedia(query);
+        _this2.mqlQueries['mql' + index].addListener(_this2.queryChange);
+        _this2.queryChange(_this2.mqlQueries['mql' + index]);
+      });
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      var _this3 = this;
+
+      Object.keys(this.mqlQueries).forEach(function (query) {
+        _this3.mqlQueries[query].removeListener(_this3.queryChange(query));
       });
     }
   }, {

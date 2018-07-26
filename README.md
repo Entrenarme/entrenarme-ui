@@ -2,6 +2,35 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## About material-ui
+
+Every component we create that will use anything of material-ui (meaning that we do a `import xxx from`@material-ui/xxxx`at the top of that file), we need to wrap the component we return with a JssProvider as described in here [CSS in JS - Material-ui](https://v1-3-0.material-ui.com/customization/css-in-js/#jssprovider), but with one modification, we need to pass the option`productionPrefix: 'eui'`to the`createGenerateClassName` function. There are 3 parts of this process:
+
+- 1.  Import necessary files:
+      ```javascript
+      import JssProvider from 'react-jss/lib/JssProvider';
+      import { create } from 'jss';
+      import {
+        createGenerateClassName,
+        jssPreset,
+      } from '@material-ui/core/styles';
+      ```
+- 2.  Create constants and configure options:
+
+```javascript
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'eui',
+});
+const jss = create(jssPreset());
+```
+
+- 3.  Wrap our component with JssProvider (should be the most outer component):
+  ```javascript
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    ...
+  </JssProvider>
+  ```
+
 ## Folder structure
 
 - All library components and files should live inside `src/lib` folder. Anything outside of that folder will not be published as a library file.

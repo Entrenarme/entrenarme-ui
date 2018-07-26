@@ -2,8 +2,15 @@
 import * as React from 'react';
 import MRadio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  createGenerateClassName,
+  jssPreset,
+} from '@material-ui/core/styles';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
 
 import colors from '../../helpers/colors';
 import P from '../Text/Paragraph';
@@ -14,6 +21,11 @@ const theme = createMuiTheme({
     secondary: { main: colors.secondary.default },
   },
 });
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'eui',
+});
+const jss = create(jssPreset());
 
 type Props = {
   label?: ?string,
@@ -30,12 +42,14 @@ const SRadio = styled(MRadio)`
 `;
 
 const Radio = ({ label, ...rest }: Props) => (
-  <MuiThemeProvider theme={theme}>
-    <FormControlLabel
-      control={<SRadio {...rest} />}
-      label={label ? <P noMargin>{label}</P> : null}
-    />
-  </MuiThemeProvider>
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    <MuiThemeProvider theme={theme}>
+      <FormControlLabel
+        control={<SRadio {...rest} />}
+        label={label ? <P noMargin>{label}</P> : null}
+      />
+    </MuiThemeProvider>
+  </JssProvider>
 );
 
 Radio.defaultProps = {

@@ -30,6 +30,12 @@ var _debounce = require('lodash/debounce');
 
 var _debounce2 = _interopRequireDefault(_debounce);
 
+var _JssProvider = require('react-jss/lib/JssProvider');
+
+var _JssProvider2 = _interopRequireDefault(_JssProvider);
+
+var _jss = require('jss');
+
 var _colors = require('../../helpers/colors');
 
 var _colors2 = _interopRequireDefault(_colors);
@@ -57,6 +63,9 @@ var theme = (0, _styles.createMuiTheme)({
     text: { primary: _colors2.default.gray.placeholder }
   }
 });
+
+var generateClassName = (0, _styles.createGenerateClassName)({ productionPrefix: 'eui' });
+var jss = (0, _jss.create)((0, _styles.jssPreset)());
 
 var STextField = (0, _styledComponents2.default)(_TextField2.default)(_templateObject, _colors2.default.gray.placeholder, _colors2.default.text, _fonts.regularFont);
 
@@ -92,19 +101,23 @@ var TextField = function (_React$Component) {
           rest = _objectWithoutProperties(_props, ['adornment', 'onChange', 'debounceMs']);
 
       return React.createElement(
-        _styles.MuiThemeProvider,
-        { theme: theme },
-        React.createElement(STextField, Object.assign({
-          onChange: this.onChange
-        }, rest, {
-          InputProps: {
-            startAdornment: adornment ? React.createElement(
-              _InputAdornment2.default,
-              { position: 'start' },
-              adornment
-            ) : null
-          }
-        }))
+        _JssProvider2.default,
+        { jss: jss, generateClassName: generateClassName },
+        React.createElement(
+          _styles.MuiThemeProvider,
+          { theme: theme },
+          React.createElement(STextField, Object.assign({
+            onChange: this.onChange
+          }, rest, {
+            InputProps: {
+              startAdornment: adornment ? React.createElement(
+                _InputAdornment2.default,
+                { position: 'start' },
+                adornment
+              ) : null
+            }
+          }))
+        )
       );
     }
   }]);
