@@ -102,13 +102,13 @@ class SwitchTab extends React.Component<Props, State> {
   static TabList = ({ children }) => (
     <TabsContext.Consumer>
       {context => {
-        let toalTabElements = React.Children.map(
+        let totalTabElements = React.Children.map(
           children,
           (child, index) => child.type === SwitchTab.Tab,
-        );
-        toalTabElements = toalTabElements.length;
+        ).filter(elem => elem);
+        totalTabElements = totalTabElements.length;
         let currentIndex = 0;
-        console.log(toalTabElements);
+        console.log(totalTabElements);
         console.log(context.selectedTab);
         return (
           <React.Fragment>
@@ -126,7 +126,7 @@ class SwitchTab extends React.Component<Props, State> {
             <SeparatorsContainer>
               <Slider
                 options={{
-                  numElements: toalTabElements,
+                  numElements: totalTabElements,
                   activeElement: context.selectedTab,
                 }}
               />
