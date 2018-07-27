@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: 0.875rem !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: 0.75rem !important;\n  }\n'], ['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: 0.875rem !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: 0.75rem !important;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: ', ' !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: 0.75rem !important;\n  }\n'], ['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: ', ' !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: 0.75rem !important;\n  }\n']);
 
 var _react = require('react');
 
@@ -41,18 +41,31 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 var generateClassName = (0, _styles.createGenerateClassName)({ productionPrefix: 'eui' });
 var jss = (0, _jss.create)((0, _styles.jssPreset)());
 
-var ExtendedTag = (0, _styledComponents2.default)(_Chip2.default)(_templateObject, _fonts.regularFont, _colors2.default.gray.light, _colors2.default.text);
+var ExtendedTag = (0, _styledComponents2.default)(_Chip2.default)(_templateObject, _fonts.regularFont, function (props) {
+  return props.options && props.options.xs ? '0.5625rem' : '0.875rem';
+}, function (props) {
+  return props.options.bgcolor;
+}, function (props) {
+  return props.options.color;
+});
 
 var Tag = function Tag(_ref) {
-  var title = _ref.title;
+  var title = _ref.title,
+      bgcolor = _ref.bgcolor,
+      color = _ref.color,
+      xs = _ref.xs;
 
   return React.createElement(
     _JssProvider2.default,
     { jss: jss, generateClassName: generateClassName },
-    React.createElement(ExtendedTag, { label: title })
+    React.createElement(ExtendedTag, { label: title, options: { bgcolor: bgcolor, color: color, xs: xs } })
   );
 };
 
-Tag.defaultProps = {};
+Tag.defaultProps = {
+  bgcolor: _colors2.default.gray.light,
+  color: _colors2.default.text,
+  xs: false
+};
 
 exports.default = Tag;
