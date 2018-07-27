@@ -17,9 +17,9 @@ const textSizeTransform = (size, device) => {
       ? normalDesktop + sizeModifier
       : normalMobile + sizeModifier;
   } else if (size === 'small') {
-    return device === 'desktop'
-      ? normalDesktop - sizeModifier
-      : normalMobile - sizeModifier;
+    return normalDesktop - sizeModifier;
+  } else if (size === 'xs') {
+    return normalMobile - sizeModifier;
   } else {
     return device === 'desktop' ? normalDesktop : normalMobile;
   }
@@ -40,9 +40,10 @@ const StyledP = styled.p`
   font-size: ${props =>
     `${textSizeTransform(props.options.size, 'desktop')}rem`};
   font-weight: 400;
-  font-family: ${fonts.regularFont};
+  font-family: ${props =>
+    props.options.font === 'regular' ? fonts.regularFont : fonts.mainFont};
   text-align: ${props => props.options.textAlign};
-  color: ${props => colors.text};
+  color: ${props => props.options.color};
   margin-top: 0rem;
   margin-left: 0rem;
   margin-right: 0rem;
@@ -88,13 +89,23 @@ const StyledP = styled.p`
 
 type Props = {
   children: React.Node,
-  size?: 'small' | 'medium' | 'large',
+  size?: 'xs' | 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
   noMargin?: boolean,
+  color: string,
+  font: 'regular' | 'main',
 };
 
-const P = ({ children, size, textAlign, noMargin, ...rest }: Props) => (
-  <StyledP {...rest} options={{ size, textAlign, noMargin }}>
+const P = ({
+  children,
+  size,
+  textAlign,
+  noMargin,
+  color,
+  font,
+  ...rest
+}: Props) => (
+  <StyledP {...rest} options={{ size, textAlign, noMargin, color, font }}>
     {children}
   </StyledP>
 );
@@ -103,6 +114,8 @@ P.defaultProps = {
   size: 'medium',
   textAlign: 'left',
   noMargin: false,
+  color: colors.text,
+  font: 'regular',
 };
 
 export default P;

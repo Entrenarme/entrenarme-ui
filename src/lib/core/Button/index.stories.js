@@ -20,6 +20,7 @@ const createButton = (
     icon,
     size,
     active,
+    fullWidth,
   }: {
     type?: ButtonType,
     state?: ButtonState,
@@ -28,6 +29,7 @@ const createButton = (
     icon?: React.Node,
     size?: ButtonSize,
     active?: boolean,
+    fullWidth?: boolean,
   } = { colorVariant: 'primary' },
 ) => (
   <Button
@@ -41,6 +43,7 @@ const createButton = (
     errorText="error"
     successText="success"
     active={active}
+    fullWidth={fullWidth}
     {...actions}
   >
     button {colorVariant}
@@ -53,7 +56,7 @@ storiesOf('Buttons/Default', module)
   .add('default small (primary)', () => createButton({ size: 'small' }))
   .add('default large (primary)', () => createButton({ size: 'large' }))
   .add('default xlarge (primary)', () => createButton({ size: 'xlarge' }))
-  .add('default fullwidth (primary)', () => createButton({ size: 'fullwidth' }))
+  .add('default fullwidth (primary)', () => createButton({ fullWidth: true }))
   .add('secondary', () => createButton({ colorVariant: 'secondary' }))
   .add('warning', () => createButton({ colorVariant: 'warning' }))
   .add('loading', () => createButton({ state: 'loading' }))

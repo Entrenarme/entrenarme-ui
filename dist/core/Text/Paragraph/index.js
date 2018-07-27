@@ -40,7 +40,9 @@ var textSizeTransform = function textSizeTransform(size, device) {
   if (size === 'large') {
     return device === 'desktop' ? normalDesktop + sizeModifier : normalMobile + sizeModifier;
   } else if (size === 'small') {
-    return device === 'desktop' ? normalDesktop - sizeModifier : normalMobile - sizeModifier;
+    return normalDesktop - sizeModifier;
+  } else if (size === 'xs') {
+    return normalMobile - sizeModifier;
   } else {
     return device === 'desktop' ? normalDesktop : normalMobile;
   }
@@ -60,10 +62,12 @@ var StyledP = _styledComponents2.default.p(_templateObject, function (props) {
   return props.options.noMargin ? 'margin: 0 !important;' : '';
 }, function (props) {
   return textSizeTransform(props.options.size, 'desktop') + 'rem';
-}, fonts.regularFont, function (props) {
+}, function (props) {
+  return props.options.font === 'regular' ? fonts.regularFont : fonts.mainFont;
+}, function (props) {
   return props.options.textAlign;
 }, function (props) {
-  return _colors2.default.text;
+  return props.options.color;
 }, function (props) {
   return marginBottomSize(props.options.size, 'desktop') + 'rem';
 }, function (props) {
@@ -81,11 +85,13 @@ var P = function P(_ref) {
       size = _ref.size,
       textAlign = _ref.textAlign,
       noMargin = _ref.noMargin,
-      rest = _objectWithoutProperties(_ref, ['children', 'size', 'textAlign', 'noMargin']);
+      color = _ref.color,
+      font = _ref.font,
+      rest = _objectWithoutProperties(_ref, ['children', 'size', 'textAlign', 'noMargin', 'color', 'font']);
 
   return React.createElement(
     StyledP,
-    Object.assign({}, rest, { options: { size: size, textAlign: textAlign, noMargin: noMargin } }),
+    Object.assign({}, rest, { options: { size: size, textAlign: textAlign, noMargin: noMargin, color: color, font: font } }),
     children
   );
 };
@@ -93,7 +99,9 @@ var P = function P(_ref) {
 P.defaultProps = {
   size: 'medium',
   textAlign: 'left',
-  noMargin: false
+  noMargin: false,
+  color: _colors2.default.text,
+  font: 'regular'
 };
 
 exports.default = P;

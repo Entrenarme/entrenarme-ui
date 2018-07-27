@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the expected props 1`] = `
+<div
+  class="sc-bxivhb bQXWIa"
+>
+  <div
+    class="sc-ifAKCX fqXEi"
+  >
+    <p
+      class="sc-bdVaJa gIQiiZ"
+    >
+      desde
+    </p>
+    <div
+      class="sc-EHOje kuAuJM"
+    >
+      <p
+        class="sc-bdVaJa etpXmm"
+      >
+        12
+      </p>
+      <p
+        class="sc-bdVaJa gGAOdY"
+      >
+        €
+      </p>
+    </div>
+    <p
+      class="sc-bdVaJa gIQiiZ"
+    >
+      persona/sesión
+    </p>
+  </div>
+</div>
+`;

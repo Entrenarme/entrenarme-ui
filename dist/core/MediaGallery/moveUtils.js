@@ -69,12 +69,12 @@ var prepareToMoveNext = function prepareToMoveNext(prevState, props, direction, 
 var prepareImagesOnDOMForMoving = function prepareImagesOnDOMForMoving(direction, containerRef) {
   return function (prevState, props) {
     if (direction === 'prev') {
-      if (!props.infinite && prevState.currentImage === 0) return null;
+      if (!props.infinite && prevState.currentImage === 0 || !prevState.showArrows) return null;
       return preareToMovePrev(prevState, props, direction, containerRef);
     }
 
     if (direction === 'next') {
-      if (!props.infinite && prevState.currentImage === prevState._images.length - 1) return null;
+      if (!props.infinite && prevState.currentImage === prevState._images.length - 1 || !prevState.showArrows) return null;
       return prepareToMoveNext(prevState, props, direction, containerRef);
     }
   };

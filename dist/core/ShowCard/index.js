@@ -35,6 +35,14 @@ var _reactFontawesome = require('@fortawesome/react-fontawesome');
 
 var _freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 
+var _JssProvider = require('react-jss/lib/JssProvider');
+
+var _JssProvider2 = _interopRequireDefault(_JssProvider);
+
+var _jss = require('jss');
+
+var _styles = require('@material-ui/core/styles');
+
 var _index = require('../Text/Headers/H4/index');
 
 var _index2 = _interopRequireDefault(_index);
@@ -52,6 +60,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var generateClassName = (0, _styles.createGenerateClassName)({ productionPrefix: 'eui' });
+var jss = (0, _jss.create)((0, _styles.jssPreset)());
 
 var ExtendedGlobalContainer = (0, _styledComponents2.default)(_ExpansionPanel2.default)(_templateObject);
 
@@ -98,27 +109,31 @@ var ShowCard = function (_React$Component) {
 
 
       return React.createElement(
-        ExtendedGlobalContainer,
-        Object.assign({}, rest, {
-          expanded: expanded === 'panel1',
-          onChange: this.handleChange('panel1')
-        }),
+        _JssProvider2.default,
+        { jss: jss, generateClassName: generateClassName },
         React.createElement(
-          ExtendedTitle,
-          { expandIcon: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _freeSolidSvgIcons.faAngleDown }) },
+          ExtendedGlobalContainer,
+          Object.assign({}, rest, {
+            expanded: expanded === 'panel1',
+            onChange: this.handleChange('panel1')
+          }),
           React.createElement(
-            _index2.default,
-            { size: 'small', style: { fontWeight: 600, margin: '0px' } },
-            title
-          )
-        ),
-        React.createElement(
-          ExtendedBody,
-          null,
+            ExtendedTitle,
+            { expandIcon: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _freeSolidSvgIcons.faAngleDown }) },
+            React.createElement(
+              _index2.default,
+              { size: 'small', style: { fontWeight: 600, margin: '0px' } },
+              title
+            )
+          ),
           React.createElement(
-            BodyContainer,
+            ExtendedBody,
             null,
-            children
+            React.createElement(
+              BodyContainer,
+              null,
+              children
+            )
           )
         )
       );

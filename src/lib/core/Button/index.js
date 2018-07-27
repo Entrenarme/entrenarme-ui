@@ -1,12 +1,20 @@
 // @flow
 import * as React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 import { textToRender, getButtonFontSize } from './utils';
 import { SButton, Icon } from './styles';
 
 import Responsive from '../../helpers/Responsive';
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'eui',
+});
+const jss = create(jssPreset());
 
 type Props = {
   /** This is what is gonig to be rendered inside the button */
@@ -33,6 +41,8 @@ type Props = {
   size?: ButtonSize,
   /** to render the active variant of the current colorVariant */
   active?: boolean,
+  /** Full width of the parent */
+  fullWidth: boolean,
 };
 
 const Button = ({
@@ -48,42 +58,54 @@ const Button = ({
   successText,
   size,
   active,
+  fullWidth,
   ...rest
 }: Props) => (
-  <Responsive>
-    {({ device }) => (
-      <SButton
-        options={{ type, state, colorVariant, disabled, size, device, active }}
-        disabled={
-          state === 'loading' ||
-          state === 'error' ||
-          state === 'success' ||
-          disabled
-        }
-        {...rest}
-      >
-        {icon ? <Icon options={{ size, device }}>{icon}</Icon> : null}{' '}
-        {state === 'loading' ? (
-          <CircularProgress
-            style={{
-              height: getButtonFontSize(size, device),
-              width: getButtonFontSize(size, device),
-              marginRight: '10px',
-              color:
-                type === 'add'
-                  ? colors.secondary.loading
-                  : type === 'outline'
-                    ? colors[colorVariant].default
-                    : colors.gray.loading,
-            }}
-          />
-        ) : null}{' '}
-        <span>
-          {textToRender(state, children, loadingText, errorText, successText)}
-        </span>
-      </SButton>
-    )}
-  </Responsive>
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    <Responsive>
+      {({ device }) => (
+        <SButton
+          options={{
+            type,
+            state,
+            colorVariant,
+            disabled,
+            size,
+            device,
+            active,
+            fullWidth,
+          }}
+          disabled={
+            state === 'loading' ||
+            state === 'error' ||
+            state === 'success' ||
+            disabled
+          }
+          {...rest}
+        >
+          {icon ? <Icon options={{ size, device }}>{icon}</Icon> : null}{' '}
+          {state === 'loading' ? (
+            <CircularProgress
+              style={{
+                height: getButtonFontSize(size, device),
+                width: getButtonFontSize(size, device),
+                marginRight: '10px',
+                color:
+                  type === 'add'
+                    ? colors.secondary.loading
+                    : type === 'outline'
+                      ? colors[colorVariant].default
+                      : colors.gray.loading,
+              }}
+            />
+          ) : null}{' '}
+          <span>
+            {textToRender(state, children, loadingText, errorText, successText)}
+          </span>
+        </SButton>
+      )}
+    </Responsive>
+  </JssProvider>
 );
 
 Button.defaultProps = {
@@ -97,6 +119,7 @@ Button.defaultProps = {
   errorText: '',
   successText: '',
   size: 'default',
+  fullWidth: false,
 };
 
 export default Button;

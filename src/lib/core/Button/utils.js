@@ -43,6 +43,8 @@ export const getButtonPadding = (size: ButtonSize, device: Device) => {
 
 export const getButtonFontSize = (size: ButtonSize, device: Device) => {
   switch (size) {
+    case 'xs':
+      return '0.5625rem';
     case 'small':
       if (device === 'mobile' || device === 'iphone') return '0.625rem';
       return '0.75rem';

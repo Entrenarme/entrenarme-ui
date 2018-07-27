@@ -2,9 +2,15 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Chip from '@material-ui/core/Chip';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import { regularFont } from '../../helpers/fonts';
 import colors from '../../helpers/colors';
+
+const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
+const jss = create(jssPreset());
 
 const ExtendedTag = styled(Chip)`
   height: 24px !important;
@@ -26,7 +32,11 @@ type Props = {
 };
 
 const Tag = ({ title }: Props) => {
-  return <ExtendedTag label={title} />;
+  return (
+    <JssProvider jss={jss} generateClassName={generateClassName}>
+      <ExtendedTag label={title} />
+    </JssProvider>
+  );
 };
 
 Tag.defaultProps = {};
