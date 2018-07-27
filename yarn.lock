@@ -127,6 +127,10 @@
   version "0.2.2"
   resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.2.tgz#7fd64eacf7f64e4d7619d21b0b2f2467f5a70611"
 
+"@fortawesome/fontawesome-common-types@^0.2.2":
+  version "0.2.2"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.2.tgz#7fd64eacf7f64e4d7619d21b0b2f2467f5a70611"
+
 "@fortawesome/fontawesome-svg-core@^1.2.0-14":
   version "1.2.2"
   resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.2.tgz#b431e7efb3e3a1887e596daa6ed0d241d2d1aea5"
@@ -136,6 +140,12 @@
 "@fortawesome/free-solid-svg-icons@^5.1.0-11":
   version "5.2.0"
   resolved "https://npm.fontawesome.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.2.0.tgz#b51c1d49278ef538a97c0ce9575a1b54cc1a52dc"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.2"
+
+"@fortawesome/pro-light-svg-icons@^5.2.0":
+  version "5.2.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/pro-light-svg-icons/-/pro-light-svg-icons-5.2.0.tgz#03eee61be292249939c424452982b2ec34496b00"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.2"
 
