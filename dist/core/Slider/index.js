@@ -47,7 +47,8 @@ var Arrow = function Arrow(_ref) {
       style = _ref.style,
       onClick = _ref.onClick,
       icon = _ref.icon,
-      disabled = _ref.disabled;
+      disabled = _ref.disabled,
+      invertedArrows = _ref.invertedArrows;
 
   if (disabled) {
     return null;
@@ -56,7 +57,7 @@ var Arrow = function Arrow(_ref) {
   return React.createElement(
     'div',
     {
-      className: className,
+      className: invertedArrows ? className + ' slick-secondary' : className,
       style: Object.assign({}, style),
       onClick: onClick
     },
@@ -67,18 +68,22 @@ var Arrow = function Arrow(_ref) {
 var Slider = function Slider(_ref2) {
   var children = _ref2.children,
       itemsToShow = _ref2.itemsToShow,
-      rest = _objectWithoutProperties(_ref2, ['children', 'itemsToShow']);
+      disableDots = _ref2.disableDots,
+      invertedArrows = _ref2.invertedArrows,
+      rest = _objectWithoutProperties(_ref2, ['children', 'itemsToShow', 'disableDots', 'invertedArrows']);
 
   var settings = {
-    dots: true,
+    dots: disableDots ? false : true,
     slidesToShow: itemsToShow,
     slidesToScroll: itemsToShow,
     infinite: React.Children.count(children) >= itemsToShow,
     nextArrow: React.createElement(Arrow, {
+      invertedArrows: invertedArrows,
       icon: _freeSolidSvgIcons.faAngleRight,
       disabled: React.Children.count(children) <= itemsToShow
     }),
     prevArrow: React.createElement(Arrow, {
+      invertedArrows: invertedArrows,
       icon: _freeSolidSvgIcons.faAngleLeft,
       disabled: React.Children.count(children) <= itemsToShow
     })
@@ -93,6 +98,9 @@ var Slider = function Slider(_ref2) {
   );
 };
 
-Slider.defaultProps = {};
+Slider.defaultProps = {
+  disableDots: false,
+  invertedArrows: false
+};
 
 exports.default = Slider;

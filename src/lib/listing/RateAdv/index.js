@@ -8,6 +8,7 @@ import Button from '../../core/Button';
 
 const Wrapper = styled.div`
   width: 130px;
+  height: 95px;
   display: flex;
   flex-direction: column;
   justify-content: center;

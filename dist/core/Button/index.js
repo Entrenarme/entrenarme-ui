@@ -56,7 +56,8 @@ var Button = function Button(_ref) {
       successText = _ref.successText,
       size = _ref.size,
       active = _ref.active,
-      rest = _objectWithoutProperties(_ref, ['children', 'type', 'state', 'icon', 'colorVariant', 'disabled', 'defaultText', 'loadingText', 'errorText', 'successText', 'size', 'active']);
+      fullWidth = _ref.fullWidth,
+      rest = _objectWithoutProperties(_ref, ['children', 'type', 'state', 'icon', 'colorVariant', 'disabled', 'defaultText', 'loadingText', 'errorText', 'successText', 'size', 'active', 'fullWidth']);
 
   return React.createElement(
     _JssProvider2.default,
@@ -76,7 +77,8 @@ var Button = function Button(_ref) {
               disabled: disabled,
               size: size,
               device: device,
-              active: active
+              active: active,
+              fullWidth: fullWidth
             },
             disabled: state === 'loading' || state === 'error' || state === 'success' || disabled
           }, rest),
@@ -116,7 +118,8 @@ Button.defaultProps = {
   loadingText: '',
   errorText: '',
   successText: '',
-  size: 'default'
+  size: 'default',
+  fullWidth: false
 };
 
 exports.default = Button;
