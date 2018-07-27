@@ -6,9 +6,27 @@ import colors from '../../helpers/colors';
 import P from '../../core/Text/Paragraph';
 import Button from '../../core/Button';
 
+import Responsive from '../../helpers/Responsive';
+
+type WrapperProps = {
+  options: {
+    device: Device,
+  },
+};
+
 const Wrapper = styled.div`
-  width: 130px;
-  height: 95px;
+  width: ${(props: WrapperProps) =>
+    props.options &&
+    props.options.device &&
+    props.options.device.includes('desktop')
+      ? '130px'
+      : '80px'};
+  height: ${(props: WrapperProps) =>
+    props.options &&
+    props.options.device &&
+    props.options.device.includes('desktop')
+      ? '95px'
+      : '55px'};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,8 +39,9 @@ type ContainerProps = {
 
 const Container = styled.div`
   background-color: ${colors.gray.light};
-  width: 130px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
+  max-height: 70px;
   border-radius: 4px;
   ${(props: ContainerProps) =>
     props.options && props.options.appendButtonText
@@ -59,46 +78,60 @@ const RatesAdv = ({
   currency,
   appendButtonText,
 }: Props) => (
-  <Wrapper>
-    <Container options={{ appendButtonText }}>
-      <P size="xs" color={colors.primary.default} textAlign="center" noMargin>
-        {topText}
-      </P>
-      <Price>
-        <P
-          size="large"
-          color={colors.primary.default}
-          font="main"
-          textAlign="center"
-          noMargin
-        >
-          {amount}
-        </P>
-        <P
-          size="medium"
-          color={colors.primary.default}
-          font="main"
-          textAlign="center"
-          noMargin
-        >
-          {currency}
-        </P>
-      </Price>
-      <P size="xs" color={colors.primary.default} textAlign="center" noMargin>
-        {bottomText}
-      </P>
-    </Container>
-    {appendButtonText && (
-      <Button
-        fullWidth
-        size="xs"
-        style={{ marginTop: '-2px' }}
-        data-testid="appended-button"
-      >
-        {appendButtonText}
-      </Button>
+  <Responsive>
+    {({ device }) => (
+      <Wrapper options={{ device }}>
+        <Container options={{ appendButtonText }}>
+          <P
+            size="xs"
+            color={colors.primary.default}
+            textAlign="center"
+            noMargin
+          >
+            {topText}
+          </P>
+          <Price>
+            <P
+              size="large"
+              color={colors.primary.default}
+              font="main"
+              textAlign="center"
+              noMargin
+            >
+              {amount}
+            </P>
+            <P
+              size="medium"
+              color={colors.primary.default}
+              font="main"
+              textAlign="center"
+              noMargin
+            >
+              {currency}
+            </P>
+          </Price>
+          <P
+            size="xs"
+            color={colors.primary.default}
+            textAlign="center"
+            noMargin
+          >
+            {bottomText}
+          </P>
+        </Container>
+        {appendButtonText && (
+          <Button
+            fullWidth
+            size="xs"
+            style={{ marginTop: '-2px' }}
+            data-testid="appended-button"
+          >
+            {appendButtonText}
+          </Button>
+        )}
+      </Wrapper>
     )}
-  </Wrapper>
+  </Responsive>
 );
 
 RatesAdv.defaultProps = {
