@@ -34,7 +34,7 @@ const ExtendedTag = styled(Chip)`
 
   @media only screen and (max-width: 767px) {
     font-size: ${(props: ExtendedTagProps) =>
-      props.options && props.options.xs ? '0.5625rem' : '0.75rem'} !important;
+      props.options && props.options.xs ? '0.5rem' : '0.75rem'} !important;
   }
 `;
 

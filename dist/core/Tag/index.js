@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: ', ' !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: 0.75rem !important;\n  }\n'], ['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: ', ' !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: 0.75rem !important;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: ', ' !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: ', ' !important;\n  }\n'], ['\n  height: 24px !important;\n  font-family: ', ' !important;\n  font-size: ', ' !important;\n  background-color: ', ' !important;\n\n  span {\n    color: ', ';\n  }\n\n  @media only screen and (max-width: 767px) {\n    font-size: ', ' !important;\n  }\n']);
 
 var _react = require('react');
 
@@ -47,6 +47,8 @@ var ExtendedTag = (0, _styledComponents2.default)(_Chip2.default)(_templateObjec
   return props.options.bgcolor;
 }, function (props) {
   return props.options.color;
+}, function (props) {
+  return props.options && props.options.xs ? '0.5625rem' : '0.75rem';
 });
 
 var Tag = function Tag(_ref) {
