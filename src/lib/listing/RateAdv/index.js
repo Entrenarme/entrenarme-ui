@@ -88,7 +88,12 @@ const RatesAdv = ({
       </P>
     </Container>
     {appendButtonText && (
-      <Button fullWidth size="xs" style={{ marginTop: '-2px' }}>
+      <Button
+        fullWidth
+        size="xs"
+        style={{ marginTop: '-2px' }}
+        data-testid="appended-button"
+      >
         {appendButtonText}
       </Button>
     )}
