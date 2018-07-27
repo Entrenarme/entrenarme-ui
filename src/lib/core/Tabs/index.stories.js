@@ -12,7 +12,6 @@ storiesOf('Tabs', module).add('text tabs', () => (
   <SwitchTab>
     <SwitchTab.TabList>
       <SwitchTab.Tab>Tab 1</SwitchTab.Tab>
-      <hr />
       <SwitchTab.Tab>Tab 2</SwitchTab.Tab>
     </SwitchTab.TabList>
     <SwitchTab.TabPanels>
@@ -24,50 +23,52 @@ storiesOf('Tabs', module).add('text tabs', () => (
 
 storiesOf('Tabs', module).add('text tabs with 5 tabs', () => (
   <SwitchTab>
-    <div>
-      <p>Tab 1</p>
-      <p>Tab 2</p>
-      <p>Tab 3</p>
-      <p>Tab 4</p>
-      <p>Tab 5</p>
-    </div>
-    <div>
-      <p>bla1</p>
-      <div>
-        <p>bla2</p>
-      </div>
-      <p>bla3</p>
-      <p>bla4</p>
-      <p>bla5</p>
-    </div>
+    <SwitchTab.TabList>
+      <SwitchTab.Tab>Tab 1</SwitchTab.Tab>
+      <SwitchTab.Tab>Tab 2</SwitchTab.Tab>
+      <SwitchTab.Tab>Tab 3</SwitchTab.Tab>
+      <SwitchTab.Tab>Tab 4</SwitchTab.Tab>
+      <SwitchTab.Tab>Tab 5</SwitchTab.Tab>
+    </SwitchTab.TabList>
+    <SwitchTab.TabPanels>
+      <SwitchTab.TabPanel>bla 1</SwitchTab.TabPanel>
+      <SwitchTab.TabPanel>bla 2</SwitchTab.TabPanel>
+      <SwitchTab.TabPanel>bla 3</SwitchTab.TabPanel>
+      <SwitchTab.TabPanel>bla 4</SwitchTab.TabPanel>
+      <SwitchTab.TabPanel>bla 5</SwitchTab.TabPanel>
+    </SwitchTab.TabPanels>
   </SwitchTab>
 ));
 
 storiesOf('Tabs', module).add('image tabs', () => (
   <SwitchTab>
-    <div>
-      <img
-        src={`${RESOURCES_URL}profile/150/${imageURLTest}`}
-        style={{ width: '50px', height: '50px', borderRadius: '50px' }}
-        alt="profile"
-      />
-      <img
-        src={`${RESOURCES_URL}profile/150/${imageURLTest}`}
-        style={{ width: '50px', height: '50px', borderRadius: '50px' }}
-        alt="profile"
-      />
-      <img
-        src={`${RESOURCES_URL}profile/150/${imageURLTest}`}
-        style={{ width: '50px', height: '50px', borderRadius: '50px' }}
-        alt="profile"
-      />
-    </div>
-    <div>
-      <p>bla1</p>
-      <div>
-        <p>bla2</p>
-      </div>
-      <p>bla3</p>
-    </div>
+    <SwitchTab.TabList>
+      <SwitchTab.Tab>
+        <img
+          src={`${RESOURCES_URL}profile/150/${imageURLTest}`}
+          style={{ width: '50px', height: '50px', borderRadius: '50px' }}
+          alt="profile"
+        />
+      </SwitchTab.Tab>
+      <SwitchTab.Tab>
+        <img
+          src={`${RESOURCES_URL}profile/150/${imageURLTest}`}
+          style={{ width: '50px', height: '50px', borderRadius: '50px' }}
+          alt="profile"
+        />
+      </SwitchTab.Tab>
+      <SwitchTab.Tab>
+        <img
+          src={`${RESOURCES_URL}profile/150/${imageURLTest}`}
+          style={{ width: '50px', height: '50px', borderRadius: '50px' }}
+          alt="profile"
+        />
+      </SwitchTab.Tab>
+    </SwitchTab.TabList>
+    <SwitchTab.TabPanels>
+      <SwitchTab.TabPanel>bla 1</SwitchTab.TabPanel>
+      <SwitchTab.TabPanel>bla 2</SwitchTab.TabPanel>
+      <SwitchTab.TabPanel>bla 3</SwitchTab.TabPanel>
+    </SwitchTab.TabPanels>
   </SwitchTab>
 ));

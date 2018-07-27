@@ -65,51 +65,53 @@ const HorizontalSeparator = styled.hr`
   padding: 0;
 `;
 
+const MainPanelContainer = styled.div``;
+
+const SinglePanelContainer = styled.div`
+  padding: 20px 30px;
+`;
+
 type Props = {
   children: React.Node,
 };
 
 type State = {
-  selectedTab: ?number,
+  selectedTab: number,
+  setSelectedContent: Function,
 };
 
 type TabProps = {
   children: React.Node,
-  setSelectedContent: Function,
   indexElement: number,
-  selectedTab: ?number,
 };
 
-const TabsContext = React.createContext();
-
-const Tab = ({
-  children,
-  setSelectedContent,
-  indexElement,
-  selectedTab,
-}: TabProps) => {
-  return (
-    <TabContainer
-      onClick={() => setSelectedContent(indexElement)}
-      options={{ isActive: indexElement === selectedTab }}
-    >
-      {children}
-    </TabContainer>
-  );
+type TabListProps = {
+  children: React.Node,
 };
+
+type TabPanelsProps = {
+  children: React.Node,
+};
+
+type TabPanelProps = {
+  children: React.Node,
+};
+
+const SwitchContext = React.createContext();
 
 class SwitchTab extends React.Component<Props, State> {
-  static TabList = ({ children }) => (
-    <TabsContext.Consumer>
+  static TabList = ({ children }: TabListProps) => (
+    <SwitchContext.Consumer>
       {context => {
         let totalTabElements = React.Children.map(
           children,
           (child, index) => child.type === SwitchTab.Tab,
         ).filter(elem => elem);
+
         totalTabElements = totalTabElements.length;
+
         let currentIndex = 0;
-        console.log(totalTabElements);
-        console.log(context.selectedTab);
+
         return (
           <React.Fragment>
             <MainTabContainer>
@@ -135,25 +137,47 @@ class SwitchTab extends React.Component<Props, State> {
           </React.Fragment>
         );
       }}
-    </TabsContext.Consumer>
+    </SwitchContext.Consumer>
   );
-  static Tab = ({ children, indexElement }) => (
-    <TabsContext.Consumer>
+
+  static Tab = ({ children, indexElement }: TabProps) => (
+    <SwitchContext.Consumer>
       {context => (
-        <Tab
-          setSelectedContent={context.setSelectedContent}
-          selectedTab={context.selectedTab}
-          indexElement={indexElement}
+        <TabContainer
+          onClick={() => context.setSelectedContent(indexElement)}
+          options={{ isActive: indexElement === context.selectedTab }}
         >
           {children}
-        </Tab>
+        </TabContainer>
       )}
-    </TabsContext.Consumer>
+    </SwitchContext.Consumer>
   );
-  static TabPanels = ({ children }) => children;
-  static TabPanel = ({ children }) => children;
 
-  setSelectedContent = element =>
+  static TabPanels = ({ children }: TabPanelsProps) => (
+    <SwitchContext.Consumer>
+      {context => {
+        return (
+          <MainPanelContainer>
+            {React.Children.map(
+              children,
+              (child, index) =>
+                child.type === SwitchTab.TabPanel
+                  ? context.selectedTab === index
+                    ? React.cloneElement(
+                        <SinglePanelContainer>{child}</SinglePanelContainer>,
+                      )
+                    : null
+                  : null,
+            )}
+          </MainPanelContainer>
+        );
+      }}
+    </SwitchContext.Consumer>
+  );
+
+  static TabPanel = ({ children }: TabPanelProps) => children;
+
+  setSelectedContent = (element: number) =>
     this.setState({
       selectedTab: element,
     });
@@ -167,41 +191,10 @@ class SwitchTab extends React.Component<Props, State> {
     const { children } = this.props;
 
     return (
-      <TabsContext.Provider value={this.state}>{children}</TabsContext.Provider>
+      <SwitchContext.Provider value={this.state}>
+        {children}
+      </SwitchContext.Provider>
     );
-    // return (
-    //   <div>
-    //     <MainTabContainer>
-    //       {React.Children.map(children[0].props.children, (child, index) => (
-    //         <Tab
-    //           setSelectedContent={this.setSelectedContent}
-    //           selectedTab={selectedTab}
-    //           indexElement={index}
-    //         >
-    //           {child}
-    //         </Tab>
-    //       ))}
-    //     </MainTabContainer>
-    //     <SeparatorsContainer>
-    //       <Slider
-    //         options={{
-    //           numElements: React.Children.count(children[0].props.children),
-    //           activeElement: selectedTab,
-    //         }}
-    //       />
-    //       <HorizontalSeparator />
-    //     </SeparatorsContainer>
-    //     {React.Children.map(children[1].props.children, (child, index) => (
-    //       <div
-    //         style={{
-    //           display: selectedTab === index ? 'block' : 'none',
-    //         }}
-    //       >
-    //         {child}
-    //       </div>
-    //     ))}
-    //   </div>
-    // );
   }
 }
 
