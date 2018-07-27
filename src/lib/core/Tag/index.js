@@ -12,14 +12,24 @@ import colors from '../../helpers/colors';
 const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
 const jss = create(jssPreset());
 
+type ExtendedTagProps = {
+  options: {
+    bgcolor: string,
+    color: string,
+    xs: boolean,
+  },
+};
+
 const ExtendedTag = styled(Chip)`
   height: 24px !important;
   font-family: ${regularFont} !important;
-  font-size: 0.875rem !important;
-  background-color: ${colors.gray.light} !important;
+  font-size: ${(props: ExtendedTagProps) =>
+    props.options && props.options.xs ? '0.5625rem' : '0.875rem'} !important;
+  background-color: ${(props: ExtendedTagProps) =>
+    props.options.bgcolor} !important;
 
   span {
-    color: ${colors.text};
+    color: ${(props: ExtendedTagProps) => props.options.color};
   }
 
   @media only screen and (max-width: 767px) {
@@ -29,16 +39,23 @@ const ExtendedTag = styled(Chip)`
 
 type Props = {
   title: React.Node,
+  bgcolor: string,
+  color: string,
+  xs: boolean,
 };
 
-const Tag = ({ title }: Props) => {
+const Tag = ({ title, bgcolor, color, xs }: Props) => {
   return (
     <JssProvider jss={jss} generateClassName={generateClassName}>
-      <ExtendedTag label={title} />
+      <ExtendedTag label={title} options={{ bgcolor, color, xs }} />
     </JssProvider>
   );
 };
 
-Tag.defaultProps = {};
+Tag.defaultProps = {
+  bgcolor: colors.gray.light,
+  color: colors.text,
+  xs: false,
+};
 
 export default Tag;
