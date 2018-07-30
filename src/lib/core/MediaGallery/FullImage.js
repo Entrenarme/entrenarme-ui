@@ -1,7 +1,14 @@
 // @flow
 import * as React from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  createGenerateClassName,
+  jssPreset,
+} from '@material-ui/core/styles';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
 
 import { RESOURCES_URL } from '../../helpers/config';
 
@@ -10,6 +17,11 @@ type Props = {
   image: CustomImage,
   onClose: Function,
 };
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'eui',
+});
+const jss = create(jssPreset());
 
 class FullImage extends React.Component<Props> {
   static defaultProps = {
@@ -25,15 +37,17 @@ class FullImage extends React.Component<Props> {
   render() {
     const { image, open } = this.props;
     return (
-      <MuiThemeProvider theme={createMuiTheme()}>
-        <Dialog open={open} onClose={this.onCloseDialog}>
-          <img
-            src={`${RESOURCES_URL}gallery/original/${image.value}`}
-            width="100%"
-            alt="detail"
-          />
-        </Dialog>
-      </MuiThemeProvider>
+      <JssProvider jss={jss} generateClassName={generateClassName}>
+        <MuiThemeProvider theme={createMuiTheme()}>
+          <Dialog open={open} onClose={this.onCloseDialog}>
+            <img
+              src={`${RESOURCES_URL}gallery/original/${image.value}`}
+              width="100%"
+              alt="detail"
+            />
+          </Dialog>
+        </MuiThemeProvider>
+      </JssProvider>
     );
   }
 }

@@ -89,49 +89,46 @@ var MediaGallery = function (_React$Component) {
     }, _this.copyImagesAndNoDOMVisibleChanges = function (direction) {
       _this.setState((0, _moveUtils.prepareImagesOnDOMForMoving)(direction, _this.containerRef));
     }, _this.loadMoreImages = function () {
-      var _this$state2 = _this.state,
-          _images = _this$state2._images,
-          offsetVisibleImages = _this$state2.offsetVisibleImages;
+      var _images = _this.state._images;
 
-      var allImages = (0, _helpers.getAllChildMedia)(_this.containerRef);
-      if (allImages) {
-        var totalWidth = [].concat(_toConsumableArray(allImages)).reduce(function (acc, image) {
-          return acc + image.clientWidth;
-        }, 0);
-        if (_this.containerRef) {
-          if (totalWidth < _this.containerRef.clientWidth) {
-            _this.setState(function (prevState) {
-              return {
-                visibleImages: prevState.visibleImages < _images.length ? prevState.visibleImages + 1 : prevState.visibleImages
-              };
-            });
-          } else if (offsetVisibleImages > 0) {
-            _this.setState(function (prevState) {
-              return {
-                visibleImages: prevState.visibleImages + offsetVisibleImages,
-                offsetVisibleImages: 0,
-                showArrows: true
-              };
-            });
-            if (_this.props.infinite) {
+      if (_this.containerRef) {
+        var allImages = (0, _helpers.getAllChildMedia)(_this.containerRef);
+        if (allImages) {
+          var totalWidth = [].concat(_toConsumableArray(allImages)).reduce(function (acc, image) {
+            return acc + image.clientWidth;
+          }, 0);
+          console.log(totalWidth);
+          if (allImages.length < _images.length) {
+            if (totalWidth < _this.containerRef.clientWidth) {
+              // images left to load
+              // images loaded does not fill container width
+              // so load one more image
               _this.setState(function (prevState) {
-                var lastMedia = (0, _helpers.getLastChildMedia)(_this.containerRef);
-                var newState = {
-                  _images: (0, _moveUtils.copyLastImageToStart)(prevState._images),
-                  offsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
-                  totalOffsetWidth: lastMedia ? -lastMedia.clientWidth : 0
+                return {
+                  visibleImages: prevState.visibleImages < _images.length ? prevState.visibleImages + 1 : prevState.visibleImages
                 };
-                if (totalWidth - lastMedia.clientWidth < _this.containerRef.clientWidth) {
-                  newState = Object.assign({}, newState, {
-                    visibleImages: prevState.visibleImages < _images.length ? prevState.visibleImages + 1 : prevState.visibleImages
-                  });
-                }
-                return newState;
               });
+            } else {
+              _this.setState({ initialLoading: false, showArrows: true });
             }
+          } else {
+            _this.setState({ initialLoading: false });
           }
         }
       }
+    }, _this.prepareForInfinite = function () {
+      _this.setState(function (prevState) {
+        var lastMedia = (0, _helpers.getLastChildMedia)(_this.containerRef);
+        console.log(lastMedia);
+        console.log(lastMedia ? -lastMedia.clientWidth : 0);
+        var newState = {
+          _images: (0, _moveUtils.copyLastImageToStart)(prevState._images),
+          offsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
+          totalOffsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
+          loadLastTwoImages: false
+        };
+        return newState;
+      });
     }, _this.state = {
       visibleImages: 0,
       currentImage: 0,
@@ -140,6 +137,7 @@ var MediaGallery = function (_React$Component) {
       transition: false,
       lazyload: _this.props.lazyload,
       copyImagesAndNoDOMVisibleChanges: _this.copyImagesAndNoDOMVisibleChanges,
+      prepareForInfinite: _this.prepareForInfinite,
       loadMoreImages: _this.loadMoreImages,
       offsetVisibleImages: _this.props.offsetVisibleImages,
       showArrows: false,
@@ -148,7 +146,9 @@ var MediaGallery = function (_React$Component) {
       direction: null,
       infinite: _this.props.infinite,
       allowNextMove: true,
-      swiping: false
+      swiping: false,
+      initialLoading: true,
+      loadLastTwoImages: false
     }, _this.checkIfNeedToMoveGallery = function (prevState) {
       var infinite = _this.props.infinite;
 
@@ -167,13 +167,31 @@ var MediaGallery = function (_React$Component) {
           }, 100);
         }
       }
+    }, _this.actionWhenImagesFirstLoaded = function (prevState) {
+      if (prevState.initialLoading && !_this.state.initialLoading) {
+        var _offsetVisibleImages = _this.props.offsetVisibleImages;
+
+        if (_offsetVisibleImages > 0) {
+          // images already fill the container width
+          // load the offset images
+          _this.setState(function (prevState) {
+            return {
+              visibleImages: prevState.visibleImages + _offsetVisibleImages,
+              offsetVisibleImages: 0
+            };
+          });
+        }
+        if (_this.props.infinite) {
+          _this.setState({ loadLastTwoImages: true });
+        }
+      }
     }, _this.swipedNext = function (e, deltaY) {
       if (!_this.props.infinite && (_this.state.currentImage + 1 === _this.state._images.length || !_this.state.allowNextMove)) {
         return null;
       }
       _this.copyImagesAndNoDOMVisibleChanges('next');
     }, _this.swipingNext = function (e, absX) {
-      if (!_this.props.infinite && (_this.state.currentImage + 1 === _this.state._images.length || !_this.state.allowNextMove)) {
+      if (!_this.props.infinite && (_this.state.currentImage + 1 === _this.state._images.length || !_this.state.allowNextMove) || !_this.state.showArrows) {
         return null;
       }
 
@@ -188,7 +206,7 @@ var MediaGallery = function (_React$Component) {
     }, _this.swipingPrev = function (e, absX) {
       var infinite = _this.props.infinite;
 
-      if (!infinite && _this.state.currentImage === 0) {
+      if (!infinite && _this.state.currentImage === 0 || !_this.state.showArrows) {
         return null;
       }
       var firstVisibleChildWidth = void 0;
@@ -216,6 +234,8 @@ var MediaGallery = function (_React$Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
+      this.actionWhenImagesFirstLoaded(prevState);
+      // this.prepareForInfinite(prevState);
       this.checkIfNeedToMoveGallery(prevState);
     }
   }, {
@@ -303,11 +323,10 @@ MediaGallery.Gallery = function (props) {
     MediaGalleryContext.Consumer,
     null,
     function (_ref6) {
-      var handleLeftClick = _ref6.handleLeftClick,
-          copyImagesAndNoDOMVisibleChanges = _ref6.copyImagesAndNoDOMVisibleChanges,
-          rest = _objectWithoutProperties(_ref6, ['handleLeftClick', 'copyImagesAndNoDOMVisibleChanges']);
+      var copyImagesAndNoDOMVisibleChanges = _ref6.copyImagesAndNoDOMVisibleChanges,
+          rest = _objectWithoutProperties(_ref6, ['copyImagesAndNoDOMVisibleChanges']);
 
-      return React.createElement(_Gallery2.default, Object.assign({}, rest, props));
+      return React.createElement(_Gallery2.default, Object.assign({}, props, rest));
     }
   );
 };

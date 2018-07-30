@@ -33,7 +33,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var SButton = exports.SButton = (0, _styledComponents2.default)(_Button2.default)(_templateObject, function (props) {
-  return props.options.size === 'fullwidth' ? 'width: 100%' : '';
+  return props.options.fullWidth ? 'width: 100%' : '';
 }, function (props) {
   return (0, _utils.getButtonHeight)(props.options.size, props.options.device);
 }, function (props) {

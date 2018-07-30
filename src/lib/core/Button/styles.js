@@ -23,13 +23,13 @@ type ButtonProps = {
     size: ButtonSize,
     device: Device,
     active: boolean,
+    fullWidth: boolean,
   },
 };
 
 export const SButton = styled(MButton)`
   min-height: 0px !important;
-  ${(props: ButtonProps) =>
-    props.options.size === 'fullwidth' ? 'width: 100%' : ''};
+  ${(props: ButtonProps) => (props.options.fullWidth ? 'width: 100%' : '')};
   height: ${(props: ButtonProps) =>
     getButtonHeight(props.options.size, props.options.device)};
   padding: ${(props: ButtonProps) =>

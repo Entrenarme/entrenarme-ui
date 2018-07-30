@@ -4,8 +4,7 @@ declare type Device =
   | 'iphone'
   | 'ipad'
   | 'desktop'
-  | 'large_desktop'
-  | 'retina_desktop';
+  | 'large_desktop';
 
 declare type CustomImage = {
   id: number,

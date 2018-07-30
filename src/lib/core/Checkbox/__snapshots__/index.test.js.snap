@@ -21,8 +21,8 @@ exports[`renders default 1`] = `
         />
       </svg>
       <input
-        class="MuiSwitchBase-input-12"
         type="checkbox"
+        class="MuiSwitchBase-input-12"
         value=""
       />
     </span>
@@ -57,8 +57,8 @@ exports[`renders with label 1`] = `
         />
       </svg>
       <input
-        class="MuiSwitchBase-input-71"
         type="checkbox"
+        class="MuiSwitchBase-input-71"
         value=""
       />
     </span>

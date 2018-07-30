@@ -46,6 +46,21 @@ var SGallery = _styledComponents2.default.div(_templateObject, function (props) 
   return props.options.offsetWidth;
 });
 
+var showPlaceholder = function showPlaceholder(index, visibleImages, lazyload, loadLastTwoImages, _images, initialLoading, infinite) {
+  if (lazyload) {
+    // if (loadLastTwoImages && index >= _images.length - 2) {
+    //   return false;
+    // }
+    if (infinite && !initialLoading && index >= _images.length - 2) {
+      return false;
+    }
+    if (visibleImages <= index) {
+      return true;
+    }
+  }
+  return false;
+};
+
 var Gallery = function (_React$Component) {
   _inherits(Gallery, _React$Component);
 
@@ -89,17 +104,22 @@ var Gallery = function (_React$Component) {
           trainerName = _props.trainerName,
           swiping = _props.swiping,
           placeholderBackground = _props.placeholderBackground,
-          placeholderChildren = _props.placeholderChildren;
+          placeholderChildren = _props.placeholderChildren,
+          loadLastTwoImages = _props.loadLastTwoImages,
+          prepareForInfinite = _props.prepareForInfinite,
+          initialLoading = _props.initialLoading,
+          infinite = _props.infinite;
 
-      return React.createElement(
+      return visibleImages ? React.createElement(
         SGallery,
         { options: { offsetWidth: offsetWidth, transition: transition }, id: 'gallery_container' },
         _images.map(function (image, index) {
-          return lazyload && visibleImages !== null && index >= visibleImages && index < _images.length - 2 ? React.createElement(_Placeholder2.default, {
+          return showPlaceholder(index, visibleImages, lazyload, loadLastTwoImages, _images, initialLoading, infinite) ? React.createElement(_Placeholder2.default, {
             placeholderWidth: placeholderWidth,
             key: image.keyId || image.id,
             placeholderBackground: placeholderBackground,
-            placeholderChildren: placeholderChildren
+            placeholderChildren: placeholderChildren,
+            'data-testid': initialLoading ? 'initialLoading' : null
           }) : image.type === 'video' ? React.createElement(
             'div',
             {
@@ -112,7 +132,7 @@ var Gallery = function (_React$Component) {
             },
             React.createElement(_reactPlayer2.default, {
               url: image.value,
-              onReady: loadMoreImages,
+              onReady: loadLastTwoImages && index === _images.length - 1 ? prepareForInfinite : loadMoreImages,
               height: imageHeight,
               width: placeholderWidth,
               controls: true
@@ -127,10 +147,10 @@ var Gallery = function (_React$Component) {
             alt: trainerName + ' ' + image.sport_name,
             imageWidth: imageWidth,
             imageHeight: imageHeight,
-            onLoad: loadMoreImages
+            onLoad: loadLastTwoImages && index === _images.length - 1 ? prepareForInfinite : loadMoreImages
           });
         })
-      );
+      ) : null;
     }
   }]);
 

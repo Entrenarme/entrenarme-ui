@@ -24,6 +24,12 @@ var _styledComponents = require('styled-components');
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _JssProvider = require('react-jss/lib/JssProvider');
+
+var _JssProvider2 = _interopRequireDefault(_JssProvider);
+
+var _jss = require('jss');
+
 var _colors = require('../../helpers/colors');
 
 var _colors2 = _interopRequireDefault(_colors);
@@ -47,6 +53,11 @@ var theme = (0, _styles.createMuiTheme)({
   }
 });
 
+var generateClassName = (0, _styles.createGenerateClassName)({
+  productionPrefix: 'eui'
+});
+var jss = (0, _jss.create)((0, _styles.jssPreset)());
+
 var SRadio = (0, _styledComponents2.default)(_Radio2.default)(_templateObject);
 
 var Radio = function Radio(_ref) {
@@ -54,16 +65,20 @@ var Radio = function Radio(_ref) {
       rest = _objectWithoutProperties(_ref, ['label']);
 
   return React.createElement(
-    _styles.MuiThemeProvider,
-    { theme: theme },
-    React.createElement(_FormControlLabel2.default, {
-      control: React.createElement(SRadio, rest),
-      label: label ? React.createElement(
-        _Paragraph2.default,
-        { noMargin: true },
-        label
-      ) : null
-    })
+    _JssProvider2.default,
+    { jss: jss, generateClassName: generateClassName },
+    React.createElement(
+      _styles.MuiThemeProvider,
+      { theme: theme },
+      React.createElement(_FormControlLabel2.default, {
+        control: React.createElement(SRadio, rest),
+        label: label ? React.createElement(
+          _Paragraph2.default,
+          { noMargin: true },
+          label
+        ) : null
+      })
+    )
   );
 };
 

@@ -30,13 +30,14 @@ class Responsive extends React.Component<Props, State> {
     device: 'mobile',
   };
 
+  mqlQueries = {};
+
   componentDidMount() {
     this.initQueries();
   }
 
-  setQueryState = (currentQueryName: Device) => {
-    return this.setState({ device: currentQueryName });
-  };
+  setQueryState = (currentQueryName: Device) =>
+    this.setState({ device: currentQueryName });
 
   queryChange = mql => {
     if (mql.matches) {
@@ -47,10 +48,16 @@ class Responsive extends React.Component<Props, State> {
   };
 
   initQueries() {
-    queries.forEach(query => {
-      const mql = window.matchMedia(query);
-      mql.addListener(this.queryChange);
-      this.queryChange(mql);
+    queries.forEach((query, index) => {
+      this.mqlQueries[`mql${index}`] = window.matchMedia(query);
+      this.mqlQueries[`mql${index}`].addListener(this.queryChange);
+      this.queryChange(this.mqlQueries[`mql${index}`]);
+    });
+  }
+
+  componentWillUnmount() {
+    Object.keys(this.mqlQueries).forEach(query => {
+      this.mqlQueries[query].removeListener(this.queryChange(query));
     });
   }
 
