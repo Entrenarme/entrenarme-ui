@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders "Paragraph" with no props 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa imDAUP"
+  >
+    <div
+      class="sc-bwzfXH fJfaPd"
+    >
+      <p>
+        Tab 1
+      </p>
+    </div>
+    <div
+      class="sc-bwzfXH cHXhoU"
+    >
+      <p>
+        Tab 2
+      </p>
+    </div>
+    <div
+      class="sc-bwzfXH cHXhoU"
+    >
+      <p>
+        Tab 3
+      </p>
+    </div>
+  </div>
+  <div
+    class="sc-htpNat bAIBKj"
+  />
+  <hr
+    class="sc-bxivhb iBpFaI"
+  />
+  <div
+    style="display: block;"
+  >
+    <p>
+      bla1
+    </p>
+  </div>
+  <div
+    style="display: none;"
+  >
+    <div>
+      <p>
+        bla2
+      </p>
+    </div>
+  </div>
+  <div
+    style="display: none;"
+  >
+    <p>
+      bla3
+    </p>
+  </div>
+</div>
+`;
