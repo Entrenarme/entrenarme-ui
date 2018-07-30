@@ -21,4 +21,13 @@ storiesOf('RatesAdv', module)
       topText="desde"
       bottomText="persona/sesión"
     />
+  ))
+  .add('no button + mobile', () => (
+    <RatesAdv
+      mobile
+      currency="€"
+      amount={12}
+      topText="desde"
+      bottomText="persona/sesión"
+    />
   ));

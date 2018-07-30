@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 `;
 
 type ContainerProps = {
-  options: { appendButtonText: ?string },
+  options: { appendButtonText: ?string, mobile: boolean },
 };
 
 const Container = styled.div`
@@ -42,7 +42,14 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   max-height: 70px;
-  border-radius: 4px;
+  ${(props: ContainerProps) =>
+    props.options && props.options.mobile
+      ? `
+      border-radius: 4px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+  `
+      : 'border-radius: 4px'};
   ${(props: ContainerProps) =>
     props.options && props.options.appendButtonText
       ? `
@@ -63,6 +70,7 @@ type Props = {
   amount: number,
   currency: string,
   appendButtonText: ?string,
+  mobile: boolean,
 };
 
 const Price = styled.div`
@@ -77,11 +85,12 @@ const RatesAdv = ({
   amount,
   currency,
   appendButtonText,
+  mobile,
 }: Props) => (
   <Responsive>
     {({ device }) => (
       <Wrapper options={{ device }}>
-        <Container options={{ appendButtonText }}>
+        <Container options={{ appendButtonText, mobile }}>
           <P
             size="xs"
             color={colors.primary.default}
@@ -136,6 +145,7 @@ const RatesAdv = ({
 
 RatesAdv.defaultProps = {
   appendButtonText: null,
+  mobile: false,
 };
 
 export default RatesAdv;
