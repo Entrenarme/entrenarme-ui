@@ -25,7 +25,8 @@ const textSizeTransform = (size, device) => {
   }
 };
 
-const marginBottomSize = (size, device) => {
+const marginBottomSize = (size, device, nomargin) => {
+  if (nomargin) return 0;
   if (size === 'large') {
     return device === 'desktop' ? 1.875 : 1.25;
   } else if (size === 'small') {
@@ -47,14 +48,26 @@ const StyledH4 = styled.h4`
   margin-left: 0rem;
   margin-right: 0rem;
   margin-bottom: ${props =>
-    `${marginBottomSize(props.options.size, 'desktop')}rem`};
+    `${marginBottomSize(
+      props.options.size,
+      'desktop',
+      props.options.nomargin,
+    )}rem`};
 
   /* Smartphones (portrait) ----------- */
   @media only screen and (max-width: 320px) {
     font-size: ${props =>
-      `${textSizeTransform(props.options.size, 'mobile')}rem`};
+      `${textSizeTransform(
+        props.options.size,
+        'mobile',
+        props.options.nomargin,
+      )}rem`};
     margin-bottom: ${props =>
-      `${marginBottomSize(props.options.size, 'mobile')}rem`};
+      `${marginBottomSize(
+        props.options.size,
+        'mobile',
+        props.options.nomargin,
+      )}rem`};
   }
 
   /* iPhone 5/6/6+ ----------- */
@@ -91,10 +104,11 @@ type Props = {
   color?: color,
   size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
+  nomargin: boolean,
 };
 
-const H4 = ({ children, color, size, textAlign, ...rest }: Props) => (
-  <StyledH4 {...rest} options={{ color, size, textAlign }}>
+const H4 = ({ children, color, size, textAlign, nomargin, ...rest }: Props) => (
+  <StyledH4 {...rest} options={{ color, size, textAlign, nomargin }}>
     {children}
   </StyledH4>
 );
@@ -103,6 +117,7 @@ H4.defaultProps = {
   color: 'primary',
   size: 'medium',
   textAlign: 'left',
+  nomargin: false,
 };
 
 export default H4;
