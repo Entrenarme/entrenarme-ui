@@ -153,7 +153,6 @@ class MediaGallery extends React.Component<Props, State> {
           (acc, image) => acc + image.clientWidth,
           0,
         );
-        console.log(totalWidth);
         if (allImages.length < _images.length) {
           if (totalWidth < this.containerRef.clientWidth) {
             // images left to load

@@ -75,7 +75,11 @@ const StyledH4 = styled.h4`
     font-size: ${props =>
       `${textSizeTransform(props.options.size, 'mobile')}rem`};
     margin-bottom: ${props =>
-      `${marginBottomSize(props.options.size, 'mobile')}rem`};
+      `${marginBottomSize(
+        props.options.size,
+        'mobile',
+        props.options.nomargin,
+      )}rem`};
   }
 
   /* iPads (portrait and landscape) ----------- */
