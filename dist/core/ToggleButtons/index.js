@@ -18,6 +18,14 @@ var _styledComponents = require('styled-components');
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _JssProvider = require('react-jss/lib/JssProvider');
+
+var _JssProvider2 = _interopRequireDefault(_JssProvider);
+
+var _jss = require('jss');
+
+var _styles = require('@material-ui/core/styles');
+
 var _index = require('../Button/index');
 
 var _index2 = _interopRequireDefault(_index);
@@ -33,6 +41,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var generateClassName = (0, _styles.createGenerateClassName)({
+  productionPrefix: 'eui'
+});
+var jss = (0, _jss.create)((0, _styles.jssPreset)());
 
 var MainContainer = _styledComponents2.default.div(_templateObject);
 
@@ -54,22 +67,26 @@ var ToggleButton = function ToggleButton(_ref) {
       rest = _objectWithoutProperties(_ref, ['leftText', 'leftIcon', 'leftOnclick', 'rightText', 'rightIcon', 'rightOnclick']);
 
   return React.createElement(
-    MainContainer,
-    rest,
+    _JssProvider2.default,
+    { jss: jss, generateClassName: generateClassName },
     React.createElement(
-      LeftButtonContainer,
-      null,
+      MainContainer,
+      rest,
       React.createElement(
-        LeftButton,
-        { icon: leftIcon, onClick: leftOnclick },
-        leftText
+        LeftButtonContainer,
+        null,
+        React.createElement(
+          LeftButton,
+          { icon: leftIcon, onClick: leftOnclick },
+          leftText
+        ),
+        React.createElement(SeparationBar, null)
       ),
-      React.createElement(SeparationBar, null)
-    ),
-    React.createElement(
-      RightButton,
-      { icon: rightIcon, onClick: rightOnclick },
-      rightText
+      React.createElement(
+        RightButton,
+        { icon: rightIcon, onClick: rightOnclick },
+        rightText
+      )
     )
   );
 };

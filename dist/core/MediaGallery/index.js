@@ -97,7 +97,6 @@ var MediaGallery = function (_React$Component) {
           var totalWidth = [].concat(_toConsumableArray(allImages)).reduce(function (acc, image) {
             return acc + image.clientWidth;
           }, 0);
-          console.log(totalWidth);
           if (allImages.length < _images.length) {
             if (totalWidth < _this.containerRef.clientWidth) {
               // images left to load

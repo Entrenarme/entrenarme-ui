@@ -20,6 +20,8 @@ var _times2 = _interopRequireDefault(_times);
 
 var _reactFontawesome = require('@fortawesome/react-fontawesome');
 
+var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
+
 var _freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 
 var _colors = require('../../helpers/colors');
@@ -48,7 +50,7 @@ var Rating = function Rating(_ref) {
     return iterableArray.map(function (item, index) {
       return React.createElement(_reactFontawesome.FontAwesomeIcon, {
         key: item,
-        icon: Math.floor(rating / 2) > index ? _freeSolidSvgIcons.faStar : Math.ceil(rating / 2) > index ? _freeSolidSvgIcons.faStarHalfAlt : _freeSolidSvgIcons.faStar
+        icon: Math.floor(rating / 2) > index ? _freeSolidSvgIcons.faStar : Math.ceil(rating / 2) > index ? _freeSolidSvgIcons.faStarHalfAlt : _proLightSvgIcons.faStar
       });
     });
   };

@@ -43,6 +43,13 @@ var generateClassName = (0, _styles.createGenerateClassName)({
 });
 var jss = (0, _jss.create)((0, _styles.jssPreset)());
 
+var theme = (0, _styles.createMuiTheme)({
+  palette: {
+    primary: { main: _colors2.default.primary.default },
+    secondary: { main: _colors2.default.secondary.default }
+  }
+});
+
 var Button = function Button(_ref) {
   var children = _ref.children,
       type = _ref.type,
@@ -63,47 +70,51 @@ var Button = function Button(_ref) {
     _JssProvider2.default,
     { jss: jss, generateClassName: generateClassName },
     React.createElement(
-      _Responsive2.default,
-      null,
-      function (_ref2) {
-        var device = _ref2.device;
-        return React.createElement(
-          _styles2.SButton,
-          Object.assign({
-            options: {
-              type: type,
-              state: state,
-              colorVariant: colorVariant,
-              disabled: disabled,
-              size: size,
-              device: device,
-              active: active,
-              fullWidth: fullWidth
-            },
-            disabled: state === 'loading' || state === 'error' || state === 'success' || disabled
-          }, rest),
-          icon ? React.createElement(
-            _styles2.Icon,
-            { options: { size: size, device: device } },
-            icon
-          ) : null,
-          ' ',
-          state === 'loading' ? React.createElement(_CircularProgress2.default, {
-            style: {
-              height: (0, _utils.getButtonFontSize)(size, device),
-              width: (0, _utils.getButtonFontSize)(size, device),
-              marginRight: '10px',
-              color: type === 'add' ? _colors2.default.secondary.loading : type === 'outline' ? _colors2.default[colorVariant].default : _colors2.default.gray.loading
-            }
-          }) : null,
-          ' ',
-          React.createElement(
-            'span',
-            null,
-            (0, _utils.textToRender)(state, children, loadingText, errorText, successText)
-          )
-        );
-      }
+      _styles.MuiThemeProvider,
+      { theme: theme },
+      React.createElement(
+        _Responsive2.default,
+        null,
+        function (_ref2) {
+          var device = _ref2.device;
+          return React.createElement(
+            _styles2.SButton,
+            Object.assign({
+              options: {
+                type: type,
+                state: state,
+                colorVariant: colorVariant,
+                disabled: disabled,
+                size: size,
+                device: device,
+                active: active,
+                fullWidth: fullWidth
+              },
+              disabled: state === 'loading' || state === 'error' || state === 'success' || disabled
+            }, rest),
+            icon ? React.createElement(
+              _styles2.Icon,
+              { options: { size: size, device: device } },
+              icon
+            ) : null,
+            ' ',
+            state === 'loading' ? React.createElement(_CircularProgress2.default, {
+              style: {
+                height: (0, _utils.getButtonFontSize)(size, device),
+                width: (0, _utils.getButtonFontSize)(size, device),
+                marginRight: '10px',
+                color: type === 'add' ? _colors2.default.secondary.loading : type === 'outline' ? _colors2.default[colorVariant].default : _colors2.default.gray.loading
+              }
+            }) : null,
+            ' ',
+            React.createElement(
+              'span',
+              null,
+              (0, _utils.textToRender)(state, children, loadingText, errorText, successText)
+            )
+          );
+        }
+      )
     )
   );
 };

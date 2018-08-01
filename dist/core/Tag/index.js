@@ -48,7 +48,7 @@ var ExtendedTag = (0, _styledComponents2.default)(_Chip2.default)(_templateObjec
 }, function (props) {
   return props.options.color;
 }, function (props) {
-  return props.options && props.options.xs ? '0.5625rem' : '0.75rem';
+  return props.options && props.options.xs ? '0.5rem' : '0.75rem';
 });
 
 var Tag = function Tag(_ref) {

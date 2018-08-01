@@ -46,7 +46,8 @@ var textSizeTransform = function textSizeTransform(size, device) {
   }
 };
 
-var marginBottomSize = function marginBottomSize(size, device) {
+var marginBottomSize = function marginBottomSize(size, device, nomargin) {
+  if (nomargin) return 0;
   if (size === 'large') {
     return device === 'desktop' ? 1.875 : 1.25;
   } else if (size === 'small') {
@@ -63,15 +64,15 @@ var StyledH4 = _styledComponents2.default.h4(_templateObject, function (props) {
 }, function (props) {
   return _colors2.default[props.options.color].default;
 }, function (props) {
-  return marginBottomSize(props.options.size, 'desktop') + 'rem';
+  return marginBottomSize(props.options.size, 'desktop', props.options.nomargin) + 'rem';
+}, function (props) {
+  return textSizeTransform(props.options.size, 'mobile', props.options.nomargin) + 'rem';
+}, function (props) {
+  return marginBottomSize(props.options.size, 'mobile', props.options.nomargin) + 'rem';
 }, function (props) {
   return textSizeTransform(props.options.size, 'mobile') + 'rem';
 }, function (props) {
-  return marginBottomSize(props.options.size, 'mobile') + 'rem';
-}, function (props) {
-  return textSizeTransform(props.options.size, 'mobile') + 'rem';
-}, function (props) {
-  return marginBottomSize(props.options.size, 'mobile') + 'rem';
+  return marginBottomSize(props.options.size, 'mobile', props.options.nomargin) + 'rem';
 });
 
 var H4 = function H4(_ref) {
@@ -79,11 +80,12 @@ var H4 = function H4(_ref) {
       color = _ref.color,
       size = _ref.size,
       textAlign = _ref.textAlign,
-      rest = _objectWithoutProperties(_ref, ['children', 'color', 'size', 'textAlign']);
+      nomargin = _ref.nomargin,
+      rest = _objectWithoutProperties(_ref, ['children', 'color', 'size', 'textAlign', 'nomargin']);
 
   return React.createElement(
     StyledH4,
-    Object.assign({}, rest, { options: { color: color, size: size, textAlign: textAlign } }),
+    Object.assign({}, rest, { options: { color: color, size: size, textAlign: textAlign, nomargin: nomargin } }),
     children
   );
 };
@@ -91,7 +93,8 @@ var H4 = function H4(_ref) {
 H4.defaultProps = {
   color: 'primary',
   size: 'medium',
-  textAlign: 'left'
+  textAlign: 'left',
+  nomargin: false
 };
 
 exports.default = H4;
