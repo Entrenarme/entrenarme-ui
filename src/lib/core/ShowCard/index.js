@@ -8,9 +8,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+import {
+  createGenerateClassName,
+  jssPreset,
+  createMuiTheme,
+  MuiThemeProvider,
+} from '@material-ui/core/styles';
 
 import H4 from '../Text/Headers/H4/index';
+
+const theme = createMuiTheme();
 
 const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
 const jss = create(jssPreset());
@@ -20,13 +27,13 @@ const ExtendedGlobalContainer = styled(ExpansionPanel)`
     padding: 0px;
   }
 
+  margin: 0px !important;
   box-shadow: none !important;
   border-radius: 2px !important;
 `;
 
 const ExtendedTitle = styled(ExpansionPanelSummary)`
   div {
-    margin: 0px !important;
     padding: 25px 30px;
   }
 
@@ -39,17 +46,7 @@ const ExtendedBody = styled(ExpansionPanelDetails)`
   padding: 0px !important;
 `;
 
-const BodyContainer = styled.div`
-  padding: 0px 30px 25px 30px;
-
-  *:only-child {
-    margin-bottom: 0px;
-  }
-
-  *:last-child {
-    margin-bottom: 0px;
-  }
-`;
+const BodyContainer = styled.div``;
 
 type Props = {
   children: React.Node,
@@ -77,20 +74,22 @@ class ShowCard extends React.Component<Props, State> {
 
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <ExtendedGlobalContainer
-          {...rest}
-          expanded={expanded === 'panel1'}
-          onChange={this.handleChange('panel1')}
-        >
-          <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
-            <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
-              {title}
-            </H4>
-          </ExtendedTitle>
-          <ExtendedBody>
-            <BodyContainer>{children}</BodyContainer>
-          </ExtendedBody>
-        </ExtendedGlobalContainer>
+        <MuiThemeProvider theme={theme}>
+          <ExtendedGlobalContainer
+            {...rest}
+            expanded={expanded === 'panel1'}
+            onChange={this.handleChange('panel1')}
+          >
+            <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
+              <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
+                {title}
+              </H4>
+            </ExtendedTitle>
+            <ExtendedBody>
+              <BodyContainer>{children}</BodyContainer>
+            </ExtendedBody>
+          </ExtendedGlobalContainer>
+        </MuiThemeProvider>
       </JssProvider>
     );
   }
