@@ -5,10 +5,25 @@ import Slider, { Range } from 'rc-slider';
 import times from 'lodash/times';
 
 import colors from '../../helpers/colors';
+import { regularFont } from '../../helpers/fonts';
 
 import 'rc-slider/assets/index.css';
 
 const ExtendedRange = Comp => styled(Comp)`
+  .rc-slider-mark {
+    display: flex;
+    justify-content: space-between;
+
+    > span {
+      width: auto !important;
+      margin-left: 0 !important;
+      left: 0 !important;
+      position: relative !important;
+      text-align: left !important;
+      flex: 0 0 auto;
+    }
+  }
+
   .rc-slider-rail {
     height: 3px;
   }
@@ -31,6 +46,7 @@ const ExtendedRange = Comp => styled(Comp)`
   .rc-slider-mark-text {
     font-size: 1rem;
     margin-top: 5px;
+    font-family: ${regularFont};
   }
 `;
 
