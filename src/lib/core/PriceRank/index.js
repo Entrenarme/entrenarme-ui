@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import { Range } from 'rc-slider';
+import Slider, { Range } from 'rc-slider';
 import times from 'lodash/times';
 
 import colors from '../../helpers/colors';
 
 import 'rc-slider/assets/index.css';
 
-const ExtendedRange = styled(Range)`
+const ExtendedRange = Comp => styled(Comp)`
   .rc-slider-rail {
     height: 3px;
   }
@@ -38,11 +38,28 @@ type Props = {
   currency?: string,
   priceRank?: Array<number>,
   callback: Function,
+  slider: boolean,
+  min: number,
+  max: number,
+  defaultValue: number,
+  step: number,
+  markTooltip: string,
 };
 
 type State = {};
 
 class PriceRank extends React.Component<Props, State> {
+  static defaultProps = {
+    currency: '€',
+    priceRank: [0, 3],
+    slider: false,
+    min: 0,
+    max: 3,
+    defaultValue: 0,
+    step: 1,
+    markTooltip: '',
+  };
+
   renderCurrencyMark = (repetitions: number) => {
     const { currency } = this.props;
 
@@ -69,23 +86,43 @@ class PriceRank extends React.Component<Props, State> {
   };
 
   render() {
-    const { priceRank } = this.props;
+    const {
+      priceRank,
+      slider,
+      min,
+      max,
+      defaultValue,
+      step,
+      markTooltip,
+    } = this.props;
+    if (slider) {
+      const Comp = ExtendedRange(Slider);
+      return (
+        <Comp
+          min={min}
+          max={max}
+          step={step}
+          defaultValue={defaultValue}
+          onChange={rank => this.handleChange(rank)}
+          marks={{
+            [min]: `${min}${markTooltip}`,
+            [max]: `${max}${markTooltip}`,
+          }}
+        />
+      );
+    }
 
+    const Comp = ExtendedRange(Range);
     return (
-      <ExtendedRange
+      <Comp
         defaultValue={priceRank}
-        min={0}
-        max={3}
+        min={min}
+        max={max}
         onChange={rank => this.handleChange(rank)}
         marks={this.renderMarks()}
       />
     );
   }
 }
-
-PriceRank.defaultProps = {
-  currency: '€',
-  priceRank: [0, 3],
-};
 
 export default PriceRank;
