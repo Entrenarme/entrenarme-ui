@@ -30,6 +30,10 @@ const ExtendedGlobalContainer = styled(ExpansionPanel)`
   margin: 0px !important;
   box-shadow: none !important;
   border-radius: 2px !important;
+
+  &:before {
+    background-color: transparent !important;
+  }
 `;
 
 const ExtendedTitle = styled(ExpansionPanelSummary)`
