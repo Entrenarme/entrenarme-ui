@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import * as fonts from '../../../../helpers/fonts';
 import colors from '../../../../helpers/colors';
+import { getFontWeight } from '../utils';
 
 const normalDesktop = 1.5;
 
@@ -39,7 +40,7 @@ const StyledH3 = styled.h3`
   text-transform: uppercase;
   font-size: ${props =>
     `${textSizeTransform(props.options.size, 'desktop')}rem`};
-  font-weight: 400;
+  font-weight: ${props => getFontWeight(props)};
   font-family: ${fonts.mainFont};
   text-align: ${props => props.options.textAlign};
   color: ${props => colors[props.options.color].default};
@@ -91,10 +92,18 @@ type Props = {
   color?: color,
   size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
+  fontWeight: 'regular' | 'bold' | 'bolder' | 'boldest',
 };
 
-const H3 = ({ children, color, size, textAlign, ...rest }: Props) => (
-  <StyledH3 {...rest} options={{ color, size, textAlign }}>
+const H3 = ({
+  children,
+  color,
+  size,
+  textAlign,
+  fontWeight,
+  ...rest
+}: Props) => (
+  <StyledH3 {...rest} options={{ color, size, textAlign, fontWeight }}>
     {children}
   </StyledH3>
 );
@@ -103,6 +112,7 @@ H3.defaultProps = {
   color: 'primary',
   size: 'medium',
   textAlign: 'left',
+  fontWeight: 'regular',
 };
 
 export default H3;
