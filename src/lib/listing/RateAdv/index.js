@@ -132,7 +132,7 @@ const RatesAdv = ({
           <Button
             fullWidth
             size="xs"
-            style={{ marginTop: '-2px' }}
+            style={{ marginTop: '-2px', pointerEvents: 'none' }}
             data-testid="appended-button"
           >
             {appendButtonText}
