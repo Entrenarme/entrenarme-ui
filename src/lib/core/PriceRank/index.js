@@ -4,51 +4,7 @@ import styled from 'styled-components';
 import Slider, { Range } from 'rc-slider';
 import times from 'lodash/times';
 
-import colors from '../../helpers/colors';
-import { regularFont } from '../../helpers/fonts';
-
-import 'rc-slider/assets/index.css';
-
-const ExtendedRange = Comp => styled(Comp)`
-  .rc-slider-mark {
-    display: flex;
-    justify-content: space-between;
-
-    > span {
-      width: auto !important;
-      margin-left: 0 !important;
-      left: 0 !important;
-      position: relative !important;
-      text-align: left !important;
-      flex: 0 0 auto;
-    }
-  }
-
-  .rc-slider-rail {
-    height: 3px;
-  }
-
-  .rc-slider-track {
-    background-color: ${colors.secondary.default};
-  }
-
-  .rc-slider-handle {
-    width: 15px;
-    height: 15px;
-    border: 0;
-    box-shadow: 2px 2px 6px 0px ${colors.gray.dark};
-  }
-
-  .rc-slider-dot {
-    display: none;
-  }
-
-  .rc-slider-mark-text {
-    font-size: 1rem;
-    margin-top: 5px;
-    font-family: ${regularFont};
-  }
-`;
+import ExtendedRange from './styles';
 
 type Props = {
   currency?: string,
