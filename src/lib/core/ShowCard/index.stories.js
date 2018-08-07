@@ -14,18 +14,21 @@ const ElementDecoration = storyFn => (
 storiesOf('ShowCard', module)
   .addDecorator(ElementDecoration)
   .add('Show card with basic content', () => (
-    <ShowCard title="Más filtros">
-      <P>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
-        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
-        eros sagittis eget.
-      </P>
-      <P>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
-        magna eu velit semper hendrerit. Aenean aliquet pretium justo, ut
-        rhoncus magna euismod et. Donec condimentum congue sapien, nec auctor
-        eros sagittis eget.
-      </P>
-    </ShowCard>
+    <div>
+      <div>1st</div>
+      <ShowCard title="Más filtros">
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+        <P>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
+          justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
+          nec auctor eros sagittis eget.
+        </P>
+      </ShowCard>
+    </div>
   ));
