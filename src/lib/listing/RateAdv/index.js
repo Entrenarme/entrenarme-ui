@@ -22,7 +22,7 @@ type WrapperProps = {
 };
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'button-eui',
+  productionPrefix: 'rates-eui',
 });
 const jss = create(jssPreset());
 

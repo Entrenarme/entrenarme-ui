@@ -18,7 +18,7 @@ type ContainerProps = {
 };
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'button-eui',
+  productionPrefix: 'switch-eui',
 });
 const jss = create(jssPreset());
 

@@ -31,7 +31,7 @@ type State = {
 };
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'button-eui',
+  productionPrefix: 'searchswitch-eui',
 });
 const jss = create(jssPreset());
 
