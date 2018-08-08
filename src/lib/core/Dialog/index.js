@@ -6,11 +6,7 @@ import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 
@@ -166,32 +162,30 @@ class Dialog extends React.Component<Props, State> {
 
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider>
-          <ExtendedDialog
-            open={open}
-            onClose={() => onClose()}
-            options={{ type }}
-            {...rest}
-          >
-            <HeaderContainer>
-              {header ? header : <div />}
-              <FontAwesomeIcon icon={faTimes} onClick={() => onClose()} />
-            </HeaderContainer>
-            <MiddleContainer options={{ align }}>
-              <BodyContainer>{body}</BodyContainer>
-              {footer ? (
-                <FooterContainer
-                  options={{
-                    type,
-                    smallModalButtons: Array.isArray(footer.props.children),
-                  }}
-                >
-                  {footer}
-                </FooterContainer>
-              ) : null}
-            </MiddleContainer>
-          </ExtendedDialog>
-        </MuiThemeProvider>
+        <ExtendedDialog
+          open={open}
+          onClose={() => onClose()}
+          options={{ type }}
+          {...rest}
+        >
+          <HeaderContainer>
+            {header ? header : <div />}
+            <FontAwesomeIcon icon={faTimes} onClick={() => onClose()} />
+          </HeaderContainer>
+          <MiddleContainer options={{ align }}>
+            <BodyContainer>{body}</BodyContainer>
+            {footer ? (
+              <FooterContainer
+                options={{
+                  type,
+                  smallModalButtons: Array.isArray(footer.props.children),
+                }}
+              >
+                {footer}
+              </FooterContainer>
+            ) : null}
+          </MiddleContainer>
+        </ExtendedDialog>
       </JssProvider>
     );
   }

@@ -1,11 +1,7 @@
 // @flow
 import * as React from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import {
-  MuiThemeProvider,
-  createGenerateClassName,
-  jssPreset,
-} from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
 
@@ -37,15 +33,13 @@ class FullImage extends React.Component<Props> {
     const { image, open } = this.props;
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider>
-          <Dialog open={open} onClose={this.onCloseDialog}>
-            <img
-              src={`${RESOURCES_URL}gallery/original/${image.value}`}
-              width="100%"
-              alt="detail"
-            />
-          </Dialog>
-        </MuiThemeProvider>
+        <Dialog open={open} onClose={this.onCloseDialog}>
+          <img
+            src={`${RESOURCES_URL}gallery/original/${image.value}`}
+            width="100%"
+            alt="detail"
+          />
+        </Dialog>
       </JssProvider>
     );
   }

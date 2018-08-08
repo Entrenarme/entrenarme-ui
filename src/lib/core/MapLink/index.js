@@ -3,11 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import Button from '../Button/index';
 import { RESOURCES_URL } from '../../helpers/config';
@@ -47,17 +43,15 @@ type Props = {
 const MapLink = ({ buttonTitle, onClick }: Props) => {
   return (
     <JssProvider jss={jss} generateClassName={generateClassName}>
-      <MuiThemeProvider>
-        <MainContainer>
-          <ExtendedImage
-            alt="map"
-            src={`${`${RESOURCES_URL}static/images/list/map.svg`}`}
-          />
-          <ExtendedButton type="outline" onClick={() => onClick()}>
-            {buttonTitle}
-          </ExtendedButton>
-        </MainContainer>
-      </MuiThemeProvider>
+      <MainContainer>
+        <ExtendedImage
+          alt="map"
+          src={`${`${RESOURCES_URL}static/images/list/map.svg`}`}
+        />
+        <ExtendedButton type="outline" onClick={() => onClick()}>
+          {buttonTitle}
+        </ExtendedButton>
+      </MainContainer>
     </JssProvider>
   );
 };

@@ -5,11 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import TextField from '../../core/TextField';
 import Switch from '../Switch';
@@ -68,30 +64,28 @@ class SearchableSwitch extends React.Component<Props, State> {
     const { children, column, multiple, onChange, placeholder } = this.props;
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider>
-          <Container>
-            <TextField
-              fullWidth
-              adornment={
-                <FontAwesomeIcon
-                  icon={faSearch}
-                  color={colors.gray.placeholder}
-                />
-              }
-              placeholder={placeholder}
-              onChange={this.filterValueChange}
-            />
-            <Switch column={column} multiple={multiple} onChange={onChange}>
-              {({ itemProps, activeItem }) => (
-                <SearchableSwitchContext.Provider
-                  value={{ itemProps, activeItem }}
-                >
-                  <React.Fragment>{children({ filterValue })}</React.Fragment>
-                </SearchableSwitchContext.Provider>
-              )}
-            </Switch>
-          </Container>
-        </MuiThemeProvider>
+        <Container>
+          <TextField
+            fullWidth
+            adornment={
+              <FontAwesomeIcon
+                icon={faSearch}
+                color={colors.gray.placeholder}
+              />
+            }
+            placeholder={placeholder}
+            onChange={this.filterValueChange}
+          />
+          <Switch column={column} multiple={multiple} onChange={onChange}>
+            {({ itemProps, activeItem }) => (
+              <SearchableSwitchContext.Provider
+                value={{ itemProps, activeItem }}
+              >
+                <React.Fragment>{children({ filterValue })}</React.Fragment>
+              </SearchableSwitchContext.Provider>
+            )}
+          </Switch>
+        </Container>
       </JssProvider>
     );
   }

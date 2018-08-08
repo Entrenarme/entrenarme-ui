@@ -8,11 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import H4 from '../Text/Headers/H4/index';
 
@@ -77,22 +73,20 @@ class ShowCard extends React.Component<Props, State> {
 
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider>
-          <ExtendedGlobalContainer
-            {...rest}
-            expanded={expanded === 'panel1'}
-            onChange={this.handleChange('panel1')}
-          >
-            <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
-              <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
-                {title}
-              </H4>
-            </ExtendedTitle>
-            <ExtendedBody>
-              <BodyContainer>{children}</BodyContainer>
-            </ExtendedBody>
-          </ExtendedGlobalContainer>
-        </MuiThemeProvider>
+        <ExtendedGlobalContainer
+          {...rest}
+          expanded={expanded === 'panel1'}
+          onChange={this.handleChange('panel1')}
+        >
+          <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
+            <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
+              {title}
+            </H4>
+          </ExtendedTitle>
+          <ExtendedBody>
+            <BodyContainer>{children}</BodyContainer>
+          </ExtendedBody>
+        </ExtendedGlobalContainer>
       </JssProvider>
     );
   }

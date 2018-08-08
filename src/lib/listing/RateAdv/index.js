@@ -3,11 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 import P from '../../core/Text/Paragraph';
@@ -100,62 +96,60 @@ const RatesAdv = ({
   mobile,
 }: Props) => (
   <JssProvider jss={jss} generateClassName={generateClassName}>
-    <MuiThemeProvider>
-      <Responsive>
-        {({ device }) => (
-          <Wrapper options={{ device }}>
-            <Container options={{ appendButtonText, mobile }}>
+    <Responsive>
+      {({ device }) => (
+        <Wrapper options={{ device }}>
+          <Container options={{ appendButtonText, mobile }}>
+            <P
+              size="xs"
+              color={colors.primary.default}
+              textAlign="center"
+              noMargin
+            >
+              {topText}
+            </P>
+            <Price>
               <P
-                size="xs"
+                size="large"
                 color={colors.primary.default}
+                font="main"
                 textAlign="center"
                 noMargin
               >
-                {topText}
+                {amount}
               </P>
-              <Price>
-                <P
-                  size="large"
-                  color={colors.primary.default}
-                  font="main"
-                  textAlign="center"
-                  noMargin
-                >
-                  {amount}
-                </P>
-                <P
-                  size="medium"
-                  color={colors.primary.default}
-                  font="main"
-                  textAlign="center"
-                  noMargin
-                >
-                  {currency}
-                </P>
-              </Price>
               <P
-                size="xs"
+                size="medium"
                 color={colors.primary.default}
+                font="main"
                 textAlign="center"
                 noMargin
               >
-                {bottomText}
+                {currency}
               </P>
-            </Container>
-            {appendButtonText && (
-              <Button
-                fullWidth
-                size="xs"
-                style={{ marginTop: '-2px', pointerEvents: 'none' }}
-                data-testid="appended-button"
-              >
-                {appendButtonText}
-              </Button>
-            )}
-          </Wrapper>
-        )}
-      </Responsive>
-    </MuiThemeProvider>
+            </Price>
+            <P
+              size="xs"
+              color={colors.primary.default}
+              textAlign="center"
+              noMargin
+            >
+              {bottomText}
+            </P>
+          </Container>
+          {appendButtonText && (
+            <Button
+              fullWidth
+              size="xs"
+              style={{ marginTop: '-2px', pointerEvents: 'none' }}
+              data-testid="appended-button"
+            >
+              {appendButtonText}
+            </Button>
+          )}
+        </Wrapper>
+      )}
+    </Responsive>
   </JssProvider>
 );
 

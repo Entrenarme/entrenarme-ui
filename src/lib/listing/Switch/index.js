@@ -3,11 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import Select from '../../core/Select';
 
@@ -40,11 +36,9 @@ type Props = {
 
 const Switch = ({ children, column, ...rest }: Props) => (
   <JssProvider jss={jss} generateClassName={generateClassName}>
-    <MuiThemeProvider>
-      <Container options={{ column }}>
-        <Select {...rest}>{children}</Select>
-      </Container>
-    </MuiThemeProvider>
+    <Container options={{ column }}>
+      <Select {...rest}>{children}</Select>
+    </Container>
   </JssProvider>
 );
 
