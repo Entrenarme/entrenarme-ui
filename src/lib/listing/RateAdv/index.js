@@ -1,6 +1,14 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import {
+  createGenerateClassName,
+  jssPreset,
+  createMuiTheme,
+  MuiThemeProvider,
+} from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 import P from '../../core/Text/Paragraph';
@@ -13,6 +21,13 @@ type WrapperProps = {
     device: Device,
   },
 };
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'button-eui',
+});
+const jss = create(jssPreset());
+
+const theme = createMuiTheme();
 
 const Wrapper = styled.div`
   width: ${(props: WrapperProps) =>
@@ -87,60 +102,64 @@ const RatesAdv = ({
   appendButtonText,
   mobile,
 }: Props) => (
-  <Responsive>
-    {({ device }) => (
-      <Wrapper options={{ device }}>
-        <Container options={{ appendButtonText, mobile }}>
-          <P
-            size="xs"
-            color={colors.primary.default}
-            textAlign="center"
-            noMargin
-          >
-            {topText}
-          </P>
-          <Price>
-            <P
-              size="large"
-              color={colors.primary.default}
-              font="main"
-              textAlign="center"
-              noMargin
-            >
-              {amount}
-            </P>
-            <P
-              size="medium"
-              color={colors.primary.default}
-              font="main"
-              textAlign="center"
-              noMargin
-            >
-              {currency}
-            </P>
-          </Price>
-          <P
-            size="xs"
-            color={colors.primary.default}
-            textAlign="center"
-            noMargin
-          >
-            {bottomText}
-          </P>
-        </Container>
-        {appendButtonText && (
-          <Button
-            fullWidth
-            size="xs"
-            style={{ marginTop: '-2px', pointerEvents: 'none' }}
-            data-testid="appended-button"
-          >
-            {appendButtonText}
-          </Button>
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    <MuiThemeProvider theme={theme}>
+      <Responsive>
+        {({ device }) => (
+          <Wrapper options={{ device }}>
+            <Container options={{ appendButtonText, mobile }}>
+              <P
+                size="xs"
+                color={colors.primary.default}
+                textAlign="center"
+                noMargin
+              >
+                {topText}
+              </P>
+              <Price>
+                <P
+                  size="large"
+                  color={colors.primary.default}
+                  font="main"
+                  textAlign="center"
+                  noMargin
+                >
+                  {amount}
+                </P>
+                <P
+                  size="medium"
+                  color={colors.primary.default}
+                  font="main"
+                  textAlign="center"
+                  noMargin
+                >
+                  {currency}
+                </P>
+              </Price>
+              <P
+                size="xs"
+                color={colors.primary.default}
+                textAlign="center"
+                noMargin
+              >
+                {bottomText}
+              </P>
+            </Container>
+            {appendButtonText && (
+              <Button
+                fullWidth
+                size="xs"
+                style={{ marginTop: '-2px', pointerEvents: 'none' }}
+                data-testid="appended-button"
+              >
+                {appendButtonText}
+              </Button>
+            )}
+          </Wrapper>
         )}
-      </Wrapper>
-    )}
-  </Responsive>
+      </Responsive>
+    </MuiThemeProvider>
+  </JssProvider>
 );
 
 RatesAdv.defaultProps = {
