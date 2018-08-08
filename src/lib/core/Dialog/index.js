@@ -9,7 +9,6 @@ import { create } from 'jss';
 import {
   createGenerateClassName,
   jssPreset,
-  createMuiTheme,
   MuiThemeProvider,
 } from '@material-ui/core/styles';
 
@@ -19,8 +18,6 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'dialog-eui',
 });
 const jss = create(jssPreset());
-
-const theme = createMuiTheme();
 
 const setDialogSize = type => {
   switch (type) {
@@ -169,7 +166,7 @@ class Dialog extends React.Component<Props, State> {
 
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider>
           <ExtendedDialog
             open={open}
             onClose={() => onClose()}

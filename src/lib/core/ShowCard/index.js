@@ -11,13 +11,10 @@ import { create } from 'jss';
 import {
   createGenerateClassName,
   jssPreset,
-  createMuiTheme,
   MuiThemeProvider,
 } from '@material-ui/core/styles';
 
 import H4 from '../Text/Headers/H4/index';
-
-const theme = createMuiTheme();
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'showcard-eui',
@@ -80,7 +77,7 @@ class ShowCard extends React.Component<Props, State> {
 
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider>
           <ExtendedGlobalContainer
             {...rest}
             expanded={expanded === 'panel1'}

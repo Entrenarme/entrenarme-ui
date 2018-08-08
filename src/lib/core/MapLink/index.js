@@ -6,7 +6,6 @@ import { create } from 'jss';
 import {
   createGenerateClassName,
   jssPreset,
-  createMuiTheme,
   MuiThemeProvider,
 } from '@material-ui/core/styles';
 
@@ -17,8 +16,6 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'maplink-eui',
 });
 const jss = create(jssPreset());
-
-const theme = createMuiTheme();
 
 const MainContainer = styled.div`
   position: relative;
@@ -50,7 +47,7 @@ type Props = {
 const MapLink = ({ buttonTitle, onClick }: Props) => {
   return (
     <JssProvider jss={jss} generateClassName={generateClassName}>
-      <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider>
         <MainContainer>
           <ExtendedImage
             alt="map"

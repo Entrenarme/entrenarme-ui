@@ -2,7 +2,6 @@
 import * as React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import {
-  createMuiTheme,
   MuiThemeProvider,
   createGenerateClassName,
   jssPreset,
@@ -38,7 +37,7 @@ class FullImage extends React.Component<Props> {
     const { image, open } = this.props;
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={createMuiTheme()}>
+        <MuiThemeProvider>
           <Dialog open={open} onClose={this.onCloseDialog}>
             <img
               src={`${RESOURCES_URL}gallery/original/${image.value}`}

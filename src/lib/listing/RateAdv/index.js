@@ -6,7 +6,6 @@ import { create } from 'jss';
 import {
   createGenerateClassName,
   jssPreset,
-  createMuiTheme,
   MuiThemeProvider,
 } from '@material-ui/core/styles';
 
@@ -26,8 +25,6 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'button-eui',
 });
 const jss = create(jssPreset());
-
-const theme = createMuiTheme();
 
 const Wrapper = styled.div`
   width: ${(props: WrapperProps) =>
@@ -103,7 +100,7 @@ const RatesAdv = ({
   mobile,
 }: Props) => (
   <JssProvider jss={jss} generateClassName={generateClassName}>
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider>
       <Responsive>
         {({ device }) => (
           <Wrapper options={{ device }}>
