@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
 import Slider, { Range } from 'rc-slider';
 import times from 'lodash/times';
 

@@ -1,6 +1,6 @@
 {
   "name": "entrenarme-ui",
-  "version": "1.3.38",
+  "version": "1.3.43",
   "devDependencies": {
     "@fortawesome/fontawesome-pro": "^5.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
@@ -39,7 +39,7 @@
     "build": "yarn build:babel && cp ./package.json ./dist",
     "publish:npm": "yarn build && npm publish ./dist",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public -c .storybook -o build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",

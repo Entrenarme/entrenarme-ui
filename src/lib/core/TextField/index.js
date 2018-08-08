@@ -33,7 +33,9 @@ const theme = createMuiTheme({
   },
 });
 
-const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'textfield-eui',
+});
 const jss = create(jssPreset());
 
 const STextField = styled(MTextField)`

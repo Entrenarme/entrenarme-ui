@@ -9,7 +9,7 @@ import Button from '../Button/index';
 import colors from '../../helpers/colors';
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'eui',
+  productionPrefix: 'togglebuttons-eui',
 });
 const jss = create(jssPreset());
 

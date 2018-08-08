@@ -1,9 +1,24 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import {
+  createGenerateClassName,
+  jssPreset,
+  createMuiTheme,
+  MuiThemeProvider,
+} from '@material-ui/core/styles';
 
 import Button from '../Button/index';
 import { RESOURCES_URL } from '../../helpers/config';
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'maplink-eui',
+});
+const jss = create(jssPreset());
+
+const theme = createMuiTheme();
 
 const MainContainer = styled.div`
   position: relative;
@@ -34,15 +49,19 @@ type Props = {
 
 const MapLink = ({ buttonTitle, onClick }: Props) => {
   return (
-    <MainContainer>
-      <ExtendedImage
-        alt="map"
-        src={`${`${RESOURCES_URL}static/images/list/map.svg`}`}
-      />
-      <ExtendedButton type="outline" onClick={() => onClick()}>
-        {buttonTitle}
-      </ExtendedButton>
-    </MainContainer>
+    <JssProvider jss={jss} generateClassName={generateClassName}>
+      <MuiThemeProvider theme={theme}>
+        <MainContainer>
+          <ExtendedImage
+            alt="map"
+            src={`${`${RESOURCES_URL}static/images/list/map.svg`}`}
+          />
+          <ExtendedButton type="outline" onClick={() => onClick()}>
+            {buttonTitle}
+          </ExtendedButton>
+        </MainContainer>
+      </MuiThemeProvider>
+    </JssProvider>
   );
 };
 

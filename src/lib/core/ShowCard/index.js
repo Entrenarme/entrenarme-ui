@@ -19,7 +19,9 @@ import H4 from '../Text/Headers/H4/index';
 
 const theme = createMuiTheme();
 
-const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'showcard-eui',
+});
 const jss = create(jssPreset());
 
 const ExtendedGlobalContainer = styled(ExpansionPanel)`

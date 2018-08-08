@@ -17,7 +17,7 @@ import { SButton, Icon } from './styles';
 import Responsive from '../../helpers/Responsive';
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'eui',
+  productionPrefix: 'button-eui',
 });
 const jss = create(jssPreset());
 

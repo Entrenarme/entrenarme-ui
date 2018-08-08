@@ -9,7 +9,9 @@ import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 import { regularFont } from '../../helpers/fonts';
 import colors from '../../helpers/colors';
 
-const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'tag-eui',
+});
 const jss = create(jssPreset());
 
 type ExtendedTagProps = {
