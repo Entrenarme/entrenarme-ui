@@ -8,10 +8,10 @@ import {
   createGenerateClassName,
   jssPreset,
 } from '@material-ui/core/styles';
-import styled from 'styled-components';
-import debounce from 'lodash/debounce';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
+import styled from 'styled-components';
+import debounce from 'lodash/debounce';
 
 import colors from '../../helpers/colors';
 import { regularFont } from '../../helpers/fonts';
