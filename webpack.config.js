@@ -3,11 +3,11 @@ const glob = require('glob');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const mode = process.env.NODE_ENV;
 
-// const files = glob.sync('./src/lib/**/index.js');
-const files = [
-  './src/lib/core/TextField/index.js',
-  './src/lib/core/Button/index.js',
-];
+const files = glob.sync('./src/lib/**/index.js');
+// const files = [
+//   './src/lib/core/TextField/index.js',
+//   './src/lib/core/Button/index.js',
+// ];
 const filesObject = files.reduce((prev, curr) => {
   //   console.log(curr);
   const splitted = curr.split('/');
