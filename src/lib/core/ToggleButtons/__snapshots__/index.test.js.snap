@@ -9,7 +9,7 @@ exports[`renders "ToggleButtons" with default config 1`] = `
   >
     <button
       tabindex="0"
-      class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-ifAKCX extjPi sc-bdVaJa gjZMZu"
+      class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-ifAKCX extjPi sc-bdVaJa gjZMZu"
       type="button"
       options="[object Object]"
     >
@@ -39,7 +39,7 @@ exports[`renders "ToggleButtons" with default config 1`] = `
         </span>
       </span>
       <span
-        class="MuiTouchRipple-root-28"
+        class="MuiTouchRipple-root-30"
       />
     </button>
     <div
@@ -48,7 +48,7 @@ exports[`renders "ToggleButtons" with default config 1`] = `
   </div>
   <button
     tabindex="0"
-    class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-EHOje ewNZtS sc-bdVaJa gjZMZu"
+    class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-EHOje ewNZtS sc-bdVaJa gjZMZu"
     type="button"
     options="[object Object]"
   >
@@ -78,7 +78,7 @@ exports[`renders "ToggleButtons" with default config 1`] = `
       </span>
     </span>
     <span
-      class="MuiTouchRipple-root-28"
+      class="MuiTouchRipple-root-30"
     />
   </button>
 </div>

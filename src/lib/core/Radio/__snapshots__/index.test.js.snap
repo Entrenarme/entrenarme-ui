@@ -5,13 +5,13 @@ exports[`renders default 1`] = `
   class="MuiFormControlLabel-root-1"
 >
   <span
-    class="MuiButtonBase-root-19 MuiIconButton-root-13 MuiSwitchBase-root-9 MuiRadio-root-4 MuiRadio-colorSecondary-8 sc-bwzfXH greMdn"
+    class="MuiButtonBase-root-20 MuiIconButton-root-14 MuiSwitchBase-root-10 MuiRadio-root-5 MuiRadio-colorSecondary-9 sc-bwzfXH greMdn"
   >
     <span
-      class="MuiIconButton-label-18"
+      class="MuiIconButton-label-19"
     >
       <svg
-        class="MuiSvgIcon-root-22"
+        class="MuiSvgIcon-root-23"
         focusable="false"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -21,33 +21,33 @@ exports[`renders default 1`] = `
         />
       </svg>
       <input
+        class="MuiSwitchBase-input-13"
         type="radio"
-        class="MuiSwitchBase-input-12"
         value=""
       />
     </span>
     <span
-      class="MuiTouchRipple-root-29"
+      class="MuiTouchRipple-root-30"
     />
   </span>
   <span
-    class="MuiTypography-root-36 MuiTypography-body1-45 MuiFormControlLabel-label-3"
+    class="MuiTypography-root-37 MuiTypography-body1-46 MuiFormControlLabel-label-4"
   />
 </label>
 `;
 
 exports[`renders with label 1`] = `
 <label
-  class="MuiFormControlLabel-root-60"
+  class="MuiFormControlLabel-root-1"
 >
   <span
-    class="MuiButtonBase-root-78 MuiIconButton-root-72 MuiSwitchBase-root-68 MuiRadio-root-63 MuiRadio-colorSecondary-67 sc-bwzfXH greMdn"
+    class="MuiButtonBase-root-20 MuiIconButton-root-14 MuiSwitchBase-root-10 MuiRadio-root-5 MuiRadio-colorSecondary-9 sc-bwzfXH greMdn"
   >
     <span
-      class="MuiIconButton-label-77"
+      class="MuiIconButton-label-19"
     >
       <svg
-        class="MuiSvgIcon-root-81"
+        class="MuiSvgIcon-root-23"
         focusable="false"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -57,17 +57,17 @@ exports[`renders with label 1`] = `
         />
       </svg>
       <input
+        class="MuiSwitchBase-input-13"
         type="radio"
-        class="MuiSwitchBase-input-71"
         value=""
       />
     </span>
     <span
-      class="MuiTouchRipple-root-88"
+      class="MuiTouchRipple-root-30"
     />
   </span>
   <span
-    class="MuiTypography-root-95 MuiTypography-body1-104 MuiFormControlLabel-label-62"
+    class="MuiTypography-root-37 MuiTypography-body1-46 MuiFormControlLabel-label-4"
   >
     <p
       class="sc-bdVaJa dnyxcA"
