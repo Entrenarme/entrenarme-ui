@@ -95,62 +95,60 @@ const RatesAdv = ({
   appendButtonText,
   mobile,
 }: Props) => (
-  <JssProvider jss={jss} generateClassName={generateClassName}>
-    <Responsive>
-      {({ device }) => (
-        <Wrapper options={{ device }}>
-          <Container options={{ appendButtonText, mobile }}>
+  <Responsive>
+    {({ device }) => (
+      <Wrapper options={{ device }}>
+        <Container options={{ appendButtonText, mobile }}>
+          <P
+            size="xs"
+            color={colors.primary.default}
+            textAlign="center"
+            noMargin
+          >
+            {topText}
+          </P>
+          <Price>
             <P
-              size="xs"
+              size="large"
               color={colors.primary.default}
+              font="main"
               textAlign="center"
               noMargin
             >
-              {topText}
+              {amount}
             </P>
-            <Price>
-              <P
-                size="large"
-                color={colors.primary.default}
-                font="main"
-                textAlign="center"
-                noMargin
-              >
-                {amount}
-              </P>
-              <P
-                size="medium"
-                color={colors.primary.default}
-                font="main"
-                textAlign="center"
-                noMargin
-              >
-                {currency}
-              </P>
-            </Price>
             <P
-              size="xs"
+              size="medium"
               color={colors.primary.default}
+              font="main"
               textAlign="center"
               noMargin
             >
-              {bottomText}
+              {currency}
             </P>
-          </Container>
-          {appendButtonText && (
-            <Button
-              fullWidth
-              size="xs"
-              style={{ marginTop: '-2px', pointerEvents: 'none' }}
-              data-testid="appended-button"
-            >
-              {appendButtonText}
-            </Button>
-          )}
-        </Wrapper>
-      )}
-    </Responsive>
-  </JssProvider>
+          </Price>
+          <P
+            size="xs"
+            color={colors.primary.default}
+            textAlign="center"
+            noMargin
+          >
+            {bottomText}
+          </P>
+        </Container>
+        {appendButtonText && (
+          <Button
+            fullWidth
+            size="xs"
+            style={{ marginTop: '-2px', pointerEvents: 'none' }}
+            data-testid="appended-button"
+          >
+            {appendButtonText}
+          </Button>
+        )}
+      </Wrapper>
+    )}
+  </Responsive>
 );
 
 RatesAdv.defaultProps = {

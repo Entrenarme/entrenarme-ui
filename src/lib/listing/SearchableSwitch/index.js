@@ -63,30 +63,23 @@ class SearchableSwitch extends React.Component<Props, State> {
     const { filterValue } = this.state;
     const { children, column, multiple, onChange, placeholder } = this.props;
     return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <Container>
-          <TextField
-            fullWidth
-            adornment={
-              <FontAwesomeIcon
-                icon={faSearch}
-                color={colors.gray.placeholder}
-              />
-            }
-            placeholder={placeholder}
-            onChange={this.filterValueChange}
-          />
-          <Switch column={column} multiple={multiple} onChange={onChange}>
-            {({ itemProps, activeItem }) => (
-              <SearchableSwitchContext.Provider
-                value={{ itemProps, activeItem }}
-              >
-                <React.Fragment>{children({ filterValue })}</React.Fragment>
-              </SearchableSwitchContext.Provider>
-            )}
-          </Switch>
-        </Container>
-      </JssProvider>
+      <Container>
+        <TextField
+          fullWidth
+          adornment={
+            <FontAwesomeIcon icon={faSearch} color={colors.gray.placeholder} />
+          }
+          placeholder={placeholder}
+          onChange={this.filterValueChange}
+        />
+        <Switch column={column} multiple={multiple} onChange={onChange}>
+          {({ itemProps, activeItem }) => (
+            <SearchableSwitchContext.Provider value={{ itemProps, activeItem }}>
+              <React.Fragment>{children({ filterValue })}</React.Fragment>
+            </SearchableSwitchContext.Provider>
+          )}
+        </Switch>
+      </Container>
     );
   }
 }

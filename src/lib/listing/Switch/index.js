@@ -35,11 +35,9 @@ type Props = {
 };
 
 const Switch = ({ children, column, ...rest }: Props) => (
-  <JssProvider jss={jss} generateClassName={generateClassName}>
-    <Container options={{ column }}>
-      <Select {...rest}>{children}</Select>
-    </Container>
-  </JssProvider>
+  <Container options={{ column }}>
+    <Select {...rest}>{children}</Select>
+  </Container>
 );
 
 Switch.defaultProps = {

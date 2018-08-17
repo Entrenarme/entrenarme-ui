@@ -71,19 +71,17 @@ const ToggleButton = ({
   rightOnclick,
   ...rest
 }: Props) => (
-  <JssProvider jss={jss} generateClassName={generateClassName}>
-    <MainContainer {...rest}>
-      <LeftButtonContainer>
-        <LeftButton icon={leftIcon} onClick={leftOnclick}>
-          {leftText}
-        </LeftButton>
-        <SeparationBar />
-      </LeftButtonContainer>
-      <RightButton icon={rightIcon} onClick={rightOnclick}>
-        {rightText}
-      </RightButton>
-    </MainContainer>
-  </JssProvider>
+  <MainContainer {...rest}>
+    <LeftButtonContainer>
+      <LeftButton icon={leftIcon} onClick={leftOnclick}>
+        {leftText}
+      </LeftButton>
+      <SeparationBar />
+    </LeftButtonContainer>
+    <RightButton icon={rightIcon} onClick={rightOnclick}>
+      {rightText}
+    </RightButton>
+  </MainContainer>
 );
 
 export default ToggleButton;

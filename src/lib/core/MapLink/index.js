@@ -42,17 +42,15 @@ type Props = {
 
 const MapLink = ({ buttonTitle, onClick }: Props) => {
   return (
-    <JssProvider jss={jss} generateClassName={generateClassName}>
-      <MainContainer>
-        <ExtendedImage
-          alt="map"
-          src={`${`${RESOURCES_URL}static/images/list/map.svg`}`}
-        />
-        <ExtendedButton type="outline" onClick={() => onClick()}>
-          {buttonTitle}
-        </ExtendedButton>
-      </MainContainer>
-    </JssProvider>
+    <MainContainer>
+      <ExtendedImage
+        alt="map"
+        src={`${`${RESOURCES_URL}static/images/list/map.svg`}`}
+      />
+      <ExtendedButton type="outline" onClick={() => onClick()}>
+        {buttonTitle}
+      </ExtendedButton>
+    </MainContainer>
   );
 };
 

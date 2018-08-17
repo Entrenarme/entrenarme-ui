@@ -4,10 +4,17 @@ import styled from 'styled-components';
 import Chip from '@material-ui/core/Chip';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+import {
+  createGenerateClassName,
+  jssPreset,
+  createMuiTheme,
+  MuiThemeProvider,
+} from '@material-ui/core/styles';
 
 import { regularFont } from '../../helpers/fonts';
 import colors from '../../helpers/colors';
+
+const theme = createMuiTheme();
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'tag-eui',
@@ -50,7 +57,9 @@ type Props = {
 const Tag = ({ title, bgcolor, color, xs }: Props) => {
   return (
     <JssProvider jss={jss} generateClassName={generateClassName}>
-      <ExtendedTag label={title} options={{ bgcolor, color, xs }} />
+      <MuiThemeProvider theme={theme}>
+        <ExtendedTag label={title} options={{ bgcolor, color, xs }} />
+      </MuiThemeProvider>
     </JssProvider>
   );
 };
