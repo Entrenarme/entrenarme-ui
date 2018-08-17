@@ -44,8 +44,8 @@
     "test": "jest ./src/lib --env=jsdom",
     "update-patch": "npm version patch",
     "buildw": "NODE_ENV=production webpack --config webpack.config.js",
-    "build": "yarn update-patch && yarn buildw",
-    "publish:npm": "yarn build && npm publish ./dist",
+    "build": "yarn buildw",
+    "publish:npm": "yarn update-patch && yarn build && npm publish ./dist",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public -c .storybook -o build"
   },
