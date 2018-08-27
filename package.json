@@ -47,7 +47,7 @@
     "build": "yarn buildw",
     "publish:npm": "yarn update-patch && yarn build && npm publish ./dist",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public -c .storybook -o build"
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
