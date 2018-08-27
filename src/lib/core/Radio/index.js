@@ -23,7 +23,7 @@ const theme = createMuiTheme({
 });
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'eui',
+  productionPrefix: 'radio-eui',
 });
 const jss = create(jssPreset());
 

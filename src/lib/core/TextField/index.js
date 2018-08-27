@@ -9,6 +9,7 @@ import {
   jssPreset,
 } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
+import { SheetsRegistry } from 'react-jss/lib/jss';
 import { create } from 'jss';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
@@ -25,6 +26,9 @@ type Props = {
   debounceMs?: number,
 };
 
+const sheetsManager = new Map();
+const sheetsRegistry = new SheetsRegistry();
+
 const theme = createMuiTheme({
   palette: {
     primary: { main: colors.secondary.default, dark: colors.secondary.default },
@@ -33,7 +37,9 @@ const theme = createMuiTheme({
   },
 });
 
-const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'textfield-eui',
+});
 const jss = create(jssPreset());
 
 const STextField = styled(MTextField)`

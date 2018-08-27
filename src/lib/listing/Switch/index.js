@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import Select from '../../core/Select';
 
@@ -9,6 +12,11 @@ type ContainerProps = {
     column: boolean,
   },
 };
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'switch-eui',
+});
+const jss = create(jssPreset());
 
 const Container = styled.div`
   display: flex;

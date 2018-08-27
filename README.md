@@ -1,7 +1,5 @@
 # ENTRENARME-UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
 ## About material-ui
 
 Every component we create that will use anything of material-ui (meaning that we do a `import xxx from`@material-ui/xxxx`at the top of that file), we need to wrap the component we return with a JssProvider as described in here [CSS in JS - Material-ui](https://v1-3-0.material-ui.com/customization/css-in-js/#jssprovider), but with one modification, we need to pass the option`productionPrefix: 'eui'`to the`createGenerateClassName` function. There are 3 parts of this process:
@@ -39,17 +37,14 @@ const jss = create(jssPreset());
 
 ## Commands
 
-- The project is a [Create React App](https://github.com/facebookincubator/create-react-app) but with some custom scripts:
-  - `yarn build` has been modified to do a few things:
-    - NOTE: Before run this command, we must increment the version on the package.json (root folder).
-    - It will create a folder on the project root called `dist` and it will mimic the folder structure within the `src/lib` of the development section, but transpiled with babel.
-    - It will also copy the package.json of the root folder to the `dist` folder, as we will need it to be able to publish it to npm.
-    - Inside `dist`, tests, snapshots and stories are ignored by default (and should be).
-  - `yarn publish` will build && publish the `dist` folder to npm.
-    - NOTE: Make sure you are logged in with the entrenarme account before publishing it, both with:
-      - > `npm login`
-      - > `yarn login`
-    - NOTE2: If this is not working, do it separately, do a `yarn build` and then run `npm publish ./dist` manually from the CLI.
+- `yarn build` has been modified to do a few things:
+  - It will create a folder on the project root called `dist` and it will mimic the folder structure within the `src/lib` of the development section, but transpiled with babel and bundled with webpack.
+  - It will also copy the package.json of the root folder to the `dist` folder, as we will need it to be able to publish it to npm.
+  - Inside `dist`, tests, snapshots and stories are ignored by default (and should be).
+- `npm run publish:npm` will bump the patch (x.x.3 to x.x.4) version of the package.json, build && publish the `dist` folder to npm.
+  - NOTE: Make sure you are logged in with the entrenarme account before publishing it, both with:
+    - > `npm login`
+    - > `yarn login`
 
 ## Component structure
 
@@ -61,7 +56,6 @@ const jss = create(jssPreset());
 
 ## Development
 
-- 3 main proceses to run:
-  - `yarn start` will run the live-reload react-app that will serve as example (we mostly don't gonna need this, because we will be using Storybook to see the component results.)
+- 2 main proceses to run:
   - `yarn storybook` will run the storybook server and it will pick up all the components inside `src/lib` directory.
   - `yarn test` will run the testing process, it will warn us if any snapshot changes.

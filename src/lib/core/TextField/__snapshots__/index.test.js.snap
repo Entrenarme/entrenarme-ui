@@ -20,13 +20,13 @@ exports[`renders default 1`] = `
 
 exports[`renders with adornment start 1`] = `
 <div
-  class="MuiFormControl-root-62 sc-bdVaJa faWPZi"
+  class="MuiFormControl-root-1 sc-bdVaJa faWPZi"
 >
   <div
-    class="MuiInput-root-66 MuiInput-formControl-67 MuiInput-underline-70"
+    class="MuiInput-root-5 MuiInput-formControl-6 MuiInput-underline-9"
   >
     <div
-      class="MuiInputAdornment-root-79 MuiInputAdornment-positionStart-80"
+      class="MuiInputAdornment-root-30 MuiInputAdornment-positionStart-31"
     >
       <svg
         aria-hidden="true"
@@ -45,7 +45,7 @@ exports[`renders with adornment start 1`] = `
     </div>
     <input
       aria-invalid="false"
-      class="MuiInput-input-74"
+      class="MuiInput-input-13"
       placeholder=""
       type="text"
       value=""
@@ -56,20 +56,20 @@ exports[`renders with adornment start 1`] = `
 
 exports[`renders with label 1`] = `
 <div
-  class="MuiFormControl-root-35 sc-bdVaJa faWPZi"
+  class="MuiFormControl-root-1 sc-bdVaJa faWPZi"
 >
   <label
-    class="MuiFormLabel-root-44 MuiInputLabel-root-39 MuiInputLabel-formControl-40 MuiInputLabel-animated-43"
+    class="MuiFormLabel-root-23 MuiInputLabel-root-18 MuiInputLabel-formControl-19 MuiInputLabel-animated-22"
     data-shrink="false"
   >
     label
   </label>
   <div
-    class="MuiInput-root-49 MuiInput-formControl-50 MuiInput-underline-53"
+    class="MuiInput-root-5 MuiInput-formControl-6 MuiInput-underline-9"
   >
     <input
       aria-invalid="false"
-      class="MuiInput-input-57"
+      class="MuiInput-input-13"
       placeholder=""
       type="text"
       value=""
@@ -80,14 +80,14 @@ exports[`renders with label 1`] = `
 
 exports[`renders with placeholder 1`] = `
 <div
-  class="MuiFormControl-root-18 sc-bdVaJa faWPZi"
+  class="MuiFormControl-root-1 sc-bdVaJa faWPZi"
 >
   <div
-    class="MuiInput-root-22 MuiInput-formControl-23 MuiInput-underline-26"
+    class="MuiInput-root-5 MuiInput-formControl-6 MuiInput-underline-9"
   >
     <input
       aria-invalid="false"
-      class="MuiInput-input-30"
+      class="MuiInput-input-13"
       placeholder="placeholder"
       type="text"
       value=""

@@ -1,9 +1,17 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import Button from '../Button/index';
 import { RESOURCES_URL } from '../../helpers/config';
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'maplink-eui',
+});
+const jss = create(jssPreset());
 
 const MainContainer = styled.div`
   position: relative;

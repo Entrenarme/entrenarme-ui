@@ -2,10 +2,10 @@
 import * as React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import {
-  createMuiTheme,
-  MuiThemeProvider,
   createGenerateClassName,
   jssPreset,
+  createMuiTheme,
+  MuiThemeProvider,
 } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
@@ -17,6 +17,8 @@ type Props = {
   image: CustomImage,
   onClose: Function,
 };
+
+const theme = createMuiTheme();
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'eui',
@@ -38,7 +40,7 @@ class FullImage extends React.Component<Props> {
     const { image, open } = this.props;
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={createMuiTheme()}>
+        <MuiThemeProvider theme={theme}>
           <Dialog open={open} onClose={this.onCloseDialog}>
             <img
               src={`${RESOURCES_URL}gallery/original/${image.value}`}

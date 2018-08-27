@@ -3,6 +3,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import TextField from '../../core/TextField';
 import Switch from '../Switch';
@@ -22,6 +25,11 @@ type Props = {
 type State = {
   filterValue: string,
 };
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'searchswitch-eui',
+});
+const jss = create(jssPreset());
 
 const Container = styled.div`
   display: flex;

@@ -1,6 +1,3 @@
-import 'react-testing-library/cleanup-after-each';
-import 'jest-styled-components';
-
 window.matchMedia = jest.fn().mockImplementation(query => {
   return {
     matches: false,
@@ -10,3 +7,7 @@ window.matchMedia = jest.fn().mockImplementation(query => {
     removeListener: jest.fn(),
   };
 });
+
+global.requestAnimationFrame = cb => {
+  setTimeout(cb, 0);
+};

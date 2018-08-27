@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 import P from '../../core/Text/Paragraph';
@@ -13,6 +16,11 @@ type WrapperProps = {
     device: Device,
   },
 };
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'rates-eui',
+});
+const jss = create(jssPreset());
 
 const Wrapper = styled.div`
   width: ${(props: WrapperProps) =>

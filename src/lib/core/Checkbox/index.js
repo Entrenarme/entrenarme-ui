@@ -22,7 +22,9 @@ const theme = createMuiTheme({
   },
 });
 
-const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'checkbox-eui',
+});
 const jss = create(jssPreset());
 
 type Props = {

@@ -3,13 +3,13 @@
 exports[`add disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa cNrUNG"
+  class="MuiButtonBase-root-211 MuiButtonBase-disabled-212 MuiButton-root-185 MuiButton-text-187 MuiButton-flat-190 MuiButton-disabled-205 sc-bdVaJa cNrUNG"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-180"
+    class="MuiButton-label-186"
   >
     <span>
       default disabled
@@ -21,12 +21,12 @@ exports[`add disabled button 1`] = `
 exports[`add icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa cbcxry"
+  class="MuiButtonBase-root-211 MuiButton-root-185 MuiButton-text-187 MuiButton-flat-190 sc-bdVaJa cbcxry"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-180"
+    class="MuiButton-label-186"
   >
     <span
       class="sc-bwzfXH czactv"
@@ -51,7 +51,7 @@ exports[`add icon button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-222"
+    class="MuiTouchRipple-root-230"
   />
 </button>
 `;
@@ -59,25 +59,25 @@ exports[`add icon button 1`] = `
 exports[`add loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-203 MuiButtonBase-disabled-204 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 MuiButton-disabled-197 sc-bdVaJa kxuXFA"
+  class="MuiButtonBase-root-211 MuiButtonBase-disabled-212 MuiButton-root-185 MuiButton-text-187 MuiButton-flat-190 MuiButton-disabled-205 sc-bdVaJa kxuXFA"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-180"
+    class="MuiButton-label-186"
   >
     <div
-      class="MuiCircularProgress-root-213 MuiCircularProgress-colorPrimary-216 MuiCircularProgress-indeterminate-215"
+      class="MuiCircularProgress-root-221 MuiCircularProgress-colorPrimary-224 MuiCircularProgress-indeterminate-223"
       style="margin-right: 10px; color: rgba(0, 181, 226, 0.6);"
       role="progressbar"
     >
       <svg
-        class="MuiCircularProgress-svg-218"
+        class="MuiCircularProgress-svg-226"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle-219 MuiCircularProgress-circleIndeterminate-221"
+          class="MuiCircularProgress-circle-227 MuiCircularProgress-circleIndeterminate-229"
           cx="44"
           cy="44"
           r="20.2"
@@ -96,7 +96,7 @@ exports[`add loading button 1`] = `
 exports[`default button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa gjZMZu"
+  class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa gjZMZu"
   type="button"
   options="[object Object]"
 >
@@ -108,7 +108,7 @@ exports[`default button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-28"
+    class="MuiTouchRipple-root-30"
   />
 </button>
 `;
@@ -116,7 +116,7 @@ exports[`default button 1`] = `
 exports[`default disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa fRvfUR"
+  class="MuiButtonBase-root-27 MuiButtonBase-disabled-28 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-21 sc-bdVaJa fRvfUR"
   type="button"
   options="[object Object]"
   disabled=""
@@ -134,7 +134,7 @@ exports[`default disabled button 1`] = `
 exports[`default error button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa hTCEyd"
+  class="MuiButtonBase-root-27 MuiButtonBase-disabled-28 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-21 sc-bdVaJa hTCEyd"
   type="button"
   options="[object Object]"
   disabled=""
@@ -152,7 +152,7 @@ exports[`default error button 1`] = `
 exports[`default error color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa hTCEyd"
+  class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa hTCEyd"
   type="button"
   options="[object Object]"
 >
@@ -164,7 +164,7 @@ exports[`default error color button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-44"
+    class="MuiTouchRipple-root-46"
   />
 </button>
 `;
@@ -172,7 +172,7 @@ exports[`default error color button 1`] = `
 exports[`default icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa gjZMZu"
+  class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa gjZMZu"
   type="button"
   options="[object Object]"
 >
@@ -202,7 +202,7 @@ exports[`default icon button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-58"
+    class="MuiTouchRipple-root-60"
   />
 </button>
 `;
@@ -210,7 +210,7 @@ exports[`default icon button 1`] = `
 exports[`default loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa lkMVbx"
+  class="MuiButtonBase-root-27 MuiButtonBase-disabled-28 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-21 sc-bdVaJa lkMVbx"
   type="button"
   options="[object Object]"
   disabled=""
@@ -219,16 +219,16 @@ exports[`default loading button 1`] = `
     class="MuiButton-label-2"
   >
     <div
-      class="MuiCircularProgress-root-35 MuiCircularProgress-colorPrimary-38 MuiCircularProgress-indeterminate-37"
+      class="MuiCircularProgress-root-37 MuiCircularProgress-colorPrimary-40 MuiCircularProgress-indeterminate-39"
       style="margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
       role="progressbar"
     >
       <svg
-        class="MuiCircularProgress-svg-40"
+        class="MuiCircularProgress-svg-42"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle-41 MuiCircularProgress-circleIndeterminate-43"
+          class="MuiCircularProgress-circle-43 MuiCircularProgress-circleIndeterminate-45"
           cx="44"
           cy="44"
           r="20.2"
@@ -247,7 +247,7 @@ exports[`default loading button 1`] = `
 exports[`default secondary button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa ffUUeT"
+  class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa ffUUeT"
   type="button"
   options="[object Object]"
 >
@@ -259,7 +259,7 @@ exports[`default secondary button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-28"
+    class="MuiTouchRipple-root-30"
   />
 </button>
 `;
@@ -267,7 +267,7 @@ exports[`default secondary button 1`] = `
 exports[`default success button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-25 MuiButtonBase-disabled-26 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-19 sc-bdVaJa ffLXpW"
+  class="MuiButtonBase-root-27 MuiButtonBase-disabled-28 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 MuiButton-disabled-21 sc-bdVaJa ffLXpW"
   type="button"
   options="[object Object]"
   disabled=""
@@ -285,7 +285,7 @@ exports[`default success button 1`] = `
 exports[`default success color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa ffLXpW"
+  class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa ffLXpW"
   type="button"
   options="[object Object]"
 >
@@ -297,7 +297,7 @@ exports[`default success color button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-51"
+    class="MuiTouchRipple-root-53"
   />
 </button>
 `;
@@ -305,7 +305,7 @@ exports[`default success color button 1`] = `
 exports[`default warning button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-25 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa jXMqsE"
+  class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 sc-bdVaJa jXMqsE"
   type="button"
   options="[object Object]"
 >
@@ -315,7 +315,7 @@ exports[`default warning button 1`] = `
     <span />
   </span>
   <span
-    class="MuiTouchRipple-root-28"
+    class="MuiTouchRipple-root-30"
   />
 </button>
 `;
@@ -323,19 +323,19 @@ exports[`default warning button 1`] = `
 exports[`link default 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa jMXsoX"
+  class="MuiButtonBase-root-159 MuiButton-root-133 MuiButton-text-135 MuiButton-flat-138 sc-bdVaJa jMXsoX"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-130"
+    class="MuiButton-label-134"
   >
     <span>
       link
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-156"
+    class="MuiTouchRipple-root-162"
   />
 </button>
 `;
@@ -343,13 +343,13 @@ exports[`link default 1`] = `
 exports[`link disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa KIcjQ"
+  class="MuiButtonBase-root-159 MuiButtonBase-disabled-160 MuiButton-root-133 MuiButton-text-135 MuiButton-flat-138 MuiButton-disabled-153 sc-bdVaJa KIcjQ"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-130"
+    class="MuiButton-label-134"
   >
     <span>
       default disabled
@@ -361,12 +361,12 @@ exports[`link disabled button 1`] = `
 exports[`link icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-153 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 sc-bdVaJa jMXsoX"
+  class="MuiButtonBase-root-159 MuiButton-root-133 MuiButton-text-135 MuiButton-flat-138 sc-bdVaJa jMXsoX"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-130"
+    class="MuiButton-label-134"
   >
     <span
       class="sc-bwzfXH czactv"
@@ -391,7 +391,7 @@ exports[`link icon button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-172"
+    class="MuiTouchRipple-root-178"
   />
 </button>
 `;
@@ -399,25 +399,25 @@ exports[`link icon button 1`] = `
 exports[`link loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-153 MuiButtonBase-disabled-154 MuiButton-root-129 MuiButton-text-131 MuiButton-flat-134 MuiButton-disabled-147 sc-bdVaJa jFnHCu"
+  class="MuiButtonBase-root-159 MuiButtonBase-disabled-160 MuiButton-root-133 MuiButton-text-135 MuiButton-flat-138 MuiButton-disabled-153 sc-bdVaJa jFnHCu"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-130"
+    class="MuiButton-label-134"
   >
     <div
-      class="MuiCircularProgress-root-163 MuiCircularProgress-colorPrimary-166 MuiCircularProgress-indeterminate-165"
+      class="MuiCircularProgress-root-169 MuiCircularProgress-colorPrimary-172 MuiCircularProgress-indeterminate-171"
       style="margin-right: 10px; color: rgba(191, 191, 191, 0.7);"
       role="progressbar"
     >
       <svg
-        class="MuiCircularProgress-svg-168"
+        class="MuiCircularProgress-svg-174"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle-169 MuiCircularProgress-circleIndeterminate-171"
+          class="MuiCircularProgress-circle-175 MuiCircularProgress-circleIndeterminate-177"
           cx="44"
           cy="44"
           r="20.2"
@@ -436,19 +436,19 @@ exports[`link loading button 1`] = `
 exports[`outline default 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa gyItIq"
+  class="MuiButtonBase-root-93 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 sc-bdVaJa gyItIq"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span>
       outline
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-92"
+    class="MuiTouchRipple-root-96"
   />
 </button>
 `;
@@ -456,13 +456,13 @@ exports[`outline default 1`] = `
 exports[`outline disabled button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  class="MuiButtonBase-root-93 MuiButtonBase-disabled-94 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 MuiButton-disabled-87 sc-bdVaJa gyItIq"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span>
       default disabled
@@ -474,13 +474,13 @@ exports[`outline disabled button 1`] = `
 exports[`outline error button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  class="MuiButtonBase-root-93 MuiButtonBase-disabled-94 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 MuiButton-disabled-87 sc-bdVaJa gyItIq"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span>
       error
@@ -492,19 +492,19 @@ exports[`outline error button 1`] = `
 exports[`outline error color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa igAhgd"
+  class="MuiButtonBase-root-93 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 sc-bdVaJa igAhgd"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span>
       error color
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-108"
+    class="MuiTouchRipple-root-112"
   />
 </button>
 `;
@@ -512,12 +512,12 @@ exports[`outline error color button 1`] = `
 exports[`outline icon button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa gyItIq"
+  class="MuiButtonBase-root-93 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 sc-bdVaJa gyItIq"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span
       class="sc-bwzfXH czactv"
@@ -542,7 +542,7 @@ exports[`outline icon button 1`] = `
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-122"
+    class="MuiTouchRipple-root-126"
   />
 </button>
 `;
@@ -550,25 +550,25 @@ exports[`outline icon button 1`] = `
 exports[`outline loading button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  class="MuiButtonBase-root-93 MuiButtonBase-disabled-94 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 MuiButton-disabled-87 sc-bdVaJa gyItIq"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <div
-      class="MuiCircularProgress-root-99 MuiCircularProgress-colorPrimary-102 MuiCircularProgress-indeterminate-101"
+      class="MuiCircularProgress-root-103 MuiCircularProgress-colorPrimary-106 MuiCircularProgress-indeterminate-105"
       style="margin-right: 10px; color: rgb(18, 85, 102);"
       role="progressbar"
     >
       <svg
-        class="MuiCircularProgress-svg-104"
+        class="MuiCircularProgress-svg-108"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle-105 MuiCircularProgress-circleIndeterminate-107"
+          class="MuiCircularProgress-circle-109 MuiCircularProgress-circleIndeterminate-111"
           cx="44"
           cy="44"
           r="20.2"
@@ -587,19 +587,19 @@ exports[`outline loading button 1`] = `
 exports[`outline secondary button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa gMHwuN"
+  class="MuiButtonBase-root-93 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 sc-bdVaJa gMHwuN"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span>
       secondary
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-92"
+    class="MuiTouchRipple-root-96"
   />
 </button>
 `;
@@ -607,13 +607,13 @@ exports[`outline secondary button 1`] = `
 exports[`outline success button 1`] = `
 <button
   tabindex="-1"
-  class="MuiButtonBase-root-89 MuiButtonBase-disabled-90 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 MuiButton-disabled-83 sc-bdVaJa gyItIq"
+  class="MuiButtonBase-root-93 MuiButtonBase-disabled-94 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 MuiButton-disabled-87 sc-bdVaJa gyItIq"
   type="button"
   options="[object Object]"
   disabled=""
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span>
       success
@@ -625,19 +625,19 @@ exports[`outline success button 1`] = `
 exports[`outline success color button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa fSsuLI"
+  class="MuiButtonBase-root-93 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 sc-bdVaJa fSsuLI"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span>
       success color
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-115"
+    class="MuiTouchRipple-root-119"
   />
 </button>
 `;
@@ -645,17 +645,17 @@ exports[`outline success color button 1`] = `
 exports[`outline warning button 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-89 MuiButton-root-65 MuiButton-text-67 MuiButton-flat-70 sc-bdVaJa cIBlmP"
+  class="MuiButtonBase-root-93 MuiButton-root-67 MuiButton-text-69 MuiButton-flat-72 sc-bdVaJa cIBlmP"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-66"
+    class="MuiButton-label-68"
   >
     <span />
   </span>
   <span
-    class="MuiTouchRipple-root-92"
+    class="MuiTouchRipple-root-96"
   />
 </button>
 `;
@@ -663,19 +663,19 @@ exports[`outline warning button 1`] = `
 exports[`renders add 1`] = `
 <button
   tabindex="0"
-  class="MuiButtonBase-root-203 MuiButton-root-179 MuiButton-text-181 MuiButton-flat-184 sc-bdVaJa cbcxry"
+  class="MuiButtonBase-root-211 MuiButton-root-185 MuiButton-text-187 MuiButton-flat-190 sc-bdVaJa cbcxry"
   type="button"
   options="[object Object]"
 >
   <span
-    class="MuiButton-label-180"
+    class="MuiButton-label-186"
   >
     <span>
       add
     </span>
   </span>
   <span
-    class="MuiTouchRipple-root-206"
+    class="MuiTouchRipple-root-214"
   />
 </button>
 `;

@@ -37,7 +37,9 @@ const theme = createMuiTheme({
   },
 });
 
-const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'ddselect-eui',
+});
 const jss = create(jssPreset());
 
 class DropdownSelect extends React.Component<Props, State> {
