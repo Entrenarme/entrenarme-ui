@@ -15,26 +15,33 @@ type ArrowProps = {
   options: { right: boolean, rounded: boolean },
 };
 
-const SArrow = styled.div`
-  z-index: 10;
+const SArrow = styled.div``;
+
+const Container = styled.div`
   position: absolute;
-  top: ${(props: ArrowProps) =>
-    props.options && props.options.rounded
-      ? 'calc(50% - 20px)'
-      : 'calc(50% - 8px)'};
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 58px;
+  display: flex;
+  align-items: center;
   ${(props: ArrowProps) =>
     props.options && props.options.right ? 'right: 0' : 'left: 0'};
   ${(props: ArrowProps) =>
-    props.options && props.options.right
-      ? 'margin-right: 15px'
-      : 'margin-left: 15px'};
-  cursor: pointer;
+    props.options && !props.options.rounded
+      ? 'justify-content: center'
+      : props.options.right
+        ? 'justify-content: flex-start'
+        : 'justify-content: flex-end'};
 `;
 
 const Arrow = ({ right, component, onClick, rounded }: Props) => (
-  <SArrow onClick={onClick} options={{ right, rounded }}>
-    {component || <DefaultArrow rounded={rounded} right={right} />}
-  </SArrow>
+  <Container onClick={onClick} options={{ right, rounded }}>
+    <SArrow options={{ rounded }}>
+      {component || <DefaultArrow rounded={rounded} right={right} />}
+    </SArrow>
+  </Container>
 );
 
 Arrow.defaultProps = {
