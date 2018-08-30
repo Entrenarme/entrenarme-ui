@@ -177,8 +177,8 @@ class MediaGallery extends React.Component<Props, State> {
   prepareForInfinite = () => {
     this.setState(prevState => {
       const lastMedia = getLastChildMedia(this.containerRef);
-      console.log(lastMedia);
-      console.log(lastMedia ? -lastMedia.clientWidth : 0);
+      // console.log(lastMedia);
+      // console.log(lastMedia ? -lastMedia.clientWidth : 0);
       let newState = {
         _images: copyLastImageToStart(prevState._images),
         offsetWidth: lastMedia ? -lastMedia.clientWidth : 0,
