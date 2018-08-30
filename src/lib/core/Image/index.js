@@ -27,6 +27,7 @@ type ImgProps = {
 };
 
 const Img = styled.img`
+  cursor: pointer;
   ${(props: ImgProps) =>
     props.options.imageWidth &&
     `width: ${props.options.imageWidth}; flex: 1 0 ${
