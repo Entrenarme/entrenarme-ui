@@ -6,7 +6,7 @@ import colors from '../../../helpers/colors';
 import { RESOURCES_URL } from '../../../helpers/config';
 
 import P from '../../Text/Paragraph/index';
-import H5 from '../../Text/Headers/H5/index';
+import H4 from '../../Text/Headers/H4/index';
 
 const setColor = (status, origin) => {
   const colorType = origin === 'icon' ? 'default' : 'light';
@@ -14,16 +14,22 @@ const setColor = (status, origin) => {
   switch (status) {
     case 'info':
       return colors.secondary[colorType];
+    case 'error':
+      return colors.error[colorType];
     default:
       return colors.warning[colorType];
   }
 };
 
 const MainContainer = styled.div`
-  display: grid;
-  grid-template: ${props =>
-    props.options.button ? '1fr / 50px 1fr auto' : '1fr / 50px 1fr'}
-  grid-gap: 20px;
+  ${props =>
+    props.options.alignment === 'vertical'
+      ? `display: flex;
+          flex-direction: column;`
+      : `display: grid;
+        grid-template:
+      ${props.options.button ? '1fr / 50px 1fr auto' : '1fr / 50px 1fr'};
+  grid-gap: 20px;`};
   align-items: center;
   border-radius: 4px;
 
@@ -44,22 +50,24 @@ const MainContainer = styled.div`
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
-  align-self: self-start;
   justify-content: center;
-  font-size: 22px;
-  width: 50px;
-  height: 50px;
+  font-size: ${props =>
+    props.options.alignment === 'vertical' ? '27px' : '22px'};
+  margin-bottom: ${props =>
+    props.options.alignment === 'vertical' ? '30px' : ''};
+  width: ${props => (props.options.alignment === 'vertical' ? '80px' : '50px')};
+  height: ${props =>
+    props.options.alignment === 'vertical' ? '80px' : '50px'};
   mask: url(${`${RESOURCES_URL}static/images/general/hex_icon_v2.svg`});
   background-color: ${props => setColor(props.options.type, 'icon')};
   color: ${colors.white.default};
 `;
 
 const BodyContainer = styled.div`
-  h5 {
+  h4 {
     margin-bottom: 8px !important;
     color: ${props => setColor(props.options.type, 'icon')};
-    font-weight: 400 !important;
-    font-size: 1.125rem !important;
+    font-weight: 500 !important;
   }
 
   p {
@@ -72,7 +80,7 @@ const BodyContainer = styled.div`
 
   /* iPhone 5/6/6+ ----------- */
   @media only screen and (max-width: 767px) {
-    h5 {
+    h4 {
       text-align: center;
       font-size: 1rem !important;
     }
@@ -119,7 +127,8 @@ type Props = {
   text: React.Node,
   tags?: Array<React.Node>,
   button?: React.Node,
-  type?: 'info' | 'warning',
+  type?: 'info' | 'warning' | 'error',
+  alignment: ?'vertical',
 };
 
 const AlertBox = ({
@@ -129,13 +138,16 @@ const AlertBox = ({
   tags,
   button,
   type,
+  alignment,
   ...rest
 }: Props) => {
   return (
-    <MainContainer options={{ type, button }} {...rest}>
-      <IconContainer options={{ type }}>{icon}</IconContainer>
+    <MainContainer options={{ type, button, alignment }} {...rest}>
+      <IconContainer options={{ type, alignment }}>{icon}</IconContainer>
       <BodyContainer options={{ type }}>
-        <H5>{title}</H5>
+        <H4 textAlign={alignment === 'vertical' ? 'center' : 'left'}>
+          {title}
+        </H4>
         <P>{text}</P>
         {tags ? <TagsContainer>{tags}</TagsContainer> : null}
       </BodyContainer>
@@ -149,6 +161,7 @@ const AlertBox = ({
 AlertBox.defaultProps = {
   button: null,
   type: 'info',
+  alignment: null,
 };
 
 export default AlertBox;
