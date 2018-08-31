@@ -42,6 +42,7 @@ type Props = {
   prepareForInfinite: Function,
   initialLoading: boolean,
   infinite: boolean,
+  imageClassName: string,
 };
 
 const showPlaceholder = (
@@ -73,6 +74,7 @@ class Gallery extends React.Component<Props> {
     trainerName: '',
     placeholderBackground: '',
     placeholderChildren: null,
+    imageClassName: '',
   };
 
   onMediaClick = (src: string) => () => {
@@ -102,6 +104,7 @@ class Gallery extends React.Component<Props> {
       prepareForInfinite,
       initialLoading,
       infinite,
+      imageClassName,
     } = this.props;
     return visibleImages ? (
       <SGallery options={{ offsetWidth, transition }} id="gallery_container">
@@ -154,7 +157,7 @@ class Gallery extends React.Component<Props> {
                 }
                 allowOpen={!swiping}
                 key={image.keyId || image.id}
-                className="media"
+                className={`media ${imageClassName}`}
                 image={image}
                 alt={`${trainerName} ${image.sport_name}`}
                 imageWidth={imageWidth}

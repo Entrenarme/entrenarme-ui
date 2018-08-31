@@ -104,6 +104,7 @@ class MediaGallery extends React.Component<Props, State> {
     imageHeight: string,
     imageWidth: string,
     placeholderWidth: string,
+    imageClassName: string,
   }) => (
     <MediaGalleryContext.Consumer>
       {({ copyImagesAndNoDOMVisibleChanges, ...rest }: State) => (
