@@ -26,13 +26,15 @@ const Wrapper = styled.div`
   width: ${(props: WrapperProps) =>
     props.options &&
     props.options.device &&
-    props.options.device.includes('desktop')
+    (props.options.device.includes('desktop') ||
+      props.options.device.includes('ipad'))
       ? '130px'
       : '80px'};
   height: ${(props: WrapperProps) =>
     props.options &&
     props.options.device &&
-    props.options.device.includes('desktop')
+    (props.options.device.includes('desktop') ||
+      props.options.device.includes('ipad'))
       ? '95px'
       : '55px'};
   display: flex;
