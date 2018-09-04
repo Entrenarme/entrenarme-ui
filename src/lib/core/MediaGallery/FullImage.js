@@ -21,7 +21,7 @@ type Props = {
 const theme = createMuiTheme();
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'eui',
+  productionPrefix: 'fullimage-eui',
 });
 const jss = create(jssPreset());
 
