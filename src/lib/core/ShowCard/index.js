@@ -10,7 +10,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
 import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 
-import H4 from '../Text/Headers/H4/index';
+import H4 from '../Text/Headers/H4';
 
 const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
 const jss = create(jssPreset());
@@ -53,7 +53,6 @@ const BodyContainer = styled.div`
 
 type Props = {
   children: React.Node,
-  title: string,
 };
 
 type State = {
@@ -65,37 +64,38 @@ class ShowCard extends React.Component<Props, State> {
     expanded: null,
   };
 
-  handleChange = (panel: string) => (event: Object, expanded: boolean) => {
+  handleChange = panel => (event, expanded) => {
     this.setState({
       expanded: expanded ? panel : false,
     });
   };
 
   render() {
-    const { children, title, ...rest } = this.props;
+    const { children, panel, ...rest } = this.props;
     const { expanded } = this.state;
 
-    return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <ExtendedGlobalContainer
-          {...rest}
-          expanded={expanded === 'panel1'}
-          onChange={this.handleChange('panel1')}
-        >
-          <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
-            <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
-              {title}
-            </H4>
-          </ExtendedTitle>
-          <ExtendedBody>
-            <BodyContainer>{children}</BodyContainer>
-          </ExtendedBody>
-        </ExtendedGlobalContainer>
-      </JssProvider>
+    return React.Children.map(children, (child, index) =>
+      React.cloneElement(
+        <JssProvider jss={jss} generateClassName={generateClassName}>
+          <ExtendedGlobalContainer
+            style={{ marginTop: 2, marginBottom: 2 }}
+            expanded={expanded === children[index].props.panel}
+            onChange={this.handleChange(children[index].props.panel)}
+            {...rest}
+          >
+            <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
+              <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
+                {child.props.children[0]}
+              </H4>
+            </ExtendedTitle>
+            <ExtendedBody>
+              <BodyContainer>{child.props.children[1]}</BodyContainer>
+            </ExtendedBody>
+          </ExtendedGlobalContainer>
+        </JssProvider>,
+      ),
     );
   }
 }
-
-ShowCard.defaultProps = {};
 
 export default ShowCard;

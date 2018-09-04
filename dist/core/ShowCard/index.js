@@ -33,7 +33,7 @@ var _ExpansionPanelSummary2 = _interopRequireDefault(_ExpansionPanelSummary);
 
 var _reactFontawesome = require('@fortawesome/react-fontawesome');
 
-var _freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
+var _proLightSvgIcons = require('@fortawesome/pro-light-svg-icons');
 
 var _JssProvider = require('react-jss/lib/JssProvider');
 
@@ -43,9 +43,9 @@ var _jss = require('jss');
 
 var _styles = require('@material-ui/core/styles');
 
-var _index = require('../Text/Headers/H4/index');
+var _H = require('../Text/Headers/H4');
 
-var _index2 = _interopRequireDefault(_index);
+var _H2 = _interopRequireDefault(_H);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -100,49 +100,52 @@ var ShowCard = function (_React$Component) {
   _createClass(ShowCard, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props,
           children = _props.children,
-          title = _props.title,
-          rest = _objectWithoutProperties(_props, ['children', 'title']);
+          panel = _props.panel,
+          rest = _objectWithoutProperties(_props, ['children', 'panel']);
 
       var expanded = this.state.expanded;
 
 
-      return React.createElement(
-        _JssProvider2.default,
-        { jss: jss, generateClassName: generateClassName },
-        React.createElement(
-          ExtendedGlobalContainer,
-          Object.assign({}, rest, {
-            expanded: expanded === 'panel1',
-            onChange: this.handleChange('panel1')
-          }),
+      return React.Children.map(children, function (child, index) {
+        return React.cloneElement(React.createElement(
+          _JssProvider2.default,
+          { jss: jss, generateClassName: generateClassName },
           React.createElement(
-            ExtendedTitle,
-            { expandIcon: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _freeSolidSvgIcons.faAngleDown }) },
+            ExtendedGlobalContainer,
+            Object.assign({
+              style: { marginTop: 2, marginBottom: 2 },
+              expanded: expanded === children[index].props.panel,
+              onChange: _this2.handleChange(children[index].props.panel)
+            }, rest),
             React.createElement(
-              _index2.default,
-              { size: 'small', style: { fontWeight: 600, margin: '0px' } },
-              title
-            )
-          ),
-          React.createElement(
-            ExtendedBody,
-            null,
+              ExtendedTitle,
+              { expandIcon: React.createElement(_reactFontawesome.FontAwesomeIcon, { icon: _proLightSvgIcons.faAngleDown }) },
+              React.createElement(
+                _H2.default,
+                { size: 'small', style: { fontWeight: 600, margin: '0px' } },
+                child.props.children[0]
+              )
+            ),
             React.createElement(
-              BodyContainer,
+              ExtendedBody,
               null,
-              children
+              React.createElement(
+                BodyContainer,
+                null,
+                child.props.children[1]
+              )
             )
           )
-        )
-      );
+        ));
+      });
     }
   }]);
 
   return ShowCard;
 }(React.Component);
-
-ShowCard.defaultProps = {};
 
 exports.default = ShowCard;

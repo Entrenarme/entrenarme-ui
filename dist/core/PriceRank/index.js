@@ -18,6 +18,8 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _rcSlider = require('rc-slider');
 
+var _rcSlider2 = _interopRequireDefault(_rcSlider);
+
 var _times = require('lodash/times');
 
 var _times2 = _interopRequireDefault(_times);
@@ -32,6 +34,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -40,7 +44,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var ExtendedRange = (0, _styledComponents2.default)(_rcSlider.Range)(_templateObject, _colors2.default.secondary.default, _colors2.default.gray.dark);
+var ExtendedRange = function ExtendedRange(Comp) {
+  return (0, _styledComponents2.default)(Comp)(_templateObject, _colors2.default.secondary.default, _colors2.default.gray.dark);
+};
 
 var PriceRank = function (_React$Component) {
   _inherits(PriceRank, _React$Component);
@@ -85,13 +91,36 @@ var PriceRank = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var priceRank = this.props.priceRank;
+      var _props = this.props,
+          priceRank = _props.priceRank,
+          slider = _props.slider,
+          min = _props.min,
+          max = _props.max,
+          defaultValue = _props.defaultValue,
+          step = _props.step,
+          markTooltip = _props.markTooltip;
 
+      if (slider) {
+        var _ref2;
 
-      return React.createElement(ExtendedRange, {
+        var _Comp = ExtendedRange(_rcSlider2.default);
+        return React.createElement(_Comp, {
+          min: min,
+          max: max,
+          step: step,
+          defaultValue: defaultValue,
+          onChange: function onChange(rank) {
+            return _this2.handleChange(rank);
+          },
+          marks: (_ref2 = {}, _defineProperty(_ref2, min, '' + min + markTooltip), _defineProperty(_ref2, max, '' + max + markTooltip), _ref2)
+        });
+      }
+
+      var Comp = ExtendedRange(_rcSlider.Range);
+      return React.createElement(Comp, {
         defaultValue: priceRank,
-        min: 0,
-        max: 3,
+        min: min,
+        max: max,
         onChange: function onChange(rank) {
           return _this2.handleChange(rank);
         },
@@ -105,7 +134,12 @@ var PriceRank = function (_React$Component) {
 
 PriceRank.defaultProps = {
   currency: '€',
-  priceRank: [0, 3]
+  priceRank: [0, 3],
+  slider: false,
+  min: 0,
+  max: 3,
+  defaultValue: 0,
+  step: 1,
+  markTooltip: ''
 };
-
 exports.default = PriceRank;
