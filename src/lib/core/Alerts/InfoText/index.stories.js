@@ -7,7 +7,7 @@ import {
   faAlarmClock,
   faAmbulance,
   faAddressBook,
-} from '@fortawesome/free-solid-svg-icons';
+} from '@fortawesome/pro-light-svg-icons';
 
 import InfoText from './index';
 

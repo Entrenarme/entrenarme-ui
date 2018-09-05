@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/pro-light-svg-icons';
 
 import { regularFont } from '../../../helpers/fonts';
 import colors from '../../../helpers/colors';

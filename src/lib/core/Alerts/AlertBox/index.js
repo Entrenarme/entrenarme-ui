@@ -47,6 +47,11 @@ const MainContainer = styled.div`
   }
 `;
 
+const MainIconContainer = styled.div`
+  align-self: ${props =>
+    props.options.type !== 'error' ? 'self-start' : null};
+`;
+
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
@@ -143,7 +148,9 @@ const AlertBox = ({
 }: Props) => {
   return (
     <MainContainer options={{ type, button, alignment }} {...rest}>
-      <IconContainer options={{ type, alignment }}>{icon}</IconContainer>
+      <MainIconContainer options={{ type }}>
+        <IconContainer options={{ type, alignment }}>{icon}</IconContainer>
+      </MainIconContainer>
       <BodyContainer options={{ type }}>
         <H4 textAlign={alignment === 'vertical' ? 'center' : 'left'}>
           {title}
