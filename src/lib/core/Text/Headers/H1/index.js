@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import * as fonts from '../../../../helpers/fonts';
 import colors from '../../../../helpers/colors';
+import { getFontWeight } from '../utils';
 
 const normalDesktop = 2;
 
@@ -39,7 +40,7 @@ const StyledH1 = styled.h1`
   text-transform: uppercase;
   font-size: ${props =>
     `${textSizeTransform(props.options.size, 'desktop')}rem`};
-  font-weight: 700;
+  font-weight: ${props => getFontWeight(props)};
   font-family: ${fonts.mainFont};
   text-align: ${props => props.options.textAlign};
   color: ${props => colors[props.options.color].default};
@@ -91,10 +92,18 @@ type Props = {
   color?: color,
   size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
+  fontWeight: 'regular' | 'bold' | 'bolder' | 'boldest',
 };
 
-const H1 = ({ children, color, size, textAlign, ...rest }: Props) => (
-  <StyledH1 {...rest} options={{ color, size, textAlign }}>
+const H1 = ({
+  children,
+  color,
+  size,
+  textAlign,
+  fontWeight,
+  ...rest
+}: Props) => (
+  <StyledH1 {...rest} options={{ color, size, textAlign, fontWeight }}>
     {children}
   </StyledH1>
 );
@@ -103,6 +112,7 @@ H1.defaultProps = {
   color: 'primary',
   size: 'medium',
   textAlign: 'left',
+  fontWeight: 'boldest',
 };
 
 export default H1;

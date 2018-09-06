@@ -1,11 +1,26 @@
 // @flow
 import * as React from 'react';
-import MDialog from '@material-ui/core/Dialog';
+import MDialog from 'material-ui/Dialog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   MuiThemeProvider,
+//   createMuiTheme,
+// } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
+
+// const theme = createMuiTheme();
+
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'dialog-eui',
+// });
+// const jss = create(jssPreset());
 
 const setDialogSize = type => {
   switch (type) {
@@ -153,6 +168,8 @@ class Dialog extends React.Component<Props, State> {
     } = this.props;
 
     return (
+      // <JssProvider jss={jss} generateClassName={generateClassName}>
+      //   <MuiThemeProvider theme={theme}>
       <ExtendedDialog
         open={open}
         onClose={() => onClose()}
@@ -177,6 +194,8 @@ class Dialog extends React.Component<Props, State> {
           ) : null}
         </MiddleContainer>
       </ExtendedDialog>
+      //   </MuiThemeProvider>
+      // </JssProvider>
     );
   }
 }

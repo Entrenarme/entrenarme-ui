@@ -52,8 +52,8 @@ storiesOf('ShowCard', module)
     </ShowCard>
   ));
 
-/* 
-  
+/*
+
   prototipo::
 
   - props:
@@ -79,5 +79,5 @@ storiesOf('ShowCard', module)
       </P>
     </ShowCard.Container>
   </ShowCard>
-  
+
   */

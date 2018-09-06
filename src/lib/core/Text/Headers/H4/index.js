@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import * as fonts from '../../../../helpers/fonts';
 import colors from '../../../../helpers/colors';
+import { getFontWeight } from '../utils';
 
 const normalDesktop = 1.25;
 
@@ -40,7 +41,7 @@ const StyledH4 = styled.h4`
   text-transform: uppercase;
   font-size: ${props =>
     `${textSizeTransform(props.options.size, 'desktop')}rem`};
-  font-weight: 400;
+  font-weight: ${props => getFontWeight(props)};
   font-family: ${fonts.mainFont};
   text-align: ${props => props.options.textAlign};
   color: ${props => colors[props.options.color].default};
@@ -109,10 +110,22 @@ type Props = {
   size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
   nomargin: boolean,
+  fontWeight: 'regular' | 'bold' | 'bolder' | 'boldest',
 };
 
-const H4 = ({ children, color, size, textAlign, nomargin, ...rest }: Props) => (
-  <StyledH4 {...rest} options={{ color, size, textAlign, nomargin }}>
+const H4 = ({
+  children,
+  color,
+  size,
+  textAlign,
+  nomargin,
+  fontWeight,
+  ...rest
+}: Props) => (
+  <StyledH4
+    {...rest}
+    options={{ color, size, textAlign, nomargin, fontWeight }}
+  >
     {children}
   </StyledH4>
 );
@@ -122,6 +135,7 @@ H4.defaultProps = {
   size: 'medium',
   textAlign: 'left',
   nomargin: false,
+  fontWeight: 'regular',
 };
 
 export default H4;

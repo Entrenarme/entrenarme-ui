@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from 'material-ui/Progress';
 import JssProvider from 'react-jss/lib/JssProvider';
-import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  createMuiTheme,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+// import { create } from 'jss';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   createMuiTheme,
+//   MuiThemeProvider,
+// } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 import { textToRender, getButtonFontSize } from './utils';
@@ -16,17 +16,17 @@ import { SButton, Icon } from './styles';
 
 import Responsive from '../../helpers/Responsive';
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'button-eui',
+// });
+// const jss = create(jssPreset());
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: colors.primary.default },
-    secondary: { main: colors.secondary.default },
-  },
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: { main: colors.primary.default },
+//     secondary: { main: colors.secondary.default },
+//   },
+// });
 
 type Props = {
   /** This is what is gonig to be rendered inside the button */
@@ -73,59 +73,53 @@ const Button = ({
   fullWidth,
   ...rest
 }: Props) => (
-  <JssProvider jss={jss} generateClassName={generateClassName}>
-    <MuiThemeProvider theme={theme}>
-      <Responsive>
-        {({ device }) => (
-          <SButton
-            options={{
-              type,
-              state,
-              colorVariant,
-              disabled,
-              size,
-              device,
-              active,
-              fullWidth,
+  // <JssProvider jss={jss} generateClassName={generateClassName}>
+  //   <MuiThemeProvider theme={theme}>
+  <Responsive>
+    {({ device }) => (
+      <SButton
+        options={{
+          type,
+          state,
+          colorVariant,
+          disabled,
+          size,
+          device,
+          active,
+          fullWidth,
+        }}
+        disabled={
+          state === 'loading' ||
+          state === 'error' ||
+          state === 'success' ||
+          disabled
+        }
+        {...rest}
+      >
+        {icon ? <Icon options={{ size, device }}>{icon}</Icon> : null}{' '}
+        {state === 'loading' ? (
+          <CircularProgress
+            style={{
+              height: getButtonFontSize(size, device),
+              width: getButtonFontSize(size, device),
+              marginRight: '10px',
+              color:
+                type === 'add'
+                  ? colors.secondary.loading
+                  : type === 'outline'
+                    ? colors[colorVariant].default
+                    : colors.gray.loading,
             }}
-            disabled={
-              state === 'loading' ||
-              state === 'error' ||
-              state === 'success' ||
-              disabled
-            }
-            {...rest}
-          >
-            {icon ? <Icon options={{ size, device }}>{icon}</Icon> : null}{' '}
-            {state === 'loading' ? (
-              <CircularProgress
-                style={{
-                  height: getButtonFontSize(size, device),
-                  width: getButtonFontSize(size, device),
-                  marginRight: '10px',
-                  color:
-                    type === 'add'
-                      ? colors.secondary.loading
-                      : type === 'outline'
-                        ? colors[colorVariant].default
-                        : colors.gray.loading,
-                }}
-              />
-            ) : null}{' '}
-            <span>
-              {textToRender(
-                state,
-                children,
-                loadingText,
-                errorText,
-                successText,
-              )}
-            </span>
-          </SButton>
-        )}
-      </Responsive>
-    </MuiThemeProvider>
-  </JssProvider>
+          />
+        ) : null}{' '}
+        <span>
+          {textToRender(state, children, loadingText, errorText, successText)}
+        </span>
+      </SButton>
+    )}
+  </Responsive>
+  //   </MuiThemeProvider>
+  // </JssProvider>
 );
 
 Button.defaultProps = {

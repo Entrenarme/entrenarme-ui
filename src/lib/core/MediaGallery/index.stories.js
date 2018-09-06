@@ -145,6 +145,7 @@ storiesOf('MediaGallery', module)
             imageWidth="300px"
             imageHeight="260px"
             onMediaClick={actions.onMediaClick}
+            imageClassName="list__list-item--photo"
           />
           <MediaGallery.RightArrow />
           <MediaGallery.LeftArrow />

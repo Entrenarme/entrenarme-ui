@@ -1,6 +1,14 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   createMuiTheme,
+//   MuiThemeProvider,
+// } from '@material-ui/core/styles';
 
 import Select from '../../core/Select';
 
@@ -9,6 +17,12 @@ type ContainerProps = {
     column: boolean,
   },
 };
+
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'switch-eui',
+// });
+// const jss = create(jssPreset());
+// const theme = createMuiTheme();
 
 const Container = styled.div`
   display: flex;
@@ -27,9 +41,13 @@ type Props = {
 };
 
 const Switch = ({ children, column, ...rest }: Props) => (
+  // <JssProvider jss={jss} generateClassName={generateClassName}>
+  //   <MuiThemeProvider theme={theme}>
   <Container options={{ column }}>
     <Select {...rest}>{children}</Select>
   </Container>
+  //   </MuiThemeProvider>
+  // </JssProvider>
 );
 
 Switch.defaultProps = {

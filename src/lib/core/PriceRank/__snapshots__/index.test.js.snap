@@ -2,7 +2,7 @@
 
 exports[`renders price rank 1`] = `
 <div
-  class="rc-slider rc-slider-with-marks sc-bdVaJa dvPGHo"
+  class="rc-slider rc-slider-with-marks sc-bdVaJa kNQGev"
 >
   <div
     class="rc-slider-rail"
@@ -84,7 +84,7 @@ exports[`renders price rank 1`] = `
 
 exports[`renders price rank 2`] = `
 <div
-  class="rc-slider rc-slider-with-marks sc-bdVaJa dvPGHo"
+  class="rc-slider rc-slider-with-marks sc-bwzfXH cHFvPT"
 >
   <div
     class="rc-slider-rail"

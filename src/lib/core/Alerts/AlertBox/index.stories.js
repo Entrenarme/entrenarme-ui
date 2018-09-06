@@ -83,6 +83,19 @@ storiesOf('Alerts/Alert box', module).add(
 );
 
 storiesOf('Alerts/Alert box', module).add(
+  'error',
+  withInfo('error')(() => (
+    <AlertBox
+      icon={<FontAwesomeIcon icon={faAddressBook} />}
+      title={title}
+      text={content}
+      type="error"
+      alignment="vertical"
+    />
+  )),
+);
+
+storiesOf('Alerts/Alert box', module).add(
   'with button',
   withInfo('with button')(() => (
     <AlertBox

@@ -3,15 +3,21 @@ import * as React from 'react';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   MuiThemeProvider,
+//   createMuiTheme,
+// } from '@material-ui/core/styles';
 
 import Button from '../Button/index';
 import colors from '../../helpers/colors';
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'togglebuttons-eui',
+// });
+// const jss = create(jssPreset());
+// const theme = createMuiTheme();
 
 const MainContainer = styled.div`
   width: 100%;
@@ -71,19 +77,21 @@ const ToggleButton = ({
   rightOnclick,
   ...rest
 }: Props) => (
-  <JssProvider jss={jss} generateClassName={generateClassName}>
-    <MainContainer {...rest}>
-      <LeftButtonContainer>
-        <LeftButton icon={leftIcon} onClick={leftOnclick}>
-          {leftText}
-        </LeftButton>
-        <SeparationBar />
-      </LeftButtonContainer>
-      <RightButton icon={rightIcon} onClick={rightOnclick}>
-        {rightText}
-      </RightButton>
-    </MainContainer>
-  </JssProvider>
+  // <JssProvider jss={jss} generateClassName={generateClassName}>
+  //   <MuiThemeProvider theme={theme}>
+  <MainContainer {...rest}>
+    <LeftButtonContainer>
+      <LeftButton icon={leftIcon} onClick={leftOnclick}>
+        {leftText}
+      </LeftButton>
+      <SeparationBar />
+    </LeftButtonContainer>
+    <RightButton icon={rightIcon} onClick={rightOnclick}>
+      {rightText}
+    </RightButton>
+  </MainContainer>
+  //   </MuiThemeProvider>
+  // </JssProvider>
 );
 
 export default ToggleButton;

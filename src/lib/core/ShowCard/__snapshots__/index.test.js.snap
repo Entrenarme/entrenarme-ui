@@ -2,11 +2,11 @@
 
 exports[`renders "Heading" with no props 1`] = `
 <div
-  class="MuiPaper-root-61 MuiPaper-elevation1-64 MuiExpansionPanel-root-58 sc-bwzfXH loEQcT"
+  class="MuiPaper-root-61 MuiPaper-elevation1-64 MuiExpansionPanel-root-58 sc-bwzfXH cDakWW"
 >
   <div
     tabindex="0"
-    class="MuiButtonBase-root-94 MuiExpansionPanelSummary-root-88 sc-htpNat iUdPZr"
+    class="MuiButtonBase-root-94 MuiExpansionPanelSummary-root-88 sc-htpNat wlNFj"
     role="button"
     aria-expanded="false"
   >
@@ -62,7 +62,7 @@ exports[`renders "Heading" with no props 1`] = `
           class="MuiExpansionPanelDetails-root-114 sc-bxivhb Ukcuw"
         >
           <div
-            class="sc-ifAKCX eSrJSp"
+            class="sc-ifAKCX cFlEyZ"
           >
             Heading
           </div>
@@ -75,11 +75,11 @@ exports[`renders "Heading" with no props 1`] = `
 
 exports[`renders "Heading" with title 1`] = `
 <div
-  class="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1 sc-bwzfXH loEQcT"
+  class="MuiPaper-root-4 MuiPaper-elevation1-7 MuiExpansionPanel-root-1 sc-bwzfXH cDakWW"
 >
   <div
     tabindex="0"
-    class="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31 sc-htpNat iUdPZr"
+    class="MuiButtonBase-root-37 MuiExpansionPanelSummary-root-31 sc-htpNat wlNFj"
     role="button"
     aria-expanded="false"
   >
@@ -137,7 +137,7 @@ exports[`renders "Heading" with title 1`] = `
           class="MuiExpansionPanelDetails-root-57 sc-bxivhb Ukcuw"
         >
           <div
-            class="sc-ifAKCX eSrJSp"
+            class="sc-ifAKCX cFlEyZ"
           >
             Heading
           </div>

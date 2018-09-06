@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import * as fonts from '../../../../helpers/fonts';
 import colors from '../../../../helpers/colors';
+import { getFontWeight } from '../utils';
 
 const normalDesktop = 1;
 
@@ -39,7 +40,7 @@ const StyledH5 = styled.h5`
   text-transform: uppercase;
   font-size: ${props =>
     `${textSizeTransform(props.options.size, 'desktop')}rem`};
-  font-weight: 400;
+  font-weight: ${props => getFontWeight(props)};
   font-family: ${fonts.mainFont};
   text-align: ${props => props.options.textAlign};
   color: ${props => colors[props.options.color].default};
@@ -91,10 +92,18 @@ type Props = {
   color?: color,
   size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
+  fontWeight: 'regular' | 'bold' | 'boldest',
 };
 
-const H5 = ({ children, color, size, textAlign, ...rest }: Props) => (
-  <StyledH5 {...rest} options={{ color, size, textAlign }}>
+const H5 = ({
+  children,
+  color,
+  size,
+  textAlign,
+  fontWeight,
+  ...rest
+}: Props) => (
+  <StyledH5 {...rest} options={{ color, size, textAlign, fontWeight }}>
     {children}
   </StyledH5>
 );
@@ -103,6 +112,7 @@ H5.defaultProps = {
   color: 'primary',
   size: 'medium',
   textAlign: 'left',
+  fontWeight: 'regular',
 };
 
 export default H5;

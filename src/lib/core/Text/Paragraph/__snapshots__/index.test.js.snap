@@ -26,7 +26,7 @@ exports[`renders "Paragraph" with no props 1`] = `
 
 exports[`renders "Paragraph" with small size 1`] = `
 <p
-  class="sc-bdVaJa hVKlO"
+  class="sc-bdVaJa iGIDuO"
 >
   Paragraph
 </p>

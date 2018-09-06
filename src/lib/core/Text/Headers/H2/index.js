@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import * as fonts from '../../../../helpers/fonts';
 import colors from '../../../../helpers/colors';
 import { textSizeTransform, marginBottomSize } from '../../utils';
+import { getFontWeight } from '../utils';
 
 import Responsive from '../../../../helpers/Responsive';
 
@@ -28,7 +29,7 @@ const StyledH2 = styled.h2`
       props.options.device,
       modifiers,
     )}rem`};
-  font-weight: 600;
+  font-weight: ${props => getFontWeight(props)};
   font-family: ${fonts.mainFont};
   text-align: ${props => props.options.textAlign};
   color: ${props => colors[props.options.color].default};
@@ -48,12 +49,23 @@ type Props = {
   color?: color,
   size?: 'small' | 'medium' | 'large',
   textAlign?: 'left' | 'center' | 'right',
+  fontWeight: 'regular' | 'bold' | 'bolder' | 'boldest',
 };
 
-const H2 = ({ children, color, size, textAlign, ...rest }: Props) => (
+const H2 = ({
+  children,
+  color,
+  size,
+  textAlign,
+  fontWeight,
+  ...rest
+}: Props) => (
   <Responsive>
     {({ device }) => (
-      <StyledH2 {...rest} options={{ color, size, textAlign, device }}>
+      <StyledH2
+        {...rest}
+        options={{ color, size, textAlign, fontWeight, device }}
+      >
         {children}
       </StyledH2>
     )}
@@ -64,6 +76,7 @@ H2.defaultProps = {
   color: 'primary',
   size: 'medium',
   textAlign: 'left',
+  fontWeight: 'bolder',
 };
 
 export default H2;

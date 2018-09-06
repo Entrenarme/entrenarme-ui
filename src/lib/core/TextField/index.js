@@ -1,17 +1,18 @@
 // @flow
 import * as React from 'react';
-import MTextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import {
-  createMuiTheme,
-  MuiThemeProvider,
-  createGenerateClassName,
-  jssPreset,
-} from '@material-ui/core/styles';
+import MTextField from 'material-ui/TextField';
+import InputAdornment from 'material-ui/Input/InputAdornment';
+// import {
+//   createMuiTheme,
+//   MuiThemeProvider,
+//   createGenerateClassName,
+//   jssPreset,
+// } from '@material-ui/core/styles';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { SheetsRegistry } from 'react-jss/lib/jss';
+import { create } from 'jss';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
-import JssProvider from 'react-jss/lib/JssProvider';
-import { create } from 'jss';
 
 import colors from '../../helpers/colors';
 import { regularFont } from '../../helpers/fonts';
@@ -25,16 +26,18 @@ type Props = {
   debounceMs?: number,
 };
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: colors.secondary.default, dark: colors.secondary.default },
-    error: { main: colors.error.default, dark: colors.error.default },
-    text: { primary: colors.gray.placeholder },
-  },
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: { main: colors.secondary.default, dark: colors.secondary.default },
+//     error: { main: colors.error.default, dark: colors.error.default },
+//     text: { primary: colors.gray.placeholder },
+//   },
+// });
 
-const generateClassName = createGenerateClassName({ productionPrefix: 'eui' });
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'textfield-eui',
+// });
+// const jss = create(jssPreset());
 
 const STextField = styled(MTextField)`
   > div:before {
@@ -69,19 +72,19 @@ class TextField extends React.Component<Props> {
   render() {
     const { adornment, onChange, debounceMs, ...rest } = this.props;
     return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
-          <STextField
-            onChange={this.onChange}
-            {...rest}
-            InputProps={{
-              startAdornment: adornment ? (
-                <InputAdornment position="start">{adornment}</InputAdornment>
-              ) : null,
-            }}
-          />
-        </MuiThemeProvider>
-      </JssProvider>
+      // <JssProvider jss={jss} generateClassName={generateClassName}>
+      //   <MuiThemeProvider theme={theme}>
+      <STextField
+        onChange={this.onChange}
+        {...rest}
+        InputProps={{
+          startAdornment: adornment ? (
+            <InputAdornment position="start">{adornment}</InputAdornment>
+          ) : null,
+        }}
+      />
+      //   </MuiThemeProvider>
+      // </JssProvider>
     );
   }
 }
