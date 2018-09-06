@@ -1,28 +1,28 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanel from 'material-ui/ExpansionPanel';
+import ExpansionPanelDetails from 'material-ui/ExpansionPanel/ExpansionPanelDetails';
+import ExpansionPanelSummary from 'material-ui/ExpansionPanel/ExpansionPanelSummary';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown } from '@fortawesome/pro-light-svg-icons';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  createMuiTheme,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   createMuiTheme,
+//   MuiThemeProvider,
+// } from '@material-ui/core/styles';
 
-import H4 from '../Text/Headers/H4/index';
+import H4 from '../Text/Headers/H4';
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'showcard-eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'showcard-eui',
+// });
+// const jss = create(jssPreset());
 
-const theme = createMuiTheme();
+// const theme = createMuiTheme();
 
 const ExtendedGlobalContainer = styled(ExpansionPanel)`
   > div {
@@ -56,7 +56,6 @@ const BodyContainer = styled.div``;
 
 type Props = {
   children: React.Node,
-  title: string,
 };
 
 type State = {
@@ -68,39 +67,38 @@ class ShowCard extends React.Component<Props, State> {
     expanded: null,
   };
 
-  handleChange = (panel: string) => (event: Object, expanded: boolean) => {
+  handleChange = panel => (event, expanded) => {
     this.setState({
       expanded: expanded ? panel : false,
     });
   };
 
   render() {
-    const { children, title, ...rest } = this.props;
+    const { children, panel, ...rest } = this.props;
     const { expanded } = this.state;
 
-    return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
-          <ExtendedGlobalContainer
-            {...rest}
-            expanded={expanded === 'panel1'}
-            onChange={this.handleChange('panel1')}
-          >
-            <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
-              <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
-                {title}
-              </H4>
-            </ExtendedTitle>
-            <ExtendedBody>
-              <BodyContainer>{children}</BodyContainer>
-            </ExtendedBody>
-          </ExtendedGlobalContainer>
-        </MuiThemeProvider>
-      </JssProvider>
+    return React.Children.map(children, (child, index) =>
+      React.cloneElement(
+        // <JssProvider jss={jss} generateClassName={generateClassName}>
+        <ExtendedGlobalContainer
+          style={{ marginTop: 2, marginBottom: 2 }}
+          expanded={expanded === children[index].props.panel}
+          onChange={this.handleChange(children[index].props.panel)}
+          {...rest}
+        >
+          <ExtendedTitle expandIcon={<FontAwesomeIcon icon={faAngleDown} />}>
+            <H4 size="small" style={{ fontWeight: 600, margin: '0px' }}>
+              {child.props.children[0]}
+            </H4>
+          </ExtendedTitle>
+          <ExtendedBody>
+            <BodyContainer>{child.props.children[1]}</BodyContainer>
+          </ExtendedBody>
+        </ExtendedGlobalContainer>,
+        // </JssProvider>,
+      ),
     );
   }
 }
-
-ShowCard.defaultProps = {};
 
 export default ShowCard;

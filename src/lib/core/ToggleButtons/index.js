@@ -3,15 +3,21 @@ import * as React from 'react';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   MuiThemeProvider,
+//   createMuiTheme,
+// } from '@material-ui/core/styles';
 
 import Button from '../Button/index';
 import colors from '../../helpers/colors';
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'togglebuttons-eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'togglebuttons-eui',
+// });
+// const jss = create(jssPreset());
+// const theme = createMuiTheme();
 
 const MainContainer = styled.div`
   width: 100%;
@@ -71,6 +77,8 @@ const ToggleButton = ({
   rightOnclick,
   ...rest
 }: Props) => (
+  // <JssProvider jss={jss} generateClassName={generateClassName}>
+  //   <MuiThemeProvider theme={theme}>
   <MainContainer {...rest}>
     <LeftButtonContainer>
       <LeftButton icon={leftIcon} onClick={leftOnclick}>
@@ -82,6 +90,8 @@ const ToggleButton = ({
       {rightText}
     </RightButton>
   </MainContainer>
+  //   </MuiThemeProvider>
+  // </JssProvider>
 );
 
 export default ToggleButton;

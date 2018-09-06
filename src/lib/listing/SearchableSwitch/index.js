@@ -5,7 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   createMuiTheme,
+//   MuiThemeProvider,
+// } from '@material-ui/core/styles';
 
 import TextField from '../../core/TextField';
 import Switch from '../Switch';
@@ -26,10 +31,11 @@ type State = {
   filterValue: string,
 };
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'searchswitch-eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'searchswitch-eui',
+// });
+// const jss = create(jssPreset());
+// const theme = createMuiTheme();
 
 const Container = styled.div`
   display: flex;
@@ -63,6 +69,8 @@ class SearchableSwitch extends React.Component<Props, State> {
     const { filterValue } = this.state;
     const { children, column, multiple, onChange, placeholder } = this.props;
     return (
+      // <JssProvider jss={jss} generateClassName={generateClassName}>
+      //   <MuiThemeProvider theme={theme}>
       <Container>
         <TextField
           fullWidth
@@ -80,6 +88,8 @@ class SearchableSwitch extends React.Component<Props, State> {
           )}
         </Switch>
       </Container>
+      //   </MuiThemeProvider>
+      // </JssProvider>
     );
   }
 }

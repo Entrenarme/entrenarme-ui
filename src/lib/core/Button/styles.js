@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components';
-import MButton from '@material-ui/core/Button';
+import MButton from 'material-ui/Button';
 
 import * as fonts from '../../helpers/fonts';
 import colors from '../../helpers/colors';
