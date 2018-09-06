@@ -3,7 +3,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   createMuiTheme,
+//   MuiThemeProvider,
+// } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 import P from '../../core/Text/Paragraph';
@@ -17,10 +22,11 @@ type WrapperProps = {
   },
 };
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'rates-eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'rates-eui',
+// });
+// const jss = create(jssPreset());
+// const theme = createMuiTheme();
 
 const Wrapper = styled.div`
   width: ${(props: WrapperProps) =>
@@ -97,6 +103,8 @@ const RatesAdv = ({
   appendButtonText,
   mobile,
 }: Props) => (
+  // <JssProvider jss={jss} generateClassName={generateClassName}>
+  //   <MuiThemeProvider theme={theme}>
   <Responsive>
     {({ device }) => (
       <Wrapper options={{ device }}>
@@ -151,6 +159,8 @@ const RatesAdv = ({
       </Wrapper>
     )}
   </Responsive>
+  //   </MuiThemeProvider>
+  // </JssProvider>
 );
 
 RatesAdv.defaultProps = {

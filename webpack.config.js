@@ -1,6 +1,7 @@
 const path = require('path');
 const glob = require('glob');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const mode = process.env.NODE_ENV;
 
 const files = glob.sync('./src/lib/**/index.js');
@@ -52,5 +53,8 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CopyWebpackPlugin([{ from: './package.json' }])],
+  plugins: [
+    new CopyWebpackPlugin([{ from: './package.json' }]),
+    new CleanWebpackPlugin('dist'),
+  ],
 };

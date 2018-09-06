@@ -1,18 +1,18 @@
 // @flow
 import * as React from 'react';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
+import InputLabel from 'material-ui/Input/InputLabel';
+import MenuItem from 'material-ui/Menu/MenuItem';
+import FormControl from 'material-ui/Form/FormControl';
+import ListItemText from 'material-ui/List/ListItemText';
+import Select from 'material-ui/Select';
 import Checkbox from '../Checkbox';
-import Input from '@material-ui/core/Input';
-import {
-  createMuiTheme,
-  MuiThemeProvider,
-  createGenerateClassName,
-  jssPreset,
-} from '@material-ui/core/styles';
+import Input from 'material-ui/Input';
+// import {
+//   createMuiTheme,
+//   MuiThemeProvider,
+//   createGenerateClassName,
+//   jssPreset,
+// } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
 
@@ -29,18 +29,18 @@ type State = {
   openSelect: boolean,
 };
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: colors.secondary.default, dark: colors.secondary.default },
-    error: { main: colors.error.default, dark: colors.error.default },
-    text: { primary: colors.gray.placeholder },
-  },
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: { main: colors.secondary.default, dark: colors.secondary.default },
+//     error: { main: colors.error.default, dark: colors.error.default },
+//     text: { primary: colors.gray.placeholder },
+//   },
+// });
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'ddselect-eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'ddselect-eui',
+// });
+// const jss = create(jssPreset());
 
 class DropdownSelect extends React.Component<Props, State> {
   state = {
@@ -65,32 +65,30 @@ class DropdownSelect extends React.Component<Props, State> {
     const { currentName, openSelect } = this.state;
     const { items, inputTitle } = this.props;
     return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
-          <FormControl style={{ width: '100%' }}>
-            <InputLabel htmlFor="select-multiple-checkbox">
-              {inputTitle}
-            </InputLabel>
-            <Select
-              multiple
-              open={openSelect}
-              value={currentName}
-              onOpen={this.handleOpen}
-              onChange={this.handleChange}
-              onClose={this.handleClose}
-              input={<Input id="select-multiple-checkbox" />}
-              renderValue={selected => selected.join(', ')}
-            >
-              {items.map(item => (
-                <MenuItem key={item.value} value={item.name}>
-                  <Checkbox checked={currentName.indexOf(item.name) > -1} />
-                  <ListItemText primary={item.name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </MuiThemeProvider>
-      </JssProvider>
+      // <JssProvider jss={jss} generateClassName={generateClassName}>
+      //   <MuiThemeProvider theme={theme}>
+      <FormControl style={{ width: '100%' }}>
+        <InputLabel htmlFor="select-multiple-checkbox">{inputTitle}</InputLabel>
+        <Select
+          multiple
+          open={openSelect}
+          value={currentName}
+          onOpen={this.handleOpen}
+          onChange={this.handleChange}
+          onClose={this.handleClose}
+          input={<Input id="select-multiple-checkbox" />}
+          renderValue={selected => selected.join(', ')}
+        >
+          {items.map(item => (
+            <MenuItem key={item.value} value={item.name}>
+              <Checkbox checked={currentName.indexOf(item.name) > -1} />
+              <ListItemText primary={item.name} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      //   </MuiThemeProvider>
+      // </JssProvider>
     );
   }
 }

@@ -1,26 +1,26 @@
 // @flow
 import * as React from 'react';
-import MDialog from '@material-ui/core/Dialog';
+import MDialog from 'material-ui/Dialog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/pro-light-svg-icons';
 import styled from 'styled-components';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
-import {
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-  createMuiTheme,
-} from '@material-ui/core/styles';
+// import {
+//   createGenerateClassName,
+//   jssPreset,
+//   MuiThemeProvider,
+//   createMuiTheme,
+// } from '@material-ui/core/styles';
 
 import colors from '../../helpers/colors';
 
-const theme = createMuiTheme();
+// const theme = createMuiTheme();
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'dialog-eui',
-});
-const jss = create(jssPreset());
+// const generateClassName = createGenerateClassName({
+//   productionPrefix: 'dialog-eui',
+// });
+// const jss = create(jssPreset());
 
 const setDialogSize = type => {
   switch (type) {
@@ -168,34 +168,34 @@ class Dialog extends React.Component<Props, State> {
     } = this.props;
 
     return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
-          <ExtendedDialog
-            open={open}
-            onClose={() => onClose()}
-            options={{ type }}
-            {...rest}
-          >
-            <HeaderContainer>
-              {header ? header : <div />}
-              <FontAwesomeIcon icon={faTimes} onClick={() => onClose()} />
-            </HeaderContainer>
-            <MiddleContainer options={{ align }}>
-              <BodyContainer>{body}</BodyContainer>
-              {footer ? (
-                <FooterContainer
-                  options={{
-                    type,
-                    smallModalButtons: Array.isArray(footer.props.children),
-                  }}
-                >
-                  {footer}
-                </FooterContainer>
-              ) : null}
-            </MiddleContainer>
-          </ExtendedDialog>
-        </MuiThemeProvider>
-      </JssProvider>
+      // <JssProvider jss={jss} generateClassName={generateClassName}>
+      //   <MuiThemeProvider theme={theme}>
+      <ExtendedDialog
+        open={open}
+        onClose={() => onClose()}
+        options={{ type }}
+        {...rest}
+      >
+        <HeaderContainer>
+          {header ? header : <div />}
+          <FontAwesomeIcon icon={faTimes} onClick={() => onClose()} />
+        </HeaderContainer>
+        <MiddleContainer options={{ align }}>
+          <BodyContainer>{body}</BodyContainer>
+          {footer ? (
+            <FooterContainer
+              options={{
+                type,
+                smallModalButtons: Array.isArray(footer.props.children),
+              }}
+            >
+              {footer}
+            </FooterContainer>
+          ) : null}
+        </MiddleContainer>
+      </ExtendedDialog>
+      //   </MuiThemeProvider>
+      // </JssProvider>
     );
   }
 }
