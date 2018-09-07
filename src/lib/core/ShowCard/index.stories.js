@@ -173,7 +173,9 @@ storiesOf('ExpandCard', module)
           </P>
         </ExpandCard.Content>
       </ExpandCard.Element>
-      <ExpandCard.Element style={{ borderRadius: 0, backgroundColor: 'khaki' }}>
+      <ExpandCard.Element
+        style={{ borderRadius: 0, backgroundColor: 'khaki', marginTop: 0 }}
+      >
         <ExpandCard.Title>
           <P>Hola</P>
         </ExpandCard.Title>
