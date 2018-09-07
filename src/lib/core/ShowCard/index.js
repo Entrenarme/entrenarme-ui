@@ -56,6 +56,7 @@ const ExtendedIcon = styled(FontAwesomeIcon)`
 type Props = {
   children: React.Node,
   singleShow?: boolean,
+  openAction?: boolean,
   closeAction?: boolean,
 };
 
@@ -64,29 +65,33 @@ type State = {
   activeElements: Array<number>,
 };
 
-const SwitchTabs = React.createContext();
+const SwitchCards = React.createContext();
 
 class ExpandCard extends React.Component<Props, State> {
   state = {
     open: false,
+    totalElements: [],
     activeElements: [],
   };
 
   static defaultProps = {
     singleShow: false,
+    openAction: false,
     closeAction: false,
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.closeAction !== this.props.closeAction) {
-      console.log('toggle__ ', this.props.closeAction);
+    if (prevProps.openAction !== this.props.openAction) {
+      this.setState({ activeElements: [...this.state.totalElements] });
+    }
 
+    if (prevProps.closeAction !== this.props.closeAction) {
       this.setState({ activeElements: [] });
     }
   }
 
-  static Element = ({ children, index }: Props) => (
-    <MainContainer>
+  static Element = ({ children, index, style }: Props) => (
+    <MainContainer style={style}>
       {React.Children.map(children, child =>
         React.cloneElement(child, { index }),
       )}
@@ -94,7 +99,7 @@ class ExpandCard extends React.Component<Props, State> {
   );
 
   static Title = ({ children, index }: Props) => (
-    <SwitchTabs.Consumer>
+    <SwitchCards.Consumer>
       {context => (
         <TitleContainer onClick={() => context.handleActiveCard(index)}>
           {children}
@@ -105,11 +110,11 @@ class ExpandCard extends React.Component<Props, State> {
           />
         </TitleContainer>
       )}
-    </SwitchTabs.Consumer>
+    </SwitchCards.Consumer>
   );
 
   static Content = ({ children, index }: Props) => (
-    <SwitchTabs.Consumer>
+    <SwitchCards.Consumer>
       {context => {
         if (context.state.activeElements.includes(index)) {
           return <ContentContainer>{children}</ContentContainer>;
@@ -117,7 +122,7 @@ class ExpandCard extends React.Component<Props, State> {
 
         return null;
       }}
-    </SwitchTabs.Consumer>
+    </SwitchCards.Consumer>
   );
 
   handleActiveCard = (index: number) => {
@@ -142,18 +147,22 @@ class ExpandCard extends React.Component<Props, State> {
     const { children, singleShow } = this.props;
 
     return (
-      <SwitchTabs.Provider
+      <SwitchCards.Provider
         value={{
           state: this.state,
           handleActiveCard: this.handleActiveCard,
         }}
       >
         <GroupContainer>
-          {React.Children.map(children, (child, index) =>
-            React.cloneElement(child, { index, singleShow }),
-          )}
+          {React.Children.map(children, (child, index) => {
+            if (!this.state.totalElements.includes(index)) {
+              this.state.totalElements.push(index);
+            }
+
+            return React.cloneElement(child, { index, singleShow });
+          })}
         </GroupContainer>
-      </SwitchTabs.Provider>
+      </SwitchCards.Provider>
     );
   }
 }
