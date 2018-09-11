@@ -30,6 +30,7 @@
     "flow-bin": "0.76.0",
     "glob": "7.1.2",
     "jest-styled-components": "5.0.1",
+    "material-ui": "1.0.0-beta.30",
     "prop-types": "15.6.2",
     "react": "16.4.1",
     "react-app-rewire-styled-components": "3.0.2",
@@ -37,6 +38,7 @@
     "react-dom": "16.4.1",
     "react-scripts": "1.1.4",
     "react-testing-library": "4.1.2",
+    "styled-components": "3.4.5",
     "style-loader": "0.22.1",
     "webpack": "4.16.5",
     "webpack-cli": "3.1.0"
@@ -58,7 +60,6 @@
     "invariant": "2.2.4",
     "jss": "9.8.7",
     "lodash": "4.17.10",
-    "material-ui": "1.0.0-beta.30",
     "rc-slider": "8.6.1",
     "react-event-listener": "^0.6.3",
     "react-jss": "8.6.1",
@@ -67,8 +68,11 @@
     "react-slick": "0.16",
     "react-spring": "5.4.0",
     "react-swipeable": "4.3.0",
-    "styled-components": "3.4.5",
     "typeface-montserrat": "0.0.54",
     "typeface-pt-sans": "0.0.54"
+  },
+  "peerDependencies": {
+    "material-ui": "1.0.0-beta.30",
+    "styled-components": "3.4.5"
   }
 }

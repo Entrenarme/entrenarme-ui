@@ -3,11 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import times from 'lodash/times';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/pro-light-svg-icons';
-import {
-  faStar as faFilledStar,
-  faStarHalfAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalfAlt } from '@fortawesome/pro-light-svg-icons';
 
 import colors from '../../helpers/colors';
 
@@ -37,7 +33,7 @@ const Rating = ({ rating, size }: Props) => {
           key={item}
           icon={
             Math.floor(rating / 2) > index
-              ? faFilledStar
+              ? faStar
               : Math.ceil(rating / 2) > index
                 ? faStarHalfAlt
                 : faStar
