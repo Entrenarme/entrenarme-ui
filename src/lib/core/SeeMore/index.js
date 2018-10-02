@@ -11,11 +11,12 @@ const MainContainer = styled.div`
 `;
 
 const SeeMoreForcedStyles = styled.div`
-  cursor: pointer;
-  color: ${colors.secondary.default};
+  cursor: pointer !important;
+  color: ${colors.secondary.default} !important;
 
   * {
-    display: inline;
+    display: inline !important;
+    color: ${colors.secondary.default} !important;
   }
 `;
 
@@ -41,11 +42,27 @@ class SeeMore extends React.Component<Props, State> {
     return (
       <MainContainer>
         {React.Children.map(children, (child, i) => {
-          return child.substring(0, seeMore ? children.length : maxChars);
-        })}{' '}
-        {actionText && !seeMore && children.length > maxChars ? (
+          if (typeof children === 'string') {
+            return child.substring(0, seeMore ? children.length : maxChars);
+          } else {
+            return React.cloneElement(children, {
+              children: child.props.children.substring(
+                0,
+                seeMore ? children.props.children.length : maxChars,
+              ),
+            });
+          }
+        })}
+
+        {actionText &&
+        !seeMore &&
+        (typeof children === 'string'
+          ? children.length
+          : children.props.children.length) > maxChars ? (
           <SeeMoreForcedStyles onClick={() => this.setState({ seeMore: true })}>
-            ...{actionText}
+            {' '}
+            ...
+            {actionText}
           </SeeMoreForcedStyles>
         ) : null}
       </MainContainer>

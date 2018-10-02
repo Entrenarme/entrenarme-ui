@@ -1,9 +1,15 @@
 // @flow
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
-import ShowCard from './index.js';
+import ExpandCard from './index.js';
 import P from '../Text/Paragraph/index';
+import Button from '../Button/index';
+
+const actions = {
+  onClick: action('onClick'),
+};
 
 const ElementDecoration = storyFn => (
   <div style={{ backgroundColor: '#F1F1F1', height: '100vh', padding: '20px' }}>
@@ -11,73 +17,175 @@ const ElementDecoration = storyFn => (
   </div>
 );
 
-storiesOf('ShowCard', module)
+class GlobalComponent extends React.Component {
+  state = {
+    openToggle: false,
+    closeToggle: false,
+  };
+
+  render() {
+    return (
+      <div style={{ display: 'flex' }}>
+        <div style={{ width: '25%' }}>
+          <Button
+            onClick={() =>
+              this.setState(prevState => ({
+                openToggle: !prevState.openToggle,
+              }))
+            }
+            style={{
+              marginBottom: '20px',
+            }}
+          >
+            Open all
+          </Button>
+          <Button
+            onClick={() =>
+              this.setState(prevState => ({
+                closeToggle: !prevState.closeToggle,
+              }))
+            }
+            style={{
+              marginBottom: '20px',
+            }}
+          >
+            Close all
+          </Button>
+        </div>
+        <div style={{ width: '75%' }}>
+          <ExpandCard
+            openAction={this.state.openToggle}
+            closeAction={this.state.closeToggle}
+            {...actions}
+          >
+            <ExpandCard.Element>
+              <ExpandCard.Title>
+                <P>Hola</P>
+              </ExpandCard.Title>
+              <ExpandCard.Content>
+                <P>
+                  Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+                  Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+                  Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+                </P>
+              </ExpandCard.Content>
+            </ExpandCard.Element>
+            <ExpandCard.Element>
+              <ExpandCard.Title>
+                <P>Hola</P>
+              </ExpandCard.Title>
+              <ExpandCard.Content>
+                <P>
+                  Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+                  Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+                  Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+                </P>
+              </ExpandCard.Content>
+            </ExpandCard.Element>
+          </ExpandCard>
+        </div>
+      </div>
+    );
+  }
+}
+
+storiesOf('ExpandCard', module)
   .addDecorator(ElementDecoration)
-  .add('Show card with basic content', () => (
-    <ShowCard>
-      <div panel="panel1">
-        <div>jajaja</div>
-        <div>
+  .add('Multi open', () => (
+    <ExpandCard>
+      <ExpandCard.Element>
+        <ExpandCard.Title>
+          <P>Hola</P>
+        </ExpandCard.Title>
+        <ExpandCard.Content>
           <P>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
-            justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
-            nec auctor eros sagittis eget.
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
           </P>
+        </ExpandCard.Content>
+      </ExpandCard.Element>
+      <ExpandCard.Element>
+        <ExpandCard.Title>
+          <P>Hola</P>
+        </ExpandCard.Title>
+        <ExpandCard.Content>
           <P>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
-            justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
-            nec auctor eros sagittis eget.
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
           </P>
-        </div>
-      </div>
-      <div panel="panel2">
-        <div>jajaja22</div>
-        <div>
-          <P>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
-            justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
-            nec auctor eros sagittis eget.
-          </P>
-          <P>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
-            justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
-            nec auctor eros sagittis eget.
-          </P>
-        </div>
-      </div>
-    </ShowCard>
+        </ExpandCard.Content>
+      </ExpandCard.Element>
+    </ExpandCard>
   ));
 
-/*
+storiesOf('ExpandCard', module)
+  .addDecorator(ElementDecoration)
+  .add('Only 1 open', () => (
+    <ExpandCard singleShow>
+      <ExpandCard.Element>
+        <ExpandCard.Title>
+          <P>Hola</P>
+        </ExpandCard.Title>
+        <ExpandCard.Content>
+          <P>
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+          </P>
+        </ExpandCard.Content>
+      </ExpandCard.Element>
+      <ExpandCard.Element>
+        <ExpandCard.Title>
+          <P>Hola</P>
+        </ExpandCard.Title>
+        <ExpandCard.Content>
+          <P>
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+          </P>
+        </ExpandCard.Content>
+      </ExpandCard.Element>
+    </ExpandCard>
+  ));
 
-  prototipo::
+storiesOf('ExpandCard', module)
+  .addDecorator(ElementDecoration)
+  .add('Conditional expand', () => {
+    return <GlobalComponent />;
+  });
 
-  - props:
-    * singleDisplay: Solo una tab puede estar abierta al mismo tiempo
-    * handleChange: Pasamos la funcion encargada de la apertura de tabs, para control condicional
-
-  <ShowCard singleDisplay handleChange>
-    <ShowCard.Title>
-      titulo 1
-    </ShowCard.Title>
-    <ShowCard.Container>
-      <P>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-        fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
-        justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
-        nec auctor eros sagittis eget.
-      </P>
-      <P>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-        fermentum magna eu velit semper hendrerit. Aenean aliquet pretium
-        justo, ut rhoncus magna euismod et. Donec condimentum congue sapien,
-        nec auctor eros sagittis eget.
-      </P>
-    </ShowCard.Container>
-  </ShowCard>
-
-  */
+storiesOf('ExpandCard', module)
+  .addDecorator(ElementDecoration)
+  .add('Custom styles', () => (
+    <ExpandCard>
+      <ExpandCard.Element style={{ borderRadius: 0, backgroundColor: 'khaki' }}>
+        <ExpandCard.Title>
+          <P>Hola</P>
+        </ExpandCard.Title>
+        <ExpandCard.Content>
+          <P>
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+          </P>
+        </ExpandCard.Content>
+      </ExpandCard.Element>
+      <ExpandCard.Element
+        style={{ borderRadius: 0, backgroundColor: 'khaki', marginTop: 0 }}
+      >
+        <ExpandCard.Title>
+          <P>Hola</P>
+        </ExpandCard.Title>
+        <ExpandCard.Content>
+          <P>
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+            Blabla Blabla Blabla Blabla Blabla Blabla Blabla Blabla
+          </P>
+        </ExpandCard.Content>
+      </ExpandCard.Element>
+    </ExpandCard>
+  ));

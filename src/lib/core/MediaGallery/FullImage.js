@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import Dialog from 'material-ui/Dialog';
+import CustomModal from './CustomModal';
 // import {
 //   createGenerateClassName,
 //   jssPreset,
@@ -41,13 +42,13 @@ class FullImage extends React.Component<Props> {
     return (
       // <JssProvider jss={jss} generateClassName={generateClassName}>
       //   <MuiThemeProvider theme={theme}>
-      <Dialog open={open} onClose={this.onCloseDialog}>
+      <CustomModal open={open} onClose={this.onCloseDialog}>
         <img
           src={`${RESOURCES_URL}gallery/original/${image.value}`}
           width="100%"
           alt="detail"
         />
-      </Dialog>
+      </CustomModal>
       //   </MuiThemeProvider>
       // </JssProvider>
     );
