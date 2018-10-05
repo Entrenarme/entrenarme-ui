@@ -14,13 +14,7 @@ import colors from '../../helpers/colors';
 import P from '../../core/Text/Paragraph';
 import Button from '../../core/Button';
 
-import Responsive from '../../helpers/Responsive';
-
-type WrapperProps = {
-  options: {
-    device: Device,
-  },
-};
+import devices from '../../helpers/breakpoints';
 
 // const generateClassName = createGenerateClassName({
 //   productionPrefix: 'rates-eui',
@@ -29,24 +23,17 @@ type WrapperProps = {
 // const theme = createMuiTheme();
 
 const Wrapper = styled.div`
-  width: ${(props: WrapperProps) =>
-    props.options &&
-    props.options.device &&
-    (props.options.device.includes('desktop') ||
-      props.options.device.includes('ipad'))
-      ? '130px'
-      : '80px'};
-  height: ${(props: WrapperProps) =>
-    props.options &&
-    props.options.device &&
-    (props.options.device.includes('desktop') ||
-      props.options.device.includes('ipad'))
-      ? '95px'
-      : '55px'};
+  width: 80px;
+  height: 55px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (${devices.ipad}) {
+    width: 130px;
+    height: 95px;
+  }
 `;
 
 type ContainerProps = {
@@ -58,14 +45,15 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   max-height: 70px;
-  ${(props: ContainerProps) =>
-    props.options && props.options.mobile
-      ? `
-      border-radius: 4px;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-  `
-      : 'border-radius: 4px'};
+  border-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+
+  @media (${devices.ipad}) {
+    border-top-right-radius: initial;
+    border-bottom-right-radius: initial;
+  }
+
   ${(props: ContainerProps) =>
     props.options && props.options.appendButtonText
       ? `
@@ -101,64 +89,49 @@ const RatesAdv = ({
   amount,
   currency,
   appendButtonText,
-  mobile,
 }: Props) => (
   // <JssProvider jss={jss} generateClassName={generateClassName}>
   //   <MuiThemeProvider theme={theme}>
-  <Responsive>
-    {({ device }) => (
-      <Wrapper options={{ device }}>
-        <Container options={{ appendButtonText, mobile }}>
-          <P
-            size="xs"
-            color={colors.primary.default}
-            textAlign="center"
-            noMargin
-          >
-            {topText}
-          </P>
-          <Price>
-            <P
-              size="large"
-              color={colors.primary.default}
-              font="main"
-              textAlign="center"
-              noMargin
-            >
-              {amount}
-            </P>
-            <P
-              size="medium"
-              color={colors.primary.default}
-              font="main"
-              textAlign="center"
-              noMargin
-            >
-              {currency}
-            </P>
-          </Price>
-          <P
-            size="xs"
-            color={colors.primary.default}
-            textAlign="center"
-            noMargin
-          >
-            {bottomText}
-          </P>
-        </Container>
-        {appendButtonText && (
-          <Button
-            fullWidth
-            size="xs"
-            style={{ marginTop: '-2px', pointerEvents: 'none' }}
-            data-testid="appended-button"
-          >
-            {appendButtonText}
-          </Button>
-        )}
-      </Wrapper>
+  <Wrapper>
+    <Container options={{ appendButtonText }}>
+      <P size="xs" color={colors.primary.default} textAlign="center" noMargin>
+        {topText}
+      </P>
+      <Price>
+        <P
+          size="large"
+          color={colors.primary.default}
+          font="main"
+          textAlign="center"
+          noMargin
+        >
+          {amount}
+        </P>
+        <P
+          size="medium"
+          color={colors.primary.default}
+          font="main"
+          textAlign="center"
+          noMargin
+        >
+          {currency}
+        </P>
+      </Price>
+      <P size="xs" color={colors.primary.default} textAlign="center" noMargin>
+        {bottomText}
+      </P>
+    </Container>
+    {appendButtonText && (
+      <Button
+        fullWidth
+        size="xs"
+        style={{ marginTop: '-2px', pointerEvents: 'none' }}
+        data-testid="appended-button"
+      >
+        {appendButtonText}
+      </Button>
     )}
-  </Responsive>
+  </Wrapper>
   //   </MuiThemeProvider>
   // </JssProvider>
 );
