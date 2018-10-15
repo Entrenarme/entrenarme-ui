@@ -65,7 +65,12 @@ storiesOf('Switch', module)
     </Switch>
   ))
   .add('multiple with checkbox', () => (
-    <Switch onChange={action('onSwitchChange')} multiple column>
+    <Switch
+      onChange={action('onSwitchChange')}
+      multiple
+      column
+      defaultActive={['male']}
+    >
       {({ itemProps, activeItem }) => (
         <React.Fragment>
           <Checkbox

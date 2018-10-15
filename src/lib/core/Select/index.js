@@ -12,11 +12,25 @@ type Props = {
   onChange?: Function,
   /** If we want to support a multiple selection */
   multiple?: boolean,
+  defaultActive?: Array<any> | string | number,
 };
 
 type State = {
   names: { [string]: boolean },
 };
+
+function setDefaultValues(defaultActive) {
+  if (defaultActive) {
+    if (Array.isArray(defaultActive)) {
+      const actives = defaultActive.reduce((acc, curr) => {
+        return { ...acc, [curr]: true };
+      }, {});
+      return actives;
+    }
+    return { [defaultActive]: true };
+  }
+  return {};
+}
 
 class Switch extends React.Component<Props, State> {
   static defaultProps = {
@@ -28,7 +42,7 @@ class Switch extends React.Component<Props, State> {
     /** this object will be filled each time a children with a name property is clicked.
      * Is empty because by default, we will consider all items to be inactive.
      */
-    names: {},
+    names: setDefaultValues(this.props.defaultActive),
   };
 
   componentDidUpdate() {
