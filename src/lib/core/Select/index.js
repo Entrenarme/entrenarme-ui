@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import isEqual from 'lodash/isEqual';
 
 type Props = {
   /** A function which accepts itemProps and activeItem as a parameters
@@ -12,7 +13,7 @@ type Props = {
   onChange?: Function,
   /** If we want to support a multiple selection */
   multiple?: boolean,
-  defaultActive?: Array<any> | string | number,
+  value?: Array<any> | string | number,
 };
 
 type State = {
@@ -42,14 +43,34 @@ class Switch extends React.Component<Props, State> {
     /** this object will be filled each time a children with a name property is clicked.
      * Is empty because by default, we will consider all items to be inactive.
      */
-    names: setDefaultValues(this.props.defaultActive),
+    names: setDefaultValues(this.props.value),
   };
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (isEqual(this.getActiveItems(), this.props.value)) {
+      return;
+    }
+    this.setState({ names: this.props.value });
+  }
+
+  // componentDidUpdate() {
+  //   const { value } = this.props;
+  //   console.log('value:', value);
+  //   console.log('typeof value:', typeof value);
+
+  //   console.log('typeof value is undefined:', typeof value === 'undefined');
+  //   console.log('value is undefined:', value === 'undefined');
+
+  //   if (value === 'undefined') {
+  //     this.onChange();
+  //   }
+  // }
+
+  onChange = () => {
     const { onChange, multiple } = this.props;
     if (onChange)
       onChange(multiple ? this.getActiveItems() : this.getActiveItem());
-  }
+  };
 
   setAllNamesToFalse = () => {
     const { names } = this.state;
@@ -64,7 +85,8 @@ class Switch extends React.Component<Props, State> {
 
   onClick = (e: SyntheticEvent<*>) => {
     const { names } = this.state;
-    const { multiple } = this.props;
+    const { multiple, value } = this.props;
+
     const nameClicked = e.target.name || e.currentTarget.name;
     if (names && Object.keys(names).length > 0) {
       const indexFound = Object.keys(names).find(
@@ -79,12 +101,15 @@ class Switch extends React.Component<Props, State> {
           // if selection is multiple, don't set the rest to inactive
         }
         // switch the clicked item and exit
-        return this.setState(prevState => ({
-          names: {
-            ...prevState.names,
-            [indexFound]: !prevState.names[indexFound],
-          },
-        }));
+        return this.setState(
+          prevState => ({
+            names: {
+              ...prevState.names,
+              [indexFound]: !prevState.names[indexFound],
+            },
+          }),
+          () => this.onChange(),
+        );
       }
     }
     // there are no items or the item clicked is still not on the items state
@@ -92,13 +117,19 @@ class Switch extends React.Component<Props, State> {
     // we set all to false
     // if selection is multiple, don't set the rest to inactive
     // then we create the clicked one and set it to true
-    return this.setState(prevState => ({
-      names: { ...prevState.names, [nameClicked]: true },
-    }));
+    return this.setState(
+      prevState => ({
+        names: { ...prevState.names, [nameClicked]: true },
+      }),
+      () => this.onChange(),
+    );
   };
 
   getActiveItems(): Array<any> {
     const { names } = this.state;
+    // const { value } = this.props;
+    // if (typeof value !== 'undefined') return value;
+
     if (names && Object.keys(names).length > 0) {
       return Object.keys(names).filter((nameKey: string) => names[nameKey]);
     }
@@ -106,6 +137,8 @@ class Switch extends React.Component<Props, State> {
   }
 
   getActiveItem() {
+    // const { value } = this.props;
+    // if (typeof value !== 'undefined') return value;
     return this.getActiveItems()[0];
   }
 

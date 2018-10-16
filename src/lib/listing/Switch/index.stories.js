@@ -69,7 +69,7 @@ storiesOf('Switch', module)
       onChange={action('onSwitchChange')}
       multiple
       column
-      defaultActive={['male']}
+      value={['male']}
     >
       {({ itemProps, activeItem }) => (
         <React.Fragment>
