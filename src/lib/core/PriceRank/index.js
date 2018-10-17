@@ -65,6 +65,7 @@ class PriceRank extends React.Component<Props, State> {
       defaultValue,
       step,
       markTooltip,
+      value,
     } = this.props;
     if (slider) {
       const Comp = ExtendedRange(Slider);
@@ -89,6 +90,7 @@ class PriceRank extends React.Component<Props, State> {
         defaultValue={priceRank}
         min={min}
         max={max}
+        value={value}
         onChange={rank => this.handleChange(rank)}
         marks={this.renderMarks()}
       />
