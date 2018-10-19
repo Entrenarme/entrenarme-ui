@@ -16,13 +16,26 @@ storiesOf('PriceRank', module)
       callback={rank => console.log(rank)}
     />
   ))
-  .add('Slider', () => (
-    <PriceRank
-      slider
-      min={0.5}
-      max={30}
-      step={0.5}
-      markTooltip="km"
-      callback={rank => console.log(rank)}
-    />
-  ));
+  .add(
+    'Slider',
+    () =>
+      class Pr extends React.Component {
+        state = {
+          value: 0,
+        };
+
+        render() {
+          return (
+            <PriceRank
+              slider
+              min={0.5}
+              max={30}
+              step={0.5}
+              markTooltip="km"
+              value={this.state.value}
+              callback={value => this.setState({ value })}
+            />
+          );
+        }
+      },
+  );

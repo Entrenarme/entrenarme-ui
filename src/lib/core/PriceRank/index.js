@@ -31,6 +31,10 @@ class PriceRank extends React.Component<Props, State> {
     markTooltip: '',
   };
 
+  state = {
+    Cmp: this.props.slider ? ExtendedRange(Slider) : ExtendedRange(Range),
+  };
+
   renderCurrencyMark = (repetitions: number) => {
     const { currency } = this.props;
 
@@ -67,15 +71,31 @@ class PriceRank extends React.Component<Props, State> {
       markTooltip,
       value,
     } = this.props;
+    const { Cmp } = this.state;
     if (slider) {
-      const Comp = ExtendedRange(Slider);
+      if (value !== null || typeof value !== 'undefined') {
+        return (
+          <Cmp
+            min={min}
+            max={max}
+            step={step}
+            defaultValue={defaultValue}
+            value={value}
+            onChange={this.handleChange}
+            marks={{
+              [min]: `${min}${markTooltip}`,
+              [max]: `${max}${markTooltip}`,
+            }}
+          />
+        );
+      }
       return (
-        <Comp
+        <Cmp
           min={min}
           max={max}
           step={step}
           defaultValue={defaultValue}
-          onChange={rank => this.handleChange(rank)}
+          onChange={this.handleChange}
           marks={{
             [min]: `${min}${markTooltip}`,
             [max]: `${max}${markTooltip}`,
@@ -83,15 +103,13 @@ class PriceRank extends React.Component<Props, State> {
         />
       );
     }
-
-    const Comp = ExtendedRange(Range);
     return (
-      <Comp
+      <Cmp
         defaultValue={priceRank}
         min={min}
         max={max}
         value={value}
-        onChange={rank => this.handleChange(rank)}
+        onChange={this.handleChange}
         marks={this.renderMarks()}
       />
     );
