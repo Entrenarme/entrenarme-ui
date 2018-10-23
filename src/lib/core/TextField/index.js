@@ -24,6 +24,7 @@ type Props = {
   type?: 'text' | 'number' | 'password' | 'email',
   onChange?: Function,
   debounceMs?: number,
+  value?: string,
 };
 
 // const theme = createMuiTheme({
@@ -50,7 +51,11 @@ const STextField = styled(MTextField)`
   }
 `;
 
-class TextField extends React.Component<Props> {
+type State = {
+  value: string,
+};
+
+class TextField extends React.Component<Props, State> {
   static defaultProps = {
     label: '',
     placeholder: '',
@@ -60,23 +65,41 @@ class TextField extends React.Component<Props> {
     debounceMs: 0,
   };
 
-  onInputChange = debounce((e: SyntheticEvent<*>) => {
-    this.props.onChange(e);
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (
+      this.props.value &&
+      this.props.value !== prevProps.value &&
+      this.props.value !== this.state.value
+    ) {
+      this.setState({ value: this.props.value });
+    }
+  }
+
+  state = {
+    value: this.props.value || '',
+  };
+
+  onInputChange = debounce(() => {
+    const { value } = this.state;
+    this.props.onChange(value);
   }, this.props.debounceMs);
 
   onChange = e => {
-    e.persist();
-    this.onInputChange(e);
+    const { value } = e.target;
+    this.setState({ value });
+    this.onInputChange();
   };
 
   render() {
     const { adornment, onChange, debounceMs, ...rest } = this.props;
+    const { value } = this.state;
     return (
       // <JssProvider jss={jss} generateClassName={generateClassName}>
       //   <MuiThemeProvider theme={theme}>
       <STextField
         onChange={this.onChange}
         {...rest}
+        value={value}
         InputProps={{
           startAdornment: adornment ? (
             <InputAdornment position="start">{adornment}</InputAdornment>

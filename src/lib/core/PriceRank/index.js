@@ -103,12 +103,24 @@ class PriceRank extends React.Component<Props, State> {
         />
       );
     }
+    if (typeof value !== 'undefined') {
+      console.log('typeof value', typeof value);
+      return (
+        <Cmp
+          defaultValue={priceRank}
+          min={min}
+          max={max}
+          value={value}
+          onChange={this.handleChange}
+          marks={this.renderMarks()}
+        />
+      );
+    }
     return (
       <Cmp
         defaultValue={priceRank}
         min={min}
         max={max}
-        value={value}
         onChange={this.handleChange}
         marks={this.renderMarks()}
       />
