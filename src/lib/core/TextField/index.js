@@ -67,7 +67,7 @@ class TextField extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (
-      this.props.value &&
+      typeof this.props.value !== 'undefined' &&
       this.props.value !== prevProps.value &&
       this.props.value !== this.state.value
     ) {
