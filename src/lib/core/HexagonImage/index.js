@@ -132,10 +132,7 @@ const HexagonImage = ({ url, title }: Props) => {
   return (
     <MainContainer>
       <MainHexagonContainer>
-        <StyledImage
-          src={`${RESOURCES_URL}profile/150/${url}`}
-          options={{ url }}
-        />
+        <StyledImage src={url} options={{ url }} />
         <ColorMaskContainer>
           <ExtendedIcon icon={faAngleRight} />
         </ColorMaskContainer>

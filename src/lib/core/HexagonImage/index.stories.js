@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import HexagonImage from './index';
 import HexagonContainer from './HexagonContainer/index';
 
-const customImage = 'xB1sQl1TuP0yFj7qn8gb_sebas-b.jpg';
+const customImage = `https://picsum.photos/200/300/?random`;
 
 storiesOf('HexagonImage', module).add('default', () => (
   <HexagonContainer>
