@@ -134,6 +134,7 @@ type Props = {
   button?: React.Node,
   type?: 'info' | 'warning' | 'error',
   alignment: ?'vertical',
+  children?: React.Node,
 };
 
 const AlertBox = ({
@@ -144,6 +145,7 @@ const AlertBox = ({
   button,
   type,
   alignment,
+  children,
   ...rest
 }: Props) => {
   return (
@@ -157,6 +159,7 @@ const AlertBox = ({
         </H4>
         <P>{text}</P>
         {tags ? <TagsContainer>{tags}</TagsContainer> : null}
+        {children}
       </BodyContainer>
       {button ? (
         <ButtonContainer options={{ type }}>{button}</ButtonContainer>
