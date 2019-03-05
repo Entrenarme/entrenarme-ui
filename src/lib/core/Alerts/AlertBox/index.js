@@ -120,6 +120,7 @@ type Props = {
   tags?: Array<React.Node>,
   button?: React.Node,
   type?: 'info' | 'warning',
+  children?: React.Node,
 };
 
 const AlertBox = ({
@@ -129,6 +130,7 @@ const AlertBox = ({
   tags,
   button,
   type,
+  children,
   ...rest
 }: Props) => {
   return (
@@ -138,6 +140,7 @@ const AlertBox = ({
         <H5>{title}</H5>
         <P>{text}</P>
         {tags ? <TagsContainer>{tags}</TagsContainer> : null}
+        {children}
       </BodyContainer>
       {button ? (
         <ButtonContainer options={{ type }}>{button}</ButtonContainer>
