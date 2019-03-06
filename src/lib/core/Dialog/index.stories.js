@@ -233,3 +233,27 @@ storiesOf('Dialog', module).add('overflow content', () => (
     type="large"
   />
 ));
+
+storiesOf('Dialog', module).add('media container', () => (
+  <Dialog
+    {...actions}
+    open={true}
+    onClose={() => (openDialog = false)}
+    mediaContainer
+    body={
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <iframe
+          title="Video"
+          width="420"
+          height="315"
+          src="https://www.youtube.com/embed/xk0Q8twtp80"
+          style={{
+            border: 'none',
+            width: '100%',
+          }}
+        />
+      </div>
+    }
+    type="large"
+  />
+));
