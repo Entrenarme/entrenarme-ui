@@ -38,6 +38,12 @@ const ExtendedDialog = styled(MDialog)`
     width: ${props => setDialogSize(props.options.type)};
     padding: 30px;
     border-radius: 4px;
+    background-color: ${props =>
+      props.options.mediaContainer ? 'transparent' : '#fff'};
+    box-shadow: ${props =>
+      props.options.mediaContainer
+        ? 'none'
+        : '0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12)'};
   }
 
   @media only screen and (max-width: 767px) {
@@ -61,7 +67,8 @@ const HeaderContainer = styled.div`
 
   svg {
     font-size: 20px;
-    color: ${colors.primary.default};
+    color: ${props =>
+      props.options.mediaContainer ? '#fff' : colors.primary.default};
     cursor: pointer;
   }
 
@@ -119,8 +126,8 @@ const FooterContainer = styled.div`
       props.options.type !== 'small'
         ? 'initial'
         : props.options.smallModalButtons
-          ? '48% !important'
-          : 'initial'};
+        ? '48% !important'
+        : 'initial'};
   }
 
   @media only screen and (max-width: 767px) {
@@ -152,6 +159,7 @@ type Props = {
   onClose: Function,
   align?: 'default' | 'center',
   type?: 'large' | 'default' | 'small',
+  mediaContainer?: boolean,
 };
 
 class Dialog extends React.Component<Props, State> {
@@ -164,6 +172,7 @@ class Dialog extends React.Component<Props, State> {
       onClose,
       type,
       align,
+      mediaContainer,
       ...rest
     } = this.props;
 
@@ -173,10 +182,10 @@ class Dialog extends React.Component<Props, State> {
       <ExtendedDialog
         open={open}
         onClose={() => onClose()}
-        options={{ type }}
+        options={{ type, mediaContainer }}
         {...rest}
       >
-        <HeaderContainer>
+        <HeaderContainer options={{ mediaContainer }}>
           {header ? header : <div />}
           <FontAwesomeIcon icon={faTimes} onClick={() => onClose()} />
         </HeaderContainer>
