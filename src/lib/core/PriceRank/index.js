@@ -104,7 +104,7 @@ class PriceRank extends React.Component<Props, State> {
       );
     }
     if (typeof value !== 'undefined') {
-      console.log('typeof value', typeof value);
+      // console.log('typeof value', typeof value);
       return (
         <Cmp
           defaultValue={priceRank}
