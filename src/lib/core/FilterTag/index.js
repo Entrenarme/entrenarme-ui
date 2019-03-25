@@ -21,8 +21,7 @@ const MainChipContainer = styled.div`
 
 const AddActionContainer = styled.div`
   cursor: pointer;
-  padding-left: 12px;
-  padding-right: 10px;
+  width: 30px;
   height: 100%;
   display: flex;
   align-items: center;
