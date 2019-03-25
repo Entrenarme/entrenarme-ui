@@ -1,6 +1,6 @@
 {
   "name": "entrenarme-ui",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "devDependencies": {
     "@fortawesome/fontawesome-pro": "5.1.0",
     "@fortawesome/fontawesome-svg-core": "1.2.0-14",
