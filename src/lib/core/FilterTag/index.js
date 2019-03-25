@@ -64,8 +64,7 @@ const BodyContainer = styled.div`
 
 const RemoveActionContainer = styled.div`
   cursor: pointer;
-  padding-left: 10px;
-  padding-right: 12px;
+  width: 30px;
   height: 100%;
   display: flex;
   align-items: center;
