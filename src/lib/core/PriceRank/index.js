@@ -54,7 +54,7 @@ class PriceRank extends React.Component<Props, State> {
 
     iterableArray.forEach(
       element =>
-        (marks[element + min] = this.renderCurrencyMark(
+        (marks[parseInt(element, 10) + min] = this.renderCurrencyMark(
           parseInt(element, 10) + 1,
         )),
     );
