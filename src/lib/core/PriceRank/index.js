@@ -107,7 +107,7 @@ class PriceRank extends React.Component<Props, State> {
       // console.log('typeof value', typeof value);
       return (
         <Cmp
-          defaultValue={priceRank}
+          defaultValue={defaultValue}
           min={min}
           max={max}
           value={value}
@@ -118,7 +118,7 @@ class PriceRank extends React.Component<Props, State> {
     }
     return (
       <Cmp
-        defaultValue={priceRank}
+        defaultValue={defaultValue}
         min={min}
         max={max}
         onChange={this.handleChange}
