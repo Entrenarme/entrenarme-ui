@@ -47,14 +47,16 @@ class PriceRank extends React.Component<Props, State> {
     this.props.callback(rank);
   };
 
-  renderMarks = () => {
+  renderMarks = min => {
     const marks = {};
 
     const iterableArray = times(4, String);
 
     iterableArray.forEach(
       element =>
-        (marks[element] = this.renderCurrencyMark(parseInt(element, 10) + 1)),
+        (marks[element + min] = this.renderCurrencyMark(
+          parseInt(element, 10) + 1,
+        )),
     );
 
     return marks;
@@ -112,7 +114,7 @@ class PriceRank extends React.Component<Props, State> {
           max={max}
           value={value}
           onChange={this.handleChange}
-          marks={this.renderMarks()}
+          marks={this.renderMarks(min)}
         />
       );
     }
@@ -122,7 +124,7 @@ class PriceRank extends React.Component<Props, State> {
         min={min}
         max={max}
         onChange={this.handleChange}
-        marks={this.renderMarks()}
+        marks={this.renderMarks(min)}
       />
     );
   }
