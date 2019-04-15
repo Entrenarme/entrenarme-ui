@@ -25,6 +25,7 @@ const AddActionContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   & svg {
     width: 0.65em !important;
@@ -54,6 +55,12 @@ const BodyContainer = styled.div`
   border-right: 1px solid ${colors.gray.light};
   display: flex;
   align-items: center;
+  border-radius: ${props =>
+    props.options.hover
+      ? props.options.leftIcon
+        ? '0px 50px 50px 0px'
+        : '50px 0px 0px 50px'
+      : '50px'};
 
   &:hover {
     background-color: ${props =>
@@ -67,6 +74,7 @@ const RemoveActionContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   & svg {
     width: 0.5em !important;
